@@ -1,0 +1,10 @@
+Gemfile.lock
+.byebug_history
+master.key
+tmp
+log
+vendor
+.DS_Store
+node_modules
+bundle.js
+bundle.js.map

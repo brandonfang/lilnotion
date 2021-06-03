@@ -15,7 +15,6 @@ class App extends React.Component {
             <Route exact path="/" component={SplashHome} />
             <Route exact path="/about" component={SplashAbout} />
             <Route exact path="/login" component={LoginFormContainer} />
-            <Route exact path="/login" component={LoginFormContainer} />
             <Route exact path="/signup" component={SignupFormContainer} />
             {/* <AuthRoute exact path="/login" component={LoginFormContainer} /> */}
             {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}

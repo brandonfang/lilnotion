@@ -45,7 +45,12 @@ class SignupForm extends React.Component {
     
     return (
       <div>
-        <h2>Sign up</h2>
+        <header className="login-form-header">
+          <img src={window.logo} alt="lilNotion logo" />
+        </header>
+
+        <h1>Sign up</h1>
+        
         <form>
           <label>First name
             <input type="text" />

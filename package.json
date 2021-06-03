@@ -19,15 +19,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandonfang/fsp.git"
+    "url": "git+https://github.com/brandonfang/lil-notion.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brandonfang/fsp/issues"
+    "url": "https://github.com/brandonfang/lil-notion/issues"
   },
-  "homepage": "https://github.com/brandonfang/fsp#readme",
+  "homepage": "https://github.com/brandonfang/lil-notion#readme",
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",

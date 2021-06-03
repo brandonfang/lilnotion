@@ -1,7 +1,7 @@
 class Workspace < ApplicationRecord
-  after_create :set_name_default
-  after_create :set_domain_default
-  after_create :set_icon_string_default
+  # after_create :set_name_default
+  # after_create :set_domain_default
+  # after_create :set_icon_string_default
 
   has_one_attached :icon
   
@@ -9,7 +9,8 @@ class Workspace < ApplicationRecord
   private
 
   def set_name_default
-    user = User.find_by(id: self.creator_id)
+    # user_id = id of user who created the workspace
+    user = User.find_by(id: self.user_id)
     first_name = user.first_name
     self.name = first_name + "'s lilNotion"
   end

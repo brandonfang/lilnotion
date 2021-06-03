@@ -4,11 +4,30 @@
     <title>lilNotion</title>
     <%= csrf_meta_tags %>
     
+    <%# <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="lilNotion" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="An online tool for writing, planning, and organizing inspired by Notion" />
+    <meta property="og:url" content="https://lilnotion.herokuapp.com/" /> %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <% if logged_in? %>
+      <script type="text/javascript">
+          window.currentUser =
+            <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+      </script>
+    <% end %>
+
+    <script type="text/javascript">
+      window.logo = "<%= image_url('logo.svg') %>";
+      window.hero = "<%= image_url('hero.webp') %>";
+    </script>
   </head>
 
   <body>
     <%= yield %>
+    <%= console%>
   </body>
 </html>

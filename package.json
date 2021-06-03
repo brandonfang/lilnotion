@@ -38,9 +38,12 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^8.3.2",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "redux-logger": "^3.0.6",
     "webpack-cli": "^4.7.0"
   }
 }

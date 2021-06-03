@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBarContainer from '../navbar/NavBarContainer';
 import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
@@ -43,34 +44,46 @@ class SignupForm extends React.Component {
   render() {
     // initialize variables
     
-    return (
-      <div>
-        <header className="login-form-header">
-          <img src={window.logo} alt="lilNotion logo" />
-        </header>
+return (
+      <>
+        <NavBarContainer />
 
-        <h1>Sign up</h1>
-        
-        <form>
-          <label>First name
-            <input type="text" />
-          </label>
+        <div className="auth-page-wrapper">
+          <section className="auth-section-wrapper">
+            <div className="auth-header-wrapper">
+              <h1 className="auth-title">Sign up</h1>
+            </div>
 
-          <label>Last name
-            <input type="text" />
-          </label>
+            <div className="form-wrapper">
+              <form onSubmit={this.handleSubmit} className="auth-form">
+                <label>Email
+                  <input type="text" value={this.state.email} placeholder="Enter your email address..." onChange={this.handleChange('email')} />
+                </label>
+                {this.props.errors.email ? <p className="login-errors">{this.props.errors.email}</p> : ''}
+                <label>Password
+                  <input type="password" value={this.state.password} placeholder="Enter your password..." onChange={this.handleChange('password')} />
+                </label>
+
+                <button className="auth-form-submit" onClick={this.handleSubmit}>Sign in</button>
+              </form>
+
+              <p>Already have an account? <Link to="/login">Log in</Link></p>
+            </div>
+          </section>
           
-          <label>Email
-            <input type="text" />
-          </label>
-
-          <label>Password
-            <input type="text" />
-          </label>
-
-          <button type="submit">Create new account</button>
-        </form>
-      </div>
+          <section className="auth-section-wrapper">
+            <div className="auth-header-wrapper">
+              <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
+              <p className="auth-subtext">You can try lilNotion immediately by logging in to of our demo accounts.</p>
+            </div>
+            <div className="form-wrapper">
+              <form onSubmit={this.handleSubmit} className="auth-form">
+                <button className="auth-form-submit" onClick={this.handleSubmit}>Log in as demo user</button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </>
     );
   }
 }

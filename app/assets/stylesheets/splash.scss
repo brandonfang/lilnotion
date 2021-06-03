@@ -1,0 +1,33 @@
+.splash-main {
+  max-width: 1024px;
+  margin: 48px auto;
+  padding: 0 32px;
+  
+  .align-center-wrap {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .center-text-wrap {
+    margin: 24px 0;
+    text-align: center;
+
+    .hero-title {
+      font-size: 74px;   
+      line-height: 0.8;   
+      margin-bottom: 16px;  
+    }
+    
+    .hero-subtitle {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.image-wrapper {
+  width: auto;
+}

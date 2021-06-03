@@ -10,26 +10,31 @@ body {
 h1 {
   font-size: 50px;
   font-weight: 700;
+  margin-bottom: 16px;
 }
 
 h2 {
   font-size: 32px;
   font-weight: 600;
+  margin-bottom: 12px;
 }
 
 h3 {
   font-size: 24px;
   font-weight: 600;
+  margin-bottom: 8px;
 }
 
 h4 {
   font-size: 20px;
   font-weight: 500;
+  margin-bottom: 8px;
 }
 
 p {
   font-size: 16px;
   font-weight: 400;
+  margin-bottom: 8px;
 }
 
 button {
@@ -37,4 +42,8 @@ button {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
+}
+
+a {
+  text-decoration: underline;
 }

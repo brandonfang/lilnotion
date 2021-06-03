@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBarContainer from '../navbar/NavBarContainer';
 import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
@@ -34,31 +35,47 @@ class LoginForm extends React.Component {
   }
 
   render () {
-      return (
-        <div>
+    return (
+      <>
+        <NavBarContainer />
 
-          <header className="login-form-header">
-            <img src={window.logo} alt="lilNotion logo" />
-          </header>
+        <div className="auth-page-wrapper">
+          <section className="auth-section-wrapper">
+            <div className="auth-header-wrapper">
+              <h1 className="auth-title">Log in</h1>
+            </div>
 
-          <h1>Log in</h1>
+            <div className="form-wrapper">
+              <form onSubmit={this.handleSubmit} className="auth-form">
+                <label>Email
+                  <input type="text" value={this.state.email} placeholder="Enter your email address..." onChange={this.handleChange('email')} />
+                </label>
+                {this.props.errors.email ? <p className="login-errors">{this.props.errors.email}</p> : ''}
+                <label>Password
+                  <input type="password" value={this.state.password} placeholder="Enter your password..." onChange={this.handleChange('password')} />
+                </label>
 
-          <form>
-            <label>Email
-              <input type="text" value={this.state.email} placeholder="Email" onChange={this.handleChange('email')} />
-            </label>
-            {this.props.errors.email ? <p className="login-errors">{this.props.errors.email}</p> : ''}
-            <label>Password
-              <input type="password" value={this.state.password} placeholder="Password" onChange={this.handleChange('password')} />
-            </label>
+                <button className="auth-form-submit" onClick={this.handleSubmit}>Sign in</button>
+              </form>
 
-            <button onClick={this.handleSubmit}>Sign In</button>
-          </form>
-
-          <p>New to lilNotion? <Link to="/signup">Sign up</Link></p>
-
+              <p>New to lilNotion? <Link to="/signup">Sign up</Link></p>
+            </div>
+          </section>
+          
+          <section className="auth-section-wrapper">
+            <div className="auth-header-wrapper">
+              <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
+              <p className="auth-subtext">You can try lilNotion immediately by logging in to of our demo accounts.</p>
+            </div>
+            <div className="form-wrapper">
+              <form onSubmit={this.handleSubmit} className="auth-form">
+                <button className="auth-form-submit" onClick={this.handleSubmit}>Log in as demo user</button>
+              </form>
+            </div>
+          </section>
         </div>
-      )
+      </>
+    );
   }
 }
 

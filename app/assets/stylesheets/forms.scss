@@ -55,18 +55,25 @@ input {
   width: 100%;
   border-radius: 4px;
   border: 1px solid $light-gray;
-  // box-shadow: rgba(15, 15, 15, 10%) 0px 0px 0px 1px inset;
   margin-top: 3px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 
   padding: 4px 10px;
 
   font-family: inherit;
-  font-size: inherit;
+  font-size: 14px;
 }
 
 input:focus {
   box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset, rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
+}
+
+input::placeholder {
+  color: $medium-light-gray;
+}
+
+button {
+  cursor: pointer;
 }
 
 button.auth-form-submit {
@@ -82,5 +89,4 @@ button.auth-form-submit {
   font-size: 18px;
   font-weight: 600;
   color: white;
-
 }

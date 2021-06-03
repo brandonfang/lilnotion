@@ -56,12 +56,21 @@ return (
 
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
-                <label>Email
-                  <input type="text" value={this.state.email} placeholder="Enter your email address..." onChange={this.handleChange('email')} />
+                <label>First name
+                  <input type="text" value={this.state.email} placeholder="Enter your first name" onChange={this.handleChange('firstName')} />
                 </label>
+                
+                <label>Last name
+                  <input type="text" value={this.state.email} placeholder="Enter your last name" onChange={this.handleChange('lastName')} />
+                </label>
+                <label>Email
+                  <input type="text" value={this.state.email} placeholder="Enter your email address" onChange={this.handleChange('email')} />
+                </label>
+
                 {this.props.errors.email ? <p className="login-errors">{this.props.errors.email}</p> : ''}
+
                 <label>Password
-                  <input type="password" value={this.state.password} placeholder="Enter your password..." onChange={this.handleChange('password')} />
+                  <input type="password" value={this.state.password} placeholder="Enter your password" onChange={this.handleChange('password')} />
                 </label>
 
                 <button className="auth-form-submit" onClick={this.handleSubmit}>Sign in</button>
@@ -74,7 +83,7 @@ return (
           <section className="auth-section-wrapper">
             <div className="auth-header-wrapper">
               <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
-              <p className="auth-subtext">You can try lilNotion immediately by logging in to of our demo accounts.</p>
+              <p className="auth-subtext">You can try out lilNotion by logging in as one of our demo users.</p>
             </div>
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">

@@ -48,11 +48,11 @@ class LoginForm extends React.Component {
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>Email
-                  <input type="text" value={this.state.email} placeholder="Enter your email address..." onChange={this.handleChange('email')} />
+                  <input type="text" value={this.state.email} placeholder="Enter your email address" onChange={this.handleChange('email')} />
                 </label>
                 {this.props.errors.email ? <p className="login-errors">{this.props.errors.email}</p> : ''}
                 <label>Password
-                  <input type="password" value={this.state.password} placeholder="Enter your password..." onChange={this.handleChange('password')} />
+                  <input type="password" value={this.state.password} placeholder="Enter your password" onChange={this.handleChange('password')} />
                 </label>
 
                 <button className="auth-form-submit" onClick={this.handleSubmit}>Sign in</button>

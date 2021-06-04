@@ -10,15 +10,13 @@ class SignupForm extends React.Component {
       lastName: '',
       email: '',
       password: '',
-      errors: {},
-      // emailAndPassword: false
+      // errors: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.demoLogin = this.demoLogin.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentDidMount() {
-
   }
 
   handleSubmit(e) {
@@ -26,25 +24,33 @@ class SignupForm extends React.Component {
     const { formAction, history } = this.props;
     const user = Object.assign({}, this.state);
     formAction(user);
-    history.push("/")
-  }
-
-  handleChange(field) {
-    return (e) => this.setState({ [field]: e.target.value });
-  }
-
-  resetErrors () {
-    this.setState({ errors: {} });
+    history.push("/");
   }
 
   demoLogin (e) {
     e.preventDefault();
   }
 
-  render() {
-    // initialize variables
-    
-return (
+  handleChange(field) {
+    return (e) => this.setState({ [field]: e.target.value });
+  }
+
+  resetErrors() {
+    this.setState({ errors: {} });
+  }
+
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  render() {    
+    return (
       <>
         <NavBarContainer />
 
@@ -55,25 +61,30 @@ return (
             </div>
 
             <div className="form-wrapper">
+              {/* {this.renderErrors()} */}
+              {console.log(this.props)}
+
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>First name
-                  <input type="text" value={this.state.email} placeholder="Enter your first name" onChange={this.handleChange('firstName')} />
+                  <input type="text" value={this.state.firstName} placeholder="Your first name" onChange={this.handleChange('firstName')} />
                 </label>
                 
                 <label>Last name
-                  <input type="text" value={this.state.email} placeholder="Enter your last name" onChange={this.handleChange('lastName')} />
-                </label>
-                <label>Email
-                  <input type="text" value={this.state.email} placeholder="Enter your email address" onChange={this.handleChange('email')} />
+                  <input type="text" value={this.state.lastName} placeholder="Your last name" onChange={this.handleChange('lastName')} />
                 </label>
 
-                {this.props.errors.email ? <p className="login-errors">{this.props.errors.email}</p> : ''}
+                <label>Email
+                  <input type="email" value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} />
+                </label>
+
+                {this.props.errors.email ? <p>{this.props.errors.email}</p> : ''}
 
                 <label>Password
-                  <input type="password" value={this.state.password} placeholder="Enter your password" onChange={this.handleChange('password')} />
+                  <input type="password" value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} />
+                  <p className="input-message">Password needs to be six or more characters.</p>
                 </label>
 
-                <button className="auth-form-submit" onClick={this.handleSubmit}>Sign in</button>
+                <button className="auth-form-submit" type="submit">Create a new account</button>
               </form>
 
               <p>Already have an account? <Link to="/login">Log in</Link></p>
@@ -86,8 +97,8 @@ return (
               <p className="auth-subtext">You can try out lilNotion by logging in as one of our demo users.</p>
             </div>
             <div className="form-wrapper">
-              <form onSubmit={this.handleSubmit} className="auth-form">
-                <button className="auth-form-submit" onClick={this.handleSubmit}>Log in as demo user</button>
+              <form onSubmit={this.demoLogin} className="auth-form">
+                <button className="auth-form-submit" type="submit">Log in as demo user</button>
               </form>
             </div>
           </section>

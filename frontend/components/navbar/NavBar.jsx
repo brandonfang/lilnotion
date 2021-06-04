@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Need to add GreetingContainer to this component
-
 const Navbar = (props) => (
   <header className="header">
     <div className="outer">
@@ -32,6 +30,8 @@ const Navbar = (props) => (
 
             <div className="divider"></div>
 
+            {/* Need to add GreetingContainer to this component */}
+
             <ul className="nav-list">
               <li className="item">
                 <Link to="/login">Log in</Link>
@@ -42,6 +42,7 @@ const Navbar = (props) => (
             </ul>
           </nav>
         </div>
+        
         {/* <div className="mobile-actions"></div> */}
       </div>
     </div>

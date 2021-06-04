@@ -7,13 +7,13 @@ const Greeting = ({ currentUser, logout }) => {
     <div>
       <Link to="/login">Log in</Link>
       &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
+      <Link to="/signup">Sign up</Link>
     </div>
   );
 
   const personalGreeting = () => (
     <hgroup>
-      <h2>Hi, {currentUser.username}!</h2>
+      <h2>Hi, {currentUser.firstName} {currentUser.lastName}!</h2>
       <button onClick={logout}>Log Out</button>
     </hgroup>
   );

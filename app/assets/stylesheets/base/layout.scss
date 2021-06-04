@@ -1,3 +1,12 @@
 .global-contain {
   margin: 0 auto;
 }
+
+.user-content-wrapper {
+  max-width: 1024px;
+  margin: 48px auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

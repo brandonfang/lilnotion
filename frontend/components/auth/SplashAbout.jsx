@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarContainer from '../navbar/NavBarContainer';
-// import GreetingContainer from '../greeting/GreetingContainer';
+import GreetingContainer from '../greeting/GreetingContainer';
 import { Link } from 'react-router-dom';
 
 const SplashAbout = () => (   

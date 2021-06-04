@@ -12,7 +12,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    
     <% if logged_in? %>
       <script type="text/javascript">
           window.currentUser =
@@ -24,6 +24,7 @@
       window.logo = "<%= image_url('logo.svg') %>";
       window.hero = "<%= image_url('hero.webp') %>";
     </script>
+
   </head>
 
   <body>

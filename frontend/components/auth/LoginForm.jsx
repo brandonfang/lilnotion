@@ -14,10 +14,6 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const { formAction, history } = this.props;
@@ -65,7 +61,7 @@ class LoginForm extends React.Component {
           <section className="auth-section-wrapper">
             <div className="auth-header-wrapper">
               <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
-              <p className="auth-subtext">You can try lilNotion immediately by logging in to of our demo accounts.</p>
+              <p className="auth-subtext">You can try out lilNotion by logging in as one of our demo users.</p>
             </div>
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">

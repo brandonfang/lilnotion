@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  const publicNavBar = () => (
+  const loginNavBar = () => (
     <header className="header">
       <div className="outer">
         <div className="inner">
@@ -45,7 +45,7 @@ const Navbar = (props) => {
     </header>
   );
 
-  const privateNavBar = () => (
+  const signupNavBar = () => (
     <header className="header">
       <div className="outer">
         <div className="inner">
@@ -81,7 +81,7 @@ const Navbar = (props) => {
     </header>
   );
 
-  return props.currentUser ? privateNavBar() : publicNavBar();
+  return props.match.parms ? loginNavBar() : signupNavBar();
 };
  
 export default Navbar;

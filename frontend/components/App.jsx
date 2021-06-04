@@ -1,11 +1,12 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route-util';
 import SplashHome from './auth/SplashHome';
 import SplashAbout from './auth/SplashAbout';
 import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
 import LoggedInContent from './auth/LoggedInContent';
+import NotFoundPage from './NotFoundPage';
 
 class App extends React.Component {
   render() {
@@ -13,15 +14,18 @@ class App extends React.Component {
       <>
         <div className="app">
           <Switch>
-            {/* <Route exact path="/login" component={LoginFormContainer} /> */}
-            {/* <Route exact path="/signup" component={SignupFormContainer} /> */}
 
-            <Route exact path="/login" component={LoginFormContainer} />
-            <Route exact path="/signup" component={SignupFormContainer} />
-            <Route exact path="/about" component={SplashAbout} />
+
+            <AuthRoute exact path="/login" component={LoginFormContainer} />
+            <AuthRoute exact path="/signup" component={SignupFormContainer} />
+            <AuthRoute exact path="/about" component={SplashAbout} />
+            <AuthRoute path="/" component={SplashHome} />
             <ProtectedRoute path="/" component={LoggedInContent} />
-            <Route exact path="/" component={SplashHome} />
-          </Switch>          
+            <AuthRoute path="/404" component={NotFoundPage} />
+            <Redirect to="/404" />
+
+
+          </Switch>
         </div>
       </>
     );

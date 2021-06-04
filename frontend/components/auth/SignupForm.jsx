@@ -10,13 +10,10 @@ class SignupForm extends React.Component {
       lastName: '',
       email: '',
       password: '',
-      // errors: {},
+      errors: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoLogin = this.demoLogin.bind(this);
-  }
-
-  componentDidMount() {
+    this.loginDemo = this.loginDemo.bind(this);
   }
 
   handleSubmit(e) {
@@ -27,12 +24,66 @@ class SignupForm extends React.Component {
     history.push("/");
   }
 
-  demoLogin (e) {
+  loginDemo(e) {
     e.preventDefault();
+    this.resetInputs();
+    const demoUser = { 
+      firstName: 'Doug',
+      lastName: 'Engelbart',
+      email: 'doug@engelbart.com',
+      password: 'password'
+    };
+
+    const demoUserFirstName = 'Doug'.split('');
+    const demoUserLastName = 'Engelbart'.split('');
+    const demoUserEmail = 'doug@engelbart.com'.split('');
+    const demoUserPassword = 'password'.split('');
+
+    demoUserFirstName.forEach((char, i) => {
+      setTimeout(() => {
+        let firstNameValue = document.getElementById('first-name-input').value;
+        firstNameValue += char;
+        document.getElementById('first-name-input').value = firstNameValue;
+      }, 100 * i);
+    });
+
+    demoUserLastName.forEach((char, i) => {
+      setTimeout(() => {
+        let lastNameValue = document.getElementById('last-name-input').value;
+        lastNameValue += char;
+        document.getElementById('last-name-input').value = lastNameValue;
+      }, 100 * i);
+    });
+
+    demoUserEmail.forEach((char, i) => {
+      setTimeout(() => {
+        let emailValue = document.getElementById('email-input').value;
+        emailValue += char;
+        document.getElementById('email-input').value = emailValue;
+      }, 100 * i);
+    });
+
+    demoUserPassword.forEach((char, i) => {
+      setTimeout(() => {
+        let passwordValue = document.getElementById('password-input').value;
+        passwordValue += char;
+        document.getElementById('password-input').value = passwordValue;
+      }, 100 * i);
+    });
+
+    setTimeout(this.props.loginDemo(demoUser), 4000);
+    setTimeout(this.props.history.push('/home'), 4000);
   }
 
   handleChange(field) {
     return (e) => this.setState({ [field]: e.target.value });
+  }
+
+  resetInputs() {
+    this.setState({
+      email: '',
+      password: ''
+    });
   }
 
   resetErrors() {
@@ -61,26 +112,23 @@ class SignupForm extends React.Component {
             </div>
 
             <div className="form-wrapper">
-              {/* {this.renderErrors()} */}
-              {console.log(this.props)}
-
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>First name
-                  <input type="text" value={this.state.firstName} placeholder="Your first name" onChange={this.handleChange('firstName')} />
+                  <input type="text" value={this.state.firstName} placeholder="Your first name" onChange={this.handleChange('firstName')} id="first-name-input" />
                 </label>
                 
                 <label>Last name
-                  <input type="text" value={this.state.lastName} placeholder="Your last name" onChange={this.handleChange('lastName')} />
+                  <input type="text" value={this.state.lastName} placeholder="Your last name" onChange={this.handleChange('lastName')} id="last-name-input" />
                 </label>
 
                 <label>Email
-                  <input type="email" value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} />
+                  <input type="email" value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
                 </label>
 
                 {this.props.errors.email ? <p>{this.props.errors.email}</p> : ''}
 
                 <label>Password
-                  <input type="password" value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} />
+                  <input type="password" value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
                   <p className="input-message">Password needs to be six or more characters.</p>
                 </label>
 
@@ -97,7 +145,7 @@ class SignupForm extends React.Component {
               <p className="auth-subtext">You can try out lilNotion by logging in as one of our demo users.</p>
             </div>
             <div className="form-wrapper">
-              <form onSubmit={this.demoLogin} className="auth-form">
+              <form onSubmit={this.loginDemo} className="auth-form">
                 <button className="auth-form-submit" type="submit">Log in as demo user</button>
               </form>
             </div>

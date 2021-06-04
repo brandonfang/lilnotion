@@ -4,14 +4,15 @@ import SignupForm from './SignupForm';
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
+  formType: 'signup'
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-  formAction: (user) => dispatch(signup(user)),
-  demoLogin: (user) => dispatch(login(user)),
-  // receiveErrors: (errors) => dispatch(receiveErrors(errors)),
-  }
+    processForm: (user) => dispatch(signup(user)),
+    loginDemo: (user) => dispatch(login(user)),
+    // receiveErrors: (errors) => dispatch(receiveErrors(errors)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

@@ -15,7 +15,7 @@ class LoggedInContent extends React.Component {
         <div className="user-content-wrapper">
           <h1>You are logged in.</h1>
           <p>This is content only authenticated users are supposed to see.</p>
-          <p></p>
+          <p>currentUserId: {window.getState().session.id}</p>
         </div>
       </>
     );

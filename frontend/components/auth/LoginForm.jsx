@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
     });
 
     setTimeout(this.props.processForm(demoUser), 4000);
-    setTimeout(this.props.history.push('/home'), 4000);
+    setTimeout(this.props.history.push('/'), 4000);
   }
 
   handleChange(field) {

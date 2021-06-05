@@ -14,9 +14,6 @@ class App extends React.Component {
       <>
         <div className="app">
           <Switch>
-            <Route path="/" component={SplashHome} />
-
-
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <AuthRoute exact path="/about" component={SplashAbout} />

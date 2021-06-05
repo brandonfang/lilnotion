@@ -8,9 +8,44 @@
 
 User.delete_all
 
-demo_user = User.create!(
+demo_user_1 = User.create!(
   first_name: 'Doug',
   last_name: 'Engelbart',
   email: 'doug@engelbart.com',
+  password: 'password'
+)
+
+demo_user_2 = User.create!(
+  first_name: 'Ted',
+  last_name: 'Nelson',
+  email: 'ted@nelson.com',
+  password: 'password'
+)
+
+demo_user_3 = User.create!(
+  first_name: 'Ada',
+  last_name: 'Lovelace',
+  email: 'ada@lovelace.com',
+  password: 'password'
+)
+
+demo_user_4 = User.create!(
+  first_name: 'Alan',
+  last_name: 'Kay',
+  email: 'alan@kay.com',
+  password: 'password'
+)
+
+demo_user_5 = User.create!(
+  first_name: 'Alan',
+  last_name: 'Turing',
+  email: 'alan@turing.com',
+  password: 'password'
+)
+
+demo_user_6 = User.create!(
+  first_name: 'Steve',
+  last_name: 'Jobs',
+  email: 'steve@jobs.com',
   password: 'password'
 )

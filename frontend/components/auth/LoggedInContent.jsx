@@ -1,25 +1,28 @@
 import React from 'react';
 import NavBarContainer from '../navbar/NavBarContainer';
+import { connect } from 'react-redux';
 
-class LoggedInContent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  
-  render() {    
-    return (
-      <>
-        <NavBarContainer />
-
-        <div className="user-content-wrapper">
-          <h1>You are logged in.</h1>
-          <p>This is content only authenticated users are supposed to see.</p>
-          <p>currentUserId: {window.getState().session.id}</p>
-        </div>
-      </>
-    );
-  }
+const LoggedInContent = (props) => {
+  return (
+    <>
+      <NavBarContainer />
+      <div className="user-content-wrapper">
+        <h1>You are logged in.</h1>
+        <p>This is content only authenticated users are supposed to see.</p>
+        <p>currentUserId: {window.getState().session.id}</p>
+      </div>
+    </>
+  );
 }
 
-export default LoggedInContent;
+const mapStateToProps = (state) => ({
+  errors: state.errors.session,
+  currentUser: users[session.id]
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedInContent);
+

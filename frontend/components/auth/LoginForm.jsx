@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBarContainer from '../navbar/NavBarContainer';
+import AuthNavBarContainer from '../navbar/AuthNavBarContainer';
 import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
@@ -82,7 +82,7 @@ class LoginForm extends React.Component {
   render () {
     return (
       <>
-        <NavBarContainer />
+        <AuthNavBarContainer variant="login" />
 
         <div className="auth-page-wrapper">
           <section className="auth-section-wrapper">

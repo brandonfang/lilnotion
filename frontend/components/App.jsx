@@ -14,11 +14,15 @@ class App extends React.Component {
       <>
         <div className="app">
           <Switch>
+            {/* <Route exact path="/" component={SplashHome} /> */}
+            {/* <Route path="/home" component={LoggedInContent} /> */}
+
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
-            <AuthRoute exact path="/about" component={SplashAbout} />
-            <AuthRoute path="/" component={SplashHome} />
-            <ProtectedRoute path="/" component={LoggedInContent} />
+            <Route exact path="/about" component={SplashAbout} />
+            <Route path="/" component={SplashHome} />
+            <ProtectedRoute path="/home" component={LoggedInContent} />
+
             <AuthRoute path="/404" component={NotFoundPage} />
             <Redirect to="/404" />
 

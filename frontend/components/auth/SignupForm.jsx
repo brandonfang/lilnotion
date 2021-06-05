@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBarContainer from '../navbar/NavBarContainer';
+import AuthNavBarContainer from '../navbar/AuthNavBarContainer';
 import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
@@ -103,7 +103,7 @@ class SignupForm extends React.Component {
   render() {    
     return (
       <>
-        <NavBarContainer />
+        <AuthNavBarContainer variant="signup" />
 
         <div className="auth-page-wrapper">
           <section className="auth-section-wrapper">

@@ -19,10 +19,10 @@ const Navbar = (props) => {
                   <Link to="/about">About</Link>
                 </li>
                 <li className="item">
-                  <Link to="#">LinkedIn</Link>
+                  <a href="" target="_blank">LinkedIn</a>
                 </li>
                 <li className="item">
-                  <Link to="#">GitHub</Link>
+                  <a href="" target="_blank">GitHub</a>
                 </li>
               </ul>
 

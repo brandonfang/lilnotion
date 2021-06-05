@@ -61,6 +61,19 @@
           .item:hover {
             background-color: $nav-item-hover-gray-background;
           }
+
+          .nav-demo-button {
+            height: 32px;
+            box-sizing: border-box;
+            background: $blue-300;
+            color: white;
+            border: 1px solid $blue-500;
+          }
+
+          .nav-demo-button:hover {
+            border: 1px solid rgb(37, 146, 189);
+            background: rgb(42, 156, 201);
+          }
         }
 
         .divider {

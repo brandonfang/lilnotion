@@ -1,5 +1,6 @@
 .header {
   height: 64px;
+  box-sizing: border-box;
 
   .outer {
     max-width: 1024px;
@@ -25,6 +26,15 @@
         display: block;
         height: 30px;
         margin-top: -1px;
+      }
+
+      .logo:focus {
+        box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset, rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
+      }
+
+      .logo:active {
+        box-shadow: none;
+        // add important
       }
     }
 
@@ -56,23 +66,23 @@
               color: inherit;
               text-decoration: none;
             }
+
+            .nav-logout {
+              cursor: pointer;
+            }
+
+            .nav-logout:focus {
+              box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset, rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
+            }
+
+            .nav-logout:active {
+              box-shadow: none;
+              // add important
+            }
           }
 
           .item:hover {
             background-color: $nav-item-hover-gray-background;
-          }
-
-          .nav-demo-button {
-            height: 32px;
-            box-sizing: border-box;
-            background: $blue-300;
-            color: white;
-            border: 1px solid $blue-500;
-          }
-
-          .nav-demo-button:hover {
-            border: 1px solid rgb(37, 146, 189);
-            background: rgb(42, 156, 201);
           }
         }
 
@@ -80,9 +90,13 @@
           width: 1px;
           height: 20px;
           margin: 0 10px;
-          background: rgba(0, 0, 0, 0.1);
+          background: $light-gray;
         }
       }
     }
   }
+}
+
+.private-header {
+  border-bottom: 1px solid $light-gray;
 }

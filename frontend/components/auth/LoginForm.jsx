@@ -3,7 +3,7 @@ import AuthNavBarContainer from '../navbar/AuthNavBarContainer';
 import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       email: '',
@@ -18,40 +18,41 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-    ;
+    this.props.history.push('/');
   }
 
   loginDemo(e) {
     e.preventDefault();
     this.resetInputs();
-    const demoUser = { 
-      email: 'doug@engelbart.com',
-      password: 'password'
-    };
 
-    const demoUserEmail = 'doug@engelbart.com'.split('');
-    const demoUserPassword = 'password'.split('');
-    // const emailInput = document.getElementById('email-input');
-    // const passwordInput = document.getElementById('password-input');
+    const demo1 = { email: 'doug@engelbart.com', password: 'password' };
+    const demo2 = { email: 'ada@lovelace.com', password: 'password' };
+    const demo = Math.random() < 0.5 ? demo1 : demo2;
+  
+    const demoEmail = demo.email.split('');
+    const demoPassword = demo.password.split('');
 
-    demoUserEmail.forEach((char, i) => {
+    const time = 65;
+
+    demoEmail.forEach((char, i) => {
       setTimeout(() => {
-        let emailValue = document.getElementById('email-input').value;
-        emailValue += char;
-        document.getElementById('email-input').value = emailValue;
-      }, 100 * i);
+        let email = document.getElementById('email-input').value;
+        email += char;
+        document.getElementById('email-input').value = email;
+      }, time * (i));
     });
 
-    demoUserPassword.forEach((char, i) => {
+    demoPassword.forEach((char, i) => {
       setTimeout(() => {
-        let passwordValue = document.getElementById('password-input').value;
-        passwordValue += char;
-        document.getElementById('password-input').value = passwordValue;
-      }, 100 * i);
+        let password = document.getElementById('password-input').value;
+        password += char;
+        document.getElementById('password-input').value = password;
+      }, time * (i + demoEmail.length));
     });
-
-    setTimeout(this.props.processForm(demoUser), 4000);
-    setTimeout(this.props.history.push('/'), 4000);
+    
+    const submitDelay = time * (demoEmail.length + demoPassword.length);
+    setTimeout(() => this.props.processForm(demo), submitDelay);
+    setTimeout(() => this.props.history.push('/'), submitDelay);
   }
 
   handleChange(field) {
@@ -82,7 +83,7 @@ class LoginForm extends React.Component {
   render () {
     return (
       <>
-        <AuthNavBarContainer variant="login" />
+        <AuthNavBarContainer />
 
         <div className="auth-page-wrapper">
           <section className="auth-section-wrapper">
@@ -102,21 +103,27 @@ class LoginForm extends React.Component {
                   <input type="password" value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
                 </label>
 
-                <button className="auth-form-submit" type="submit">Sign in</button>
+                <p className="input-message">Password needs to be six or more characters.</p>
+
+                <div className="spacer-8"></div>
+
+                <button className="auth-submit-primary" type="submit">Sign in</button>
               </form>
 
               <p>New to lilNotion? <Link to="/signup">Sign up</Link></p>
             </div>
           </section>
+
+          <div className="auth-section-divider"></div>
           
           <section className="auth-section-wrapper" id="demo-login">
             <div className="auth-header-wrapper">
               <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
-              <p className="auth-subtext">You can try out lilNotion by logging in as one of our demo users.</p>
+              <p className="auth-subtext">You can try lilNotion now by logging in as one of our demo users.</p>
             </div>
             <div className="form-wrapper">
               <form onSubmit={this.loginDemo} className="auth-form">
-                <button className="auth-form-submit" type="submit">Log in as demo user</button>
+                <button className="auth-submit-demo" type="submit">Log in as demo user</button>
               </form>
             </div>
           </section>

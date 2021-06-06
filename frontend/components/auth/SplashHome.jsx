@@ -1,8 +1,11 @@
 import React from 'react';
 import NavBarContainer from '../navbar/NavBarContainer';
+import { logout } from '../../actions/session-actions';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const SplashHome = () => (
+
+const SplashHome = (props) => (
   <>
     <NavBarContainer />
     <main className="splash-main">
@@ -14,7 +17,13 @@ const SplashHome = () => (
         <div className="center-text-wrapper">
           <h1 className="hero-title">All-in-one workspace</h1>
           <h2 className="hero-subtitle">One tool for your whole team. Write, plan, and get organized.</h2>
-          <p><Link to="/login">Log in</Link> or <Link to="/signup">Sign up</Link></p>
+          <p>lilNotion is full-stack clone of <a href="https://www.notion.so/" target="_blank">Notion</a>.</p>
+          <h3><Link to="/login">Log in</Link> or <Link to="/signup">Sign up</Link></h3>
+          <h2 onClick={props.logout}>Log out</h2>
+          
+          {/* <div className="cta-container">
+            <Link to="/signup" className="cta cta-signup">Try it now</Link>
+          </div> */}
         </div>
       </div>
 
@@ -24,4 +33,12 @@ const SplashHome = () => (
   </>
 );
 
-export default SplashHome;
+const mapStateToProps = (state) => ({
+  currentUser: state.entities.users[state.session.currentUserId]
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SplashHome);

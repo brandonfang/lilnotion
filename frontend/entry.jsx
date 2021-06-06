@@ -8,25 +8,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
     const { currentUser } = window;
-    const { id } = currentUser;
     const preloadedState = { 
       entities: {
         users: {
-          [id]: currentUser
+          [currentUser.id]: currentUser
         }
       },
-      session: { id }
+      session: { currentUserId: currentUser.id }
     };
     store = configureStore(preloadedState);
     delete window.currentUser;
+
   } else {
     store = configureStore();
   }
-
-  // Debugging 
+  
+  // Only for debugging purposes; remove for production
   window.getState = store.getState
   window.dispatch = store.dispatch
-
+  window.signup = signup;
+  window.login = login;
+  window.logout = logout;
+  
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

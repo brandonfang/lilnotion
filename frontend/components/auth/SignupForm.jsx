@@ -18,61 +18,62 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { formAction, history } = this.props;
     const user = Object.assign({}, this.state);
-    formAction(user);
-    history.push("/");
+    this.props.processForm(user);
+    this.props.history.push('/');
   }
 
   loginDemo(e) {
     e.preventDefault();
     this.resetInputs();
-    const demoUser = { 
-      firstName: 'Doug',
-      lastName: 'Engelbart',
-      email: 'doug@engelbart.com',
-      password: 'password'
-    };
 
-    const demoUserFirstName = 'Doug'.split('');
-    const demoUserLastName = 'Engelbart'.split('');
-    const demoUserEmail = 'doug@engelbart.com'.split('');
-    const demoUserPassword = 'password'.split('');
+    const demo1 = { firstName: 'Doug', lastName: 'Engelbart', email: 'doug@engelbart.com', password: 'password' };
+    const demo2 = { firstName: 'Ada', lastName: 'Lovelace', email: 'ada@lovelace.com', password: 'password' };
+    const demo = Math.random() < 0.5 ? demo1 : demo2;
+    
+    const demoFirstName = demo.firstName.split('');
+    const demoLastName = demo.lastName.split('');
+    const demoEmail = demo.email.split('');
+    const demoPassword = demo.password.split('');
 
-    demoUserFirstName.forEach((char, i) => {
+    const time = 65;
+
+    demoFirstName.forEach((char, i) => {
       setTimeout(() => {
-        let firstNameValue = document.getElementById('first-name-input').value;
-        firstNameValue += char;
-        document.getElementById('first-name-input').value = firstNameValue;
-      }, 100 * i);
+        let firstName = document.getElementById('first-name-input').value;
+        firstName += char;
+        document.getElementById('first-name-input').value = firstName;
+      }, time * (i));
     });
 
-    demoUserLastName.forEach((char, i) => {
+    demoLastName.forEach((char, i) => {
       setTimeout(() => {
-        let lastNameValue = document.getElementById('last-name-input').value;
-        lastNameValue += char;
-        document.getElementById('last-name-input').value = lastNameValue;
-      }, 100 * i);
+        let lastName = document.getElementById('last-name-input').value;
+        lastName += char;
+        document.getElementById('last-name-input').value = lastName;
+      }, time * (i + demoFirstName.length));
+    });
+    
+    demoEmail.forEach((char, i) => {
+      setTimeout(() => {
+        let email = document.getElementById('email-input').value;
+        email += char;
+        document.getElementById('email-input').value = email;
+      }, time * (i + demoFirstName.length + demoLastName.length));
     });
 
-    demoUserEmail.forEach((char, i) => {
+    demoPassword.forEach((char, i) => {
       setTimeout(() => {
-        let emailValue = document.getElementById('email-input').value;
-        emailValue += char;
-        document.getElementById('email-input').value = emailValue;
-      }, 100 * i);
+        let password = document.getElementById('password-input').value;
+        password += char;
+        document.getElementById('password-input').value = password;
+      }, time * (i + demoFirstName.length + demoLastName.length + demoEmail.length));
     });
+    
+    const submitDelay = 100 + time * (demoFirstName.length + demoLastName.length + demoEmail.length + demoPassword.length);
 
-    demoUserPassword.forEach((char, i) => {
-      setTimeout(() => {
-        let passwordValue = document.getElementById('password-input').value;
-        passwordValue += char;
-        document.getElementById('password-input').value = passwordValue;
-      }, 100 * i);
-    });
-
-    setTimeout(this.props.loginDemo(demoUser), 4000);
-    setTimeout(this.props.history.push('/'), 4000);
+    setTimeout(() => this.props.loginDemo(demo), submitDelay);
+    setTimeout(() => this.props.history.push('/'), submitDelay);
   }
 
   handleChange(field) {
@@ -103,7 +104,7 @@ class SignupForm extends React.Component {
   render() {    
     return (
       <>
-        <AuthNavBarContainer variant="signup" />
+        <AuthNavBarContainer />
 
         <div className="auth-page-wrapper">
           <section className="auth-section-wrapper">
@@ -129,24 +130,29 @@ class SignupForm extends React.Component {
 
                 <label>Password
                   <input type="password" value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
-                  <p className="input-message">Password needs to be six or more characters.</p>
                 </label>
 
-                <button className="auth-form-submit" type="submit">Create a new account</button>
+                <p className="input-message">Password needs to be six or more characters.</p>
+
+                <div className="spacer-8"></div>
+
+                <button className="auth-submit-primary" type="submit">Create a new account</button>
               </form>
 
               <p>Already have an account? <Link to="/login">Log in</Link></p>
             </div>
           </section>
-          
+
+          <div className="auth-section-divider"></div>
+
           <section className="auth-section-wrapper">
             <div className="auth-header-wrapper">
               <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
-              <p className="auth-subtext">You can try out lilNotion by logging in as one of our demo users.</p>
+              <p className="auth-subtext">You can try lilNotion now by logging in as one of our demo users.</p>
             </div>
             <div className="form-wrapper">
               <form onSubmit={this.loginDemo} className="auth-form">
-                <button className="auth-form-submit" type="submit">Log in as demo user</button>
+                <button className="auth-submit-demo" type="submit">Log in as demo user</button>
               </form>
             </div>
           </section>

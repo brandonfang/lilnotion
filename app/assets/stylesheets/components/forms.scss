@@ -95,13 +95,11 @@ input::placeholder {
   height: 16px;
 }
 
-// errors styling here
 .errors-wrapper {
   width: 340px;
-  border-radius: 4px;
-  border: 1px solid $red-400;
   color: $red-400;
-  padding: 12px 12px;
+  font-weight: 500;
+  margin: 8px 0;
 }
 
 button {

@@ -9,13 +9,14 @@ const LoggedInContent = (props) => {
 
   return (
     <>
-      <NavBarContainer />
+      {/* <NavBarContainer state={state} /> */}
       <div className="user-content-wrapper">
         <h1>You are logged in.</h1>
         <p>This is content only authenticated users are supposed to see.</p>
         {/* <p>Your name: {currentUser.firstName} {currentUser.lastName}</p>
         <p>Your email: {currentUser.email}</p>
         <p>Your ID: {currentUser.id}</p> */}
+        <h3 tabIndex="0" className="nav-logout" onClick={props.logout}><a href="/">Log out</a></h3>
       </div>
     </>
   );

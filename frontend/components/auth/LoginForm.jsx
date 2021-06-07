@@ -94,13 +94,13 @@ class LoginForm extends React.Component {
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>Email
-                  <input type="text" value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
+                  <input type="text" required value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
                 </label>
 
                 {this.props.errors.email ? <p>{this.props.errors.email}</p> : ''}
 
                 <label>Password
-                  <input type="password" value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
+                  <input type="password" required value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
                 </label>
 
                 <p className="input-message">Password needs to be six or more characters.</p>

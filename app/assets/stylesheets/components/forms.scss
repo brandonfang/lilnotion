@@ -1,6 +1,6 @@
 .auth-page-wrapper {
   max-width: 1024px;
-  margin: 48px auto 240px auto;
+  margin: 48px auto 48px auto;
   padding: 0 32px;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@ input {
   box-sizing: border-box;
   display: block;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid $light-gray;
   margin-top: 3px;
   margin-bottom: 10px;
@@ -116,7 +116,7 @@ button.auth-submit-primary {
   display: block;
   width: 100%;
   // margin-top: 8px;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid $red-300;
   color: $red-400;
   padding: 8px 0px;
@@ -141,7 +141,7 @@ button.auth-submit-primary:active {
 button.auth-submit-demo {
   display: block;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid $red-600;
   padding: 8px 0px;
   background: $red-400;

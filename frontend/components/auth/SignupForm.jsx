@@ -115,21 +115,21 @@ class SignupForm extends React.Component {
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>First name
-                  <input type="text" value={this.state.firstName} placeholder="Your first name" onChange={this.handleChange('firstName')} id="first-name-input" />
+                  <input type="text" required value={this.state.firstName} placeholder="Your first name" onChange={this.handleChange('firstName')} id="first-name-input" />
                 </label>
                 
                 <label>Last name
-                  <input type="text" value={this.state.lastName} placeholder="Your last name" onChange={this.handleChange('lastName')} id="last-name-input" />
+                  <input type="text" required value={this.state.lastName} placeholder="Your last name" onChange={this.handleChange('lastName')} id="last-name-input" />
                 </label>
 
                 <label>Email
-                  <input type="email" value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
+                  <input type="email" required value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
                 </label>
 
                 {this.props.errors.email ? <p>{this.props.errors.email}</p> : ''}
 
                 <label>Password
-                  <input type="password" value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
+                  <input type="password" required value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
                 </label>
 
                 <p className="input-message">Password needs to be six or more characters.</p>

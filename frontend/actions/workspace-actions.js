@@ -26,8 +26,8 @@ export const createWorkspace = (workspace) => (dispatch) => (
 );
 
 export const fetchWorkspace = (workspaceId) => (dispatch) => (
-  APIUtil.show(workspaceId).then(
-    (workspace) => dispatch(showWorkspace(workspace.id)),
+  APIUtil.fetchWorkspace(workspaceId).then(
+    (workspace) => dispatch(receiveWorkspace(workspace)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   )
 );

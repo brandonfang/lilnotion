@@ -26,9 +26,9 @@ class SignupForm extends React.Component {
 
     // this.props.history.push('/onboarding');
 
-    // if (this.props.errors.length === 0) {
-    //   this.props.history.push('/onboarding');
-    // }
+    if (this.props.errors.length === 0) {
+      this.props.history.push('/onboarding');
+    }
   }
 
   loginDemo(e) {

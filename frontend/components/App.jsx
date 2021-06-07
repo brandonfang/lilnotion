@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div className="app">
+        <div className="lilnotion-app">
           <Switch>
             <ProtectedRoute exact path="/app" component={EditorContainer} />
             <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />

@@ -31,7 +31,8 @@
 }
 
 .auth-title {
-  margin-bottom: 0;
+  line-height: 1;
+  margin-bottom: 16px;
 }
 
 .auth-subtitle {
@@ -51,9 +52,9 @@
   width: 100%;
   margin: 16px auto;
 
-  .input-message {
+  .input-subtext {
     font-size: 13px;
-    margin-top: -4px;
+    margin-top: -3px;
     color: $medium-light-gray;
     margin-bottom: 8px;
   }
@@ -71,14 +72,15 @@ input {
   padding: 4px 10px;
   text-indent: 5px;
   padding-left: 5px;
-  
+
   font-family: inherit;
   font-size: inherit;
 }
 
 input:focus {
   border: 1px solid rgba(46, 170, 220, 40%);
-  box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset, rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
+  box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset,
+    rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
 }
 
 input::placeholder {
@@ -94,17 +96,23 @@ input::placeholder {
 }
 
 // errors styling here
-
-
+.errors-wrapper {
+  width: 340px;
+  border-radius: 4px;
+  border: 1px solid $red-400;
+  color: $red-400;
+  padding: 12px 12px;
+}
 
 button {
   cursor: pointer;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 button:focus {
   border: 1px solid rgba(46, 170, 220, 40%);
-  box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset, rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
+  box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset,
+    rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
 }
 
 button:active {
@@ -126,7 +134,6 @@ button.auth-submit-primary {
   font-weight: 500;
   box-shadow: 0px 1px 2px rgba(15, 15, 15, 10%);
   transition: all 0.1s;
-
 }
 
 button.auth-submit-primary:hover {

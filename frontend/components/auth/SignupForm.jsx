@@ -9,18 +9,26 @@ class SignupForm extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-      errors: {}
+      password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginDemo = this.loginDemo.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.removeErrors();
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-    this.props.history.push('/');
+
+    // this.props.history.push('/onboarding');
+
+    // if (this.props.errors.length === 0) {
+    //   this.props.history.push('/onboarding');
+    // }
   }
 
   loginDemo(e) {
@@ -35,7 +43,6 @@ class SignupForm extends React.Component {
     const demoLastName = demo.lastName.split('');
     const demoEmail = demo.email.split('');
     const demoPassword = demo.password.split('');
-
     const time = 65;
 
     demoFirstName.forEach((char, i) => {
@@ -73,7 +80,7 @@ class SignupForm extends React.Component {
     const submitDelay = 100 + time * (demoFirstName.length + demoLastName.length + demoEmail.length + demoPassword.length);
 
     setTimeout(() => this.props.loginDemo(demo), submitDelay);
-    setTimeout(() => this.props.history.push('/'), submitDelay);
+    setTimeout(() => this.props.history.push('/app'), submitDelay);
   }
 
   handleChange(field) {
@@ -87,18 +94,20 @@ class SignupForm extends React.Component {
     });
   }
 
-  resetErrors() {
-    this.setState({ errors: {} });
-  }
-
   renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
-        ))}
-      </ul>
-    );
+    if (this.props.errors.length > 0) {
+      return (
+        <div className="errors-wrapper">
+          <ul>
+            {this.props.errors.map((error, i) => (
+              <li key={`error-${i}`}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    } else {
+      return <></>;
+    }
   }
 
   render() {    
@@ -111,6 +120,11 @@ class SignupForm extends React.Component {
             <div className="auth-header-wrapper">
               <h1 className="auth-title">Sign up</h1>
             </div>
+
+            <div>
+              {this.renderErrors()}
+            </div>
+
 
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
@@ -126,13 +140,11 @@ class SignupForm extends React.Component {
                   <input type="email" required value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
                 </label>
 
-                {this.props.errors.email ? <p>{this.props.errors.email}</p> : ''}
-
                 <label>Password
                   <input type="password" required value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
                 </label>
 
-                <p className="input-message">Password needs to be six or more characters.</p>
+                <p className="input-subtext">Password needs to be six or more characters.</p>
 
                 <div className="spacer-8"></div>
 

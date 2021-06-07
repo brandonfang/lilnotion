@@ -1,24 +1,28 @@
 import React from 'react';
 import AuthNavBarContainer from '../navbar/AuthNavBarContainer';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: '',
-      errors: {}
+      password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginDemo = this.loginDemo.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.removeErrors();
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-    this.props.history.push('/');
+    // this.props.history.push('/');
   }
 
   loginDemo(e) {
@@ -31,7 +35,6 @@ class LoginForm extends React.Component {
   
     const demoEmail = demo.email.split('');
     const demoPassword = demo.password.split('');
-
     const time = 65;
 
     demoEmail.forEach((char, i) => {
@@ -66,18 +69,20 @@ class LoginForm extends React.Component {
     });
   }
 
-  resetErrors () {
-    this.setState({ errors: {} });
-  }
-
   renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
-        ))}
-      </ul>
-    );
+    if (this.props.errors.length > 0) {
+      return (
+        <div className="errors-wrapper">
+          <ul>
+            {this.props.errors.map((error, i) => (
+              <li key={`error-${i}`}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    } else {
+      return <></>;
+    }
   }
 
   render () {
@@ -91,6 +96,10 @@ class LoginForm extends React.Component {
               <h1 className="auth-title">Log in</h1>
             </div>
 
+            
+            {this.renderErrors()}
+            
+
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>Email
@@ -102,8 +111,6 @@ class LoginForm extends React.Component {
                 <label>Password
                   <input type="password" required value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
                 </label>
-
-                <p className="input-message">Password needs to be six or more characters.</p>
 
                 <div className="spacer-8"></div>
 

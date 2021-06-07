@@ -121,10 +121,7 @@ class SignupForm extends React.Component {
               <h1 className="auth-title">Sign up</h1>
             </div>
 
-            <div>
-              {this.renderErrors()}
-            </div>
-
+            {this.renderErrors()}
 
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">

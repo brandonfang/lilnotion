@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
       session: { currentUserId: currentUser.id }
     };
     store = configureStore(preloadedState);
-    delete window.currentUser;
-
+    // delete window.currentUser;
   } else {
     store = configureStore();
   }
   
   // Only for debugging purposes; remove for production
+  window.currentUser = store.currentUser;
   window.getState = store.getState
   window.dispatch = store.dispatch
   window.signup = signup;

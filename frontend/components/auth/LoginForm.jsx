@@ -96,10 +96,8 @@ class LoginForm extends React.Component {
               <h1 className="auth-title">Log in</h1>
             </div>
 
-            
             {this.renderErrors()}
             
-
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>Email

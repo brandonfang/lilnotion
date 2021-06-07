@@ -18,6 +18,7 @@ export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
+
 export const removeErrors = () => ({
   type: REMOVE_ERRORS
 });
@@ -36,7 +37,7 @@ export const login = (user) => (dispatch) => (
   )
 );
 
-export const logout = () => dispatch => (
+export const logout = () => (dispatch) => (
   APIUtil.logout().then(
     (user) => (dispatch(logoutCurrentUser())),
     (errors) => dispatch(receiveErrors(errors.responseJSON))

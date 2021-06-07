@@ -4,6 +4,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route-util';
 import SplashHome from './auth/SplashHome';
 import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
+import Onboarding from './auth/Onboarding';
 import EditorContainer from './editor/EditorContainer';
 import NotFoundPage from './NotFoundPage';
 
@@ -14,6 +15,7 @@ class App extends React.Component {
         <div className="app">
           <Switch>
             <AuthRoute exact path="/" component={SplashHome} />
+            <ProtectedRoute exact path="/onboarding" component={Onboarding} />
             <ProtectedRoute exact path="/app" component={EditorContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />

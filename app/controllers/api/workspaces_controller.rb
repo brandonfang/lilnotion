@@ -16,7 +16,12 @@ class Api::WorkspacesController < ApplicationController
 
   def update
     @workspace = Workspace.find_by(params[:id])
-    if @workspace.user_id == current_user.id
+    current_user_admin_membership = Membership.find_by(
+      workspace_id: params[:id], 
+      user_id: current_user.id,
+      role: "admin"
+    )
+    if current_user_admin_membership
       if @workspace.update(workspace_params)
         render :show
       else

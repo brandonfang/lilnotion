@@ -9,6 +9,7 @@ class Onboarding extends React.Component {
     this.state = {
       workspaceName: "'s lilNotion",
       workspaceDomain: '',
+      userId
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }

@@ -1,0 +1,1 @@
+json.extract! @membership, :id, :workspace_id, :user_id, :role

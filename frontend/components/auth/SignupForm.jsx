@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = {
       firstName: '',
       lastName: '',

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 class Onboarding extends React.Component {
   constructor(props) {
     super(props);
-    const firstName = props.currentUser.firstName;
+    // const firstName = props.currentUser.firstName;
     this.state = {
-      workspaceName: firstName + "'s lilNotion",
+      workspaceName: "'s lilNotion",
       workspaceDomain: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);

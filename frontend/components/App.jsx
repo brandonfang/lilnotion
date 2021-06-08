@@ -14,9 +14,11 @@ class App extends React.Component {
       <>
         <div className="lilnotion-app">
           <Switch>
-            <ProtectedRoute exact path="/app" component={EditorContainer} />
-            <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
+            {/* only one route for "/" */}
             <AuthRoute exact path="/" component={SplashHome} />
+            <ProtectedRoute exact path="/app" component={EditorContainer} />
+
+            <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route path="/404" component={NotFoundPage} />

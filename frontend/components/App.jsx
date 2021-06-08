@@ -1,12 +1,10 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route-util';
-import SplashHome from './auth/SplashHome';
+import { AuthRoute, ProtectedRoute, HomeRoute } from '../util/route-util';
 import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
 import OnboardingContainer from './auth/OnboardingContainer';
-import EditorContainer from './editor/EditorContainer';
-import NotFoundPage from './NotFoundPage';
+import PageNotFound from './PageNotFound';
 
 class App extends React.Component {
   render() {
@@ -14,16 +12,12 @@ class App extends React.Component {
       <>
         <div className="lilnotion-app">
           <Switch>
-            {/* only one route for "/" */}
-            <AuthRoute exact path="/" component={SplashHome} />
-            <ProtectedRoute exact path="/app" component={EditorContainer} />
-
+            <HomeRoute exact path="/" />
             <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
-            <Route path="/404" component={NotFoundPage} />
-            <Route path="/" component={SplashHome} />
-            <Redirect to="/404" />
+            <Route path="/404" component={PageNotFound} />
+            <Redirect to="/" />
           </Switch>
         </div>
       </>
@@ -31,5 +25,5 @@ class App extends React.Component {
   }
 }
 
-// consider wrapping App in an AppContainer
+// consider wrapping App in an AppContainer component
 export default App;

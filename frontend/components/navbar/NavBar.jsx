@@ -57,6 +57,12 @@ const Navbar = (props) => {
 
           <div className="desktop-actions">
             <nav className="nav">
+              <div className="nav-greeting">
+                Welcome, {props.currentUser.firstName} {props.currentUser.lastName}!
+              </div>
+
+              <div className="divider"></div>
+
               <ul className="nav-list">
                 <li className="item">
                   <div tabIndex="0" className="nav-logout" onClick={props.logout}>Log out</div>
@@ -64,7 +70,6 @@ const Navbar = (props) => {
               </ul>
               
               <div className="divider"></div>
-
 
               <ul className="nav-list">
                 <li className="item">
@@ -83,8 +88,6 @@ const Navbar = (props) => {
       </div>
     </header>
   );
-
-  console.log(props);
 
   return props.currentUser ? privateNavBar(props) : publicNavBar(props);
 };

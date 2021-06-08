@@ -80,7 +80,7 @@ class SignupForm extends React.Component {
     const submitDelay = 100 + time * (demoFirstName.length + demoLastName.length + demoEmail.length + demoPassword.length);
 
     setTimeout(() => this.props.loginDemo(demo), submitDelay);
-    setTimeout(() => this.props.history.push('/app'), submitDelay);
+    // setTimeout(() => this.props.history.push('/'), submitDelay);
   }
 
   handleChange(field) {

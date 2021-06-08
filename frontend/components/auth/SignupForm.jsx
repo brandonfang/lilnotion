@@ -24,8 +24,6 @@ class SignupForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
 
-    // this.props.history.push('/onboarding');
-
     if (this.props.errors.length === 0) {
       this.props.history.push('/onboarding');
     }
@@ -114,7 +112,7 @@ class SignupForm extends React.Component {
     return (
       <>
         <AuthNavBarContainer />
-
+        
         <div className="auth-page-wrapper">
           <section className="auth-section-wrapper">
             <div className="auth-header-wrapper">

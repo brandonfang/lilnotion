@@ -4,7 +4,6 @@ import { logout } from '../../actions/session-actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 const SplashHome = (props) => (
   <>
     <NavBarContainer />

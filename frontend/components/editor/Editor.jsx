@@ -11,11 +11,13 @@ class Editor extends React.Component {
 
   }
 
+  componentDidUpdate() {
 
+  }
 
   render() {
     console.log(this.props);
-    const state = this.state;
+    // const state = this.state;
 
     return (
       <div className="lilnotion-editor">

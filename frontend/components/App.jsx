@@ -17,7 +17,7 @@ class App extends React.Component {
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route path="/404" component={PageNotFound} />
-            <Redirect to="/" />
+            <Redirect to="/404" />
           </Switch>
         </div>
       </>

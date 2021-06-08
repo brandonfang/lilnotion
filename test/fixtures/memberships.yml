@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: memberships
+#
+#  id           :uuid             not null, primary key
+#  workspace_id :uuid             not null
+#  user_id      :uuid             not null
+#  role         :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

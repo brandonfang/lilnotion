@@ -6,6 +6,7 @@ class Api::WorkspacesController < ApplicationController
       render :show
     else
       render json: @workspace.errors.full_messages, status: 422
+    end
   end
 
   def show 

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: workspaces
+#
+#  id          :bigint           not null, primary key
+#  name        :string
+#  user_id     :uuid
+#  domain      :string
+#  type        :string
+#  icon_string :string
+#  has_image   :boolean          default(FALSE)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 class Workspace < ApplicationRecord
   # after_create :set_name_default
   # after_create :set_domain_default
@@ -5,6 +19,7 @@ class Workspace < ApplicationRecord
 
   has_one_attached :icon
   
+  has_many :users, through: memberships
 
   private
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_185628) do
+ActiveRecord::Schema.define(version: 2021_06_08_231601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 2021_06_08_185628) do
     t.index ["session_token"], name: "index_users_on_session_token"
   end
 
-  create_table "workspaces", force: :cascade do |t|
+  create_table "workspaces", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.uuid "user_id"
+    t.uuid "creator_id"
     t.string "domain"
     t.string "type"
     t.string "icon_string"

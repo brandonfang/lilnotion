@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 class Onboarding extends React.Component {
   constructor(props) {
     super(props);
-    // const firstName = props.currentUser.firstName;
     this.state = {
-      workspaceName: "'s lilNotion",
-      workspaceDomain: '',
-      userId
+      name: props.currentUser.firstName + "'s lilNotion",
+      domain: '',
+      creatorId: props.currentUser.id,
+      type: 'team'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -22,7 +22,7 @@ class Onboarding extends React.Component {
     e.preventDefault();
     const workspace = Object.assign({}, this.state);
     this.props.processForm(workspace);
-    // this.props.history.push('/');
+    this.props.history.push(`/${this.state.domain}`);
   }
 
   handleChange(field) {
@@ -47,6 +47,7 @@ class Onboarding extends React.Component {
 
   render() {
     // add constraint on domain input; no spaces allowed
+    // console.log(this.props);
 
     return (
       <>
@@ -63,7 +64,7 @@ class Onboarding extends React.Component {
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>Workspace name
-                  <input type="text" required value={this.state.workspaceName} placeholder="Your workspace name" onChange={this.handleChange('workspaceName')} id="workspace-name-input" />
+                  <input type="text" required value={this.state.name} placeholder="Your workspace name" onChange={this.handleChange('name')} id="workspace-name-input" />
                 </label>
 
                 <p className="input-subtext">You can use your name or the name of your company.</p>
@@ -71,7 +72,7 @@ class Onboarding extends React.Component {
                 <label>Domain
                   <div className="input-domain-wrapper">
                     <div className="domain-prefix">lilnotion.com/</div>
-                    <input className="input-domain" type="text" required value={this.state.workspaceDomain} placeholder="URL" onChange={this.handleChange('workspaceDomain')} id="workspace-domain-input" />
+                    <input className="input-domain" type="text" required value={this.state.domain} placeholder="URL" onChange={this.handleChange('domain')} id="workspace-domain-input" />
                   </div>
                 </label>
 

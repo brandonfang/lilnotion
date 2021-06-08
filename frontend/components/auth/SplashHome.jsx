@@ -16,7 +16,7 @@ const SplashHome = (props) => (
         <div className="center-text-wrapper">
           <h1 className="hero-title">All-in-one workspace</h1>
           <h2 className="hero-subtitle">One tool for your whole team. Write, plan, and get organized.</h2>
-          <p>lilNotion is full-stack clone of <a href="https://www.notion.so/" target="_blank">Notion</a>.</p>
+          <p>lilNotion is clone of <a href="https://www.notion.so/" target="_blank">Notion</a>.</p>
           <p>Test message</p>
           {/* <p><Link to="/login">Log in</Link> or <Link to="/signup">Sign up</Link></p> */}
           

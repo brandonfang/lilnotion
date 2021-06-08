@@ -2,15 +2,15 @@
 #
 # Table name: workspaces
 #
-#  id          :bigint           not null, primary key
 #  name        :string
-#  user_id     :uuid
+#  creator_id  :uuid
 #  domain      :string
 #  type        :string
 #  icon_string :string
 #  has_image   :boolean          default(FALSE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  id          :uuid             not null, primary key
 #
 
 # This model initially had no columns defined. If you add columns to the

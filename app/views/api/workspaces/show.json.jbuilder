@@ -1,1 +1,1 @@
-json.extract! @workspace, :id, :name, :user_id, :domain, :type, :icon_string, :has_image
+json.extract! @workspace, :id, :name, :creator_id, :domain, :type, :icon_string, :has_image

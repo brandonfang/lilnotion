@@ -33,6 +33,6 @@ class Api::WorkspacesController < ApplicationController
   private
 
   def workspace_params
-    params.require(:workspace).permit(:type, :domain, :name, :icon_string, :user_id)
+    params.require(:workspace).permit(:type, :domain, :name, :icon_string, :creator_id)
   end
 end

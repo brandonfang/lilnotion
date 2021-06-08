@@ -22,10 +22,11 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  # associations
-  has_many :workspaces, through: :memberships
+  has_many :workspaces, 
+    through: :memberships,
+    source: :workspace
 
-  # user can have one attached profile photo
+  # user can have one attached avatar photo
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64

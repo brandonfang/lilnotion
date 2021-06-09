@@ -10,10 +10,10 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div className="lilnotion-app">
+        <div className="app">
           <Switch>
             <HomeRoute exact path="/" />
-            <AuthRoute exact path="/onboarding" component={OnboardingContainer} />
+            {/* <AuthRoute exact path="/onboarding" component={OnboardingContainer} /> */}
             <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />

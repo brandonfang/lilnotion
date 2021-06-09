@@ -6,15 +6,19 @@ $red-50: rgb(253, 245, 242);
 $red-100: rgb(251, 235, 233);
 $red-200: rgb(249, 229, 227);
 
-
-
 $gray-opacity-10: rgba(15, 15, 15, 0.1);
 $gray-opacity-15: rgba(15, 15, 15, 0.15);
-$gray-opacity-20: rgba(15, 15, 15, 0.20);
-
+$gray-opacity-20: rgba(15, 15, 15, 0.2);
 
 $light-gray: rgba(15, 15, 15, 0.1);
 $medium-light-gray: rgba(0, 0, 0, 0.4);
+
+$sidebar-hover: rgba(55, 53, 47, 0.08);
+$sidebar-page-block: rgba(55, 53, 47, 0.6);
+
+$sidebar-switch: rgba(55, 53, 47, 0.4);
+$sidebar-icon: rgba(55, 53, 47, 0.6);
+$workspace-label: rgba(55, 53, 47, 1);
 
 $gray-500: rgb(247, 246, 243);
 
@@ -22,17 +26,13 @@ $blue-300: rgba(46, 170, 220, 1);
 $blue-500: rgba(43, 154, 199, 1);
 $blue-700: rgba(6, 156, 205, 1);
 
-
 $red-300: rgba(235, 87, 87, 30%);
 $red-400: #e16259;
 $red-500: #cf534a;
 $red-600: #be5643;
 $red-700: #bf4d45;
 
-
 $sidebar-text: rgba(25, 23, 17, 0.6);
-
-
 
 * {
   color: $text-primary-color;

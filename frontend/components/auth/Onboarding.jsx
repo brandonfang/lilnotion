@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 class Onboarding extends React.Component {
   constructor(props) {
     super(props);
-    console.log('this is the currentUser');
-    console.log(props)
+
+    // console.log('this is the currentUser');
+    // console.log(props)
+
     this.state = {
       id: '',
-      name: props.currentUser.firstName + "'s lilNotion",
+      // name: props.currentUser.firstName + "'s lilNotion",
+      // name: "Your lilNotion",
+      name: "",
       domain: '',
-      creatorId: props.currentUser.id,
+      creatorId: '',
       icon_string: '',
       has_image: ''
     };
@@ -82,7 +86,7 @@ class Onboarding extends React.Component {
 
                 <p className="input-subtext">No spaces allowed.</p>
 
-                <div>Add a logo</div>
+                <div>Add a logo (optional)</div>
                 {/* <div className="workspace-logo-preview">
                   <img src="" />
                 </div> */}

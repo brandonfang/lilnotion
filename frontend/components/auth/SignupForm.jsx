@@ -23,12 +23,12 @@ class SignupForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-    // if (this.props.errors.length === 0) {
-    //   this.props.history.push('/onboarding');
-    // }
-    this.props.history.push('/onboarding');
-    // setTimeout(this.props.history.push('/onboarding'), 1000);
-
+    console.log(this.props);
+    console.log(this.props.errors.length === 0);
+    if (this.props.errors.length === 0) {
+      console.log('no form errors, redirecting to onboarding now')
+      // this.props.history.push('/onboarding');
+    }
   }
 
   loginDemo(e) {

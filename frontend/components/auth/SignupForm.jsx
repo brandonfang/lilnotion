@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
     const demoLastName = demo.lastName.split('');
     const demoEmail = demo.email.split('');
     const demoPassword = demo.password.split('');
-    const time = 65;
+    const time = 60;
 
     demoFirstName.forEach((char, i) => {
       setTimeout(() => {
@@ -174,74 +174,3 @@ class SignupForm extends React.Component {
 }
 
 export default SignupForm;
-
-
-(async () => {
-  const response = await notion.pages.create({
-    parent: {
-      database_id: '48f8fee9cd794180bc2fec0398253067',
-    },
-    properties: {
-      Name: {
-        title: [
-          {
-            text: {
-              content: 'Tuscan Kale',
-            },
-          },
-        ],
-      },
-      Description: {
-        text: [
-          {
-            text: {
-              content: 'A dark green leafy vegetable',
-            },
-          },
-        ],
-      },
-      'Food group': {
-        select: {
-          name: '🥦 Vegetable',
-        },
-      },
-      Price: {
-        number: 2.5,
-      },
-    },
-    children: [
-      {
-        object: 'block',
-        type: 'heading_2',
-        heading_2: {
-          text: [
-            {
-              type: 'text',
-              text: {
-                content: 'Lacinato kale',
-              },
-            },
-          ],
-        },
-      },
-      {
-        object: 'block',
-        type: 'paragraph',
-        paragraph: {
-          text: [
-            {
-              type: 'text',
-              text: {
-                content: 'Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.',
-                link: {
-                  url: 'https://en.wikipedia.org/wiki/Lacinato_kale',
-                },
-              },
-            },
-          ],
-        },
-      },
-    ],
-  });
-  console.log(response);
-})();

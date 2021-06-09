@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_231601) do
+ActiveRecord::Schema.define(version: 2021_06_09_011232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2021_06_08_231601) do
     t.string "name"
     t.uuid "creator_id"
     t.string "domain"
-    t.string "type"
     t.string "icon_string"
     t.boolean "has_image", default: false
     t.datetime "created_at", null: false

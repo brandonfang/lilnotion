@@ -5,7 +5,6 @@
 #  name        :string
 #  creator_id  :uuid
 #  domain      :string
-#  type        :string
 #  icon_string :string
 #  has_image   :boolean          default(FALSE)
 #  created_at  :datetime         not null

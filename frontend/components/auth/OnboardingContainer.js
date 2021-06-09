@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { receiveWorkspace, receiveErrors, removeErrors } from '../../actions/workspace-actions';
+import { createWorkspace, receiveErrors, removeErrors } from '../../actions/workspace-actions';
 import Onboarding from './Onboarding';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    processForm: (workspace) => dispatch(receiveWorkspace(workspace)),
+    processForm: (workspace) => dispatch(createWorkspace(workspace)),
     receiveErrors: (errors) => dispatch(receiveErrors(errors)),
     removeErrors: () => dispatch(removeErrors()),
   };

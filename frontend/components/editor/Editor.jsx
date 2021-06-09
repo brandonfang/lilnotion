@@ -16,7 +16,7 @@ class Editor extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     // const state = this.state;
 
     return (
@@ -25,7 +25,7 @@ class Editor extends React.Component {
         <div className="lilnotion-sidebar">
           <div className="lilnotion-sidebar-switcher">
             <div className="lilnotion-sidebar-switcher-content">
-              <div>P</div>
+              <div></div>
               <div>Pioneers</div>
               <div></div>
             </div>

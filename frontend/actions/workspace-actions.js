@@ -4,10 +4,13 @@ export const RECEIVE_WORKSPACE = 'RECEIVE_WORKSPACE';
 export const RECEIVE_WORKSPACE_ERRORS = 'RECEIVE_WORKSPACE_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
-export const receiveWorkspace = (workspace) => ({
-  type: RECEIVE_WORKSPACE,
-  workspace
-});
+export const receiveWorkspace = (workspace) => {
+  console.log(workspace)
+  return {
+    type: RECEIVE_WORKSPACE,
+    workspace
+  };
+};
 
 export const receiveErrors = (errors) => ({
   type: RECEIVE_WORKSPACE_ERRORS,

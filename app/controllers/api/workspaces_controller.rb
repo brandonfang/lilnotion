@@ -10,12 +10,12 @@ class Api::WorkspacesController < ApplicationController
   end
 
   def show 
-    @workspace = Workspace.find_by(params[:id])
+    @workspace = Workspace.find_by(id: params[:id])
     render :show
   end
 
   def update
-    @workspace = Workspace.find_by(params[:id])
+    @workspace = Workspace.find_by(id: params[:id])
     current_user_admin_membership = Membership.find_by(
       workspace_id: params[:id], 
       user_id: current_user.id,
@@ -33,6 +33,6 @@ class Api::WorkspacesController < ApplicationController
   private
 
   def workspace_params
-    params.require(:workspace).permit(:type, :domain, :name, :icon_string, :creator_id)
+    params.require(:workspace).permit(:id, :domain, :name, :icon_string, :creator_id, :has_image)
   end
 end

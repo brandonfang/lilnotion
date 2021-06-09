@@ -6,10 +6,12 @@ class Onboarding extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       name: props.currentUser.firstName + "'s lilNotion",
       domain: '',
       creatorId: props.currentUser.id,
-      type: 'team'
+      icon_string: '',
+      has_image: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -22,7 +24,7 @@ class Onboarding extends React.Component {
     e.preventDefault();
     const workspace = Object.assign({}, this.state);
     this.props.processForm(workspace);
-    this.props.history.push(`/${this.state.domain}`);
+    this.props.history.push(`/`);
   }
 
   handleChange(field) {

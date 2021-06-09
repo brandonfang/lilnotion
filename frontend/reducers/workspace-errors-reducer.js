@@ -10,6 +10,7 @@ const workspaceErrorsReducer = (state = [], action) => {
     case RECEIVE_WORKSPACE:
       return [];
     case RECEIVE_WORKSPACE_ERRORS:
+      console.log(action)
       return action.errors;
     case REMOVE_ERRORS:
       return [];

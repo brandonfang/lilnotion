@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 class Onboarding extends React.Component {
   constructor(props) {
     super(props);
+    console.log('this is the currentUser');
+    console.log(props)
     this.state = {
       id: '',
       name: props.currentUser.firstName + "'s lilNotion",

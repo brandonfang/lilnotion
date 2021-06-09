@@ -6,7 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
+User.destroy_all
+Workspace.destroy_all
+# Membership.destroy_all
+# Block.destroy_all
 
 demo_user_1 = User.create!(
   first_name: 'Doug',
@@ -49,3 +52,10 @@ demo_user_6 = User.create!(
   email: 'steve@jobs.com',
   password: 'password'
 )
+
+# Add demo workspaces
+# Add demo memberships
+# Add demo blocks
+
+
+

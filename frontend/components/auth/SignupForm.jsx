@@ -23,10 +23,12 @@ class SignupForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+    // if (this.props.errors.length === 0) {
+    //   this.props.history.push('/onboarding');
+    // }
+    this.props.history.push('/onboarding');
+    // setTimeout(this.props.history.push('/onboarding'), 1000);
 
-    if (this.props.errors.length === 0) {
-      this.props.history.push('/onboarding');
-    }
   }
 
   loginDemo(e) {

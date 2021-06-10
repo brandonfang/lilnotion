@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute, HomeRoute } from '../util/route-util';
+import OnboardingContainer from './auth/OnboardingContainer';
 import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
-import OnboardingContainer from './auth/OnboardingContainer';
 import PageNotFound from './PageNotFound';
+import Workspace from './workspace/Workspace';
 
 class App extends React.Component {
   render() {
@@ -16,9 +17,8 @@ class App extends React.Component {
             <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
-            {/* Add a wildcard route for workspaces show pages */}
-            {/* <ProtectedRoute path="/" component={EditorContainer}/> */}
             <Route path="/404" component={PageNotFound} />
+            <ProtectedRoute path="/:workspaceDomain" component={Workspace}/>
             <Redirect to="/404" />
           </Switch>
         </div>

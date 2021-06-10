@@ -1,9 +1,15 @@
 import * as APIUtil from '../util/blocks-api-util';
 
+export const RECEIVE_BLOCKS = 'RECEIVE_BLOCKS';
 export const RECEIVE_BLOCK = 'RECEIVE_BLOCK';
 export const REMOVE_BLOCK = 'REMOVE_BLOCK';
 export const RECEIVE_BLOCK_ERRORS = 'RECEIVE_BLOCK_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
+
+export const receiveBlocks = (blocks) => ({
+  type: RECEIVE_BLOCKS,
+  blocks
+});
 
 export const receiveBlock = (block) => ({
   type: RECEIVE_BLOCK,
@@ -23,6 +29,13 @@ export const receiveErrors = (errors) => ({
 export const removeErrors = () => ({
   type: REMOVE_ERRORS
 });
+
+export const fetchBlocks = (pageId) => (dispatch) => (
+  APIUtil.fetchBlock(pageId).then(
+    (blocks) => dispatch(receiveBlocks(blocks)),
+    (errors) => dispatch(receiveErrors(errors.responseJSON))
+  )
+);
 
 export const createBlock = (block) => (dispatch) => (
   APIUtil.createBlock(block).then(

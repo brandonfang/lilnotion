@@ -1,9 +1,15 @@
 import * as APIUtil from '../util/pages-api-util';
 
+export const RECEIVE_PAGES = 'RECEIVE_PAGES';
 export const RECEIVE_PAGE = 'RECEIVE_PAGE';
 export const REMOVE_PAGE = 'REMOVE_PAGE';
 export const RECEIVE_PAGE_ERRORS = 'RECEIVE_PAGE_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
+
+export const receivePages = (pages) => ({
+  type: RECEIVE_PAGEs,
+  pages
+});
 
 export const receivePage = (page) => ({
   type: RECEIVE_PAGE,
@@ -23,6 +29,13 @@ export const receiveErrors = (errors) => ({
 export const removeErrors = () => ({
   type: REMOVE_ERRORS
 });
+
+export const fetchPages = (workspaceId) => (dispatch) => (
+  APIUtil.fetchPages(workspaceId).then(
+    (pages) => dispatch(receivePage(pages)),
+    (errors) => dispatch(receiveErrors(errors.responseJSON))
+  )
+);
 
 export const createPage = (page) => (dispatch) => (
   APIUtil.createPage(page).then(

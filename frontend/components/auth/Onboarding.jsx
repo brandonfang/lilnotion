@@ -22,8 +22,16 @@ class Onboarding extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const workspace = Object.assign({}, this.state);
-    this.props.processForm(workspace).then((response) => (
-      this.props.history.push(`/${this.state.domain}`)
+    let promiseA = this.props.processForm(workspace);
+    let promiseB = promiseA.then((response) => (
+      this.props.createMembership({
+        workspaceId: response.workspace.id,
+        userId: response.workspace.creatorId,
+        role: "admin"
+      })
+    ));
+    return Promise.all([promiseA, promiseB]).then(([resultA, resultB]) => (
+      this.props.history.push(resultA.workspace.domain)
     ));
   }
 
@@ -36,8 +44,7 @@ class Onboarding extends React.Component {
   }
 
   removeSpacesFromDomain() {
-    console.log(this.state.domain);
-    return this.setState({ domain: this.state.domain.replace(/\s/g, '') });;
+    return this.setState({ domain: this.state.domain.replace(/\s/g, '') });
   }
 
   renderErrors() {

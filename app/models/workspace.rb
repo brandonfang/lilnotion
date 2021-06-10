@@ -26,4 +26,12 @@ class Workspace < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :User
 
+  has_many :blocks,
+    foreign_key: :workspace_id,
+    class_name: :Block
+
+  has_many :pages,
+    foreign_key: :workspace_id,
+    class_name: :Page
+    
 end

@@ -13,12 +13,11 @@ class App extends React.Component {
         <div className="app">
           <Switch>
             <HomeRoute exact path="/" />
-            {/* <AuthRoute exact path="/onboarding" component={OnboardingContainer} /> */}
             <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
-            {/* Add a route for workspaces show pages */}
-            {/* <ProtectedRoute path="/w" component={}/> */}
+            {/* Add a wildcard route for workspaces show pages */}
+            {/* <ProtectedRoute path="/" component={EditorContainer}/> */}
             <Route path="/404" component={PageNotFound} />
             <Redirect to="/404" />
           </Switch>

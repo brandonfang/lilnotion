@@ -5,7 +5,15 @@ export const createPage = (page) => (
     data: { page },
   })
 );
-  
+
+export const fetchPages= (workspaceId) => (
+  $.ajax({
+    url: 'api/pages',
+    method: 'GET',
+    data: { workspaceId }
+  })
+)
+
 export const fetchPage = (pageId) => (
   $.ajax({
     url: `api/pages/${pageId}`,

@@ -1,4 +1,10 @@
 class Api::PagesController < ApplicationController
+
+  def index 
+    @pages = Page.where(parentId: workspaceId)
+    render :index
+  end
+
   def create
     @page = Page.new(page_params)
     if @page.save
@@ -34,6 +40,7 @@ class Api::PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:block).permit(:id, )
+    # add workspaceId to page_params
+    # params.require(:block).permit(:id, )
   end
 end

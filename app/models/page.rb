@@ -19,7 +19,7 @@ class Page < ApplicationRecord
   # page parent means this is a nested page
   # database parent means this is a "show page" for that 
   
-
+  
 
 
 end

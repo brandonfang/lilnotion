@@ -117,9 +117,9 @@ class Editor extends React.Component {
 
 
           <div className="temp-container">
-            <h1>Meeting Notes</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, possimus animi minus non sed iusto doloremque dolore? Facilis perspiciatis architecto aperiam ipsa itaque veniam rerum ducimus, porro laudantium veritatis adipisci exercitationem excepturi dicta! Autem incidunt reiciendis vel recusandae neque! Voluptatem facilis minima, eius nesciunt illo placeat aut eos? Ullam, autem.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, possimus animi minus non sed iusto doloremque dolore? Facilis perspiciatis architecto aperiam ipsa itaque veniam rerum ducimus, porro laudantium veritatis adipisci exercitationem excepturi dicta! Autem incidunt reiciendis vel recusandae neque! Voluptatem facilis minima, eius nesciunt illo placeat aut eos? Ullam, autem.</p>
+            <h1 contentEditable>Meeting Notes</h1>
+            <p contentEditable>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, possimus animi minus non sed iusto doloremque dolore? Facilis perspiciatis architecto aperiam ipsa itaque veniam rerum ducimus, porro laudantium veritatis adipisci exercitationem excepturi dicta! Autem incidunt reiciendis vel recusandae neque! Voluptatem facilis minima, eius nesciunt illo placeat aut eos? Ullam, autem.</p>
+            <p contentEditable>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, possimus animi minus non sed iusto doloremque dolore? Facilis perspiciatis architecto aperiam ipsa itaque veniam rerum ducimus, porro laudantium veritatis adipisci exercitationem excepturi dicta! Autem incidunt reiciendis vel recusandae neque! Voluptatem facilis minima, eius nesciunt illo placeat aut eos? Ullam, autem.</p>
             <br />
             <br />
             <p tabIndex="0" className="nav-logout" onClick={this.props.logout}><a href="/">Log out</a></p>

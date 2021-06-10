@@ -5,17 +5,12 @@ import { Link } from 'react-router-dom';
 class Onboarding extends React.Component {
   constructor(props) {
     super(props);
-
-    // console.log('this is the currentUser');
-    // console.log(props)
-
+    // console.log(props);  
     this.state = {
       id: '',
-      // name: props.currentUser.firstName + "'s lilNotion",
-      // name: "Your lilNotion",
-      name: "",
+      name: props.currentUser.first_name + "'s lilNotion",
       domain: '',
-      creatorId: '',
+      creatorId: props.currentUser.id,
       icon_string: '',
       has_image: ''
     };
@@ -29,8 +24,11 @@ class Onboarding extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const workspace = Object.assign({}, this.state);
-    this.props.processForm(workspace);
-    this.props.history.push(`/`);
+    this.props.processForm(workspace).then((response) => (
+      this.props.history.push({
+        pathname: `/${this.state.domain}`
+      })
+    ));
   }
 
   handleChange(field) {

@@ -4,7 +4,6 @@ import workspaceErrorsReducer from './workspace-errors-reducer';
 import blockErrorsReducer from './block-errors-reducer';
 import pageErrorsReducer from './page-errors-reducer';
 
-
 export default combineReducers({
   session: sessionErrorsReducer,
   workspaces: workspaceErrorsReducer,

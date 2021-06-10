@@ -22,15 +22,9 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then;
-    // console.log(this.props);
-    // console.log(this.props.errors);
-    // console.log(this.props.errors.length === 0);
-    if (this.props.errors.length === 0) {
-      console.log('no form errors, redirecting to onboarding now')
-      this.props.history.push(`/onboarding`);
-      // pass in an object with different attributes 
-    }
+    this.props.processForm(user).then((response) =>
+      this.props.history.push('/onboarding')
+    );
   }
 
   loginDemo(e) {

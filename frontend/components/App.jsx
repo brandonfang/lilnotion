@@ -17,6 +17,8 @@ class App extends React.Component {
             <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
+            {/* Add a route for workspaces show pages */}
+            {/* <ProtectedRoute path="/w" component={}/> */}
             <Route path="/404" component={PageNotFound} />
             <Redirect to="/404" />
           </Switch>

@@ -14,4 +14,9 @@
 #
 class Block < ApplicationRecord
   
+
+  # has_one :parent_block,
+  #   foreign_key: :parent,
+  #   class_name: :Block
+
 end

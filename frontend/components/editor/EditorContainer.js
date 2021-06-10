@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Editor from './Editor';
 import { logout } from '../../actions/session-actions';
-// import actions from actions/page-actions
+// import actions from 
 // import actions from actions/element-actions
 
 const mapStateToProps = (state, ownProps) => ({

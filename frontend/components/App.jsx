@@ -18,8 +18,9 @@ class App extends React.Component {
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route path="/404" component={PageNotFound} />
-            <ProtectedRoute path="/:workspaceDomain" component={Workspace}/>
+            <ProtectedRoute path="/:workspaceDomain/:pageId" component={Workspace} />
             <Redirect to="/404" />
+            {/* <Route path="*" component={PageNotFound} /> */}
           </Switch>
         </div>
       </>

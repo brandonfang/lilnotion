@@ -19,7 +19,7 @@ class SidebarSwitcher extends React.Component {
 
           <div className="workspace-label-wrapper">
             <div className="workspace-label">
-              <div>Workspace Name</div>
+              <div>Acme Inc.</div>
             </div>
             <div className="workspace-switch-icon-wrapper">
               {/* <div className="workspace-switch-icon"> */}

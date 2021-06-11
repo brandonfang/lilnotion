@@ -191,7 +191,6 @@
 }
 
 .outliner-bookmarks {
-
 }
 
 .outliner {
@@ -208,18 +207,11 @@
   }
 }
 
-
-
 .sidebar-logout {
   width: 100%;
   padding: 2px 14px;
   margin-top: 32px;
 }
-
-.sidebar-new-page {
-
-}
-
 
 // Begin editor frame styles
 
@@ -250,6 +242,11 @@
   padding-right: 10px;
 }
 
-.temp-container {
-  padding: 128px;
+.page-content {
+  // padding: 128px;
+  width: 600px;
+  margin: 128px auto;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
 }

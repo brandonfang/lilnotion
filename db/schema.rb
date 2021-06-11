@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_011232) do
+ActiveRecord::Schema.define(version: 2021_06_10_153137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,6 +37,22 @@ ActiveRecord::Schema.define(version: 2021_06_09_011232) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "object", default: "block", null: false
+    t.string "block_type", null: false
+    t.json "properties", default: {}, null: false
+    t.json "format", default: {}
+    t.uuid "content", default: [], array: true
+    t.uuid "parent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "workspace_id", null: false
+    t.index ["block_type"], name: "index_blocks_on_block_type"
+    t.index ["content"], name: "index_blocks_on_content"
+    t.index ["object"], name: "index_blocks_on_object"
+    t.index ["parent"], name: "index_blocks_on_parent"
+  end
+
   create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "workspace_id", null: false
     t.uuid "user_id", null: false
@@ -45,6 +61,18 @@ ActiveRecord::Schema.define(version: 2021_06_09_011232) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_memberships_on_user_id"
     t.index ["workspace_id"], name: "index_memberships_on_workspace_id"
+  end
+
+  create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "object", default: "page", null: false
+    t.json "parent", default: {}, null: false
+    t.json "properties", default: {}
+    t.json "children", default: [], array: true
+    t.boolean "archived", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "workspace_id", null: false
+    t.index ["object"], name: "index_pages_on_object"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

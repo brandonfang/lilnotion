@@ -27,13 +27,13 @@ const Navbar = (props) => {
 
               <ul className="nav-list">
                 <li className="item">
-                  <a href="" target="_blank">GitHub</a>
+                  <a href="https://github.com/brandonfang/lilnotion" target="_blank">GitHub</a>
                 </li>
                 <li className="item">
-                  <a href="" target="_blank">Twitter</a>
+                  <a href="https://twitter.com/bdmfang" target="_blank">Twitter</a>
                 </li>
                 <li className="item">
-                  <a href="" target="_blank">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/bdmfang" target="_blank">LinkedIn</a>
                 </li>
               </ul>
             </nav>
@@ -73,13 +73,13 @@ const Navbar = (props) => {
 
               <ul className="nav-list">
                 <li className="item">
-                  <a href="" target="_blank">GitHub</a>
+                  <a href="https://github.com/brandonfang/lilnotion" target="_blank">GitHub</a>
                 </li>
                 <li className="item">
-                  <a href="" target="_blank">Twitter</a>
+                  <a href="https://twitter.com/bdmfang" target="_blank">Twitter</a>
                 </li>
                 <li className="item">
-                  <a href="" target="_blank">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/bdmfang" target="_blank">LinkedIn</a>
                 </li>
               </ul>
             </nav>

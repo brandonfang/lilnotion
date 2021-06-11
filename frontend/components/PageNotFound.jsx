@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavBarContainer from './navbar/NavBarContainer'
 
@@ -19,4 +20,13 @@ const PageNotFound = () => {
   );
 };
 
-export default PageNotFound;
+const mapStateToProps = (state) => ({
+  currentUser: state.entities.users[state.session.currentUserId]
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout())
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageNotFound);

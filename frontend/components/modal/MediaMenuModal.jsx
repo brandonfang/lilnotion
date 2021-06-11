@@ -1,19 +1,17 @@
 import React from 'react';
 
-class Sidebar extends React.Component {
+class MediaMenuModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
   render() {
-    
     return (
-      <div className="sidebar">
-
+      <div>
+    
       </div>
     );
   }
 }
  
-export default Sidebar;
+export default MediaMenuModal;

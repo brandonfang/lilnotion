@@ -1,7 +1,7 @@
 {
   "name": "lilnotion",
   "private": true,
-  "description": "",
+  "description": "lilNotion is a Notion clone.",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
@@ -19,27 +19,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandonfang/lil-notion.git"
+    "url": "git+https://github.com/brandonfang/lilnotion.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brandonfang/lil-notion/issues"
+    "url": "https://github.com/brandonfang/lilnotion/issues"
   },
-  "homepage": "https://github.com/brandonfang/lil-notion#readme",
+  "homepage": "https://github.com/brandonfang/lilnotion#readme",
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
     "react": "^17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "uuid": "^8.3.2",
+    "uuidv4": "^6.2.10",
     "webpack": "^4.46.0"
   },
   "devDependencies": {

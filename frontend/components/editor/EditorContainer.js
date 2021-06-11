@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Editor from './Editor';
 import { logout } from '../../actions/session-actions';
-// import actions from actions/page-actions
-// import actions from actions/element-actions
+import { createPage, fetchPage, fetchPages, updatePage, deletePage } from '../../actions/page-actions';
+import { createBlock, fetchBlock, fetchBlocks, updateBlock, deleteBlock } from '../../actions/block-actions';
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
@@ -11,6 +11,16 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   logout: () => dispatch(logout()),
+  createPage: (page) => dispatch(createPage(page)),
+  fetchPage: (pageId) => dispatch(fetchPage(pageId)),
+  fetchPages: (workspaceId) => dispatch(fetchPages(workspaceId)),
+  updatePage: (page) => dispatch(updatePage(page)),
+  deletePage: (pageId) => dispatch(deletePage(pageId)),
+  createBlock: (block) => dispatch(createBlock(block)),
+  fetchBlock: (blockId) => dispatch(fetchBlock(blockId)),
+  fetchBlocks: (pageId) => dispatch(fetchBlocks(pageId)),
+  updateBlock: (block) => dispatch(updateBlock(block)),
+  deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

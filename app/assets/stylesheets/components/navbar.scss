@@ -24,8 +24,7 @@
 
       .logo {
         display: block;
-        height: 30px;
-        margin-top: -1px;
+        height: 28px;
       }
 
       .logo:focus {
@@ -34,7 +33,6 @@
 
       .logo:active {
         box-shadow: none;
-        // add important
       }
     }
 

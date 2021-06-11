@@ -1,1 +1,38 @@
-# Full Stack Project
+# lilNotion
+
+## About
+
+lilNotion is a fullstack, single-page web app that clones some of [Notion](https://www.notion.so/)'s functionalities. lilNotion is a workspace that allows users to write rich-text notes and wikis in a flexible format.
+
+**Live Demo: [lilnotion.herokuapp.com](https://lilnotion.herokuapp.com)**
+
+## Technologies
+
+- Frontend: React/Redux/Webpack
+- Backend: Ruby on Rails/PostgreSQL
+- Storage: AWS S3
+- Hosting: Heroku
+- Drag and Drop: [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)
+- Editing: [react-contenteditable](https://github.com/lovasoa/react-contenteditable)
+
+## Key Features
+
+### User Auth
+
+Users can create an account to hold their data. Visitors who don't want to make an account can log in as a demo user and view/edit example documents.
+
+### Workspaces and Pages
+
+Workspaces are spaces where groups of users can work together and share pages. Each workspace has a unique identifer and a domain that determines the route of each top-level page created in that workspace: `/:workspaceDomain/:pageId`.
+
+### Blocks
+
+Each block and page have a unique identifier (UUID v4). Users can write seamlessly with different data types, drag-and-drop blocks to rearrange information, and share documents with others. A block can be turned into another type of block using the `cmd` + `/` command or block menu. Changing the type of a block will affect how React renders that block.
+
+## Future Features
+
+- Additional block types
+- Block nesting
+- Database collections
+- Comments
+- Multiplayer editing

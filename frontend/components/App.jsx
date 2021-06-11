@@ -4,6 +4,7 @@ import { AuthRoute, ProtectedRoute, HomeRoute } from '../util/route-util';
 import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
 import OnboardingContainer from './auth/OnboardingContainer';
+import EditorContainer from './editor/EditorContainer'
 import PageNotFound from './PageNotFound';
 
 class App extends React.Component {
@@ -13,12 +14,12 @@ class App extends React.Component {
         <div className="app">
           <Switch>
             <HomeRoute exact path="/" />
-            {/* <AuthRoute exact path="/onboarding" component={OnboardingContainer} /> */}
-            <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
-            <Route path="/404" component={PageNotFound} />
-            <Redirect to="/404" />
+            <ProtectedRoute exact path="/onboarding" component={OnboardingContainer} />
+            <ProtectedRoute path="/:workspaceDomain/:pageId" component={EditorContainer} />
+            <ProtectedRoute path="/:workspaceDomain" component={EditorContainer} />
+            <Route path="*" component={PageNotFound} />
           </Switch>
         </div>
       </>
@@ -26,5 +27,4 @@ class App extends React.Component {
   }
 }
 
-// consider wrapping App in an AppContainer component
 export default App;

@@ -11,11 +11,11 @@ export const receiveWorkspace = (workspace) => ({
 
 export const receiveErrors = (errors) => ({
   type: RECEIVE_WORKSPACE_ERRORS,
-  errors,
+  errors
 });
 
 export const removeErrors = () => ({
-  type: REMOVE_ERRORS,
+  type: REMOVE_ERRORS
 });
 
 export const createWorkspace = (workspace) => (dispatch) => (
@@ -34,6 +34,6 @@ export const fetchWorkspace = (workspaceId) => (dispatch) => (
 
 export const updateWorkspace = (workspace) => (dispatch) =>
   APIUtil.updateWorkspace(workspace).then(
-    (workspace) => dispatch(showWorkspace(workspace)),
+    (workspace) => dispatch(receiveWorkspace(workspace)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   );

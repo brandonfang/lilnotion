@@ -22,13 +22,10 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
-    console.log(this.props);
-    console.log(this.props.errors.length === 0);
-    if (this.props.errors.length === 0) {
-      console.log('no form errors, redirecting to onboarding now')
-      // this.props.history.push('/onboarding');
-    }
+    this.props.processForm(user).then(
+      (response) => this.props.history.push('/onboarding'),
+      // failure callback
+    );
   }
 
   loginDemo(e) {
@@ -43,7 +40,7 @@ class SignupForm extends React.Component {
     const demoLastName = demo.lastName.split('');
     const demoEmail = demo.email.split('');
     const demoPassword = demo.password.split('');
-    const time = 65;
+    const time = 60;
 
     demoFirstName.forEach((char, i) => {
       setTimeout(() => {

@@ -1,23 +1,16 @@
 import React from 'react';
 import AuthNavBarContainer from '../navbar/AuthNavBarContainer';
-import { Link } from 'react-router-dom';
 
 class Onboarding extends React.Component {
   constructor(props) {
     super(props);
-
-    // console.log('this is the currentUser');
-    // console.log(props)
-
     this.state = {
       id: '',
-      // name: props.currentUser.firstName + "'s lilNotion",
-      // name: "Your lilNotion",
-      name: "",
+      name: props.currentUser.firstName + "'s lilNotion",
       domain: '',
-      creatorId: '',
-      icon_string: '',
-      has_image: ''
+      creatorId: props.currentUser.id,
+      iconString: '',
+      hasImage: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,12 +22,29 @@ class Onboarding extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const workspace = Object.assign({}, this.state);
-    this.props.processForm(workspace);
-    this.props.history.push(`/`);
+    let promiseA = this.props.processForm(workspace);
+    let promiseB = promiseA.then((response) => (
+      this.props.createMembership({
+        workspaceId: response.workspace.id,
+        userId: response.workspace.creatorId,
+        role: "admin"
+      })
+    ));
+    return Promise.all([promiseA, promiseB]).then(([resultA, resultB]) => (
+      this.props.history.push(resultA.workspace.domain)
+    ));
   }
 
-  handleChange(field) {
-    return (e) => this.setState({ [field]: e.target.value });
+  handleName() {
+    return (e) => this.setState({ name: e.target.value });
+  }
+
+  handleDomain() {
+    return (e) => this.setState({ domain: e.target.value }, this.removeSpacesFromDomain);
+  }
+
+  removeSpacesFromDomain() {
+    return this.setState({ domain: this.state.domain.replace(/\s/g, '') });
   }
 
   renderErrors() {
@@ -54,9 +64,6 @@ class Onboarding extends React.Component {
   }
 
   render() {
-    // add constraint on domain input; no spaces allowed
-    // console.log(this.props);
-
     return (
       <>
         <AuthNavBarContainer />
@@ -72,7 +79,7 @@ class Onboarding extends React.Component {
             <div className="form-wrapper">
               <form onSubmit={this.handleSubmit} className="auth-form">
                 <label>Workspace name
-                  <input type="text" required value={this.state.name} placeholder="Your workspace name" onChange={this.handleChange('name')} id="workspace-name-input" />
+                  <input type="text" required value={this.state.name} placeholder="Your workspace name" onChange={this.handleName()} id="workspace-name-input" />
                 </label>
 
                 <p className="input-subtext">You can use your name or the name of your company.</p>
@@ -80,7 +87,7 @@ class Onboarding extends React.Component {
                 <label>Domain
                   <div className="input-domain-wrapper">
                     <div className="domain-prefix">lilnotion.com/</div>
-                    <input className="input-domain" type="text" required value={this.state.domain} placeholder="URL" onChange={this.handleChange('domain')} id="workspace-domain-input" />
+                    <input className="input-domain" type="text" required value={this.state.domain} placeholder="URL" onChange={this.handleDomain()} id="workspace-domain-input" />
                   </div>
                 </label>
 

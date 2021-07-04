@@ -32,8 +32,246 @@ $red-500: #cf534a;
 $red-600: #be5643;
 $red-700: #bf4d45;
 
-$sidebar-text: rgba(25, 23, 17, 0.6);
+$sidebar-text: hsla(45, 19%, 8%, 0.6);
 
-* {
-  color: $text-primary-color;
-}
+$tw-blueGray-50: hsl(210, 40%, 98%);
+$tw-blueGray-100: hsl(210, 40%, 96%);
+$tw-blueGray-200: hsl(214, 32%, 91%);
+$tw-blueGray-300: hsl(213, 27%, 84%);
+$tw-blueGray-400: hsl(215, 20%, 65%);
+$tw-blueGray-500: hsl(215, 16%, 47%);
+$tw-blueGray-600: hsl(215, 19%, 35%);
+$tw-blueGray-700: hsl(215, 25%, 27%);
+$tw-blueGray-800: hsl(217, 33%, 17%);
+$tw-blueGray-900: hsl(222, 47%, 11%);
+
+$tw-coolGray-50: hsl(210, 20%, 98%);
+$tw-coolGray-100: hsl(220, 14%, 96%);
+$tw-coolGray-200: hsl(220, 13%, 91%);
+$tw-coolGray-300: hsl(216, 12%, 84%);
+$tw-coolGray-400: hsl(218, 11%, 65%);
+$tw-coolGray-500: hsl(220, 9%, 46%);
+$tw-coolGray-600: hsl(215, 14%, 34%);
+$tw-coolGray-700: hsl(217, 19%, 27%);
+$tw-coolGray-800: hsl(215, 28%, 17%);
+$tw-coolGray-900: hsl(221, 39%, 11%);
+
+$tw-gray-50: hsl(0, 0%, 98%);
+$tw-gray-100: hsl(240, 5%, 96%);
+$tw-gray-200: hsl(240, 6%, 90%);
+$tw-gray-300: hsl(240, 5%, 84%);
+$tw-gray-400: hsl(240, 5%, 65%);
+$tw-gray-500: hsl(240, 4%, 46%);
+$tw-gray-600: hsl(240, 5%, 34%);
+$tw-gray-700: hsl(240, 5%, 26%);
+$tw-gray-800: hsl(240, 4%, 16%);
+$tw-gray-900: hsl(240, 6%, 10%);
+
+$tw-trueGray-50: hsl(0, 0%, 98%);
+$tw-trueGray-100: hsl(0, 0%, 96%);
+$tw-trueGray-200: hsl(0, 0%, 90%);
+$tw-trueGray-300: hsl(0, 0%, 83%);
+$tw-trueGray-400: hsl(0, 0%, 64%);
+$tw-trueGray-500: hsl(0, 0%, 45%);
+$tw-trueGray-600: hsl(0, 0%, 32%);
+$tw-trueGray-700: hsl(0, 0%, 25%);
+$tw-trueGray-800: hsl(0, 0%, 15%);
+$tw-trueGray-900: hsl(0, 0%, 9%);
+
+$tw-warmGray-50: hsl(60, 9%, 98%);
+$tw-warmGray-100: hsl(60, 5%, 96%);
+$tw-warmGray-200: hsl(20, 6%, 90%);
+$tw-warmGray-300: hsl(24, 6%, 83%);
+$tw-warmGray-400: hsl(24, 5%, 64%);
+$tw-warmGray-500: hsl(25, 5%, 45%);
+$tw-warmGray-600: hsl(33, 5%, 32%);
+$tw-warmGray-700: hsl(30, 6%, 25%);
+$tw-warmGray-800: hsl(12, 6%, 15%);
+$tw-warmGray-900: hsl(24, 10%, 10%);
+
+$tw-red-50: hsl(0, 86%, 97%);
+$tw-red-100: hsl(0, 93%, 94%);
+$tw-red-200: hsl(0, 96%, 89%);
+$tw-red-300: hsl(0, 94%, 82%);
+$tw-red-400: hsl(0, 91%, 71%);
+$tw-red-500: hsl(0, 84%, 60%);
+$tw-red-600: hsl(0, 72%, 51%);
+$tw-red-700: hsl(0, 74%, 42%);
+$tw-red-800: hsl(0, 70%, 35%);
+$tw-red-900: hsl(0, 63%, 31%);
+
+$tw-orange-50: hsl(33, 100%, 96%);
+$tw-orange-100: hsl(34, 100%, 92%);
+$tw-orange-200: hsl(32, 98%, 83%);
+$tw-orange-300: hsl(31, 97%, 72%);
+$tw-orange-400: hsl(27, 96%, 61%);
+$tw-orange-500: hsl(25, 95%, 53%);
+$tw-orange-600: hsl(41, 96%, 40%);
+$tw-orange-700: hsl(35, 92%, 33%);
+$tw-orange-800: hsl(32, 81%, 29%);
+$tw-orange-900: hsl(28, 73%, 26%);
+
+$tw-amber-50: hsl(48, 100%, 96%);
+$tw-amber-100: hsl(48, 96%, 89%);
+$tw-amber-200: hsl(48, 97%, 77%);
+$tw-amber-300: hsl(46, 97%, 65%);
+$tw-amber-400: hsl(43, 96%, 56%);
+$tw-amber-500: hsl(38, 92%, 50%);
+$tw-amber-600: hsl(32, 95%, 44%);
+$tw-amber-700: hsl(26, 90%, 37%);
+$tw-amber-800: hsl(23, 83%, 31%);
+$tw-amber-900: hsl(22, 78%, 26%);
+
+$tw-yellow-50: hsl(55, 92%, 95%);
+$tw-yellow-100: hsl(55, 97%, 88%);
+$tw-yellow-200: hsl(53, 98%, 77%);
+$tw-yellow-300: hsl(50, 98%, 64%);
+$tw-yellow-400: hsl(48, 96%, 53%);
+$tw-yellow-500: hsl(45, 93%, 47%);
+$tw-yellow-600: hsl(41, 96%, 40%);
+$tw-yellow-700: hsl(35, 92%, 33%);
+$tw-yellow-800: hsl(32, 81%, 29%);
+$tw-yellow-900: hsl(28, 73%, 26%);
+
+$tw-lime-50: hsl(78, 92%, 95%);
+$tw-lime-100: hsl(80, 89%, 89%);
+$tw-lime-200: hsl(81, 88%, 80%);
+$tw-lime-300: hsl(82, 85%, 67%);
+$tw-lime-400: hsl(83, 78%, 55%);
+$tw-lime-500: hsl(84, 81%, 44%);
+$tw-lime-600: hsl(85, 85%, 35%);
+$tw-lime-700: hsl(86, 78%, 27%);
+$tw-lime-800: hsl(86, 69%, 23%);
+$tw-lime-900: hsl(88, 61%, 20%);
+
+$tw-green-50: hsl(138, 76%, 97%);
+$tw-green-100: hsl(141, 84%, 93%);
+$tw-green-200: hsl(141, 79%, 85%);
+$tw-green-300: hsl(142, 77%, 73%);
+$tw-green-400: hsl(142, 69%, 58%);
+$tw-green-500: hsl(142, 71%, 45%);
+$tw-green-600: hsl(142, 76%, 36%);
+$tw-green-700: hsl(142, 72%, 29%);
+$tw-green-800: hsl(143, 64%, 24%);
+$tw-green-900: hsl(144, 61%, 20%);
+
+$tw-emerald-50: hsl(152, 81%, 96%);
+$tw-emerald-100: hsl(149, 80%, 90%);
+$tw-emerald-200: hsl(152, 76%, 80%);
+$tw-emerald-300: hsl(156, 72%, 67%);
+$tw-emerald-400: hsl(158, 64%, 52%);
+$tw-emerald-500: hsl(160, 84%, 39%);
+$tw-emerald-600: hsl(161, 94%, 30%);
+$tw-emerald-700: hsl(163, 94%, 24%);
+$tw-emerald-800: hsl(163, 88%, 20%);
+$tw-emerald-900: hsl(164, 86%, 16%);
+
+$tw-teal-50: hsl(166, 76%, 97%);
+$tw-teal-100: hsl(167, 85%, 89%);
+$tw-teal-200: hsl(168, 84%, 78%);
+$tw-teal-300: hsl(171, 77%, 64%);
+$tw-teal-400: hsl(172, 66%, 50%);
+$tw-teal-500: hsl(173, 80%, 40%);
+$tw-teal-600: hsl(175, 84%, 32%);
+$tw-teal-700: hsl(175, 77%, 26%);
+$tw-teal-800: hsl(176, 69%, 22%);
+$tw-teal-900: hsl(176, 61%, 19%);
+
+$tw-cyan-50: hsl(183, 100%, 96%);
+$tw-cyan-100: hsl(185, 96%, 90%);
+$tw-cyan-200: hsl(186, 94%, 82%);
+$tw-cyan-300: hsl(187, 92%, 69%);
+$tw-cyan-400: hsl(188, 86%, 53%);
+$tw-cyan-500: hsl(189, 94%, 43%);
+$tw-cyan-600: hsl(192, 91%, 36%);
+$tw-cyan-700: hsl(193, 82%, 31%);
+$tw-cyan-800: hsl(194, 70%, 27%);
+$tw-cyan-900: hsl(196, 64%, 24%);
+
+$tw-sky-50: hsl(204, 100%, 97%);
+$tw-sky-100: hsl(204, 94%, 94%);
+$tw-sky-200: hsl(201, 94%, 86%);
+$tw-sky-300: hsl(199, 95%, 74%);
+$tw-sky-400: hsl(198, 93%, 60%);
+$tw-sky-500: hsl(199, 89%, 48%);
+$tw-sky-600: hsl(200, 98%, 39%);
+$tw-sky-700: hsl(201, 96%, 32%);
+$tw-sky-800: hsl(201, 90%, 27%);
+$tw-sky-900: hsl(202, 80%, 24%);
+
+$tw-blue-50: hsl(214, 100%, 97%);
+$tw-blue-100: hsl(214, 95%, 93%);
+$tw-blue-200: hsl(213, 97%, 87%);
+$tw-blue-300: hsl(212, 96%, 78%);
+$tw-blue-400: hsl(213, 94%, 68%);
+$tw-blue-500: hsl(217, 91%, 60%);
+$tw-blue-600: hsl(221, 83%, 53%);
+$tw-blue-700: hsl(224, 76%, 48%);
+$tw-blue-800: hsl(226, 71%, 40%);
+$tw-blue-900: hsl(224, 64%, 33%);
+
+$tw-indigo-50: hsl(226, 100%, 97%);
+$tw-indigo-100: hsl(226, 100%, 94%);
+$tw-indigo-200: hsl(228, 96%, 89%);
+$tw-indigo-300: hsl(230, 94%, 82%);
+$tw-indigo-400: hsl(234, 89%, 74%);
+$tw-indigo-500: hsl(239, 84%, 67%);
+$tw-indigo-600: hsl(243, 75%, 59%);
+$tw-indigo-700: hsl(245, 58%, 51%);
+$tw-indigo-800: hsl(244, 55%, 41%);
+$tw-indigo-900: hsl(242, 47%, 34%);
+
+$tw-violet-50: hsl(250, 100%, 98%);
+$tw-violet-100: hsl(251, 91%, 95%);
+$tw-violet-200: hsl(251, 95%, 92%);
+$tw-violet-300: hsl(253, 95%, 85%);
+$tw-violet-400: hsl(255, 92%, 76%);
+$tw-violet-500: hsl(258, 90%, 66%);
+$tw-violet-600: hsl(262, 83%, 58%);
+$tw-violet-700: hsl(263, 70%, 50%);
+$tw-violet-800: hsl(263, 69%, 42%);
+$tw-violet-900: hsl(264, 67%, 35%);
+
+$tw-purple-50: hsl(270, 100%, 98%);
+$tw-purple-100: hsl(269, 100%, 95%);
+$tw-purple-200: hsl(269, 100%, 92%);
+$tw-purple-300: hsl(269, 97%, 85%);
+$tw-purple-400: hsl(270, 95%, 75%);
+$tw-purple-500: hsl(271, 91%, 65%);
+$tw-purple-600: hsl(271, 81%, 56%);
+$tw-purple-700: hsl(272, 72%, 47%);
+$tw-purple-800: hsl(273, 67%, 39%);
+$tw-purple-900: hsl(274, 66%, 32%);
+
+$tw-fuchsia-50: hsl(289, 100%, 98%);
+$tw-fuchsia-100: hsl(287, 100%, 95%);
+$tw-fuchsia-200: hsl(288, 96%, 91%);
+$tw-fuchsia-300: hsl(291, 93%, 83%);
+$tw-fuchsia-400: hsl(292, 91%, 73%);
+$tw-fuchsia-500: hsl(292, 84%, 61%);
+$tw-fuchsia-600: hsl(293, 69%, 49%);
+$tw-fuchsia-700: hsl(295, 72%, 40%);
+$tw-fuchsia-800: hsl(295, 70%, 33%);
+$tw-fuchsia-900: hsl(297, 64%, 28%);
+
+$tw-pink-50: hsl(327, 73%, 97%);
+$tw-pink-100: hsl(326, 78%, 95%);
+$tw-pink-200: hsl(326, 85%, 90%);
+$tw-pink-300: hsl(327, 87%, 82%);
+$tw-pink-400: hsl(329, 86%, 70%);
+$tw-pink-500: hsl(330, 81%, 60%);
+$tw-pink-600: hsl(333, 71%, 51%);
+$tw-pink-700: hsl(335, 78%, 42%);
+$tw-pink-800: hsl(336, 74%, 35%);
+$tw-pink-900: hsl(336, 69%, 30%);
+
+$tw-rose-50: hsl(356, 100%, 97%);
+$tw-rose-100: hsl(356, 100%, 95%);
+$tw-rose-200: hsl(353, 96%, 90%);
+$tw-rose-300: hsl(353, 96%, 82%);
+$tw-rose-400: hsl(351, 95%, 71%);
+$tw-rose-500: hsl(350, 89%, 60%);
+$tw-rose-600: hsl(347, 77%, 50%);
+$tw-rose-700: hsl(345, 83%, 41%);
+$tw-rose-800: hsl(343, 80%, 35%);
+$tw-rose-900: hsl(342, 75%, 30%);

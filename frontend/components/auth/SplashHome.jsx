@@ -9,7 +9,7 @@ const SplashHome = (props) => (
     <NavBarContainer />
     <main className="splash-main">
       <div className="align-center-wrapper">
-        <div className="image-wrapper">
+        <div className="hero-image-wrapper">
           <img src={window.hero} alt="People using Notion" />
         </div>
 

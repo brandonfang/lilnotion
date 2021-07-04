@@ -13,4 +13,15 @@
 ## Low priority
 
 [] Clean up color codes and variables
+
 [] Unify icon usage
+
+## Last priority (after project completion)
+
+[] SEO/meta tags
+
+[] Favicon
+
+[] Dark mode preferences
+
+[] Custom domain on Heroku

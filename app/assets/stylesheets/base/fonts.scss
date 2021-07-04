@@ -47,3 +47,26 @@ button {
 a {
   text-decoration: underline;
 }
+
+// tablet
+
+@media (max-width: 720px) {
+  h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+}
+
+
+// mobile
+
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+  }
+}

@@ -19,16 +19,16 @@
     .logo-wrapper {
       height: 64px;
       display: flex;
-      flex-flow: row nowrap;
       align-items: center;
 
       .logo {
         display: block;
-        height: 28px;
+        height: 32px;
       }
 
       .logo:focus {
-        box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset, rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
+        box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset,
+          rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
       }
 
       .logo:active {
@@ -36,7 +36,7 @@
       }
     }
 
-    .desktop-actions {
+    .nav-wrapper {
       display: flex;
       flex-flow: row nowrap;
 
@@ -60,7 +60,8 @@
             flex-flow: row nowrap;
             align-items: center;
 
-            a, a:visited {
+            a,
+            a:visited {
               color: inherit;
               text-decoration: none;
             }
@@ -71,7 +72,8 @@
             }
 
             .nav-logout:focus {
-              box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset, rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
+              box-shadow: rgba(46, 170, 220, 70%) 0px 0px 0px 1px inset,
+                rgba(46, 170, 220, 40%) 0px 0px 0px 2px;
             }
 
             .nav-logout:active {
@@ -104,4 +106,14 @@
 
 .private-header {
   border-bottom: 1px solid $light-gray;
+}
+
+@media (max-width: 599px) {
+  .divider {
+    display: none;
+  }
+
+  .nav-list.links {
+    display: none !important;
+  }
 }

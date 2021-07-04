@@ -12,7 +12,7 @@ const Navbar = (props) => {
             </Link>
           </div>
 
-          <div className="desktop-actions">
+          <div className="nav-wrapper">
             <nav className="nav">
               <ul className="nav-list">
                 <li className="item">
@@ -25,21 +25,19 @@ const Navbar = (props) => {
 
               <div className="divider"></div>
 
-              <ul className="nav-list">
+              <ul className="nav-list links">
+                <li className="item">
+                  <a href="https://www.linkedin.com/in/bdmfang" target="_blank">LinkedIn</a>
+                </li>
                 <li className="item">
                   <a href="https://github.com/brandonfang/lilnotion" target="_blank">GitHub</a>
                 </li>
                 <li className="item">
                   <a href="https://twitter.com/bdmfang" target="_blank">Twitter</a>
                 </li>
-                <li className="item">
-                  <a href="https://www.linkedin.com/in/bdmfang" target="_blank">LinkedIn</a>
-                </li>
               </ul>
             </nav>
           </div>
-          
-          {/* <div className="mobile-actions"></div> */}
         </div>
       </div>
     </header>
@@ -55,7 +53,7 @@ const Navbar = (props) => {
             </Link>
           </div>
 
-          <div className="desktop-actions">
+          <div className="nav-wrapper">
             <nav className="nav">
               <div className="nav-greeting">
                 Welcome, {props.currentUser.firstName} {props.currentUser.lastName}!
@@ -71,15 +69,15 @@ const Navbar = (props) => {
               
               <div className="divider"></div>
 
-              <ul className="nav-list">
+              <ul className="nav-list links">
+                <li className="item">
+                  <a href="https://www.linkedin.com/in/bdmfang" target="_blank">LinkedIn</a>
+                </li>
                 <li className="item">
                   <a href="https://github.com/brandonfang/lilnotion" target="_blank">GitHub</a>
                 </li>
                 <li className="item">
                   <a href="https://twitter.com/bdmfang" target="_blank">Twitter</a>
-                </li>
-                <li className="item">
-                  <a href="https://www.linkedin.com/in/bdmfang" target="_blank">LinkedIn</a>
                 </li>
               </ul>
             </nav>

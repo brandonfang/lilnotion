@@ -25,3 +25,6 @@
 [] Dark mode preferences
 
 [] Custom domain on Heroku
+
+[] Load all fonts locally and eliminate Google fonts
+

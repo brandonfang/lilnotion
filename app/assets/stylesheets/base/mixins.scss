@@ -1,0 +1,33 @@
+@mixin font-stack-brand {
+  font-family: sans-serif;
+}
+
+@mixin font-stack-header {
+  font-family: sans-serif;
+}
+
+@mixin font-stack-body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+@mixin font-stack-code {
+  font-family: Menlo, "Inconsolata", Monaco, "Courier New", Courier, monospace;
+}
+
+@mixin breakpoint($point) {
+  @if $point == xl {
+    @media (max-width: 1440px) { @content; }
+  }
+
+  @if $point == l {
+    @media (max-width: 1080px) { @content; }
+  }
+
+  @if $point == m {
+    @media (min-width: 720px) { @content; }
+  }
+
+  @if $point == s {
+    @media (min-width: 360px) { @content; }
+  }
+}

@@ -11,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div className="app">
+        {/* <div className="app"> */}
           <Switch>
             <HomeRoute exact path="/" />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
@@ -21,7 +21,7 @@ class App extends React.Component {
             <ProtectedRoute path="/:workspaceDomain" component={EditorContainer} />
             <Route path="*" component={PageNotFound} />
           </Switch>
-        </div>
+        {/* </div> */}
       </>
     );
   }

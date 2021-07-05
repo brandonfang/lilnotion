@@ -1,4 +1,5 @@
 import React from 'react';
+import { BsChevronExpand } from "react-icons/bs";
 
 class SidebarSwitcher extends React.Component {
   constructor(props) {

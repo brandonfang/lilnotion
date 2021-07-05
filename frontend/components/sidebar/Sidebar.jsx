@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarSwitcherContainer from './SidebarSwitcherContainer';
-import SidebarSettings from './SidebarSettings'
-import { FiPlus, FiLogOut } from 'react-icons/fi'
+import SidebarUtilities from './SidebarUtilities'
+import { FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
 // import SidebarItem
 // import SidebarBottomActions
 // import icons
@@ -10,7 +10,7 @@ const Sidebar = ({
   currentUser,
   currentWorkspace,
   currentPage,
-  pages,
+  createPage,
   logout
 }) => {
   return (
@@ -18,8 +18,9 @@ const Sidebar = ({
       <div className="sidebar-top">
         <SidebarSwitcherContainer />
         {/* Quick find search */}
-        <SidebarSettings />
+        <SidebarUtilities />
 
+        {/* sidebar scroller component */}
         <div className="sidebar-scroller-vertical">
           <div className="outliner-bookmarks-header">
             <div>Pages</div>
@@ -44,26 +45,30 @@ const Sidebar = ({
       <div className="sidebar-bottom">
         <div className="sidebar-credits">
           <div className="credit">
+            <FiGithub className="sidebar-icon" />
             <a href="" target="_blank">GitHub</a>
           </div>
           <div className="credit">
+            <FiLinkedin className="sidebar-icon" />
             <a href="" target="_blank">LinkedIn</a>
           </div>
           <div className="credit">
+            <FiTwitter className="sidebar-icon" />
             <a href="" target="_blank">Twitter</a>
           </div>
           <div className="credit">
-            Made by <a href="" target="_blank">Brandon Fang</a>
+            <FiGlobe className="sidebar-icon" />
+            <a href="" target="_blank">Portfolio</a>
           </div>
         </div>
 
         <div className="sidebar-shortcuts">
-          <div className="shortcut">
-            <FiPlus className="sidebar-icon" />
+          <div className="shortcut" onClick={createPage}>
+            <FiPlus className="sidebar-icon" size={16} />
              New page
           </div>
-          <div className="shortcut">
-            <FiLogOut className="sidebar-icon" />
+          <div className="shortcut" onClick={logout}>
+            <FiLogOut className="sidebar-icon" size={16} />
             Log out
           </div>
         </div>

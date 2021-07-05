@@ -9,6 +9,7 @@ class Editor extends React.Component {
 
   componentDidMount() {
     // this.props.fetchPages(workspaceId);
+    // load first page
   }
 
   render() {

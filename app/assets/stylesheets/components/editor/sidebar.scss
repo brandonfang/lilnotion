@@ -14,6 +14,10 @@
   justify-content: space-between;
   overflow: visible;
   opacity: 1;
+
+  // svg {
+  //   stroke-width: 3px;
+  // }
 }
 
 .sidebar-top {
@@ -31,11 +35,12 @@
   flex-direction: row;
   align-items: center;
   cursor: pointer;
+
+  &:hover {
+    background: $sidebar-hover;
+  }
 }
 
-.sidebar-switcher-wrapper:hover {
-  background: $sidebar-hover;
-}
 
 .sidebar-switcher {
   width: 100%;
@@ -131,10 +136,10 @@
   min-height: 27px;
   height: 27px;
   cursor: pointer;
-}
-
-.sidebar-utility-wrapper:hover {
-  background: $sidebar-hover;
+  
+  &:hover {
+    background: $sidebar-hover;
+  }
 }
 
 .sidebar-utility {
@@ -214,16 +219,18 @@
 
 
 .sidebar-credits {
-  margin: 24px 0;
-  background: $t-blue-300;
+  padding: 24px 0;
+  // background: $t-blue-300;
 }
 
 .credit {
-  padding: 2px 14px;
-  background: $t-blue-200;
-  font-size: 14px;
+  padding: 4px 14px;
+  // background: $t-blue-200;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
   font-weight: 400;
-  // color: gray;
+  color: $t-gray-400;
 }
 
 .sidebar-shortcuts {
@@ -233,14 +240,19 @@
 .shortcut {
   height: 45px;
   padding: 2px 14px;
-  box-shadow: 0 -1px 0 0 $t-gray-400;
+  box-shadow: 0 -1px 0 0 $t-gray-300;
   display: flex;
   align-items: center;
   font-size: 14px;
+
+  cursor: pointer;
+
+  &:hover {
+    background: $sidebar-hover;
+  }
 }
 
 .sidebar-icon {
-  // width: 22px;
-  // height: 22px;
+  color: $t-gray-400;
   margin-right: 8px;
 }

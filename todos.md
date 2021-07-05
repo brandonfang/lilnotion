@@ -20,6 +20,8 @@
 
 [ ] Unify icon usage
 
+[ ] Fix code style
+
 ## Last priority (after project completion)
 
 [ ] SEO/meta tags

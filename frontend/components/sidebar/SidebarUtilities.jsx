@@ -1,9 +1,9 @@
 import React from 'react';
 import { FiSearch, FiClock, FiSettings } from 'react-icons/fi';
 
-const SidebarSettings = () => {
+const SidebarUtilities = () => {
   return (
-    <div className="sidebar-settings">
+    <div className="sidebar-utilities">
       <div className="sidebar-utility-wrapper">
         <div className="sidebar-utility">
           <div className="sidebar-utility-icon-wrapper">
@@ -34,4 +34,4 @@ const SidebarSettings = () => {
   );
 }
 
-export default SidebarSettings;
+export default SidebarUtilities;

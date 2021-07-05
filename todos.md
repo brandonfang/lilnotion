@@ -14,6 +14,8 @@
 
 ## Low priority
 
+[ ] Refactor class components into React hooks
+
 [ ] Clean up color codes and variables
 
 [ ] Unify icon usage
@@ -23,6 +25,8 @@
 [ ] SEO/meta tags
 
 [ ] Favicon
+
+[ ] Dynamic page title and favicon
 
 [ ] Dark mode preferences
 

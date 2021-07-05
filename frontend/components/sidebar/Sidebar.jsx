@@ -43,31 +43,29 @@ const Sidebar = ({
 
       <div className="sidebar-bottom">
         <div className="sidebar-credits">
-          <div className="credits">
+          <div className="credit">
             <a href="" target="_blank">GitHub</a>
           </div>
-          <div className="credits">
+          <div className="credit">
             <a href="" target="_blank">LinkedIn</a>
           </div>
-          <div className="credits">
+          <div className="credit">
             <a href="" target="_blank">Twitter</a>
           </div>
-          <div className="credits">
+          <div className="credit">
             Made by <a href="" target="_blank">Brandon Fang</a>
           </div>
         </div>
 
         <div className="sidebar-shortcuts">
           <div className="shortcut">
-            <FiPlus />
+            <FiPlus className="sidebar-icon" />
              New page
           </div>
           <div className="shortcut">
-            <FiLogOut />
+            <FiLogOut className="sidebar-icon" />
             Log out
           </div>
-          {/* add a new page */}
-          {/* logout */}
         </div>
       </div>
     </div>

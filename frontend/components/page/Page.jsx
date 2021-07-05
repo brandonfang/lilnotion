@@ -1,0 +1,1 @@
+// update title and icon based on block value

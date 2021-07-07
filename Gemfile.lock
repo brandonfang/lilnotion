@@ -42,27 +42,27 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     arel (9.0.0)
     aws-eventstream (1.1.1)
-    aws-partitions (1.465.0)
-    aws-sdk-core (3.114.1)
+    aws-partitions (1.478.0)
+    aws-sdk-core (3.117.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.43.0)
+    aws-sdk-kms (1.44.0)
       aws-sdk-core (~> 3, >= 3.112.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.96.0)
+    aws-sdk-s3 (1.96.1)
       aws-sdk-core (~> 3, >= 3.112.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.2.3)
+    aws-sigv4 (1.2.4)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     better_errors (2.9.1)
@@ -90,14 +90,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     crass (1.0.6)
     debug_inspector (1.1.0)
     erubi (1.10.0)
     execjs (2.8.1)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
-    ffi (1.15.1)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -113,7 +113,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -121,11 +121,9 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.0)
-    mini_portile2 (2.5.3)
     minitest (5.14.4)
     nio4r (2.5.7)
-    nokogiri (1.11.7)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.11.7-x86_64-darwin)
       racc (~> 1.4)
     pg (1.2.3)
     pry (0.14.1)
@@ -163,17 +161,17 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rake (13.0.3)
+    rake (13.0.6)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
-    rename (1.0.6)
+    rename (1.0.8)
       activesupport
       rails (>= 3.0.0)
       thor (>= 0.19.1)
     ruby_dep (1.5.0)
-    rubyzip (2.3.0)
+    rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -209,14 +207,14 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    websocket-driver (0.7.4)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-20
 
 DEPENDENCIES
   annotate
@@ -248,4 +246,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   2.1.4
+   2.2.23

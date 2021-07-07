@@ -6,6 +6,8 @@
 
 [ ] Make resource accessible only to owner
 
+[ ] Image storage with Amazon S3
+
 ## Medium priority
 
 [ ] Add mixins for different breakpoints
@@ -13,6 +15,8 @@
 [ ] Refactor container sizes according the breakpoint sizesd
 
 ## Low priority
+
+[ ] Allow multiple workspaces for one user
 
 [ ] Refactor class components into React hooks
 

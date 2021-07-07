@@ -1,7 +1,6 @@
 import React from 'react';
 import SidebarSwitcherContainer from './SidebarSwitcherContainer';
-import SidebarUtilities from './SidebarUtilities'
-import { FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
+import { FiSearch, FiClock, FiSettings, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
 // import SidebarItem
 // import SidebarBottomActions
 // import icons
@@ -17,8 +16,35 @@ const Sidebar = ({
     <div className="sidebar">
       <div className="sidebar-top">
         <SidebarSwitcherContainer />
-        {/* Quick find search */}
-        <SidebarUtilities />
+
+        <div className="sidebar-utilities">
+          <div className="sidebar-utility-wrapper">
+            <div className="sidebar-utility">
+              <div className="sidebar-utility-icon-wrapper">
+                <FiSearch />
+              </div>
+              <div className="sidebar-utility-label">Quick Find</div>
+            </div>
+          </div>
+
+          {/* <div className="sidebar-utility-wrapper">
+            <div className="sidebar-utility">
+              <div className="sidebar-utility-icon-wrapper">
+                <FiClock />
+              </div>
+              <div className="sidebar-utility-label">All Updates</div>
+            </div>
+          </div>
+
+          <div className="sidebar-utility-wrapper">
+            <div className="sidebar-utility">
+              <div className="sidebar-utility-icon-wrapper">
+                <FiSettings />
+              </div>
+              <div className="sidebar-utility-label">Settings & Members</div>
+            </div>
+          </div> */}
+        </div>    
 
         {/* sidebar scroller component */}
         <div className="sidebar-scroller-vertical">
@@ -35,10 +61,6 @@ const Sidebar = ({
               Meeting Notes
             </div>
           </div>
-
-          {/* Format a logout button here */}
-          {/* <p tabIndex="0" className="sidebar-logout" onClick={logout}><a href="/">Log out</a></p> */}
-        
         </div>
       </div>
 

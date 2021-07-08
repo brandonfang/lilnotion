@@ -1,5 +1,5 @@
-import React from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+import React, { useState, useEffect } from 'react';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { v4 } from 'uuidv4';
 import Text from './Text';
 

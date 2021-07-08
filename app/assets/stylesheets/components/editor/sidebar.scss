@@ -2,6 +2,7 @@
   flex-grow: 0;
   flex-shrink: 0;
   width: 250px;
+  // resize: horizontal;
   height: 100vh;
   background: $gray-500;
   color: hsla(45, 19%, 8%, 0.6);
@@ -170,6 +171,7 @@
 .sidebar-utility-label {
   white-space: nowrap;
   overflow: hidden;
+  font-family: system-ui !important;
 }
 
 .sidebar-scroller-vertical {

@@ -54,7 +54,6 @@
 
           .item {
             height: 32px;
-            padding: 0px 12px;
             border-radius: 3px;
             display: flex;
             flex-flow: row nowrap;
@@ -64,6 +63,8 @@
             a:visited {
               color: inherit;
               text-decoration: none;
+              line-height: 1;
+              padding: 8px 12px;
             }
 
             .nav-logout {

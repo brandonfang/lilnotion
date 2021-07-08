@@ -1,9 +1,6 @@
 import React from 'react';
-import SidebarSwitcherContainer from './SidebarSwitcherContainer';
 import { FiSearch, FiClock, FiSettings, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
 // import SidebarItem
-// import SidebarBottomActions
-// import icons
 
 const Sidebar = ({
   currentUser,
@@ -44,7 +41,7 @@ const Sidebar = ({
             </div>
           </div>
 
-          {/* <div className="sidebar-utility-wrapper">
+          <div className="sidebar-utility-wrapper">
             <div className="sidebar-utility">
               <div className="sidebar-utility-icon-wrapper">
                 <FiClock />
@@ -60,7 +57,7 @@ const Sidebar = ({
               </div>
               <div className="sidebar-utility-label">Settings & Members</div>
             </div>
-          </div> */}
+          </div>
         </div>    
 
         {/* sidebar scroller component */}

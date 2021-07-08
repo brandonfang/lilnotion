@@ -15,7 +15,24 @@ const Sidebar = ({
   return (
     <div className="sidebar">
       <div className="sidebar-top">
-        <SidebarSwitcherContainer />
+        <div className="sidebar-switcher-wrapper">
+          <div className="sidebar-switcher">
+            <div className="workspace-icon-wrapper-outer">
+              <div className="workspace-icon-wrapper-inner">
+                <div className="workspace-icon">
+                  <span role="image" aria-label="✨">✨</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="workspace-label-wrapper">
+              <div className="workspace-label">
+                <div>Acme Inc.</div>
+              </div>
+              {/* sidebar collapse button*/}
+            </div>
+          </div>
+        </div>
 
         <div className="sidebar-utilities">
           <div className="sidebar-utility-wrapper">

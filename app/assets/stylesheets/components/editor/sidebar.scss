@@ -21,11 +21,9 @@
 }
 
 .sidebar-top {
-
 }
 
 .sidebar-bottom {
-
 }
 
 .sidebar-switcher-wrapper {
@@ -219,18 +217,16 @@
 
 
 .sidebar-credits {
-  padding: 24px 0;
-  // background: $t-blue-300;
+  padding: 16px 0;
 }
 
 .credit {
   padding: 4px 14px;
-  // background: $t-blue-200;
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
-  color: $t-gray-400;
+  color: $t-gray-500;
 }
 
 .sidebar-shortcuts {

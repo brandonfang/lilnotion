@@ -38,4 +38,4 @@
 
 [ ] Custom domain on Heroku
 
-
+[ ] Try to refactor Block.jsx as a functional component using useRef hook

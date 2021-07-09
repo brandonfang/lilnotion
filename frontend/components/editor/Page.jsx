@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Router } from 'react-router-dom';
-import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
-import { v4 } from 'uuidv4';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PageHeader from './PageHeader';
-import Block from '../block/Block';
+import Block from '../blocks/Block';
 // import Container from './Container'
 
 
@@ -60,7 +59,7 @@ const Page = (props) => {
 
       <DragDropContext onDragEnd={OnDragEnd}>
 
-        <Droppable droppableId="droppable" type="ITEM">
+        <Droppable droppableId="droppable">
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}

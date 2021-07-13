@@ -13,9 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
         users: {
           [currentUser.id]: currentUser
         }
+        // workspaces:
       },
       session: { 
-        currentUserId: currentUser.id 
+        currentUserId: currentUser.id,
+        // currentWorkspaceId
       }
     };
     store = configureStore(preloadedState);

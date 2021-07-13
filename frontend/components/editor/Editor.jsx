@@ -6,6 +6,7 @@ import OverlayContainer from './OverlayContainer';
 const Editor = () => {
 
   return (
+    // wrap the editor in <DragDropContext>
     <div className="editor">
       <SidebarContainer />
       <FrameContainer />

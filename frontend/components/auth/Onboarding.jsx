@@ -93,14 +93,14 @@ class Onboarding extends React.Component {
 
                 <p className="input-subtext">No spaces allowed.</p>
 
-                <div>Add a logo (optional)</div>
+                {/* <div>Add a logo (optional)</div> */}
                 {/* <div className="workspace-logo-preview">
                   <img src="" />
                 </div> */}
-                <input type="file" id="workspace-logo" /> 
-                <label htmlFor="workspace-logo">Choose an image</label>
+                {/* <input type="file" id="workspace-logo" />  */}
+                {/* <label htmlFor="workspace-logo">Choose an image</label> */}
 
-                <p className="input-subtext">Upload an image.</p>
+                {/* <p className="input-subtext">Upload an image.</p> */}
 
                 <div className="spacer-8"></div>
 

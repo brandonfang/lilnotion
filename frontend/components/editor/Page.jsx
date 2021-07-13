@@ -39,7 +39,7 @@ const Page = (props) => {
 
 
   // check position of drag end
-  const OnDragEnd = useCallback((result) => {
+  const OnDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) return;
 
@@ -50,7 +50,7 @@ const Page = (props) => {
     );
 
     setItems(items);
-  }, []);
+  };
 
   return (
     <div className="page-content">

@@ -8,6 +8,8 @@
 
 [ ] Image storage with Amazon S3
 
+[ ] Add current workspace to state (entities and session)
+
 ## Medium priority
 
 [ ] Add mixins for different breakpoints

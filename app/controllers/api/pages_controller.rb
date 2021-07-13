@@ -40,6 +40,6 @@ class Api::PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:block).permit(:id, :workspace_id, :object, :parent, :properties, :children, :archived, :created_at, :updated_at)
+    params.require(:page).permit(:id, :workspace_id, :object, :parent, :properties, :children, :archived, :created_at, :updated_at)
   end
 end

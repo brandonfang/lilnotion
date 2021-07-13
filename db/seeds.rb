@@ -74,8 +74,24 @@ demo_workspace_3 = Workspace.create!(
 )
 
 # Add demo memberships
+
 # Add demo pages
-# Add demo blocks
+
+demo_page_1 = Page.create!(
+  object: 'page',
+  parent: {
+    type: 'workspace',
+    workspace: true
+  },
+  properties: ,
+  children: ,
+  workspace_id: demo_workspace_1.id
+)
+
+
+
+
+
 
 
 

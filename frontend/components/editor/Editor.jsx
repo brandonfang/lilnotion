@@ -4,7 +4,9 @@ import FrameContainer from './FrameContainer';
 import OverlayContainer from './OverlayContainer';
 
 const Editor = () => {
-
+  
+  // after mount, check if URL is valid
+  
   return (
     // wrap the editor in <DragDropContext>
     <div className="editor">

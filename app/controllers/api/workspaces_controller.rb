@@ -2,6 +2,19 @@ class Api::WorkspacesController < ApplicationController
   
   def create 
     @workspace = Workspace.new(workspace_params)
+    # create a first page which belongs to the new workspace
+    @page = Page.new({
+      object: 'page',
+      parent: {
+        type: 'workspace',
+        id: @workspace.id
+      },
+      properties: {},
+      children: {},
+      archived: false,
+      workspace_id: @workspace.id
+    })
+    @page.save
     if @workspace.save
       render :show
     else

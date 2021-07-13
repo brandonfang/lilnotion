@@ -2,13 +2,18 @@
 
 ## High priority
 
+[ ] Add current workspace to state (entities and session)
+
+[ ] Have working route at /workspaceDomain/pageId
+
+[ ] If no page id is given, redirect to first page
+
 [ ] Regex matching for routes
 
 [ ] Make resource accessible only to owner
 
 [ ] Image storage with Amazon S3
 
-[ ] Add current workspace to state (entities and session)
 
 ## Medium priority
 

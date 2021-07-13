@@ -6,7 +6,7 @@ import {
 const _nullUser = Object.freeze({
   currentUserId: null
 });
-
+// add receive_current_workspace
 const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
   switch(action.type) {

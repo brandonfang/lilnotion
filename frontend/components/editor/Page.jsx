@@ -20,16 +20,25 @@ const Page = (props) => {
   const [items, setItems] = useState([
     {
       id: 'item-1',
-      content: "Block 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vestibulum porta dolor ut venenatis. Duis tristique elementum metus, a posuere magna ultricies pellentesque. Donec dictum egestas quam vel sodales. Integer vulputate nisi vel ex feugiat, ultrices laoreet enim efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      content: 'At first, books were copied mostly in monasteries, one at a time. With the rise of universities in the 13th century, the Manuscript culture of the time led to an increase in the demand for books, and a new system for copying books appeared. The books were divided into unbound leaves (pecia), which were lent out to different copyists, so the speed of book production was considerably increased. The system was maintained by secular stationers guilds, which produced both religious and non-religious material.'
     },
     {
       id: 'item-2',
-      content: "Block 2. Cras sed placerat tellus. Cras libero ligula, faucibus quis posuere ac, ullamcorper non nisl. Integer bibendum lacinia nisl at faucibus. Ut dignissim elit vitae lorem ornare, a mattis orci scelerisque. Vivamus nec accumsan eros, eu finibus tellus. Morbi ut sapien feugiat, bibendum massa nec, mattis sem. Phasellus facilisis nulla non euismod malesuada."
+      content: 'Judaism has kept the art of the scribe alive up to the present. According to Jewish tradition, the Torah scroll placed in a synagogue must be written by hand on parchment and a printed book would not do, though the congregation may use printed prayer books and printed copies of the Scriptures are used for study outside the synagogue. A sofer "scribe" is a highly respected member of any observant Jewish community.'
     },
     {
       id: 'item-3',
-      content: "Block 3. Nam pretium diam lacus, et pellentesque augue imperdiet et. Pellentesque gravida aliquet justo, vel consectetur turpis aliquam non. Nulla vehicula, tellus et dapibus facilisis, mauris sapien tempus tortor, sit amet pretium tellus nulla quis lacus. Curabitur facilisis laoreet malesuada."
-    }
+      content: 'The Chinese inventor Bi Sheng made movable type of earthenware c. 1045, but there are no known surviving examples of his printing. Around 1450, in what is commonly regarded as an independent invention, Johannes Gutenberg invented movable type in Europe, along with innovations in casting the type based on a matrix and hand mould. This invention gradually made books less expensive to produce, and more widely available.'
+    },
+    {
+      id: 'item-4',
+      content: 'Early printed books, single sheets and images which were created before 1501 in Europe are known as incunables or incunabula. "A man born in 1453, the year of the fall of Constantinople, could look back from his fiftieth year on a lifetime in which about eight million books had been printed, more perhaps than all the scribes of Europe had produced since Constantine founded his city in AD 330."'
+    }, 
+    {
+      id: 'item-5',
+      content: 'The codices of pre-Columbian Mesoamerica (Mexico and Central America) had the same form as the European codex, but were instead made with long folded strips of either fig bark (amatl) or plant fibers, often with a layer of whitewash applied before writing. New World codices were written as late as the 16th century (see Maya codices and Aztec codices). Those written before the Spanish conquests seem all to have been single long sheets folded concertina-style, sometimes written on both sides of the local amatl paper.'
+    }, 
+    
   ]);
   
   // fetch blocks on component mount

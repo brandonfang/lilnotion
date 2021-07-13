@@ -54,7 +54,27 @@ demo_user_6 = User.create!(
 )
 
 # Add demo workspaces
+
+demo_workspace_1 = Workspace.create!(
+  name: 'Acme Inc',
+  domain: 'acmeinc',
+  creator_id: demo_user_1.id
+)
+
+demo_workspace_2 = Workspace.create!(
+  name: 'Project Xanadu',
+  domain: 'projectxanadu',
+  creator_id: demo_user_2.id
+)
+
+demo_workspace_3 = Workspace.create!(
+  name: 'Pioneers',
+  domain: 'pioneers',
+  creator_id: demo_user_3.id
+)
+
 # Add demo memberships
+# Add demo pages
 # Add demo blocks
 
 

@@ -58,12 +58,12 @@ const Sidebar = ({
               <div className="sidebar-utility-label">Settings & Members</div>
             </div>
           </div>
-        </div>    
+        </div>
 
         {/* sidebar scroller component */}
         <div className="sidebar-scroller-vertical">
           <div className="outliner-bookmarks-header">
-            <div>Pages</div>
+            Pages
           </div>
 
           <div className="outliner-bookmarks">

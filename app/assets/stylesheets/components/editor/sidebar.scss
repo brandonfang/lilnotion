@@ -185,10 +185,11 @@
   align-items: center;
   min-height: 24px;
   height: 24px;
-  font-size: 11.5px;
+  font-size: 12px;
+  line-height: 1;
   font-weight: 600;
-  letter-spacing: 0.03em;
-  color: #ccc;
+  letter-spacing: 0.05em;
+  color: rgba(55, 53, 47, 0.4);
   padding: 0px 14px 0px 15px;
   text-transform: uppercase;
 }

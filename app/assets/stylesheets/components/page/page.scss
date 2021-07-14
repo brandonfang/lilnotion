@@ -1,4 +1,26 @@
-.page {
-  background: lightgreen;
-  padding: 64px;
+.scroller {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  flex-grow: 1;
+  position: relative;
+  align-items: center;
+  overflow: auto;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+.page-content {
+  flex-shrink: 0;
+  flex-grow: 1;
+
+  min-width: 160px;
+  max-width: 800px;
+  // width: 640px;
+  margin: 32px auto;
+  padding: 0px 96px 30vh 96px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

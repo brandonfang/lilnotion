@@ -38,6 +38,10 @@ const Page = (props) => {
       id: 'item-5',
       content: 'The codices of pre-Columbian Mesoamerica (Mexico and Central America) had the same form as the European codex, but were instead made with long folded strips of either fig bark (amatl) or plant fibers, often with a layer of whitewash applied before writing. New World codices were written as late as the 16th century (see Maya codices and Aztec codices). Those written before the Spanish conquests seem all to have been single long sheets folded concertina-style, sometimes written on both sides of the local amatl paper.'
     }, 
+    {
+      id: 'item-6',
+      content: ''
+    }, 
     
   ]);
   
@@ -63,38 +67,40 @@ const Page = (props) => {
   };
 
   return (
-    <div className="page-content">
-      <PageHeader />
-      <h1>Meeting Notes</h1>
+    <div className="scroller">
+      <div className="page-content">
+        <PageHeader />
+        <h1>Meeting Notes</h1>
 
-      <DragDropContext onDragEnd={OnDragEnd}>
+        <DragDropContext onDragEnd={OnDragEnd}>
 
-        <Droppable droppableId="droppable">
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              className="droppable-area"
-            >
-              {items.map((item, index) => (
-                // <Draggable key={item.id} draggableId={item.id} index={index}>
-                //   {(provided, snapshot) => (
-                //     <div
-                //       ref={provided.innerRef}
-                //       {...provided.draggableProps}
-                //       {...provided.dragHandleProps}
-                //     >
-                //       {item.content}
-                //     </div>
-                //   )}
-                // </Draggable>
-                <Block key={item.id} item={item} index={index}/>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+          <Droppable droppableId="droppable">
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                className="droppable-area"
+              >
+                {items.map((item, index) => (
+                  // <Draggable key={item.id} draggableId={item.id} index={index}>
+                  //   {(provided, snapshot) => (
+                  //     <div
+                  //       ref={provided.innerRef}
+                  //       {...provided.draggableProps}
+                  //       {...provided.dragHandleProps}
+                  //     >
+                  //       {item.content}
+                  //     </div>
+                  //   )}
+                  // </Draggable>
+                  <Block key={item.id} item={item} index={index}/>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
     </div>
   );
 }

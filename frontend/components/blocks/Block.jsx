@@ -25,7 +25,7 @@ class Block extends React.Component {
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}
-              className="block"
+              className='block'
             >
               {/* {this.props.item.content} */}
               <ContentEditable
@@ -33,7 +33,9 @@ class Block extends React.Component {
                 html={this.state.html} 
                 disabled={false}    
                 onChange={this.handleChange} 
-                tagName='div' 
+                tagName='div'
+                className='notranslate block-content'
+                placeholder="Type '/' for commands"
                 content={this.props.item.content}
               />
             </div>

@@ -2,10 +2,19 @@
   width: 100%;
   margin: 1px 0;
   background: white;
+  position: relative;
 }
 
 .block-content {
   padding: 3px 2px;
+}
+
+.block-drag-handle {
+  position: absolute;
+  top: 3px;
+  left: -16px;
+  letter-spacing: -0.1em;
+  font-weight: 700;
 }
 
 // hover state

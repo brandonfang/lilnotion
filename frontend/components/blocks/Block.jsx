@@ -27,6 +27,7 @@ class Block extends React.Component {
               {...provided.dragHandleProps}
               className='block'
             >
+              <span className='block-drag-handle'>⋮⋮</span>
               {/* {this.props.item.content} */}
               <ContentEditable
                 innerRef={this.contentEditable}

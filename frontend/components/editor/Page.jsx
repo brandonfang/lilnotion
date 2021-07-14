@@ -48,6 +48,7 @@ const Page = (props) => {
 
 
   // check position of drag end
+  // might want to use useCallback
   const OnDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) return;

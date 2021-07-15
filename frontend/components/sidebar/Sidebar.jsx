@@ -32,6 +32,7 @@ const Sidebar = ({
         </div>
 
         <div className="sidebar-utilities">
+          {/* comment out non-functional utilities */}
           <div className="sidebar-utility-wrapper">
             <div className="sidebar-utility">
               <div className="sidebar-utility-icon-wrapper">

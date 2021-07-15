@@ -6,29 +6,43 @@ import Text from './Text';
 class Block extends React.Component {
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.dragHandleClick = this.dragHandleClick.bind(this);
     this.contentEditable = React.createRef();
     this.state = {
-      html: props.item.content,
+      html: props.block.content,
     }
   }
 
-  handleChange = (e) => {
+  handleChange(e) {
     this.setState(html, e.target.value);
+  }
+
+  dragHandleClick(e) {
+    const dragHandle = e.target;
+    return;
   }
   
   render() {
     return (
       <>
-        <Draggable key={this.props.item.id} draggableId={this.props.item.id} index={this.props.index}>
+        <Draggable key={this.props.block.id} draggableId={this.props.block.id} index={this.props.index}>
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
               {...provided.draggableProps}
-              {...provided.dragHandleProps}
               className='block'
             >
-              <span className='block-drag-handle'>⋮⋮</span>
-              {/* {this.props.item.content} */}
+              <span 
+                className='block-drag-handle'
+                role='button'
+                tabIndex='0'
+                onClick={this.dragHandleClick}
+                {...provided.dragHandleProps}
+              >
+                ⋮⋮
+              </span>
+              {/* {this.props.block.content} */}
               <ContentEditable
                 innerRef={this.contentEditable}
                 html={this.state.html} 
@@ -37,7 +51,7 @@ class Block extends React.Component {
                 tagName='div'
                 className='notranslate block-content'
                 placeholder="Type '/' for commands"
-                content={this.props.item.content}
+                content={this.props.block.content}
               />
             </div>
           )}

@@ -33,7 +33,7 @@ class Block extends React.Component {
               {...provided.draggableProps}
               className='block'
             >
-              <span 
+              <div
                 className='block-drag-handle'
                 role='button'
                 tabIndex='0'
@@ -41,7 +41,7 @@ class Block extends React.Component {
                 {...provided.dragHandleProps}
               >
                 ⋮⋮
-              </span>
+              </div>
               {/* {this.props.block.content} */}
               <ContentEditable
                 innerRef={this.contentEditable}

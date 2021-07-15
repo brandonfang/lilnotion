@@ -5,15 +5,6 @@ import PageHeader from './PageHeader';
 import Block from '../blocks/Block';
 // import Container from './Container'
 
-
-// const reorder = (list, startIndex, endIndex) => {
-//   const result = Array.from(list);
-//   const [removed] = result.splice(startIndex, 1);
-//   result.splice(endIndex, 0, removed);
-
-//   return result;
-// };
-
 const Page = (props) => {
   // const [blocks, setBlocks] = useState([]);
   const [currentBlock, setcurrentBlock] = useState('');
@@ -40,7 +31,7 @@ const Page = (props) => {
     }, 
     {
       id: 'block-6',
-      content: ''
+      content: 'Hello'
     }, 
     
   ]);
@@ -50,23 +41,18 @@ const Page = (props) => {
     return;
   }, [blocks]);
 
-
-  const reorder = (blocks, startIndex, endIndex) => {
-    const result = [...blocks];
-    const [removed] = result.splice(startIndex - 1, 1);
-    result.splice(endIndex, 0, removed);
-    return result;
-  };
-
   // might want to use useCallback
   const OnDragEnd = (result) => {
-    // dropped outside the list or no movement
-    if (!result.destination || result.source.index === result.destination.index) {
+    const { source, destination } = result;
+    // if dropped outside the list or no movement
+    if (source.index === destination.index || !destination) {
       return;
     }
-
-    const blocks = reorder(blocks, result.source.index, result.destination.index);
-    setBlocks(blocks);
+    // reorder blocks
+    const updatedBlocks = [...blocks];
+    const [removed] = updatedBlocks.splice(source.index - 1, 1); // splice >1 if implementing multi-drag
+    updatedBlocks.splice(destination.index, 0, removed);
+    setBlocks(updatedBlocks);
   };
 
   return (

@@ -39,10 +39,4 @@ class ApplicationController < ActionController::Base
     end
     underscore_hash.call(params)
   end
-
-  # def require_login
-  # end
-
-  # def require_logout
-  # end
 end

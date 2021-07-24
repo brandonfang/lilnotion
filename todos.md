@@ -10,6 +10,10 @@
 
 [ ] Regex matching for routes
 
+[ ] Add modals for menus and settings
+
+[ ] Fix contenteditable with drag and drop
+
 [ ] Make resource accessible only to owner
 
 [ ] Image storage with Amazon S3

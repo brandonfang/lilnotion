@@ -3,6 +3,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import ContentEditable from 'react-contenteditable'
 import Text from './Text';
 
+// turn into functional component if no longer using react-contenteditable
 class Block extends React.Component {
   constructor(props) {
     super(props);

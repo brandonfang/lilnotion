@@ -49,9 +49,10 @@ const Page = (props) => {
       return;
     }
     // reorder blocks
+    // restore content after reorder
     const updatedBlocks = [...blocks];
-    const [removed] = updatedBlocks.splice(source.index - 1, 1); // splice >1 if implementing multi-drag
-    updatedBlocks.splice(destination.index, 0, removed);
+    const removed = updatedBlocks.splice(source.index - 1, 1); // splice >1 if implementing multi-drag
+    updatedBlocks.splice(destination.index - 1, 0, [removed]);
     setBlocks(updatedBlocks);
   };
 

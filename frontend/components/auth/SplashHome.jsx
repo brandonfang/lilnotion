@@ -16,11 +16,13 @@ const SplashHome = (props) => (
         <div className="center-text-wrapper">
           <h1 className="hero-title">All-in-one workspace</h1>
           <h2 className="hero-subtitle">One tool for your whole team. Write, plan, and get organized.</h2>
-          <p>lilNotion is clone of <a href="https://www.notion.so/" target="_blank">Notion</a>.</p>
           
           <div className="cta-container">
+            <Link to="/login" className="cta cta-login">Log in</Link>
             <Link to="/signup" className="cta cta-signup">Try it now</Link>
           </div>
+          
+          <p className="caption">Not affiliated with Notion.</p>
         </div>
       </div>
 

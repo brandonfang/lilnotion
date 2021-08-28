@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
   const publicNavBar = (props) => (
-    <header className="header public-header">
+    <header className="header">
       <div className="outer">
         <div className="inner">
           <div className="logo-wrapper">
@@ -44,7 +44,7 @@ const Navbar = (props) => {
   );
 
   const privateNavBar = (props) => (
-    <header className="header private-header">
+    <header className="header private">
       <div className="outer">
         <div className="inner">
           <div className="logo-wrapper">

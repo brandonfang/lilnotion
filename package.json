@@ -34,6 +34,7 @@
     "@babel/preset-react": "^7.13.13",
     "@fontsource/inter": "^4.5.0",
     "babel-loader": "^8.2.2",
+    "draft-js": "^0.11.7",
     "match-sorter": "^6.3.0",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",

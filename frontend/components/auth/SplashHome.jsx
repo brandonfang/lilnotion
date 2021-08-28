@@ -19,7 +19,7 @@ const SplashHome = (props) => (
           
           <div className="cta-container">
             <Link to="/login" className="cta cta-login">Log in</Link>
-            <Link to="/signup" className="cta cta-signup">Try it now</Link>
+            <Link to="/signup" className="cta cta-signup">Try lilNotion now</Link>
           </div>
           
           <p className="caption">Not affiliated with Notion.</p>

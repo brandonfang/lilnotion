@@ -32,7 +32,6 @@ const Sidebar = ({
         </div>
 
         <div className="sidebar-utilities">
-          {/* comment out non-functional utilities */}
           <div className="sidebar-utility-wrapper">
             <div className="sidebar-utility">
               <div className="sidebar-utility-icon-wrapper">
@@ -42,23 +41,23 @@ const Sidebar = ({
             </div>
           </div>
 
-          <div className="sidebar-utility-wrapper">
+          {/* <div className="sidebar-utility-wrapper">
             <div className="sidebar-utility">
               <div className="sidebar-utility-icon-wrapper">
                 <FiClock />
               </div>
               <div className="sidebar-utility-label">All Updates</div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="sidebar-utility-wrapper">
+          {/* <div className="sidebar-utility-wrapper">
             <div className="sidebar-utility">
               <div className="sidebar-utility-icon-wrapper">
                 <FiSettings />
               </div>
               <div className="sidebar-utility-label">Settings & Members</div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* sidebar scroller component */}

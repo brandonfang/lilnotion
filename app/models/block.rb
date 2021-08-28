@@ -14,9 +14,9 @@
 #  workspace_id :uuid             not null
 #
 class Block < ApplicationRecord
-  belongs_to :workspace,
-    foreign_key: :workspace_id,
-    class_name: :Workspace
+  belongs_to :page,
+    foreign_key: :page_id,
+    class_name: :Page
   
   # has_one :parent_block,
   #   foreign_key: :parent,

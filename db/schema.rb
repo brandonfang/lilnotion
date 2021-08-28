@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_10_153137) do
+ActiveRecord::Schema.define(version: 2021_08_28_005025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -46,21 +46,10 @@ ActiveRecord::Schema.define(version: 2021_06_10_153137) do
     t.uuid "parent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "workspace_id", null: false
     t.index ["block_type"], name: "index_blocks_on_block_type"
     t.index ["content"], name: "index_blocks_on_content"
     t.index ["object"], name: "index_blocks_on_object"
     t.index ["parent"], name: "index_blocks_on_parent"
-  end
-
-  create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "workspace_id", null: false
-    t.uuid "user_id", null: false
-    t.string "role", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_memberships_on_user_id"
-    t.index ["workspace_id"], name: "index_memberships_on_workspace_id"
   end
 
   create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -71,7 +60,6 @@ ActiveRecord::Schema.define(version: 2021_06_10_153137) do
     t.boolean "archived", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "workspace_id", null: false
     t.index ["object"], name: "index_pages_on_object"
   end
 
@@ -86,17 +74,6 @@ ActiveRecord::Schema.define(version: 2021_06_10_153137) do
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name", "last_name"], name: "index_users_on_first_name_and_last_name"
     t.index ["session_token"], name: "index_users_on_session_token"
-  end
-
-  create_table "workspaces", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.uuid "creator_id"
-    t.string "domain"
-    t.string "icon_string"
-    t.boolean "has_image", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["domain"], name: "index_workspaces_on_domain"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -52,7 +52,7 @@
   font-size: 14px;
 }
 
-.workspace-icon-wrapper-outer {
+.switcher-outer {
   flex-grow: 0;
   flex-shrink: 0;
   width: 22px;
@@ -63,7 +63,7 @@
   margin-right: 8px;
 }
 
-.workspace-icon-wrapper-inner {
+.switcher-inner {
   // user-select: none;
   width: 20px;
   height: 20px;
@@ -76,7 +76,7 @@
   color: rgb(55, 53, 47);
 }
 
-.workspace-icon {
+.switcher-icon {
   width: 14px;
   height: 14px;
   font-size: 14px;
@@ -84,7 +84,7 @@
   color: black;
 }
 
-.workspace-label-wrapper {
+.switcher-label-wrapper {
   height: 23px;
   flex: 1 1 auto;
   white-space: nowrap;
@@ -95,7 +95,7 @@
   align-items: center;
 }
 
-.workspace-label {
+.switcher-label {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,7 +103,7 @@
   margin-right: 6px;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: $workspace-label;
+  color: $switcher-label;
 }
 
 .workspace-switch-icon-wrapper {

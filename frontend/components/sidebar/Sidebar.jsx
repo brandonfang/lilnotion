@@ -4,7 +4,6 @@ import { FiSearch, FiClock, FiSettings, FiGithub, FiLinkedin, FiTwitter, FiGlobe
 
 const Sidebar = ({
   currentUser,
-  currentWorkspace,
   currentPage,
   createPage,
   logout
@@ -14,17 +13,17 @@ const Sidebar = ({
       <div className="sidebar-top">
         <div className="sidebar-switcher-wrapper">
           <div className="sidebar-switcher">
-            <div className="workspace-icon-wrapper-outer">
-              <div className="workspace-icon-wrapper-inner">
-                <div className="workspace-icon">
-                  <span role="image" aria-label="✨">✨</span>
+            <div className="switcher-outer">
+              <div className="switcher-inner">
+                <div className="switcher-icon">
+                  <span role="" aria-label="">{currentUser.firstName[0].toUpperCase()}</span>
                 </div>
               </div>
             </div>
 
-            <div className="workspace-label-wrapper">
-              <div className="workspace-label">
-                <div>Acme Inc.</div>
+            <div className="switcher-label-wrapper">
+              <div className="switcher-label">
+                <div>{currentUser.firstName}'s lilNotion</div>
               </div>
               {/* sidebar collapse button*/}
             </div>

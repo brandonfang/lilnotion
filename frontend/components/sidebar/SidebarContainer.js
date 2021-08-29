@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   logout: () => dispatch(logout()),
-  // createPage: (page) => dispatch(alert('Creating a new page')),
   createPage: (page) => dispatch(createPage(page)),
   fetchPage: (pageId) => dispatch(fetchPage(pageId)),
   fetchPages: (workspaceId) => dispatch(fetchPages(workspaceId)),

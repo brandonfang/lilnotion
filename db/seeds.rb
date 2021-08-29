@@ -7,8 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Workspace.destroy_all
-# Membership.destroy_all
 # Block.destroy_all
 
 demo_user_1 = User.create!(
@@ -53,40 +51,19 @@ demo_user_6 = User.create!(
   password: 'password'
 )
 
-# Add demo workspaces
-
-demo_workspace_1 = Workspace.create!(
-  name: 'Acme Inc',
-  domain: 'acmeinc',
-  creator_id: demo_user_1.id
-)
-
-demo_workspace_2 = Workspace.create!(
-  name: 'Project Xanadu',
-  domain: 'projectxanadu',
-  creator_id: demo_user_2.id
-)
-
-demo_workspace_3 = Workspace.create!(
-  name: 'Pioneers',
-  domain: 'pioneers',
-  creator_id: demo_user_3.id
-)
-
-# Add demo memberships
 
 # Add demo pages
 
-demo_page_1 = Page.create!(
-  object: 'page',
-  parent: {
-    type: 'workspace',
-    workspace: true
-  },
-  properties: ,
-  children: ,
-  workspace_id: demo_workspace_1.id
-)
+# demo_page_1 = Page.create!(
+#   object: 'page',
+#   parent: {
+#     type: 'workspace',
+#     workspace: true
+#   },
+#   properties: ,
+#   children: ,
+#   workspace_id: demo_workspace_1.id
+# )
 
 
 

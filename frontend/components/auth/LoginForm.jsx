@@ -22,9 +22,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-    // .then(redirect)
-    // find their workspace
-    this.props.history.push(`/`);
+    // this.props.history.push(`/`);
   }
 
   loginDemo(e) {

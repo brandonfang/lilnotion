@@ -2,8 +2,6 @@
 
 ## High priority
 
-[ ] Add current workspace to state (entities and session)
-
 
 [ ] If no page id is given, redirect to first page
 
@@ -25,8 +23,6 @@
 [ ] Refactor container sizes according the breakpoint sizesd
 
 ## Low priority
-
-[ ] Allow multiple workspaces for one user
 
 [ ] Refactor class components into React hooks
 

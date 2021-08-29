@@ -7,44 +7,45 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-# Block.destroy_all
+Page.destroy_all
+Block.destroy_all
 
-demo_user_1 = User.create!(
+user_1 = User.create!(
   first_name: 'Doug',
   last_name: 'Engelbart',
   email: 'doug@engelbart.com',
   password: 'password'
 )
 
-demo_user_2 = User.create!(
+user_2 = User.create!(
   first_name: 'Ted',
   last_name: 'Nelson',
   email: 'ted@nelson.com',
   password: 'password'
 )
 
-demo_user_3 = User.create!(
+user_3 = User.create!(
   first_name: 'Ada',
   last_name: 'Lovelace',
   email: 'ada@lovelace.com',
   password: 'password'
 )
 
-demo_user_4 = User.create!(
+user_4 = User.create!(
   first_name: 'Alan',
   last_name: 'Kay',
   email: 'alan@kay.com',
   password: 'password'
 )
 
-demo_user_5 = User.create!(
+user_5 = User.create!(
   first_name: 'Alan',
   last_name: 'Turing',
   email: 'alan@turing.com',
   password: 'password'
 )
 
-demo_user_6 = User.create!(
+user_6 = User.create!(
   first_name: 'Steve',
   last_name: 'Jobs',
   email: 'steve@jobs.com',
@@ -54,18 +55,23 @@ demo_user_6 = User.create!(
 
 # Add demo pages
 
-# demo_page_1 = Page.create!(
-#   object: 'page',
-#   parent: {
-#     type: 'workspace',
-#     workspace: true
-#   },
-#   properties: ,
-#   children: ,
-#   workspace_id: demo_workspace_1.id
-# )
+page_1 = Page.create!(
+  user_id: user_1.id,
+  object: 'page',
+  properties: {
+    title: 'This is a page'
+  },
+)
 
+# Add demo blocks
 
+block_1 = Block.create!({
+  page_id: page_1.id,
+  block_type: 'text',
+  properties: {
+    title: 'This is some text'
+  }
+})
 
 
 

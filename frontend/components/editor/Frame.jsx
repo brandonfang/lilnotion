@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Router } from 'react-router-dom';
-import Page from './Page';
+import PageContainer from '../page/PageContainer';
+import Page from '../page/Page';
 
 const Frame = () => {
 
@@ -21,7 +22,7 @@ const Frame = () => {
         </div>
       </div>
 
-      <Page />
+      <PageContainer />
     </div>
   );
 }

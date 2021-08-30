@@ -44,6 +44,7 @@ class Block extends React.Component {
                 ⋮⋮
               </div>
               {/* {this.props.block.content} */}
+
               <ContentEditable
                 innerRef={this.contentEditable}
                 html={this.state.html} 

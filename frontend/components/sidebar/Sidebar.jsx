@@ -8,6 +8,15 @@ const Sidebar = ({
   createPage,
   logout
 }) => {
+
+
+
+
+
+
+
+
+
   return (
     <div className="sidebar">
       <div className="sidebar-top">

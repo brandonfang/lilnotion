@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
 
     const demo1 = { email: 'doug@engelbart.com', password: 'password' };
     const demo2 = { email: 'ada@lovelace.com', password: 'password' };
-    const demo = Math.random() < 0.5 ? demo1 : demo2;
+    const demo = Math.random() < 0.5 ? demo1 : demo1;
   
     const demoEmail = demo.email.split('');
     const demoPassword = demo.password.split('');

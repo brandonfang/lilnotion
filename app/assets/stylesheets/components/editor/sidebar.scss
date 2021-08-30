@@ -104,26 +104,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: $switcher-label;
-}
-
-.workspace-switch-icon-wrapper {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 12px;
-  height: 12px;
-  fill: $sidebar-switch;
-}
-
-.workspace-switch-icon {
-  display: block;
-  width: 12px;
-  height: 12px;
-  fill: inherit;
-  flex-shrink: 0;
-  padding-top: 1px;
-  // overflow: hidden;
-  // backface-visibility: hidden;
-}
+}d
 
 .sidebar-spacer {
   width: 100%;

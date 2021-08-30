@@ -30,8 +30,8 @@ export const removeErrors = () => ({
   type: REMOVE_ERRORS
 });
 
-export const fetchPages = (workspaceId) => (dispatch) => (
-  APIUtil.fetchPages(workspaceId).then(
+export const fetchPages = (userId) => (dispatch) => (
+  APIUtil.fetchPages(userId).then(
     (pages) => dispatch(receivePage(pages)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   )

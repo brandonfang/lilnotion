@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   logout: () => dispatch(logout()),
   createPage: (page) => dispatch(createPage(page)),
   fetchPage: (pageId) => dispatch(fetchPage(pageId)),
-  fetchPages: (workspaceId) => dispatch(fetchPages(workspaceId)),
+  fetchPages: (userId) => dispatch(fetchPages(userId)),
   updatePage: (page) => dispatch(updatePage(page)),
   deletePage: (pageId) => dispatch(deletePage(pageId)),
   createBlock: (block) => dispatch(createBlock(block)),

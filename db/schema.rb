@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_29_084011) do
+ActiveRecord::Schema.define(version: 2021_08_30_194208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_084011) do
     t.uuid "parent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "page_id"
+    t.uuid "page_id", null: false
     t.index ["block_type"], name: "index_blocks_on_block_type"
     t.index ["content"], name: "index_blocks_on_content"
     t.index ["object"], name: "index_blocks_on_object"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_084011) do
     t.boolean "archived", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "user_id"
+    t.uuid "user_id", null: false
     t.index ["object"], name: "index_pages_on_object"
     t.index ["user_id"], name: "index_pages_on_user_id"
   end

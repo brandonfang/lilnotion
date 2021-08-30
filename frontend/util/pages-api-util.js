@@ -6,11 +6,11 @@ export const createPage = (page) => (
   })
 );
 
-export const fetchPages= (workspaceId) => (
+export const fetchPages= (userId) => (
   $.ajax({
     url: 'api/pages',
     method: 'GET',
-    data: { workspaceId }
+    data: { userId }
   })
 )
 

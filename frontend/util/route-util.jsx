@@ -4,9 +4,6 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 import SplashHome from '../components/auth/SplashHome';
 import EditorContainer from '../components/editor/EditorContainer';
 
-// add something like verified URL route where we check if the URL is valid
-// if so, go to that workspace. if not, redirect.
-
 // Pages only seen by users who are not logged in
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
   <Route 

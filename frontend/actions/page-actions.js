@@ -7,7 +7,7 @@ export const RECEIVE_PAGE_ERRORS = 'RECEIVE_PAGE_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const receivePages = (pages) => ({
-  type: RECEIVE_PAGEs,
+  type: RECEIVE_PAGES,
   pages
 });
 
@@ -32,7 +32,7 @@ export const removeErrors = () => ({
 
 export const fetchPages = (userId) => (dispatch) => (
   APIUtil.fetchPages(userId).then(
-    (pages) => dispatch(receivePage(pages)),
+    (pages) => dispatch(receivePages(pages)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   )
 );

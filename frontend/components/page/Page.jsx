@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Router } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PageHeader from './PageHeader';
 import Block from '../blocks/Block';
 
-class Page extends React.component {
+class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,10 +43,10 @@ class Page extends React.component {
   }
 
   componentDidMount() {
-    this.props.fetchPages().then();
+    this.props.fetchBlocks(this.props.match.params.pageId);
   }
 
-  onDragEnd(result) {
+  OnDragEnd(result) {
     const { source, destination } = result;
     // if dropped outside the list or no movement
     if (source.index === destination.index || !destination) {
@@ -61,6 +61,8 @@ class Page extends React.component {
   }
 
   render() {
+
+    
     return (
       <div className="scroller">
         <div className="page-content">
@@ -68,7 +70,7 @@ class Page extends React.component {
 
           <h1 className="page-title">Heading 1</h1>
 
-          <DragDropContext onDragEnd={OnDragEnd}>
+          <DragDropContext onDragEnd={this.OnDragEnd}>
             <Droppable droppableId="droppable">
               {(provided, snapshot) => (
                 <div
@@ -76,7 +78,7 @@ class Page extends React.component {
                   {...provided.droppableProps}
                   className="droppable-area"
                 >
-                  {blocks.map((block, index) => (
+                  {this.state.blocks.map((block, index) => (
                     // <Draggable key={block.id} draggableId={block.id} index={index}>
                     //   {(provided, snapshot) => (
                     //     <div
@@ -101,4 +103,4 @@ class Page extends React.component {
   }
 }
 
-export default Page;
+export default withRouter(Page);

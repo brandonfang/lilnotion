@@ -1,4 +1,10 @@
 class Api::BlocksController < ApplicationController
+
+  def index
+    @blocks = Block.where(page_id: params[:page_id])
+    render :index
+  end
+
   def create
     @block = Block.new(block_params)
     if @block.save

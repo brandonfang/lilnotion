@@ -6,7 +6,7 @@ const pagesReducer = (state = {}, action) => {
     case RECEIVE_PAGE:
       return Object.assign({}, state, { [action.page.id]: action.page });
     case RECEIVE_PAGES:
-      return Object.assign({}, action.posts);
+      return Object.assign({}, action.pages);
     case REMOVE_PAGE:
       let newState = Object.assign({}, state);
       delete newState[action.page.id];

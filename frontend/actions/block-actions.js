@@ -31,7 +31,7 @@ export const removeErrors = () => ({
 });
 
 export const fetchBlocks = (pageId) => (dispatch) => (
-  APIUtil.fetchBlock(pageId).then(
+  APIUtil.fetchBlocks(pageId).then(
     (blocks) => dispatch(receiveBlocks(blocks)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   )

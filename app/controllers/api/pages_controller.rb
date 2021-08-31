@@ -1,6 +1,7 @@
 class Api::PagesController < ApplicationController
 
   def index 
+    @pages = current_user.pages
     render :index
   end
 

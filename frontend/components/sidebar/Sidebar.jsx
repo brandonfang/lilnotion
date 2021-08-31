@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import { FiSearch, FiClock, FiSettings, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
 // import SidebarItem
 
@@ -10,6 +11,7 @@ class Sidebar extends React.Component {
     this.state = {
 
     }
+
     // bind
   }
 
@@ -18,16 +20,23 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    // const pageList = pages.map((page) => {
-    //   // const currentNotebook = (page.id === this.props.match.params.pageId);
-    //   return (
-    //     <div className="page-block">
-    //       <Link to={`/pages/${page.id}`}>
-    //         {page.properties.title}
-    //       </Link>
-    //     </div>
-    //   );
-    // })
+    if (!this.props.pages) { 
+      return null; 
+    } 
+
+    const { currentUser, pages } = this.props;
+
+    const pageList = Object.keys(pages).map((pageKey) => {
+      const page = pages[pageKey];
+      // const currentNotebook = (page.id === this.props.match.params.pageId);
+      return (
+        <div className="page-block" key={page.id}>
+          <Link to={`/p/${page.id}`}>
+            {page.properties.title}
+          </Link>
+        </div>
+      );
+    });
 
     return (
       <div className="sidebar">
@@ -89,7 +98,7 @@ class Sidebar extends React.Component {
             <div className="outliner-bookmarks"></div>
 
             <div className="outliner">
-              {/* {pageList} */}
+              {pageList}
             </div>
           </div>
         </div>
@@ -138,4 +147,4 @@ class Sidebar extends React.Component {
   }
 }
  
-export default Sidebar;
+export default withRouter(Sidebar);

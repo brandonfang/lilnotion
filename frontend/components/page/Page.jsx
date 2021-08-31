@@ -43,6 +43,8 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
+    console.log(this.props.match);
     this.props.fetchBlocks(this.props.match.params.pageId);
   }
 
@@ -61,6 +63,21 @@ class Page extends React.Component {
   }
 
   render() {
+    if (!this.props.blocks) {
+      return null;
+    }
+
+    const { currentUser, blocks } = this.props;
+
+    const blockList = Object.keys(blocks).map((blockKey) => {
+      const block = blocks[blockKey];
+
+      return (
+        <div key={block.id}>
+         {block.properties.title}
+        </div>
+      );
+    });
 
     
     return (
@@ -70,7 +87,7 @@ class Page extends React.Component {
 
           <h1 className="page-title">Heading 1</h1>
 
-          <DragDropContext onDragEnd={this.OnDragEnd}>
+          {/* <DragDropContext onDragEnd={this.OnDragEnd}>
             <Droppable droppableId="droppable">
               {(provided, snapshot) => (
                 <div
@@ -96,7 +113,7 @@ class Page extends React.Component {
                 </div>
               )}
             </Droppable>
-          </DragDropContext>
+          </DragDropContext> */}
         </div>
       </div>
     );

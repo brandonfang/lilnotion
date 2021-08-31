@@ -16,7 +16,9 @@ import {
 } from '../../actions/block-actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  
+  errors: state.errors.session,
+  currentUser: state.entities.users[state.session.currentUserId],
+  blocks: state.entities.blocks,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -189,6 +189,10 @@
     font-weight: 500;
     margin-left: 16px;
     color: $sidebar-page-block;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 

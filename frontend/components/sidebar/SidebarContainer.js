@@ -13,7 +13,7 @@ import {
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
   currentUser: state.entities.users[state.session.currentUserId],
-  // pages: getAllPages(state)
+  pages: state.entities.pages
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

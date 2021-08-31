@@ -71,6 +71,14 @@ page_2 = Page.create!(
   },
 )
 
+page_3 = Page.create!(
+  user_id: user_1.id,
+  object: 'page',
+  properties: {
+    title: 'This is a third page'
+  },
+)
+
 # Add demo blocks
 
 block_1 = Block.create!({

@@ -67,6 +67,8 @@ class LoginForm extends React.Component {
       email: '',
       password: ''
     });
+    document.getElementById('email-input').value = '';
+    document.getElementById('password-input').value = '';
   }
 
   renderErrors() {

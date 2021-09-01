@@ -28,12 +28,15 @@ class Sidebar extends React.Component {
 
     const pageList = Object.keys(pages).map((pageKey) => {
       const page = pages[pageKey];
-      // const currentNotebook = (page.id === this.props.match.params.pageId);
+      // const currentPage = (page.id === this.props.match.params.pageId);
       return (
         <div className="page-block" key={page.id}>
-          <Link to={`/p/${page.id}`}>
+          {/* <Link to={`/p/${page.id}`}>
             {page.properties.title}
-          </Link>
+          </Link> */}
+          <div onClick={() => this.props.history.push(`/p/${page.id}`)}>
+            {page.properties.title}
+          </div>
         </div>
       );
     });

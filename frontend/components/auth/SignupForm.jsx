@@ -83,9 +83,15 @@ class SignupForm extends React.Component {
 
   resetInputs() {
     this.setState({
+      firstName: '',
+      lastName: '',
       email: '',
-      password: ''
+      password: '',
     });
+    document.getElementById('first-name-input').value = '';
+    document.getElementById('last-name-input').value = '';
+    document.getElementById('email-input').value = '';
+    document.getElementById('password-input').value = '';
   }
 
   renderErrors() {

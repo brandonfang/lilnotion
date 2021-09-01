@@ -145,6 +145,14 @@ block_8 = Block.create!({
   }
 })
 
+block_8 = Block.create!({
+  page_id: page_3.id,
+  block_type: 'text',
+  properties: {
+    title: 'Text for the third page.'
+  }
+})
+
 
 
 

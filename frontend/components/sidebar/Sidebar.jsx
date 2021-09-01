@@ -4,7 +4,7 @@ import { FiSearch, FiClock, FiSettings, FiGithub, FiLinkedin, FiTwitter, FiGlobe
 // import SidebarItem
 
 
-class Sidebar extends React.Component {
+class Sidebar extends React.Cosmponent {
   constructor(props) {
     super(props);
 
@@ -28,7 +28,7 @@ class Sidebar extends React.Component {
 
     const pageList = Object.keys(pages).map((pageKey) => {
       const page = pages[pageKey];
-      // const currentPage = (page.id === this.props.match.params.pageId);
+
       return (
         <div className="page-block" key={page.id}>
           {/* <Link to={`/p/${page.id}`}>

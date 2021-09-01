@@ -8,7 +8,8 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageId: this.props.location.pathname.slice(3)
+      pageId: this.props.location.pathname.slice(3),
+      blocks: {}
     };
 
   }
@@ -19,7 +20,21 @@ class Page extends React.Component {
     // this.props.fetchBlocks(this.props.match.params.pageId);
     // console.log(this.state.pageId)
     // this.props.fetchBlocks(this.state.pageId);
+
     this.props.fetchBlocks(this.props.location.pathname.slice(3));
+  }
+
+  componentDidUpdate(prevProps) {
+    let newPageId = this.props.location.pathname.slice(3);
+
+    if (this.state.pageId !== newPageId) {
+      debugger;
+      for (let i = 0; i < this.props.blocks.length; i++) {
+        if (this.props.blocks[i].pageId === newPageId) {
+          // fetchBlocks on newPageID, then setState
+        }
+      }
+    }
   }
 
   OnDragEnd(result) {
@@ -60,7 +75,9 @@ class Page extends React.Component {
           <PageHeader />
 
           <h1 className="page-title">Heading {this.state.title}</h1>
+
           {blockList}
+
           {/* <DragDropContext onDragEnd={this.OnDragEnd}>
             <Droppable droppableId="droppable">
               {(provided, snapshot) => (
@@ -88,6 +105,8 @@ class Page extends React.Component {
               )}
             </Droppable>
           </DragDropContext> */}
+
+
         </div>
       </div>
     );

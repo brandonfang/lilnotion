@@ -1,28 +1,34 @@
 # To-Do's
 
+## Q
+
+- Should I store all of a user's blocks inside state? Or just blocks for one page and refetch on request? 
+- Should I upload cover photos to S3?
+
 ## High priority
 
+[ ] When user logs in, redirect ot the first page
 
-[ ] If no page id is given, redirect to first page
-
-[ ] Regex matching for routes
-
-[ ] Add modals for menus and settings
+[ ] If page id is invalid or missing, redirect to the first page
 
 [ ] Fix contenteditable with drag and drop
 
-[ ] Make resource accessible only to owner
-
 [ ] Image storage with Amazon S3
+
+[ ] Add modals for menus and settings
 
 
 ## Medium priority
 
-[ ] Add mixins for different breakpoints
 
-[ ] Refactor container sizes according the breakpoint sizesd
+
+
 
 ## Low priority
+
+[ ] Add mixins for different breakpoints
+
+[ ] Refactor container sizes according the breakpoint sizes
 
 [ ] Refactor class components into React hooks
 
@@ -45,3 +51,6 @@
 [ ] Custom domain on Heroku
 
 [ ] Try to refactor Block.jsx as a functional component using useRef hook
+
+[ ] Regex matching for routes
+

@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { FiSearch, FiClock, FiSettings, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
+import { FiSearch, FiClock, FiSettings, FiFileText, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
 // import SidebarItem
 
 
-class Sidebar extends React.Cosmponent {
+class Sidebar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -35,6 +35,7 @@ class Sidebar extends React.Cosmponent {
             {page.properties.title}
           </Link> */}
           <div onClick={() => this.props.history.push(`/p/${page.id}`)}>
+            <FiFileText className="sidebar-icon" />
             {page.properties.title}
           </div>
         </div>

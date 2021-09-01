@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SidebarContainer from '../sidebar/SidebarContainer';
-import FrameContainer from './FrameContainer';
 import OverlayWrapper from './OverlayWrapper';
+import PageContainer from '../page/PageContainer';
+import Page from '../page/Page';
 
 const Editor = () => {
   
@@ -16,8 +17,8 @@ const Editor = () => {
       </Switch>
 
       <Switch>
-        <Route path="/pages/:pageId" component={FrameContainer} />
-        <Route component={FrameContainer} />
+        <Route path="/pages/:pageId" component={PageContainer} />
+        <Route component={PageContainer} />
       </Switch>
 
       {/* <OverlayWrapper /> */}

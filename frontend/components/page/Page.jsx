@@ -24,18 +24,18 @@ class Page extends React.Component {
     this.props.fetchBlocks(this.props.location.pathname.slice(3));
   }
 
-  componentDidUpdate(prevProps) {
-    let newPageId = this.props.location.pathname.slice(3);
+  // componentDidUpdate(prevProps) {
+  //   let newPageId = this.props.location.pathname.slice(3);
 
-    if (this.state.pageId !== newPageId) {
-      debugger;
-      for (let i = 0; i < this.props.blocks.length; i++) {
-        if (this.props.blocks[i].pageId === newPageId) {
-          // fetchBlocks on newPageID, then setState
-        }
-      }
-    }
-  }
+  //   if (this.state.pageId !== newPageId) {
+  //     // debugger;
+  //     for (let i = 0; i < this.props.blocks.length; i++) {
+  //       if (this.props.blocks[i].pageId === newPageId) {
+  //         // fetchBlocks on newPageID, then setState
+  //       }
+  //     }
+  //   }
+  // }
 
   OnDragEnd(result) {
     const { source, destination } = result;
@@ -70,43 +70,56 @@ class Page extends React.Component {
 
     
     return (
-      <div className="scroller">
-        <div className="page-content">
-          <PageHeader />
+      <div className="page">
+        <div className="topbar-wrapper">
+          <div className="topbar">
+            <div className="breadcrumb-wrapper">
+              <div className="breadcrumb"></div>
+            </div>
+            <div className="more-button-wrapper">
+              <div className="more-button">
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <h1 className="page-title">Heading {this.state.title}</h1>
+        <div className="scroller">
+          <div className="page-content">
+            <PageHeader />
 
-          {blockList}
+            <h1 className="page-title">Heading {this.state.title}</h1>
 
-          {/* <DragDropContext onDragEnd={this.OnDragEnd}>
-            <Droppable droppableId="droppable">
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                  className="droppable-area"
-                >
-                  {this.state.blocks.map((block, index) => (
-                    // <Draggable key={block.id} draggableId={block.id} index={index}>
-                    //   {(provided, snapshot) => (
-                    //     <div
-                    //       ref={provided.innerRef}
-                    //       {...provided.draggableProps}
-                    //       {...provided.dragHandleProps}
-                    //     >
-                    //       {block.content}
-                    //     </div>
-                    //   )}
-                    // </Draggable>
-                    <Block key={block.id} block={block} index={index} />
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </DragDropContext> */}
+            {blockList}
 
-
+            {/* <DragDropContext onDragEnd={this.OnDragEnd}>
+              <Droppable droppableId="droppable">
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    className="droppable-area"
+                  >
+                    {this.state.blocks.map((block, index) => (
+                      // <Draggable key={block.id} draggableId={block.id} index={index}>
+                      //   {(provided, snapshot) => (
+                      //     <div
+                      //       ref={provided.innerRef}
+                      //       {...provided.draggableProps}
+                      //       {...provided.dragHandleProps}
+                      //     >
+                      //       {block.content}
+                      //     </div>
+                      //   )}
+                      // </Draggable>
+                      <Block key={block.id} block={block} index={index} />
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext> */}
+          </div>
         </div>
       </div>
     );

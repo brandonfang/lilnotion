@@ -2,8 +2,12 @@
 
 ## Q
 
-- Should I store all of a user's blocks inside state? Or just blocks for one page and refetch on request? 
-- Should I upload cover photos to S3?
+- Should I store all of a user's blocks inside state? Or just blocks for one page and refetch on request?
+- A: Can store all blocks of all pages inside redux state. 
+
+- Should I upload default cover photo collection to S3?
+
+- How should I structure my page w/ page header?
 
 ## High priority
 
@@ -22,8 +26,7 @@
 
 ## Medium priority
 
-
-
+[ ] Media modal
 
 
 ## Low priority

@@ -8,34 +8,32 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pages: this.props.pages,
+      page: this.props.page,
+      // title,
+      // cover,
       pageId: this.props.location.pathname.slice(3),
-      blocks: {}
+      blocks: []
     };
-
   }
 
   componentDidMount() {
     // console.log(this.props);
-    // console.log(this.props.match);
-    // this.props.fetchBlocks(this.props.match.params.pageId);
+    // console.log(this.state);
     // console.log(this.state.pageId)
     // this.props.fetchBlocks(this.state.pageId);
-
     this.props.fetchBlocks(this.props.location.pathname.slice(3));
   }
 
-  // componentDidUpdate(prevProps) {
-  //   let newPageId = this.props.location.pathname.slice(3);
-
-  //   if (this.state.pageId !== newPageId) {
-  //     // debugger;
-  //     for (let i = 0; i < this.props.blocks.length; i++) {
-  //       if (this.props.blocks[i].pageId === newPageId) {
-  //         // fetchBlocks on newPageID, then setState
-  //       }
-  //     }
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    let newPageId = this.props.location.pathname.slice(3);
+    if (this.state.pageId !== newPageId) {
+      
+      this.props.fetchBlocks(this.props.location.pathname.slice(3)).then((blocks) => {
+        this.setState({ blocks: blocks})
+      });
+    }
+  }
 
   OnDragEnd(result) {
     const { source, destination } = result;
@@ -56,17 +54,19 @@ class Page extends React.Component {
       return null;
     }
 
-    const { currentUser, blocks } = this.props;
+    const { currentUser, page, blocks } = this.props;
+    const currentPageBlocks = blocks[Object.keys(blocks)[0]];
+    // const blockList = currentPageBlocks.map((block) => {
+    //   // const block = blocks[blockKey];
+    //   // return (
+    //   //   <div key={block.id}>
+    //   //    {block.properties.title}
+    //   //   </div>
+    //   // );
+    //   console.log(block)
+    // });
 
-    const blockList = Object.keys(blocks).map((blockKey) => {
-      const block = blocks[blockKey];
-
-      return (
-        <div key={block.id}>
-         {block.properties.title}
-        </div>
-      );
-    });
+    const blockList = () => <div></div>;
 
     
     return (
@@ -74,11 +74,15 @@ class Page extends React.Component {
         <div className="topbar-wrapper">
           <div className="topbar">
             <div className="breadcrumb-wrapper">
-              <div className="breadcrumb"></div>
+              <div className="breadcrumb">
+                {/* {this.state.title} */}
+              </div>
             </div>
-            <div className="more-button-wrapper">
-              <div className="more-button">
-                <span></span>
+            <div className="topbar-action-buttons">
+              <div className="more-button-wrapper">
+                <div className="more-button">
+                  <span></span>
+                </div>
               </div>
             </div>
           </div>
@@ -86,9 +90,13 @@ class Page extends React.Component {
 
         <div className="scroller">
           <div className="page-content">
-            <PageHeader />
+            <div className="page-header-wrapper">
+              <div className="page-header">
 
-            <h1 className="page-title">Heading {this.state.title}</h1>
+              </div>
+            </div>
+
+            <h1 className="page-title">Heading</h1>
 
             {blockList}
 

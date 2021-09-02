@@ -2,6 +2,7 @@ class Api::BlocksController < ApplicationController
 
   def index
     @blocks = Block.where(page_id: params[:page_id])
+    @page_id = params[:page_id]
     render :index
   end
 

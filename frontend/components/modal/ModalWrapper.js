@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const OverlayWrapper = (props) => {
+const ModalWrapper = (props) => {
 
   return (
     <>
@@ -8,4 +8,4 @@ const OverlayWrapper = (props) => {
   )
 }
 
-export default OverlayWrapper;
+export default ModalWrapper;

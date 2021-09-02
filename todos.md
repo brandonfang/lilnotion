@@ -13,6 +13,8 @@
 
 [ ] Fix contenteditable with drag and drop
 
+[ ] Refactor block state to be arrays with keys of pageId's
+
 [ ] Image storage with Amazon S3
 
 [ ] Add modals for menus and settings

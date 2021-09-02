@@ -61,6 +61,7 @@ class Sidebar extends React.Component {
                 <div className="switcher-label">
                   <div>{this.props.currentUser.firstName}'s lilNotion</div>
                 </div>
+
                 {/* sidebar collapse button*/}
               </div>
             </div>
@@ -76,33 +77,34 @@ class Sidebar extends React.Component {
               </div>
             </div>
 
-            {/* <div className="sidebar-utility-wrapper">
+            <div className="sidebar-utility-wrapper">
             <div className="sidebar-utility">
               <div className="sidebar-utility-icon-wrapper">
                 <FiClock />
               </div>
               <div className="sidebar-utility-label">All Updates</div>
             </div>
-          </div> */}
+          </div>
 
-            {/* <div className="sidebar-utility-wrapper">
+            <div className="sidebar-utility-wrapper">
             <div className="sidebar-utility">
               <div className="sidebar-utility-icon-wrapper">
                 <FiSettings />
               </div>
               <div className="sidebar-utility-label">Settings & Members</div>
             </div>
-          </div> */}
+          </div>
           </div>
 
           {/* sidebar scroller component */}
+
           <div className="sidebar-scroller-vertical">
             <div className="outliner-bookmarks-header">Pages</div>
 
-            <div className="outliner-bookmarks"></div>
-
             <div className="outliner">
+
               {pageList}
+
             </div>
           </div>
         </div>

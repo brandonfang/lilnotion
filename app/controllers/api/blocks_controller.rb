@@ -40,6 +40,6 @@ class Api::BlocksController < ApplicationController
   private
 
   def block_params
-    params.require(:block).permit(:id, :object, :block_type, :properties, :format, :content, :parent, :created_at, :updated_at)
+    params.require(:block).permit(:id, :page_id, :object, :block_type, :properties, :format, :content, :parent, :created_at, :updated_at)
   end
 end

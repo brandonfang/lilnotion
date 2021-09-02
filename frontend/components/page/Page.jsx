@@ -8,27 +8,25 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pageId: this.props.location.pathname.slice(3),
       pages: this.props.pages,
       page: this.props.page,
+      blocks: [],
       // title,
       // cover,
-      pageId: this.props.location.pathname.slice(3),
-      blocks: []
     };
   }
 
   componentDidMount() {
-    // console.log(this.props);
-    // console.log(this.state);
-    // console.log(this.state.pageId)
-    // this.props.fetchBlocks(this.state.pageId);
-    this.props.fetchBlocks(this.props.location.pathname.slice(3));
+    this.props.fetchBlocks(this.state.pageId)
+      .then((blocks) => {
+        this.setState({ blocks: blocks[Object.keys(blocks)[0]] });
+      });
   }
 
   componentDidUpdate(prevProps) {
     let newPageId = this.props.location.pathname.slice(3);
     if (this.state.pageId !== newPageId) {
-      
       this.props.fetchBlocks(this.props.location.pathname.slice(3)).then((blocks) => {
         this.setState({ blocks: blocks})
       });
@@ -50,57 +48,52 @@ class Page extends React.Component {
   }
 
   render() {
-    if (!this.props.blocks) {
+    if (this.state.blocks.length === 0) {
       return null;
-    }
+    } else {
+      const { currentUser, page, blocks } = this.props;
+      const currentPageBlocks = blocks[Object.keys(blocks)[0]];
+      console.log(this.props.blocks);
+      console.log(currentPageBlocks);
 
-    const { currentUser, page, blocks } = this.props;
-    const currentPageBlocks = blocks[Object.keys(blocks)[0]];
-    // const blockList = currentPageBlocks.map((block) => {
-    //   // const block = blocks[blockKey];
-    //   // return (
-    //   //   <div key={block.id}>
-    //   //    {block.properties.title}
-    //   //   </div>
-    //   // );
-    //   console.log(block)
-    // });
+      const blockList = currentPageBlocks.map((block) => {
+        return <div key={block.id}>{block.properties.title}</div>;
+      });
+      debugger
 
-    const blockList = () => <div></div>;
+      // const blockList = Object.keys(blocks).map((blockKey) => {
+      //   const block = blocks[blockKey];
+      //   return <div key={block.id}>{block.properties.title}</div>;
+      // });
 
-    
-    return (
-      <div className="page">
-        <div className="topbar-wrapper">
-          <div className="topbar">
-            <div className="breadcrumb-wrapper">
-              <div className="breadcrumb">
-                {/* {this.state.title} */}
+      return (
+        <div className="page">
+          <div className="topbar-wrapper">
+            <div className="topbar">
+              <div className="breadcrumb-wrapper">
+                <div className="breadcrumb">{/* {this.state.title} */}</div>
               </div>
-            </div>
-            <div className="topbar-action-buttons">
-              <div className="more-button-wrapper">
-                <div className="more-button">
-                  <span></span>
+              <div className="topbar-action-buttons">
+                <div className="more-button-wrapper">
+                  <div className="more-button">
+                    <span></span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="scroller">
-          <div className="page-content">
-            <div className="page-header-wrapper">
-              <div className="page-header">
-
+          <div className="page-scroller">
+            <div className="page-content">
+              <div className="page-header-wrapper">
+                <div className="page-header">{/* {this.state.title} */}</div>
               </div>
-            </div>
 
-            <h1 className="page-title">Heading</h1>
+              <h1 className="page-title">Heading</h1>
 
-            {blockList}
+              {blockList}
 
-            {/* <DragDropContext onDragEnd={this.OnDragEnd}>
+              {/* <DragDropContext onDragEnd={this.OnDragEnd}>
               <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
                   <div
@@ -127,10 +120,11 @@ class Page extends React.Component {
                 )}
               </Droppable>
             </DragDropContext> */}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

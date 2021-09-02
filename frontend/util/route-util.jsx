@@ -4,7 +4,7 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 import SplashHome from '../components/auth/SplashHome';
 import EditorContainer from '../components/editor/EditorContainer';
 
-// Pages only seen by users who are not logged in
+// Components only seen by logged out users
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
   <Route 
     path={path} 
@@ -17,7 +17,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
   />
 );
 
-// Pages only seen by users who are logged in
+// Components only seen by logged in users
 const Protected = ({ component: Component, path, loggedIn, exact }) => (
   <Route 
     path={path} 

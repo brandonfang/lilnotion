@@ -56,7 +56,7 @@ class Page extends React.Component {
     }
 
     const { currentUser, blocks } = this.props;
-    const currentPageBlocks = blocks[Object.keys(blocks)[0]];
+    const currentPageBlocks = blocks[this.state.pageId];
 
     // console.log(this.props.pages[this.state.pageId]);
     // console.log(this.props.blocks);
@@ -89,6 +89,8 @@ class Page extends React.Component {
     //   return <div key={block.id}>{block.properties.title}</div>;
     // });
 
+    const pageCover = this.state.page.coverUrl;
+
     return (
       <div className="page">
         <div className="topbar-wrapper">
@@ -109,17 +111,14 @@ class Page extends React.Component {
         </div>
 
         <div className="page-scroller">
-          <div className="page-content">
-            <div className="page-header-wrapper">
-              <div className="page-header">
-                <h1 className="page-title">
-                  {this.props.pages[this.state.pageId].properties.title}
-                </h1>
-              </div>
+          <div className="page-header-wrapper">
+            <div className="page-header">
+              <img src={pageCover} className="page-cover" />
             </div>
+          </div>
 
-            <img src={`${this.state.page.properties.coverUrl}`} alt="" srcSet="" />
-
+          <div className="page-content">
+            <h1 className="page-title">{this.props.pages[this.state.pageId].properties.title}</h1>
             {/* {blockList} */}
 
             <DragDropContext onDragEnd={this.OnDragEnd}>

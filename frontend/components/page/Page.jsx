@@ -7,10 +7,11 @@ import Block from '../blocks/Block';
 class Page extends React.Component {
   constructor(props) {
     super(props);
+    let pageId = this.props.location.pathname.slice(3);
     this.state = {
-      pageId: this.props.location.pathname.slice(3),
+      pageId: pageId,
       pages: this.props.pages,
-      page: this.props.page,
+      page: this.props.pages[pageId],
       blocks: [],
       // title,
       // cover,
@@ -27,9 +28,10 @@ class Page extends React.Component {
   componentDidUpdate(prevProps) {
     let newPageId = this.props.location.pathname.slice(3);
     if (this.state.pageId !== newPageId) {
-      this.props.fetchBlocks(this.props.location.pathname.slice(3)).then((blocks) => {
-        this.setState({ blocks: blocks})
-      });
+      this.props.fetchBlocks(this.props.location.pathname.slice(3))
+        .then((blocks) => {
+          this.setState({ blocks: blocks, pageId: newPageId })
+        });
     }
   }
 
@@ -41,6 +43,7 @@ class Page extends React.Component {
     }
     // reorder blocks
     // restore content after reorder
+    let blocks = this.state.blocks;
     const updatedBlocks = [...blocks];
     const removed = updatedBlocks.splice(source.index - 1, 1); // splice >1 if implementing multi-drag
     updatedBlocks.splice(destination.index - 1, 0, [removed]);
@@ -50,50 +53,74 @@ class Page extends React.Component {
   render() {
     if (this.state.blocks.length === 0) {
       return null;
-    } else {
-      const { currentUser, page, blocks } = this.props;
-      const currentPageBlocks = blocks[Object.keys(blocks)[0]];
-      console.log(this.props.blocks);
-      console.log(currentPageBlocks);
+    }
 
-      const blockList = currentPageBlocks.map((block) => {
-        return <div key={block.id}>{block.properties.title}</div>;
-      });
-      debugger
+    const { currentUser, blocks } = this.props;
+    const currentPageBlocks = blocks[Object.keys(blocks)[0]];
 
-      // const blockList = Object.keys(blocks).map((blockKey) => {
-      //   const block = blocks[blockKey];
-      //   return <div key={block.id}>{block.properties.title}</div>;
-      // });
+    // console.log(this.props.pages[this.state.pageId]);
+    // console.log(this.props.blocks);
+    // console.log(currentPageBlocks);
+    // console.log(this.state);
 
-      return (
-        <div className="page">
-          <div className="topbar-wrapper">
-            <div className="topbar">
-              <div className="breadcrumb-wrapper">
-                <div className="breadcrumb">{/* {this.state.title} */}</div>
+    // const blockList = currentPageBlocks.map((block) => {
+    //   return <div key={block.id}>{block.properties.title}</div>;
+    // });
+
+    const blockList = currentPageBlocks.map((block, index) => {
+      return <Block key={block.id} block={block} index={index} />
+
+      // <Draggable key={block.id} draggableId={block.id} index={index}>
+      //   {(provided, snapshot) => (
+      //     <div
+      //       ref={provided.innerRef}
+      //       {...provided.draggableProps}
+      //       {...provided.dragHandleProps}
+      //     >
+      //       {block.content}
+      //     </div>
+      //   )}
+      // </Draggable>
+    })
+
+    
+    // const blockList = Object.keys(blocks).map((blockKey) => {
+    //   const block = blocks[blockKey];
+    //   return <div key={block.id}>{block.properties.title}</div>;
+    // });
+
+    return (
+      <div className="page">
+        <div className="topbar-wrapper">
+          <div className="topbar">
+            <div className="breadcrumb-wrapper">
+              <div className="breadcrumb">
+                {this.props.pages[this.state.pageId].properties.title}
               </div>
-              <div className="topbar-action-buttons">
-                <div className="more-button-wrapper">
-                  <div className="more-button">
-                    <span></span>
-                  </div>
+            </div>
+            <div className="topbar-action-buttons">
+              <div className="more-button-wrapper">
+                <div className="more-button">
+                  <span></span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="page-scroller">
-            <div className="page-content">
-              <div className="page-header-wrapper">
-                <div className="page-header">{/* {this.state.title} */}</div>
+        <div className="page-scroller">
+          <div className="page-content">
+            <div className="page-header-wrapper">
+              <div className="page-header">
+                <h1 className="page-title">
+                  {this.props.pages[this.state.pageId].properties.title}
+                </h1>
               </div>
+            </div>
 
-              <h1 className="page-title">Heading</h1>
+            {/* {blockList} */}
 
-              {blockList}
-
-              {/* <DragDropContext onDragEnd={this.OnDragEnd}>
+            <DragDropContext onDragEnd={this.OnDragEnd}>
               <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
                   <div
@@ -101,30 +128,18 @@ class Page extends React.Component {
                     {...provided.droppableProps}
                     className="droppable-area"
                   >
-                    {this.state.blocks.map((block, index) => (
-                      // <Draggable key={block.id} draggableId={block.id} index={index}>
-                      //   {(provided, snapshot) => (
-                      //     <div
-                      //       ref={provided.innerRef}
-                      //       {...provided.draggableProps}
-                      //       {...provided.dragHandleProps}
-                      //     >
-                      //       {block.content}
-                      //     </div>
-                      //   )}
-                      // </Draggable>
-                      <Block key={block.id} block={block} index={index} />
-                    ))}
+                    {blockList}
+
                     {provided.placeholder}
                   </div>
                 )}
               </Droppable>
-            </DragDropContext> */}
-            </div>
+            </DragDropContext>
           </div>
         </div>
-      );
-    }
+      </div>
+    );
+
   }
 }
 

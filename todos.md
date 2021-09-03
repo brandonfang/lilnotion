@@ -5,9 +5,14 @@
 - Should I store all of a user's blocks inside state? Or just blocks for one page and refetch on request?
 - A: Can store all blocks of all pages inside redux state. 
 
-- Should I upload default cover photo collection to S3?
+- Cover photo S3?
+- A: url_for(nil) will be an error. check whether there is an attached photo, then use url_for
 
 - How should I structure my page w/ page header?
+- A: Export header to another component. Wrap it in a container if it needs read/write access to redux state.
+
+- Where do I fit modals into my component tree?
+- A: Anywhere. Use component state to keep track of modal open/close.
 
 ## High priority
 

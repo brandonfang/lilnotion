@@ -10,8 +10,9 @@ class Block extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.dragHandleClick = this.dragHandleClick.bind(this);
     this.contentEditable = React.createRef();
+
     this.state = {
-      html: props.block.content,
+      html: props.block.properties.title,
     }
   }
 

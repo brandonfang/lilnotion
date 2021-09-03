@@ -118,6 +118,8 @@ class Page extends React.Component {
               </div>
             </div>
 
+            <img src={`${this.state.page.properties.coverUrl}`} alt="" srcSet="" />
+
             {/* {blockList} */}
 
             <DragDropContext onDragEnd={this.OnDragEnd}>

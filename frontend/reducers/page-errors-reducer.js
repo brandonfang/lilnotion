@@ -4,7 +4,12 @@ const pageErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PAGE_ERRORS:
-      return action.errors;
+      // temp fix
+      if (action.errors) {
+        return action.errors
+      } else {
+        return state;
+      }
     default:
       return state;
   }

@@ -16,7 +16,7 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPages(this.props.currentUser.id);
+    // this.props.fetchPages(this.props.currentUser.id);
   }
 
   render() {

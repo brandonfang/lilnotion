@@ -51,6 +51,7 @@ class Page extends React.Component {
   }
 
   render() {
+    // if (this.state.blocks.length === 0 || !this.state.page) {
     if (this.state.blocks.length === 0) {
       return null;
     }
@@ -113,7 +114,7 @@ class Page extends React.Component {
         <div className="page-scroller">
           <div className="page-header-wrapper">
             <div className="page-header">
-              <img src={pageCover} className="page-cover" />
+              {pageCover ? <img src={this.state.page.coverUrl} className="page-cover" /> : null}
             </div>
           </div>
 

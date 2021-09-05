@@ -1,22 +1,24 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { FiSearch, FiClock, FiSettings, FiFileText, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi'
-// import SidebarItem
+import { FiSearch, FiClock, FiSettings, FiFileText, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi';
 
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-
-    }
-
-    // bind
+    this.state = {};
+    // bind quick find
+    this.newPage = this.newPage.bind(this);
   }
 
   componentDidMount() {
     // this.props.fetchPages(this.props.currentUser.id);
+  }
+
+  newPage() {
+    this.props.createPage().then((page) => {
+      this.props.history.push(`/p/${page.id}`);
+    })
   }
 
   render() {
@@ -25,16 +27,11 @@ class Sidebar extends React.Component {
     } 
 
     const { currentUser, pages } = this.props;
-
-    const pageList = Object.keys(pages).map((pageKey) => {
+    const pagesList = Object.keys(pages).map((pageKey) => {
       const page = pages[pageKey];
-
       return (
-        <div className="page-block" key={page.id}>
-          {/* <Link to={`/p/${page.id}`}>
-            {page.properties.title}
-          </Link> */}
-          <div onClick={() => this.props.history.push(`/p/${page.id}`)}>
+        <div className="outliner-item" key={page.id} onClick={() => this.props.history.push(`/p/${page.id}`)}>
+          <div className="page-block">
             <FiFileText className="sidebar-icon" />
             {page.properties.title}
           </div>
@@ -51,7 +48,7 @@ class Sidebar extends React.Component {
                 <div className="switcher-inner">
                   <div className="switcher-icon">
                     <span role="" aria-label="">
-                      {this.props.currentUser.firstName[0].toUpperCase()}
+                      {currentUser.firstName[0].toUpperCase()}
                     </span>
                   </div>
                 </div>
@@ -59,7 +56,7 @@ class Sidebar extends React.Component {
 
               <div className="switcher-label-wrapper">
                 <div className="switcher-label">
-                  <div>{this.props.currentUser.firstName}'s lilNotion</div>
+                  <div>{currentUser.firstName}'s lilNotion</div>
                 </div>
 
                 {/* sidebar collapse button*/}
@@ -100,11 +97,8 @@ class Sidebar extends React.Component {
 
           <div className="sidebar-scroller-vertical">
             <div className="outliner-bookmarks-header">Pages</div>
-
             <div className="outliner">
-
-              {pageList}
-
+              {pagesList}
             </div>
           </div>
         </div>
@@ -138,7 +132,7 @@ class Sidebar extends React.Component {
           </div>
 
           <div className="sidebar-shortcuts">
-            <div className="shortcut" onClick={this.props.createPage}>
+            <div className="shortcut" onClick={this.newPage}>
               <FiPlus className="sidebar-icon" size={16} />
               New page
             </div>

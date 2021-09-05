@@ -177,13 +177,23 @@
   display: block;
   width: 100%;
 
-  .page-block {
+  .outliner-item {
     display: block;
-    padding: 2px 14px;
+    cursor: pointer;
+    // adjust padding-left for caret
+    padding: 3px 14px 3px 14px;
     font-size: 14px;
     font-weight: 500;
-    margin-left: 16px;
     color: $sidebar-page-block;
+
+    &:hover {
+      background: $sidebar-hover;
+    }
+
+    .page-block {
+      display: flex;
+      align-items: center;
+    }
 
     a {
       text-decoration: none;
@@ -233,4 +243,6 @@
 .sidebar-icon {
   color: $t-gray-400;
   margin-right: 8px;
+  width: 16px;
+  height: 16px;
 }

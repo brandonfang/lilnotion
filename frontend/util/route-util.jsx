@@ -28,18 +28,15 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
   />
 );
 
-const Home = ({ path, loggedIn, exact }) => {
-// const Home = (props) => {
-  // console.log(props);
-  // const loggedIn = props.loggedIn;
-  return <Route 
+const Home = ({ path, loggedIn, exact }) => (
+  <Route 
     path={path} 
     exact={exact} 
     render={(props) => (
       loggedIn ? <EditorContainer {...props} /> : <SplashHome {...props} />
     )} 
   />
-};
+);
 
 const mapStateToProps = state => ({ 
   loggedIn: Boolean(state.session.currentUserId) 

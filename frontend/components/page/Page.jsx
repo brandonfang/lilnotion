@@ -64,11 +64,11 @@ class Page extends React.Component {
     // console.log(currentPageBlocks);
     // console.log(this.state);
 
-    // const blockList = currentPageBlocks.map((block) => {
+    // const blocksList = currentPageBlocks.map((block) => {
     //   return <div key={block.id}>{block.properties.title}</div>;
     // });
 
-    const blockList = currentPageBlocks.map((block, index) => {
+    const blocksList = currentPageBlocks.map((block, index) => {
       return <Block key={block.id} block={block} index={index} />
 
       // <Draggable key={block.id} draggableId={block.id} index={index}>
@@ -85,7 +85,7 @@ class Page extends React.Component {
     })
 
     
-    // const blockList = Object.keys(blocks).map((blockKey) => {
+    // const blocksList = Object.keys(blocks).map((blockKey) => {
     //   const block = blocks[blockKey];
     //   return <div key={block.id}>{block.properties.title}</div>;
     // });
@@ -120,7 +120,7 @@ class Page extends React.Component {
 
           <div className="page-content">
             <h1 className="page-title">{this.props.pages[this.state.pageId].properties.title}</h1>
-            {/* {blockList} */}
+            {/* {blocksList} */}
 
             <DragDropContext onDragEnd={this.OnDragEnd}>
               <Droppable droppableId="droppable">
@@ -130,7 +130,7 @@ class Page extends React.Component {
                     {...provided.droppableProps}
                     className="droppable-area"
                   >
-                    {blockList}
+                    {blocksList}
 
                     {provided.placeholder}
                   </div>

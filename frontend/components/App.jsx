@@ -16,7 +16,7 @@ const App = () => {
         <ProtectedRoute path="/p" component={EditorContainer} />
         {/* Protected PageNotFound */}
 
-        <HomeRoute exact path="/" test="This is a prop" />
+        <HomeRoute exact path="/" />
         <Route path="*" component={PageNotFound} />
       </Switch>
     </>

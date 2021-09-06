@@ -16,7 +16,7 @@
 
 ## High priority
 
-[ ] When user logs in, redirect ot the first page
+[x] When user logs in, redirect ot the first page
 
 [ ] If page id is invalid or missing, redirect to the first page
 

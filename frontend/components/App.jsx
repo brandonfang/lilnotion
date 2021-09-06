@@ -10,14 +10,14 @@ const App = () => {
   return (
     <>
       <Switch>
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <AuthRoute exact path='/login' component={LoginFormContainer} />
+        <AuthRoute exact path='/signup' component={SignupFormContainer} />
         
-        <ProtectedRoute path="/p" component={EditorContainer} />
-        {/* Protected PageNotFound */}
-
         <HomeRoute exact path="/" />
-        <Route path="*" component={PageNotFound} />
+        <ProtectedRoute path='/p' component={EditorContainer} />
+
+        <AuthRoute path="*" component={PageNotFound} />
+        <HomeRoute />
       </Switch>
     </>
   );

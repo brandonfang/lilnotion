@@ -12,7 +12,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // margin-bottom: 32px;
 }
 
 .auth-section-divider {
@@ -33,6 +32,10 @@
 .auth-title {
   line-height: 1;
   margin-bottom: 16px;
+
+  &.title-404 {
+    margin-bottom: 48px;
+  }
 }
 
 .auth-subtitle {

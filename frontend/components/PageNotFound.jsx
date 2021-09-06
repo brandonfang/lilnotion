@@ -11,7 +11,7 @@ const PageNotFound = () => {
       <div className="auth-page-wrapper">
         <section className="auth-section-wrapper">
           <div className="auth-header-wrapper">
-            <h1 className="auth-title">404: Page Not Found</h1>
+            <h1 className="auth-title title-404">404: Page Not Found</h1>
             <Link className="auth-subtitle" to="/">Home Page</Link>
           </div>
         </section>

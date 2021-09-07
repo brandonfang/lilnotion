@@ -11,6 +11,7 @@ class Api::PagesController < ApplicationController
       render :show
     else 
       render json: @page.errors.full_messages, status: 422
+      return
     end
   end
 
@@ -40,6 +41,6 @@ class Api::PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:id, :object, :parent, :properties, :children, :archived, :created_at, :updated_at)
+    params.require(:page).permit(:id, :user_id, :properties, :object, :parent, :children, :archived, :created_at, :updated_at)
   end
 end

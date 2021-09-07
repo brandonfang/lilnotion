@@ -7,7 +7,6 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // bind quick find
     this.newPage = this.newPage.bind(this);
   }
 
@@ -16,8 +15,19 @@ class Sidebar extends React.Component {
   }
 
   newPage() {
-    this.props.createPage().then((page) => {
-      this.props.history.push(`/p/${page.id}`);
+    console.log(this.props);
+
+    // placeholder page 
+    // nested object has problem
+    this.props.createPage({
+      userId: this.props.currentUser.id,
+      foopoo: {
+        title: 'Title of a New Page'
+      },
+      object: 'page',
+    }).then((page) => {
+      console.log("sup", page);
+      // this.props.history.push(`/p/${page.id}`);
     })
   }
 
@@ -107,26 +117,26 @@ class Sidebar extends React.Component {
           <div className="sidebar-credits">
             <div className="credit">
               <FiGithub className="sidebar-icon" />
-              <a href="" target="_blank">
+              <a href="https://github.com/brandonfang/lilnotion" target="_blank" rel="noopener noreferrer" >
                 GitHub
               </a>
             </div>
             <div className="credit">
               <FiLinkedin className="sidebar-icon" />
-              <a href="" target="_blank">
+              <a href="https://www.linkedin.com/in/bdmfang" target="_blank" rel="noopener noreferrer" >
                 LinkedIn
               </a>
             </div>
             <div className="credit">
-              <FiTwitter className="sidebar-icon" />
-              <a href="" target="_blank">
-                Twitter
+              <FiGlobe className="sidebar-icon" />
+              <a href="https://bdmfang.com" target="_blank" rel="noopener noreferrer" >
+                Portfolio
               </a>
             </div>
             <div className="credit">
-              <FiGlobe className="sidebar-icon" />
-              <a href="" target="_blank">
-                Portfolio
+              <FiTwitter className="sidebar-icon" />
+              <a href="https://twitter.com/bdmfang" target="_blank" rel="noopener noreferrer" >
+                Twitter
               </a>
             </div>
           </div>

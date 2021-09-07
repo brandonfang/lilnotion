@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import { logout } from '../../actions/session-actions';
 import {
   createPage,
   fetchPage,
@@ -9,6 +8,7 @@ import {
   updatePage,
   deletePage,
 } from '../../actions/page-actions';
+import { logout } from '../../actions/session-actions';
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,

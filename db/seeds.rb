@@ -149,7 +149,31 @@ block_8 = Block.create!({
   page_id: page_3.id,
   block_type: 'text',
   properties: {
-    title: 'Text for the third page.'
+    title: 'One one one one one one.'
+  }
+})
+
+block_9 = Block.create!({
+  page_id: page_3.id,
+  block_type: 'text',
+  properties: {
+    title: 'Two two two two two two.'
+  }
+})
+
+block_10 = Block.create!({
+  page_id: page_3.id,
+  block_type: 'text',
+  properties: {
+    title: 'Three three three three three three.'
+  }
+})
+
+block_11 = Block.create!({
+  page_id: page_3.id,
+  block_type: 'text',
+  properties: {
+    title: 'Four four four four four four.'
   }
 })
 

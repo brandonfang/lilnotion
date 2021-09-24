@@ -16,6 +16,7 @@ class Page extends React.Component {
       // title,
       // cover,
     };
+    this.OnDragEnd = this.OnDragEnd.bind(this);
   }
 
   componentDidMount() {
@@ -36,18 +37,19 @@ class Page extends React.Component {
   }
 
   OnDragEnd(result) {
+    console.log(result);
     const { source, destination } = result;
-    // if dropped outside the list or no movement
-    if (source.index === destination.index || !destination) return;
 
-    // reorder blocks
-    // restore content after reorder
-    let blocks = this.state.blocks;
-    const updatedBlocks = [...blocks];
-    // splice >1 if implementing multi-drag
-    const removed = updatedBlocks.splice(source.index - 1, 1); 
-    updatedBlocks.splice(destination.index - 1, 0, [removed]);
-    this.setState( { blocks: updatedBlocks });
+    // if dropped outside the area or no movement
+    if (!destination || source.index === destination.index) return;
+
+    // reorder blocks (splice >1 if implementing multi-drag)
+    const blocks = this.state.blocks;
+    const newBlocks = [...blocks];
+    const removed = newBlocks.splice(source.index, 1);
+    newBlocks.splice(destination.index, 0, [removed]);
+
+    this.setState({ blocks: newBlocks });
   }
 
   render() {
@@ -101,7 +103,8 @@ class Page extends React.Component {
 
             <DragDropContext onDragStart onDragUpdate onDragEnd={this.OnDragEnd}>
               <div className="page-content">
-                <Droppable droppableId={this.props.location.pathname.slice(3)}>
+
+                <Droppable droppableId={this.state.pageId}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
@@ -109,12 +112,17 @@ class Page extends React.Component {
                       className="droppable-area"
                     >
                       {currentPageBlocks.map((block, index) => (
-                        <Block key={block.id} block={block} index={index} />
+                        <Block 
+                          key={block.id} 
+                          block={block} 
+                          index={index} 
+                        />
                       ))}
                       {provided.placeholder}
                     </div>
                   )}
                 </Droppable>
+                
               </div>
             </DragDropContext>
           </div>

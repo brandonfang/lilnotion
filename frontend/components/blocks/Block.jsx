@@ -3,32 +3,29 @@ import { Draggable } from 'react-beautiful-dnd';
 import ContentEditable from 'react-contenteditable'
 import Text from './Text';
 
-// turn into functional component if no longer using react-contenteditable
+// turn into functional component if not using react-contenteditable
 class Block extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.dragHandleClick = this.dragHandleClick.bind(this);
-    this.contentEditable = React.createRef();
-
     this.state = {
       html: props.block.properties.title,
-    }
+    };
+    this.contentEditable = React.createRef();
+    this.handleChange = this.handleChange.bind(this);
+    this.dragHandleClick = this.dragHandleClick.bind(this);
   }
 
   handleChange(e) {
-    this.setState(html, e.target.value);
+    this.setState({ html: e.target.value });
   }
 
   dragHandleClick(e) {
     const dragHandle = e.target;
-    return;
   }
-  
+
   render() {
     return (
       <Draggable
-        key={this.props.block.id}
         draggableId={this.props.block.id}
         index={this.props.index}
       >
@@ -37,7 +34,7 @@ class Block extends React.Component {
             ref={provided.innerRef}
             {...provided.draggableProps}
             // {...provided.dragHandleProps}
-            className="block"
+            className="block" 
           >
             <div
               className="block-drag-handle"
@@ -45,15 +42,16 @@ class Block extends React.Component {
               tabIndex="0"
               onClick={this.dragHandleClick}
               {...provided.dragHandleProps}
-            >
-              ⋮⋮
-            </div>
-            {/* {this.props.block.content} */}
+            >⋮⋮</div>
+
+            {/* <div>
+              {this.props.block.content}
+            </div> */}
 
             <ContentEditable
               innerRef={this.contentEditable}
               html={this.state.html}
-              disabled={false}
+              disabled={true}
               onChange={this.handleChange}
               tagName="div"
               className="notranslate block-content"

@@ -37,20 +37,12 @@ export const fetchPages = (userId) => (dispatch) => (
   )
 );
 
-// export const createPage = (page) => (dispatch) => (
-//   APIUtil.createPage(page).then(
-//     (page) => dispatch(receivePage(page)),
-//     (errors) => dispatch(receiveErrors(errors.responseJSON))
-//   )
-// );
-
-export const createPage = (page) => (dispatch) => {
-  console.log(page);
-  return APIUtil.createPage(page).then(
+export const createPage = (page) => (dispatch) => (
+  APIUtil.createPage(page).then(
     (page) => dispatch(receivePage(page)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   )
-};
+);
 
 export const fetchPage = (pageId) => (dispatch) => (
   APIUtil.fetchPage(pageId).then(

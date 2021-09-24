@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SidebarContainer from '../sidebar/SidebarContainer';
 import PageContainer from '../page/PageContainer';
-import ModalWrapper from '../modal/ModalWrapper';
+// import ModalWrapper from '../modal/ModalWrapper';
 
 class Editor extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   
   componentDidMount() {
     this.props.fetchPages(this.props.currentUser.id)
@@ -19,7 +19,6 @@ class Editor extends React.Component {
 
   render() {
     return (
-      // wrap the editor in <DragDropContext>
       <div className="editor">
         <Switch>
           <Route path="/p/:pageId" component={SidebarContainer} />

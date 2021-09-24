@@ -2,7 +2,11 @@ class Api::PagesController < ApplicationController
 
   def index 
     @pages = current_user.pages
-    render :index
+    # if @pages
+      render :index
+    # else 
+    #   render json: @pages.errors.full_messages, status: 422
+    # end
   end
 
   def create
@@ -17,7 +21,11 @@ class Api::PagesController < ApplicationController
 
   def show
     @page = Page.find_by(id: params[:id])
-    render :show
+    if @page
+      render :show
+    # else 
+    #   render json: {:error => "Not-found"}.to_json, status: 404
+    end
   end
   
   def update

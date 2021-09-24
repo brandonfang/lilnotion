@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PageHeader from './PageHeader';
@@ -38,16 +38,16 @@ class Page extends React.Component {
   OnDragEnd(result) {
     const { source, destination } = result;
     // if dropped outside the list or no movement
-    if (source.index === destination.index || !destination) {
-      return;
-    }
+    if (source.index === destination.index || !destination) return;
+
     // reorder blocks
     // restore content after reorder
     let blocks = this.state.blocks;
     const updatedBlocks = [...blocks];
-    const removed = updatedBlocks.splice(source.index - 1, 1); // splice >1 if implementing multi-drag
+    // splice >1 if implementing multi-drag
+    const removed = updatedBlocks.splice(source.index - 1, 1); 
     updatedBlocks.splice(destination.index - 1, 0, [removed]);
-    setBlocks(updatedBlocks);
+    this.setState( { blocks: updatedBlocks });
   }
 
   render() {
@@ -59,38 +59,16 @@ class Page extends React.Component {
     const { currentUser, blocks } = this.props;
     const currentPageBlocks = blocks[this.state.pageId];
 
-    // console.log(this.props.pages[this.state.pageId]);
-    // console.log(this.props.blocks);
-    // console.log(currentPageBlocks);
-    // console.log(this.state);
-
     // const blocksList = currentPageBlocks.map((block) => {
     //   return <div key={block.id}>{block.properties.title}</div>;
     // });
-
-    const blocksList = currentPageBlocks.map((block, index) => {
-      return <Block key={block.id} block={block} index={index} />
-
-      // <Draggable key={block.id} draggableId={block.id} index={index}>
-      //   {(provided, snapshot) => (
-      //     <div
-      //       ref={provided.innerRef}
-      //       {...provided.draggableProps}
-      //       {...provided.dragHandleProps}
-      //     >
-      //       {block.content}
-      //     </div>
-      //   )}
-      // </Draggable>
-    })
-
     
     // const blocksList = Object.keys(blocks).map((blockKey) => {
     //   const block = blocks[blockKey];
     //   return <div key={block.id}>{block.properties.title}</div>;
     // });
 
-    const pageCover = this.state.page.coverUrl;
+    // const pageCover = this.state.page.coverUrl;
 
     return (
       <div className="page">
@@ -114,28 +92,30 @@ class Page extends React.Component {
         <div className="page-scroller">
           <div className="page-header-wrapper">
             <div className="page-header">
-              {pageCover ? <img src={this.state.page.coverUrl} className="page-cover" /> : null}
+              {/* {pageCover ? <img src={this.state.page.coverUrl} className="page-cover" /> : null} */}
             </div>
           </div>
 
-          <div className="page-content">
+          <div className="page-wrapper">
             <h1 className="page-title">{this.props.pages[this.state.pageId].properties.title}</h1>
-            {/* {blocksList} */}
 
-            <DragDropContext onDragEnd={this.OnDragEnd}>
-              <Droppable droppableId="droppable">
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    className="droppable-area"
-                  >
-                    {blocksList}
-
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+            <DragDropContext onDragStart onDragUpdate onDragEnd={this.OnDragEnd}>
+              <div className="page-content">
+                <Droppable droppableId={this.props.location.pathname.slice(3)}>
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      className="droppable-area"
+                    >
+                      {currentPageBlocks.map((block, index) => (
+                        <Block key={block.id} block={block} index={index} />
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </div>
             </DragDropContext>
           </div>
         </div>

@@ -27,39 +27,42 @@ class Block extends React.Component {
   
   render() {
     return (
-      <>
-        <Draggable key={this.props.block.id} draggableId={this.props.block.id} index={this.props.index}>
-          {(provided, snapshot) => (
+      <Draggable
+        key={this.props.block.id}
+        draggableId={this.props.block.id}
+        index={this.props.index}
+      >
+        {(provided, snapshot) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            // {...provided.dragHandleProps}
+            className="block"
+          >
             <div
-              ref={provided.innerRef}
-              {...provided.draggableProps}
-              className='block'
+              className="block-drag-handle"
+              role="button"
+              tabIndex="0"
+              onClick={this.dragHandleClick}
+              {...provided.dragHandleProps}
             >
-              <div
-                className='block-drag-handle'
-                role='button'
-                tabIndex='0'
-                onClick={this.dragHandleClick}
-                {...provided.dragHandleProps}
-              >
-                ⋮⋮
-              </div>
-              {/* {this.props.block.content} */}
-
-              <ContentEditable
-                innerRef={this.contentEditable}
-                html={this.state.html} 
-                disabled={false}    
-                onChange={this.handleChange} 
-                tagName='div'
-                className='notranslate block-content'
-                placeholder="Type '/' for commands"
-                content={this.props.block.content}
-              />
+              ⋮⋮
             </div>
-          )}
-        </Draggable>
-      </>
+            {/* {this.props.block.content} */}
+
+            <ContentEditable
+              innerRef={this.contentEditable}
+              html={this.state.html}
+              disabled={false}
+              onChange={this.handleChange}
+              tagName="div"
+              className="notranslate block-content"
+              placeholder="Type '/' for commands"
+              content={this.props.block.content}
+            />
+          </div>
+        )}
+      </Draggable>
     );
   }
 }

@@ -195,6 +195,10 @@
       align-items: center;
     }
 
+    .page-block-title {
+      text-overflow: ellipsis;
+    }
+
     a {
       text-decoration: none;
     }

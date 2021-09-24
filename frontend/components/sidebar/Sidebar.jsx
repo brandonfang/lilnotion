@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { FiSearch, FiClock, FiSettings, FiFileText, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi';
 
 
@@ -21,7 +22,7 @@ class Sidebar extends React.Component {
     // nested object has problem
     this.props.createPage({
       userId: this.props.currentUser.id,
-      foopoo: {
+      properties: {
         title: 'Title of a New Page'
       },
       object: 'page',
@@ -43,13 +44,14 @@ class Sidebar extends React.Component {
         <div className="outliner-item" key={page.id} onClick={() => this.props.history.push(`/p/${page.id}`)}>
           <div className="page-block">
             <FiFileText className="sidebar-icon" />
-            {page.properties.title}
+            <div className="page-block-title">{page.properties.title}</div>
           </div>
         </div>
       );
     });
 
     return (
+      // wrap sidebar in <DragDropContext> if dnd needed
       <div className="sidebar">
         <div className="sidebar-top">
           <div className="sidebar-switcher-wrapper">
@@ -107,9 +109,7 @@ class Sidebar extends React.Component {
 
           <div className="sidebar-scroller-vertical">
             <div className="outliner-bookmarks-header">Pages</div>
-            <div className="outliner">
-              {pagesList}
-            </div>
+            <div className="outliner">{pagesList}</div>
           </div>
         </div>
 
@@ -117,25 +117,33 @@ class Sidebar extends React.Component {
           <div className="sidebar-credits">
             <div className="credit">
               <FiGithub className="sidebar-icon" />
-              <a href="https://github.com/brandonfang/lilnotion" target="_blank" rel="noopener noreferrer" >
+              <a
+                href="https://github.com/brandonfang/lilnotion"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 GitHub
               </a>
             </div>
             <div className="credit">
               <FiLinkedin className="sidebar-icon" />
-              <a href="https://www.linkedin.com/in/bdmfang" target="_blank" rel="noopener noreferrer" >
+              <a
+                href="https://www.linkedin.com/in/bdmfang"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 LinkedIn
               </a>
             </div>
             <div className="credit">
               <FiGlobe className="sidebar-icon" />
-              <a href="https://bdmfang.com" target="_blank" rel="noopener noreferrer" >
+              <a href="https://bdmfang.com" target="_blank" rel="noopener noreferrer">
                 Portfolio
               </a>
             </div>
             <div className="credit">
               <FiTwitter className="sidebar-icon" />
-              <a href="https://twitter.com/bdmfang" target="_blank" rel="noopener noreferrer" >
+              <a href="https://twitter.com/bdmfang" target="_blank" rel="noopener noreferrer">
                 Twitter
               </a>
             </div>

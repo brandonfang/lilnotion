@@ -3,7 +3,11 @@ class Api::BlocksController < ApplicationController
   def index
     @blocks = Block.where(page_id: params[:page_id])
     @page_id = params[:page_id]
-    render :index
+    if @blocks
+      render :index
+    else 
+      render json: @blocks.errors.full_messages, status: 422
+    end
   end
 
   def create
@@ -18,6 +22,11 @@ class Api::BlocksController < ApplicationController
   def show
     @block = Block.find_by(id: params[:id])
     render :show
+    # if @block
+    #   render :show
+    # else 
+    #   render json: @block.errors.full_messages, status: 422
+    # end
   end
   
   def update

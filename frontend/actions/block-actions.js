@@ -34,7 +34,11 @@ export const fetchBlocks = (pageId) => (dispatch) => (
   APIUtil.fetchBlocks(pageId).then(
     (blocks) => dispatch(receiveBlocks(blocks)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
-  )
+    // (errors) => {
+      // dispatch(receiveErrors(errors.statusText));
+      // console.log(errors)
+    // }
+    )
 );
 
 export const createBlock = (block) => (dispatch) => (

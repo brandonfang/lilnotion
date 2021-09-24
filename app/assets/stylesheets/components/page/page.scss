@@ -37,7 +37,7 @@
   line-height: 1;
 
   &:hover {
-    background: $gray-opacity-20;
+    background: rgba(55, 53, 47, 0.08);
   }
 }
 
@@ -58,7 +58,7 @@
   margin-bottom: 0px;
 }
 
-.page-content {
+.page-wrapper {
   flex-shrink: 0;
   flex-grow: 1;
 
@@ -86,4 +86,8 @@
 
 .page-title {
   text-align: left;
+}
+
+.page-content {
+  
 }

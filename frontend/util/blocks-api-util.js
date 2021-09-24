@@ -5,15 +5,6 @@ export const createBlock = (block) => (
     data: { block }
   })
 );
- 
-// old
-// export const fetchBlocks = (pageId) => (
-//   $.ajax({
-//     url: 'api/blocks',
-//     method: 'GET',
-//     data: { pageId }
-//   })
-// );
 
 export const fetchBlocks = (pageId) => (
   $.ajax({

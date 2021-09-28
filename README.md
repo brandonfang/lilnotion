@@ -19,13 +19,23 @@ lilNotion is a fullstack, single-page web app that clones some of [Notion](https
 
 Users can create an account to hold their data. Visitors who don't want to make an account can log in as a demo user.
 
+![user-auth]()
+
 ### Pages and Blocks
 
-Each block and page have a unique identifier (UUID v4). Users can write seamlessly with different data types, drag-and-drop blocks to rearrange information, and share documents with others. A block can be turned into another type of block using the `⌘` + `/` command or block menu. Changing the type of a block will affect how React renders that block.
+Each block and page have a unique identifier (UUID v4). Users can write seamlessly with different data types, drag-and-drop blocks to rearrange information, and share documents with others. 
+
+![pages]()
+
+### Dynamic Blocks 
+
+A block can be turned into another type of block using the `⌘` + `/` command or block menu. Changing the type of a block will affect how the appearance of that block.
+
+![blocks]()
+
 
 ## Future Features
 
 - Additional block types
 - Block nesting
 - Database collections
-- Comments

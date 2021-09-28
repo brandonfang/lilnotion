@@ -21,8 +21,8 @@ class Page extends React.Component {
 
   componentDidMount() {
     this.props.fetchBlocks(this.state.pageId)
-      .then((blocks) => {
-        this.setState({ blocks: blocks[Object.keys(blocks)[0]] });
+      .then((res) => {
+        this.setState({ blocks: res.blocks[Object.keys(res.blocks)[0]] });
       });
   }
 
@@ -30,14 +30,13 @@ class Page extends React.Component {
     let newPageId = this.props.location.pathname.slice(3);
     if (this.state.pageId !== newPageId) {
       this.props.fetchBlocks(this.props.location.pathname.slice(3))
-        .then((blocks) => {
-          this.setState({ blocks: blocks, pageId: newPageId })
+        .then((res) => {
+          this.setState({ blocks: res.blocks[Object.keys(res.blocks)[0]], pageId: newPageId });
         });
     }
   }
 
   OnDragEnd(result) {
-    console.log(result);
     const { source, destination } = result;
 
     // if dropped outside the area or no movement
@@ -47,29 +46,21 @@ class Page extends React.Component {
     const blocks = this.state.blocks;
     const newBlocks = [...blocks];
     const removed = newBlocks.splice(source.index, 1);
-    newBlocks.splice(destination.index, 0, [removed]);
+    newBlocks.splice(destination.index, 0, ...removed);
 
-    this.setState({ blocks: newBlocks });
+    this.setState({ blocks: newBlocks }, () => {
+      // console.log(this.state.blocks)
+      this.props.updateBlock(newBlocks);
+    });
   }
 
   render() {
-    // if (this.state.blocks.length === 0 || !this.state.page) {
-    if (this.state.blocks.length === 0) {
+    if (this.state.blocks.length === 0 || Object.keys(this.props.pages).length == 0) {
       return null;
     }
 
     const { currentUser, blocks } = this.props;
     const currentPageBlocks = blocks[this.state.pageId];
-
-    // const blocksList = currentPageBlocks.map((block) => {
-    //   return <div key={block.id}>{block.properties.title}</div>;
-    // });
-    
-    // const blocksList = Object.keys(blocks).map((blockKey) => {
-    //   const block = blocks[blockKey];
-    //   return <div key={block.id}>{block.properties.title}</div>;
-    // });
-
     // const pageCover = this.state.page.coverUrl;
 
     return (
@@ -101,7 +92,7 @@ class Page extends React.Component {
           <div className="page-wrapper">
             <h1 className="page-title">{this.props.pages[this.state.pageId].properties.title}</h1>
 
-            <DragDropContext onDragStart onDragUpdate onDragEnd={this.OnDragEnd}>
+            <DragDropContext onDragEnd={this.OnDragEnd}>
               <div className="page-content">
 
                 <Droppable droppableId={this.state.pageId}>
@@ -112,11 +103,38 @@ class Page extends React.Component {
                       className="droppable-area"
                     >
                       {currentPageBlocks.map((block, index) => (
-                        <Block 
-                          key={block.id} 
-                          block={block} 
-                          index={index} 
-                        />
+
+                        <Draggable
+                          key={block.id}
+                          draggableId={block.id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              className="block" 
+                            >
+                              <div
+                                className="block-drag-handle"
+                                role="button"
+                                tabIndex="0"
+                                {...provided.dragHandleProps}
+                              >⋮⋮</div>
+
+                              <div className="block-content">
+                                {block.properties.title}
+                              </div>
+
+                            </div>
+                          )}
+                        </Draggable>
+
+                        // <Block 
+                        //   key={block.id} 
+                        //   block={block} 
+                        //   index={index} 
+                        // />
                       ))}
                       {provided.placeholder}
                     </div>

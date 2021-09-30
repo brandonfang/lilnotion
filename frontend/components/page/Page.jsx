@@ -29,7 +29,7 @@ class Page extends React.Component {
   componentDidUpdate(prevProps) {
     let newPageId = this.props.location.pathname.slice(3);
     if (this.state.pageId !== newPageId) {
-      this.props.fetchBlocks(this.props.location.pathname.slice(3))
+      this.props.fetchBlocks(newPageId)
         .then((res) => {
           this.setState({ blocks: res.blocks[Object.keys(res.blocks)[0]], pageId: newPageId });
         });
@@ -50,7 +50,9 @@ class Page extends React.Component {
 
     this.setState({ blocks: newBlocks }, () => {
       // console.log(this.state.blocks)
-      this.props.updateBlock(newBlocks);
+      // console.log(this.props);
+      console.log(newBlocks)
+      this.props.updateBlocks(this.props.location.pathname.slice(3), newBlocks);
     });
   }
 

@@ -34,11 +34,7 @@ export const fetchBlocks = (pageId) => (dispatch) => (
   APIUtil.fetchBlocks(pageId).then(
     (blocks) => dispatch(receiveBlocks(blocks)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
-    // (errors) => {
-      // dispatch(receiveErrors(errors.statusText));
-      // console.log(errors)
-    // }
-    )
+  )
 );
 
 export const createBlock = (block) => (dispatch) => (
@@ -59,6 +55,14 @@ export const updateBlock = (block) => (dispatch) => (
   APIUtil.updateBlock(block).then(
     (block) => dispatch(receiveBlock(block)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
+  )
+);
+
+export const updateBlocks = (pageId, blocks) => (dispatch) => (
+  APIUtil.updateBlock(pageId, blocks).then(
+    (blocks) => dispatch(receiveBlock(blocks)),
+    // (errors) => dispatch(receiveErrors(errors.responseJSON))
+    (errors) => console.log(errors)
   )
 );
 

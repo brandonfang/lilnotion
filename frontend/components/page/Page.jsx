@@ -49,10 +49,10 @@ class Page extends React.Component {
     newBlocks.splice(destination.index, 0, ...removed);
 
     this.setState({ blocks: newBlocks }, () => {
-      // console.log(this.state.blocks)
       // console.log(this.props);
-      console.log(newBlocks)
-      this.props.updateBlocks(this.props.location.pathname.slice(3), newBlocks);
+      // console.log(newBlocks)
+
+      // this.props.updatePage();
     });
   }
 

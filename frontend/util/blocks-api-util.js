@@ -27,13 +27,6 @@ export const updateBlock = (block) => (
     data: { block }
   })
 );
-
-export const updateBlocks = (pageId, blocks) =>
-  $.ajax({
-    url: `api/pages/${pageId}/blocks`,
-    method: 'PATCH',
-    data: { blocks },
-  });
   
 export const deleteBlock = (blockId) => (
   $.ajax({

@@ -13,7 +13,6 @@ import {
   fetchBlock,
   fetchBlocks,
   updateBlock,
-  updateBlocks,
   deleteBlock,
 } from '../../actions/block-actions';
 
@@ -34,7 +33,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchBlock: (blockId) => dispatch(fetchBlock(blockId)),
   fetchBlocks: (pageId) => dispatch(fetchBlocks(pageId)),
   updateBlock: (block) => dispatch(updateBlock(block)),
-  updateBlocks: (pageId, blocks) => dispatch(updateBlocks(pageId, blocks)),
   deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
 });
 

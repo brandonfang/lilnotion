@@ -58,14 +58,6 @@ export const updateBlock = (block) => (dispatch) => (
   )
 );
 
-export const updateBlocks = (pageId, blocks) => (dispatch) => (
-  APIUtil.updateBlock(pageId, blocks).then(
-    (blocks) => dispatch(receiveBlock(blocks)),
-    // (errors) => dispatch(receiveErrors(errors.responseJSON))
-    (errors) => console.log(errors)
-  )
-);
-
 export const deleteBlock = (blockId) => (dispatch) => (
   APIUtil.deleteBlock(blockId).then(
     () => dispatch(removeBlock(blockId)),

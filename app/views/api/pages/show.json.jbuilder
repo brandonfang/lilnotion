@@ -1,4 +1,4 @@
-json.extract! @page, :id, :user_id, :parent, :properties, :created_at, :updated_at
+json.extract! @page, :id, :user_id, :properties
 json.properties do
   json.title properties.title
 end

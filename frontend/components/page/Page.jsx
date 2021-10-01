@@ -106,37 +106,37 @@ class Page extends React.Component {
                     >
                       {currentPageBlocks.map((block, index) => (
 
-                        <Draggable
-                          key={block.id}
-                          draggableId={block.id}
-                          index={index}
-                        >
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              className="block" 
-                            >
-                              <div
-                                className="block-drag-handle"
-                                role="button"
-                                tabIndex="0"
-                                {...provided.dragHandleProps}
-                              >⋮⋮</div>
+                        // <Draggable
+                        //   key={block.id}
+                        //   draggableId={block.id}
+                        //   index={index}
+                        // >
+                        //   {(provided, snapshot) => (
+                        //     <div
+                        //       ref={provided.innerRef}
+                        //       {...provided.draggableProps}
+                        //       className="block" 
+                        //     >
+                        //       <div
+                        //         className="block-handle"
+                        //         role="button"
+                        //         tabIndex="0"
+                        //         {...provided.dragHandleProps}
+                        //       >⋮⋮</div>
 
-                              <div className="block-content">
-                                {block.properties.title}
-                              </div>
+                        //       <div className="block-content">
+                        //         {block.properties.title}
+                        //       </div>
 
-                            </div>
-                          )}
-                        </Draggable>
+                        //     </div>
+                        //   )}
+                        // </Draggable>
 
-                        // <Block 
-                        //   key={block.id} 
-                        //   block={block} 
-                        //   index={index} 
-                        // />
+                        <Block 
+                          key={block.id} 
+                          block={block} 
+                          index={index} 
+                        />
                       ))}
                       {provided.placeholder}
                     </div>

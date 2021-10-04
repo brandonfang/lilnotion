@@ -6,9 +6,7 @@ const blocksReducer = (state = {}, action) => {
     case RECEIVE_BLOCKS:
       return Object.assign({}, state, action.blocks);
     case RECEIVE_BLOCK:
-      // update one page's blocks
-      console.log(action)
-      return Object.assign({}, state, { [action.block.pageId]: action.block });
+      return Object.assign({}, state, { [action.block.id]: action.block });
     default:
       return state;
   }

@@ -1,11 +1,11 @@
 .block {
   width: 100%;
   margin: 1px 0;
-  background: white;
+  background: rgba(255, 255, 255, 0.3);
   position: relative;
 }
 
-.block-content {
+.block-body {
   padding: 3px 2px;
 }
 
@@ -18,28 +18,76 @@
 }
 
 // hover state
-
+.block:hover {
+}
 
 // focus state
-
+.block:focus {
+}
 
 // dragging state
-
-
-.heading1 {
-  font-size: 1.875em; //30px
-  font-weight: 600;
-  line-height: 1.3;
+.block.isDragging {
+  opacity: 0.5;
 }
 
-.heading2 {
-  font-size: 1.5em; //24px
+// ln = lilnotion
+.ln-h1 {
+  font-size: 1.875em; 
   font-weight: 600;
   line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 4px;
 }
 
-.heading3 {
-  font-size: 1.25em; //20px
+.ln-h2 {
+  font-size: 1.5em; 
   font-weight: 600;
   line-height: 1.3;
+  margin-top: 1.4em;
+  margin-bottom: 1px;
+}
+
+.ln-h3 {
+  font-size: 1.25em; 
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 1em;
+  margin-bottom: 1px;
+}
+
+.ln-text {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.ln-quote-wrapper {
+  margin-top: 4px;
+  margin-bottom: 4px;
+
+  border-left: 3px solid currentcolor;
+  padding-left: 14px;
+  padding-right: 14px;
+  width: 100%;
+}
+
+.ln-quote {
+  max-width: 100%;
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  caret-color: rgb(55, 53, 47);
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.ln-bulleted-list {
+  list-style-type: circle;
+}
+
+.ln-numbered-list {
+  list-style-type: decimal;
+}
+
+.ln-todo {
 }

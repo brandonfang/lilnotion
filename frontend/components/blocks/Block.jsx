@@ -5,6 +5,10 @@ import Text from './Text';
 import Heading1 from './Heading1';
 import Heading2 from './Heading2';
 import Heading3 from './Heading3';
+import Quote from './Quote';
+import BulletedList from './BulletedList';
+import NumberedList from './NumberedList';
+import ToDo from './ToDo';
 
 // turn into functional component if not using react-contenteditable
 class Block extends React.Component {
@@ -45,6 +49,18 @@ class Block extends React.Component {
         // blockBody = <Text block={this.props.block} />
         blockBody = <div><p>{this.props.block.properties.title}</p></div>
         break;
+      case 'quote':
+        blockBody = <Quote block={this.props.block} />
+        break;
+      case 'bulletedList':
+        blockBody = <BulletedList block={this.props.block} />
+        break;
+      case 'numberedList':
+        blockBody = <NumberedList block={this.props.block} />
+        break;
+      case 'todo':
+        blockBody = <ToDo block={this.props.block} />
+        break;
       // default:
       //   blockBody = <Text block={this.props.block} />;
       //   break;
@@ -70,6 +86,7 @@ class Block extends React.Component {
               {...provided.dragHandleProps}
             >⋮⋮</div>
             
+            
             {blockBody}
 
             {/* <ContentEditable
@@ -78,7 +95,7 @@ class Block extends React.Component {
               disabled={false}
               onChange={this.handleChange}
               tagName="div"
-              className="notranslate block-content"
+              className="notranslate block-body"
               placeholder="Type '/' for commands"
               properties={this.props.block.properties}
             /> */}

@@ -1,26 +1,20 @@
 import React from 'react'
 import { Draggable } from 'react-beautiful-dnd';
-import ContentEditable from 'react-contenteditable'
-import Text from './Text';
-import Heading1 from './Heading1';
-import Heading2 from './Heading2';
-import Heading3 from './Heading3';
-import Quote from './Quote';
-import BulletedList from './BulletedList';
-import NumberedList from './NumberedList';
-import ToDo from './ToDo';
+import Heading1Container from './Heading1Container';
+import Heading2Container from './Heading2Container';
+import Heading3Container from './Heading3Container';
+import QuoteContainer from './QuoteContainer';
+import BulletedListContainer from './BulletedListContainer';
+import NumberedListContainer from './NumberedListContainer';
+import TextContainer from './TextContainer';
+import ToDoContainer from './ToDoContainer';
 
-// turn into functional component if not using react-contenteditable
 class Block extends React.Component {
   constructor(props) {
     super(props);
     this.contentEditable = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.dragHandleClick = this.dragHandleClick.bind(this);
-    this.state = {
-      blockType: props.block.blockType,
-      html: props.block.properties.title,
-    };
   }
 
   handleChange(e) {
@@ -37,34 +31,31 @@ class Block extends React.Component {
     let blockBody;
     switch (blockType) {
       case 'h1':
-        blockBody = <Heading1 block={this.props.block} />
+        blockBody = <Heading1Container block={this.props.block} />
         break;
       case 'h2':
-        blockBody = <Heading2 block={this.props.block} />
+        blockBody = <Heading2Container block={this.props.block} />
         break;
       case 'h3':
-        blockBody = <Heading3 block={this.props.block} />
+        blockBody = <Heading3Container block={this.props.block} />
         break;
       case 'text':
-        blockBody = <Text 
-          block={this.props.block}
-          updateBlock={this.props.updateBlock}
-        />
+        blockBody = <TextContainer block={this.props.block} />
         break;
       case 'quote':
-        blockBody = <Quote block={this.props.block} />
+        blockBody = <QuoteContainer block={this.props.block} />
         break;
       case 'bulletedList':
-        blockBody = <BulletedList block={this.props.block} />
+        blockBody = <BulletedListContainer block={this.props.block} />
         break;
       case 'numberedList':
-        blockBody = <NumberedList block={this.props.block} />
+        blockBody = <NumberedListContainer block={this.props.block} />
         break;
       case 'todo':
-        blockBody = <ToDo block={this.props.block} />
+        blockBody = <ToDoContainer block={this.props.block} />
         break;
       default:
-        blockBody = <Text block={this.props.block} />;
+        blockBody = <TextContainer block={this.props.block} />;
         break;
     }
     
@@ -77,30 +68,17 @@ class Block extends React.Component {
           <div
             ref={provided.innerRef}
             {...provided.draggableProps}
-            // {...provided.dragHandleProps}
             className="block" 
           >
             <div
-              className="block-handle"
-              role="button"
-              tabIndex="0"
               onClick={this.dragHandleClick}
               {...provided.dragHandleProps}
+              className="block-handle"
+              role="button"
+              // tabIndex="0"
             >⋮⋮</div>
-            
-            
-            {blockBody}
 
-            {/* <ContentEditable
-              innerRef={this.contentEditable}
-              html={this.state.html}
-              disabled={false}
-              onChange={this.handleChange}
-              tagName="div"
-              className="notranslate block-body"
-              placeholder="Type '/' for commands"
-              properties={this.props.block.properties}
-            /> */}
+            {blockBody}
           </div>
         )}
       </Draggable>

@@ -30,38 +30,38 @@
   opacity: 0.5;
 }
 
-// ln = lilnotion
-.ln-h1 {
+// BLOCK STYLES
+.h1 {
   font-size: 1.875em; 
   font-weight: 600;
   line-height: 1.3;
-  margin-top: 2em;
+  // margin-top: 2em;
   margin-bottom: 4px;
 }
 
-.ln-h2 {
+.h2 {
   font-size: 1.5em; 
   font-weight: 600;
   line-height: 1.3;
-  margin-top: 1.4em;
+  // margin-top: 1.4em;
   margin-bottom: 1px;
 }
 
-.ln-h3 {
+.h3 {
   font-size: 1.25em; 
   font-weight: 600;
   line-height: 1.3;
-  margin-top: 1em;
+  // margin-top: 1em;
   margin-bottom: 1px;
 }
 
-.ln-text {
+.text {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5;
 }
 
-.ln-quote-wrapper {
+.quote-wrapper {
   margin-top: 4px;
   margin-bottom: 4px;
 
@@ -71,7 +71,7 @@
   width: 100%;
 }
 
-.ln-quote {
+.quote {
   max-width: 100%;
   width: 100%;
   white-space: pre-wrap;
@@ -81,13 +81,13 @@
   padding-right: 2px;
 }
 
-.ln-bulleted-list {
+.bulleted-list {
   list-style-type: circle;
 }
 
-.ln-numbered-list {
+.numbered-list {
   list-style-type: decimal;
 }
 
-.ln-todo {
+.todo {
 }

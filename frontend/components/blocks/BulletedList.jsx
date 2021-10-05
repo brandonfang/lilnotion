@@ -2,7 +2,7 @@ import React from 'react';
 
 const BulletedList = (props) => {
   return (
-    <div className="ln-bulleted-list">{props.block.properties.title}</div>
+    <div className="bulleted-list">{props.block.properties.title}</div>
   );
 }
 

@@ -5,9 +5,9 @@ import PageContainer from '../page/PageContainer';
 // import ModalWrapper from '../modal/ModalWrapper';
 
 class Editor extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+  }
   
   componentDidMount() {
     this.props.fetchPages(this.props.currentUser.id)

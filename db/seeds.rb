@@ -149,7 +149,7 @@ block_8 = Block.create!({
   page_id: page_3.id,
   block_type: 'h1',
   properties: {
-    title: 'One one one one one one.'
+    title: 'Heading One'
   }
 })
 
@@ -157,7 +157,7 @@ block_9 = Block.create!({
   page_id: page_3.id,
   block_type: 'text',
   properties: {
-    title: 'Two two two two two two.'
+    title: 'Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem.'
   }
 })
 
@@ -165,7 +165,7 @@ block_10 = Block.create!({
   page_id: page_3.id,
   block_type: 'h2',
   properties: {
-    title: 'Three three three three three three.'
+    title: 'Heading Two'
   }
 })
 
@@ -173,7 +173,23 @@ block_11 = Block.create!({
   page_id: page_3.id,
   block_type: 'text',
   properties: {
-    title: 'Four four four four four four.'
+    title: 'Ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum.'
+  }
+})
+
+block_12 = Block.create!({
+  page_id: page_3.id,
+  block_type: 'h3',
+  properties: {
+    title: 'Heading Three'
+  }
+})
+
+block_11 = Block.create!({
+  page_id: page_3.id,
+  block_type: 'text',
+  properties: {
+    title: 'Dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor.'
   }
 })
 

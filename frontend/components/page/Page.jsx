@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PageHeader from './PageHeader';
-import Block from '../blocks/Block';
+import BlockContainer from '../blocks/BlockContainer';
 
 class Page extends React.Component {
   constructor(props) {
@@ -131,8 +131,7 @@ class Page extends React.Component {
                         //     </div>
                         //   )}
                         // </Draggable>
-
-                        <Block 
+                        <BlockContainer 
                           key={block.id} 
                           block={block} 
                           index={index} 

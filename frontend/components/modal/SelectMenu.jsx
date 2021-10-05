@@ -1,4 +1,5 @@
 import React from 'react';
+import matchSorter from 'match-sorter';
 
 
 const SelectMenu = () => {

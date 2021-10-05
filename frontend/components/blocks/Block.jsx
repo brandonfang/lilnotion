@@ -14,13 +14,13 @@ import ToDo from './ToDo';
 class Block extends React.Component {
   constructor(props) {
     super(props);
+    this.contentEditable = React.createRef();
+    this.handleChange = this.handleChange.bind(this);
+    this.dragHandleClick = this.dragHandleClick.bind(this);
     this.state = {
       blockType: props.block.blockType,
       html: props.block.properties.title,
     };
-    this.contentEditable = React.createRef();
-    this.handleChange = this.handleChange.bind(this);
-    this.dragHandleClick = this.dragHandleClick.bind(this);
   }
 
   handleChange(e) {
@@ -42,12 +42,14 @@ class Block extends React.Component {
       case 'h2':
         blockBody = <Heading2 block={this.props.block} />
         break;
-      case 'h2':
+      case 'h3':
         blockBody = <Heading3 block={this.props.block} />
         break;
       case 'text':
-        // blockBody = <Text block={this.props.block} />
-        blockBody = <div><p>{this.props.block.properties.title}</p></div>
+        blockBody = <Text 
+          block={this.props.block}
+          updateBlock={this.props.updateBlock}
+        />
         break;
       case 'quote':
         blockBody = <Quote block={this.props.block} />
@@ -61,9 +63,9 @@ class Block extends React.Component {
       case 'todo':
         blockBody = <ToDo block={this.props.block} />
         break;
-      // default:
-      //   blockBody = <Text block={this.props.block} />;
-      //   break;
+      default:
+        blockBody = <Text block={this.props.block} />;
+        break;
     }
     
     return (

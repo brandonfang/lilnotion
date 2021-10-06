@@ -20,13 +20,14 @@ export const fetchBlock = (blockId) => (
   })
 );
 
-export const updateBlock = (block) => (
-  $.ajax({
+export const updateBlock = (block) => {
+  console.log(block);
+  return $.ajax({
     url: `/api/blocks/${block.id}`,
     method: 'PATCH',
     data: { block }
   })
-);
+};
   
 export const deleteBlock = (blockId) => (
   $.ajax({

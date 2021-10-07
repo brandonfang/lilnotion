@@ -29,8 +29,6 @@ class Text extends React.Component {
   }
 
   render() {
-    // console.log(this.props.block);
-
     return (
       <div className="block-body">
         <ContentEditable

@@ -1,5 +1,5 @@
 json.set! @page_id do
   json.array! (@blocks) do |block|
-    json.extract! block, :id, :page_id, :block_type, :properties, :format, :content
+    json.extract! block, :id, :page_id, :block_type, :properties
   end
 end

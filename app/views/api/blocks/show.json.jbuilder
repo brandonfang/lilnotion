@@ -1,1 +1,1 @@
-json.extract! @block, :id, :page_id, :object, :block_type, :properties, :format, :content
+json.extract! @block, :id, :page_id, :block_type, :properties

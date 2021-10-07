@@ -1,5 +1,6 @@
 import React from 'react';
-import ContentEditable from 'react-contenteditable'
+import ContentEditable from 'react-contenteditable';
+import debounce from './debounce';
 
 class Text extends React.Component {
   constructor(props) {
@@ -9,45 +10,33 @@ class Text extends React.Component {
     this.state = {
       html: this.props.block.properties.title,
       placeholder: '',
-      isTyping: false,
     };
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidMount() {
   }
 
-  debounce(func, wait, immediate) {
-    var timeout;
-    return function () {
-      var context = this,
-        args = arguments;
-      var later = function () {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
+  componentDidUpdate(prevProps, prevState) {
+    const htmlChanged = this.props.html !== this.state.html;
+    if (htmlChanged) {
+      const newBlock = Object.assign(this.props.block, { properties: { title: this.state.html }});
+      this.props.updateBlock(newBlock);
+    }
   }
 
   handleChange(e) {
-    this.props.updateBlock({
-      ...this.props.block,
-      properties: { title: this.state.html }
-    });
+    this.setState({ html: e.target.value });
   }
 
   render() {
+    // console.log(this.props.block);
+
     return (
       <div className="block-body">
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.state.html}
-          onChange={this.debounce(this.handleChange, 500)}
+          onChange={debounce(this.handleChange, 1000)}
           tagName="p"
           className="text"
           placeholder="Type '/' for commands"

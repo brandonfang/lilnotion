@@ -1,4 +1,6 @@
 import React from 'react';
+import ContentEditable from 'react-contenteditable';
+import debounce from './debounce';
 
 const Heading3 = (props) => {
   return (

@@ -12,9 +12,15 @@
 .block-handle {
   position: absolute;
   top: 3px;
-  left: -16px;
-  letter-spacing: -0.1em;
+  left: -20px;
+  padding: 0 5px;
+  border-radius: 3px;
+  letter-spacing: -0.07em;
   font-weight: 700;
+
+  &:hover {
+    background:rgba(190, 190, 190, 0.3)
+  }
 }
 
 // hover state

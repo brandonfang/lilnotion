@@ -8,6 +8,7 @@ import BulletedListContainer from './BulletedListContainer';
 import NumberedListContainer from './NumberedListContainer';
 import ParagraphContainer from './ParagraphContainer';
 import ToDoContainer from './ToDoContainer';
+import BlockSelectMenu from '../menus/BlockSelectMenu';
 
 class Block extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class Block extends React.Component {
     this.contentEditable = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.dragHandleClick = this.dragHandleClick.bind(this);
+    this.openBlockSelectMenu = this.openBlockSelectMenu.bind(this);
+    this.closeBlockSelectMenu = this.closeBlockSelectMenu.bind(this);
   }
 
   handleChange(e) {
@@ -23,24 +26,18 @@ class Block extends React.Component {
 
   dragHandleClick(e) {
     const dragHandle = e.target;
-    // open menu
+    this.openBlockSelectMenu();
   }
 
-  debounce(func, wait, immediate) {
-    var timeout;
-    return function () {
-      var context = this,
-        args = arguments;
-      var later = function () {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
+  openBlockSelectMenu() {
+    console.log('open menu')
   }
+
+  closeBlockSelectMenu() {
+    console.log('close menu')
+  }
+
+  componentWillUnmount() {}
 
   render() {
     const blockType = this.props.block.blockType;
@@ -93,6 +90,8 @@ class Block extends React.Component {
               role="button"
               // tabIndex="0"
             >⋮⋮</div>
+
+            <BlockSelectMenu />
 
             {blockBody}
           </div>

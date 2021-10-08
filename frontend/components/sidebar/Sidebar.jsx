@@ -15,7 +15,8 @@ class Sidebar extends React.Component {
     // default / placeholder page 
     this.props.createPage({
       userId: this.props.currentUser.id,
-      title: 'Title of a New Page'
+      title: 'Untitled',
+      imageUrl: '',
     }).then((page) => {
       // this.props.history.push(`/p/${page.id}`);
     })

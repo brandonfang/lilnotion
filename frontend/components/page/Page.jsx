@@ -7,6 +7,7 @@ import BlockContainer from '../blocks/BlockContainer';
 class Page extends React.Component {
   constructor(props) {
     super(props);
+    this.OnDragEnd = this.OnDragEnd.bind(this);    
     this.state = {
       pages: this.props.pages,
       pageId: this.props.pageId,
@@ -16,24 +17,23 @@ class Page extends React.Component {
       imageUrl: '',
       blocks: [],
     };
-    this.OnDragEnd = this.OnDragEnd.bind(this);
   }
 
   componentDidMount() {
+    // this.props.fetchPage(this.state.pageId)
+    //   .then((page) => {
+    //     // console.log(page)
+    //     // this.setState({
+    //     //   page: page,
+    //     //   title: page.title
+    //     // })
+    //   });
     this.props.fetchBlocks(this.state.pageId)
       .then((res) => {
         this.setState({ 
           blocks: res.blocks,
         });
       });
-    // if (this.props.page && Object.keys(this.props.page).length > 0) {
-    //   console.log('test')
-    //   this.setState({
-    //     title: this.props.page.title,
-    //     blockIds: this.props.page.blockIds,
-    //     imageUrl: this.props.page.imageUrl,
-    //   })
-    // }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -56,35 +56,32 @@ class Page extends React.Component {
     if (!destination || source.index === destination.index) return;
 
     // reorder blocks (splice >1 if implementing multi-drag)
-    const blocks = this.state.blocks;
-    const newBlocks = [...blocks];
-    const removed = newBlocks.splice(source.index, 1);
-    newBlocks.splice(destination.index, 0, ...removed);
+    const blockIds = this.state.blockIds;
+    const newBlockIds = [...blockIds];
+    const removed = newBlockIds.splice(source.index, 1);
+    newBlockIds.splice(destination.index, 0, ...removed);
 
-    this.setState({ blocks: newBlocks }, () => {
-      // console.log(this.props);
-      // console.log(newBlocks)
-
-      // this.props.updatePage();
+    this.setState({ blockIds: newBlockIds }, () => {
+      // const newPage = Object.assign(this.state.page, { blockIds: newBlockIds});
+      // this.props.updatePage(newPage);
     });
   }
 
   render() {
-    if (this.state.blocks.length === 0 || !this.props.page || Object.keys(this.props.page).length === 0) {
-      return null;
-    }
+    // console.log(this.props)
+    if (!this.props.blocks || !this.props.pages || !this.props.page) return null;
+    if (this.state.blocks.length === 0) return null;
+    if (Object.keys(this.props.page).length === 0) return null;
     
-    // const currentPageBlocks = this.props.blocks[this.state.pageId];
-    const pageCover = this.state.imageUrl;
-
     const orderedBlocks = []
-
-    // for (this.state.page.) {
-    //   result.push()
-    // }
-    console.log(this.props);
+    const blockIds = this.props.page.blockIds;
+    for (let i = 0; i < blockIds.length; i++) {
+      orderedBlocks.push(this.state.blocks[blockIds[i]])
+    }
+    const pageCover = this.state.imageUrl;
+    
+    // console.log(orderedBlocks);
     console.log(this.state);
-
     return (
       <div className="page">
         <div className="topbar-wrapper">
@@ -107,7 +104,7 @@ class Page extends React.Component {
         <div className="page-scroller">
           <div className="page-header-wrapper">
             <div className="page-header">
-              {pageCover ? <img src={this.state.page.imageUrl} className="page-cover" /> : null}
+              {/* {pageCover ? <img src={this.state.page.imageUrl} className="page-cover" /> : null} */}
             </div>
           </div>
 
@@ -124,13 +121,13 @@ class Page extends React.Component {
                       {...provided.droppableProps}
                       className="droppable-area"
                     >
-                      {/* {currentPageBlocks.map((block, index) => (
+                      {orderedBlocks.map((block, index) => (
                         <BlockContainer 
                           key={block.id} 
                           block={block} 
                           index={index} 
                         />
-                      ))} */}
+                      ))}
                       {provided.placeholder}
                     </div>
                   )}

@@ -59,7 +59,8 @@ page_1 = Page.create!(
   user_id: user_1.id,
   object: 'page',
   properties: {
-    title: 'This is a page'
+    title: 'This is a page',
+    cover_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png'
   },
 )
 
@@ -67,7 +68,8 @@ page_2 = Page.create!(
   user_id: user_1.id,
   object: 'page',
   properties: {
-    title: 'This is a second page'
+    title: 'This is a second page',
+    cover_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/gradient-8.png '
   },
 )
 
@@ -75,7 +77,8 @@ page_3 = Page.create!(
   user_id: user_1.id,
   object: 'page',
   properties: {
-    title: 'This is a third page'
+    title: 'This is a third page',
+    cover_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/nasa-the-blue-marble.jpeg'
   },
 )
 

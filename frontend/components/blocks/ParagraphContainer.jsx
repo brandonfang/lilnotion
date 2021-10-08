@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchBlock, createBlock, updateBlock, deleteBlock } from '../../actions/block-actions';
-import Text from './Text';
+import Paragraph from './Paragraph';
 
 const mapStateToProps = (state) => ({});
 
@@ -11,4 +11,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Text);
+export default connect(mapStateToProps, mapDispatchToProps)(Paragraph);

@@ -6,7 +6,7 @@ import Heading3Container from './Heading3Container';
 import QuoteContainer from './QuoteContainer';
 import BulletedListContainer from './BulletedListContainer';
 import NumberedListContainer from './NumberedListContainer';
-import TextContainer from './TextContainer';
+import ParagraphContainer from './ParagraphContainer';
 import ToDoContainer from './ToDoContainer';
 
 class Block extends React.Component {
@@ -55,8 +55,8 @@ class Block extends React.Component {
       case 'h3':
         blockBody = <Heading3Container block={this.props.block} />
         break;
-      case 'text':
-        blockBody = <TextContainer block={this.props.block} />
+      case 'paragraph':
+        blockBody = <ParagraphContainer block={this.props.block} />
         break;
       case 'quote':
         blockBody = <QuoteContainer block={this.props.block} />
@@ -71,7 +71,7 @@ class Block extends React.Component {
         blockBody = <ToDoContainer block={this.props.block} />
         break;
       default:
-        blockBody = <TextContainer block={this.props.block} />;
+        blockBody = <ParagraphContainer block={this.props.block} />;
         break;
     }
     

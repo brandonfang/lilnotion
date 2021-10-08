@@ -2,7 +2,7 @@ import React from 'react';
 import ContentEditable from 'react-contenteditable';
 import debounce from './debounce';
 
-class Text extends React.Component {
+class Paragraph extends React.Component {
   constructor(props) {
     super(props);
     this.contentEditable = React.createRef();
@@ -45,4 +45,4 @@ class Text extends React.Component {
   }
 }
 
-export default Text;
+export default Paragraph;

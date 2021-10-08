@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_194208) do
+ActiveRecord::Schema.define(version: 2021_10_07_203244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -38,32 +38,31 @@ ActiveRecord::Schema.define(version: 2021_08_30_194208) do
   end
 
   create_table "blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "object", default: "block", null: false
-    t.string "block_type", null: false
-    t.json "properties", default: {}, null: false
+    t.string "block_type", default: "paragraph", null: false
     t.json "format", default: {}
-    t.uuid "content", default: [], array: true
-    t.uuid "parent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "page_id", null: false
+    t.string "text", default: ""
+    t.string "image_url", default: ""
+    t.integer "list_index", default: 1
+    t.boolean "checked", default: false
+    t.boolean "expanded", default: true
+    t.string "link_page_id", default: ""
+    t.string "icon", default: ""
     t.index ["block_type"], name: "index_blocks_on_block_type"
-    t.index ["content"], name: "index_blocks_on_content"
-    t.index ["object"], name: "index_blocks_on_object"
     t.index ["page_id"], name: "index_blocks_on_page_id"
-    t.index ["parent"], name: "index_blocks_on_parent"
   end
 
   create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "object", default: "page", null: false
-    t.json "parent", default: {}, null: false
-    t.json "properties", default: {}
-    t.json "children", default: [], array: true
-    t.boolean "archived", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
-    t.index ["object"], name: "index_pages_on_object"
+    t.string "title", default: ""
+    t.string "icon", default: ""
+    t.string "image_url", default: ""
+    t.json "style", default: {}
+    t.string "block_ids", default: [], array: true
     t.index ["user_id"], name: "index_pages_on_user_id"
   end
 

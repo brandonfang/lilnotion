@@ -14,7 +14,7 @@ class Page extends React.Component {
       page: this.props.pages[pageId],
       blocks: [],
       // title,
-      // cover,
+      // coverUrl,
     };
     this.OnDragEnd = this.OnDragEnd.bind(this);
   }
@@ -63,7 +63,7 @@ class Page extends React.Component {
 
     const { currentUser, blocks } = this.props;
     const currentPageBlocks = blocks[this.state.pageId];
-    // const pageCover = this.state.page.coverUrl;
+    // const pageCover = this.state.page.properties.coverUrl;
 
     return (
       <div className="page">
@@ -87,7 +87,7 @@ class Page extends React.Component {
         <div className="page-scroller">
           <div className="page-header-wrapper">
             <div className="page-header">
-              {/* {pageCover ? <img src={this.state.page.coverUrl} className="page-cover" /> : null} */}
+              {/* {pageCover ? <img src={this.state.page.properties.coverUrl} className="page-cover" /> : null} */}
             </div>
           </div>
 

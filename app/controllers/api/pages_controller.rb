@@ -49,6 +49,6 @@ class Api::PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:id, :user_id, :properties, :object, :parent, :children, :archived, :created_at, :updated_at)
+    params.require(:page).permit(:id, :user_id, { properties: [:title, :cover_url]}, :object, :parent, :children, :archived, :created_at, :updated_at)
   end
 end

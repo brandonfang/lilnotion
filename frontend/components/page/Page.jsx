@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import PageHeader from './PageHeader';
 import BlockContainer from '../blocks/BlockContainer';
+import PageHeader from './PageHeader';
+import MediaMenuContainer from '../menus/MediaMenuContainer';
 
 class Page extends React.Component {
   constructor(props) {
@@ -107,6 +108,8 @@ class Page extends React.Component {
               {/* {pageCover ? <img src={this.state.page.imageUrl} className="page-cover" /> : null} */}
             </div>
           </div>
+
+          <PageHeader />
 
           <div className="page-wrapper">
             <h1 className="page-title">{this.props.pages[this.state.pageId].title}</h1>

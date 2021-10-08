@@ -1,15 +1,21 @@
 import React from 'react'
 import { Draggable } from 'react-beautiful-dnd';
+
 import Heading1Container from './Heading1Container';
 import Heading2Container from './Heading2Container';
 import Heading3Container from './Heading3Container';
 import QuoteContainer from './QuoteContainer';
+import CalloutContainer from './CalloutContainer';
 import BulletedListContainer from './BulletedListContainer';
 import NumberedListContainer from './NumberedListContainer';
 import ParagraphContainer from './ParagraphContainer';
 import ToDoContainer from './ToDoContainer';
-import BlockSelectMenu from '../menus/BlockSelectMenu';
+import ToggleContainer from './ToggleContainer';
+import DividerContainer from './DividerContainer';
 
+import BlockSelectMenuContainer from '../menus/BlockSelectMenuContainer';
+
+// turn blocks into functional components if not using react-contenteditable
 class Block extends React.Component {
   constructor(props) {
     super(props);
@@ -58,6 +64,9 @@ class Block extends React.Component {
       case 'quote':
         blockBody = <QuoteContainer block={this.props.block} />
         break;
+      case 'callout':
+        blockBody = <CalloutContainer block={this.props.block} />
+        break;
       case 'bulletedList':
         blockBody = <BulletedListContainer block={this.props.block} />
         break;
@@ -66,6 +75,12 @@ class Block extends React.Component {
         break;
       case 'todo':
         blockBody = <ToDoContainer block={this.props.block} />
+        break;
+      case 'toggle':
+        blockBody = <ToggleContainer block={this.props.block} />
+        break;
+      case 'divider':
+        blockBody = <DividerContainer block={this.props.block} />
         break;
       default:
         blockBody = <ParagraphContainer block={this.props.block} />;
@@ -91,7 +106,7 @@ class Block extends React.Component {
               // tabIndex="0"
             >⋮⋮</div>
 
-            <BlockSelectMenu />
+            <BlockSelectMenuContainer />
 
             {blockBody}
           </div>

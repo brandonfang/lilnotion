@@ -19,8 +19,8 @@ class Api::PagesController < ApplicationController
     @page = Page.find_by(id: params[:id])
     if @page
       render :show
-    # else 
-    #   render json: {:error => "Not-found"}.to_json, status: 404
+    else 
+      render json: {:error => "Not-found"}.to_json, status: 404
     end
   end
   

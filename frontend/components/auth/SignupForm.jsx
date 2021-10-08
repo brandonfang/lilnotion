@@ -22,7 +22,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then((res) => console.log(res));
+    this.props.processForm(user);
   }
 
   loginDemo(e) {

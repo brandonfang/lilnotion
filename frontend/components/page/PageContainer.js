@@ -20,6 +20,8 @@ const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
   currentUser: state.entities.users[state.session.currentUserId],
   pages: state.entities.pages,
+  pageId: ownProps.location.pathname.slice(3),
+  page: state.entities.pages[ownProps.location.pathname.slice(3)],
   blocks: state.entities.blocks,
 });
 

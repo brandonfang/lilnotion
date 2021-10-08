@@ -53,10 +53,8 @@ export const fetchBlock = (blockId) => (dispatch) => (
 
 export const updateBlock = (block) => (dispatch) => (
   APIUtil.updateBlock(block).then(
-    // (block) => console.log(block),
     (block) => dispatch(receiveBlock(block)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
-    // (errors) => console.log(errors)
   )
 );
 

@@ -11,20 +11,12 @@ class Sidebar extends React.Component {
     this.newPage = this.newPage.bind(this);
   }
 
-  componentDidMount() {
-    // this.props.fetchPages(this.props.currentUser.id);
-  }
-
   newPage() {
-    console.log(this.props);
-
-    // placeholder page 
-    // nested object has problem
+    // default / placeholder page 
     this.props.createPage({
       userId: this.props.currentUser.id,
       title: 'Title of a New Page'
     }).then((page) => {
-      console.log("sup", page);
       // this.props.history.push(`/p/${page.id}`);
     })
   }

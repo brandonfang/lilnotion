@@ -22,7 +22,6 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-    // this.props.history.push(`/`);
   }
 
   loginDemo(e) {

@@ -7,33 +7,44 @@ import BlockContainer from '../blocks/BlockContainer';
 class Page extends React.Component {
   constructor(props) {
     super(props);
-    let pageId = this.props.location.pathname.slice(3);
     this.state = {
-      pageId: pageId,
       pages: this.props.pages,
-      page: this.props.pages[pageId],
+      pageId: this.props.pageId,
+      page: this.props.page,
+      title: '',
+      blockIds: [],
+      imageUrl: '',
       blocks: [],
-      // blockIds: []
-      // title: this.props.page.title
-      // coverUrl,
     };
     this.OnDragEnd = this.OnDragEnd.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ blockIds: this.props.p})
     this.props.fetchBlocks(this.state.pageId)
       .then((res) => {
-        this.setState({ blocks: res.blocks });
+        this.setState({ 
+          blocks: res.blocks,
+        });
       });
+    // if (this.props.page && Object.keys(this.props.page).length > 0) {
+    //   console.log('test')
+    //   this.setState({
+    //     title: this.props.page.title,
+    //     blockIds: this.props.page.blockIds,
+    //     imageUrl: this.props.page.imageUrl,
+    //   })
+    // }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     let newPageId = this.props.location.pathname.slice(3);
     if (this.state.pageId !== newPageId) {
       this.props.fetchBlocks(newPageId)
         .then((res) => {
-          this.setState({ blocks: res.blocks[Object.keys(res.blocks)[0]], pageId: newPageId });
+          this.setState({ 
+            blocks: res.blocks, 
+            pageId: newPageId 
+          });
         });
     }
   }
@@ -59,17 +70,20 @@ class Page extends React.Component {
   }
 
   render() {
-    if (this.state.blocks.length === 0 || Object.keys(this.props.pages).length == 0) {
+    if (this.state.blocks.length === 0 || !this.props.page || Object.keys(this.props.page).length === 0) {
       return null;
     }
-
+    
     // const currentPageBlocks = this.props.blocks[this.state.pageId];
-    // const pageCover = this.state.page.imageUrl;
-    const result = []
+    const pageCover = this.state.imageUrl;
+
+    const orderedBlocks = []
 
     // for (this.state.page.) {
     //   result.push()
     // }
+    console.log(this.props);
+    console.log(this.state);
 
     return (
       <div className="page">
@@ -93,7 +107,7 @@ class Page extends React.Component {
         <div className="page-scroller">
           <div className="page-header-wrapper">
             <div className="page-header">
-              {/* {pageCover ? <img src={this.state.page.imageUrl} className="page-cover" /> : null} */}
+              {pageCover ? <img src={this.state.page.imageUrl} className="page-cover" /> : null}
             </div>
           </div>
 

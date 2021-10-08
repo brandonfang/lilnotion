@@ -3,14 +3,14 @@
 # Table name: pages
 #
 #  id         :uuid             not null, primary key
-#  object     :string           default("page"), not null
-#  parent     :json             not null
-#  properties :json
-#  children   :json             is an Array
-#  archived   :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :uuid
+#  user_id    :uuid             not null
+#  title      :string           default("")
+#  icon       :string           default("")
+#  image_url  :string           default("")
+#  style      :json
+#  block_ids  :string           default([]), is an Array
 #
 
 # This model initially had no columns defined. If you add columns to the

@@ -2,11 +2,7 @@ class Api::PagesController < ApplicationController
 
   def index 
     @pages = current_user.pages
-    # if @pages
-      render :index
-    # else 
-    #   render json: @pages.errors.full_messages, status: 422
-    # end
+    render :index
   end
 
   def create
@@ -49,6 +45,6 @@ class Api::PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:id, :user_id, { properties: [:title, :cover_url]}, :object, :parent, :children, :archived, :created_at, :updated_at)
+    params.require(:page).permit(:id, :user_id, :title, :block_ids, :image_url, :icon, :style, :created_at, :updated_at)
   end
 end

@@ -8,7 +8,7 @@ class NumberedList extends React.Component {
     this.contentEditable = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      html: this.props.block.properties.title,
+      html: this.props.block.text,
       placeholder: '',
     };
   }
@@ -18,7 +18,7 @@ class NumberedList extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const htmlChanged = this.props.html !== this.state.html;
     if (htmlChanged) {
-      const newBlock = Object.assign(this.props.block, { properties: { title: this.state.html } });
+      const newBlock = Object.assign(this.props.block, { text: this.state.html });
       this.props.updateBlock(newBlock);
     }
   }
@@ -37,7 +37,6 @@ class NumberedList extends React.Component {
           tagName="div"
           className="numbered-list"
           placeholder="Type '/' for commands"
-          properties={this.props.block.properties}
         />
       </div>
     );

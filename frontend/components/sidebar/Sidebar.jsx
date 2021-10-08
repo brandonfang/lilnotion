@@ -22,10 +22,7 @@ class Sidebar extends React.Component {
     // nested object has problem
     this.props.createPage({
       userId: this.props.currentUser.id,
-      properties: {
-        title: 'Title of a New Page'
-      },
-      object: 'page',
+      title: 'Title of a New Page'
     }).then((page) => {
       console.log("sup", page);
       // this.props.history.push(`/p/${page.id}`);
@@ -44,7 +41,7 @@ class Sidebar extends React.Component {
         <div className="outliner-item" key={page.id} onClick={() => this.props.history.push(`/p/${page.id}`)}>
           <div className="page-block">
             <FiFileText className="sidebar-icon" />
-            <div className="page-block-title">{page.properties.title}</div>
+            <div className="page-block-title">{page.title}</div>
           </div>
         </div>
       );

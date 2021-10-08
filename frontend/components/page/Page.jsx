@@ -13,7 +13,7 @@ class Page extends React.Component {
       pages: this.props.pages,
       page: this.props.pages[pageId],
       blocks: [],
-      // blockIds:
+      // blockIds: []
       // title: this.props.page.title
       // coverUrl,
     };
@@ -21,9 +21,10 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({ blockIds: this.props.p})
     this.props.fetchBlocks(this.state.pageId)
       .then((res) => {
-        this.setState({ blocks: res.blocks[Object.keys(res.blocks)[0]] });
+        this.setState({ blocks: res.blocks });
       });
   }
 
@@ -64,6 +65,11 @@ class Page extends React.Component {
 
     // const currentPageBlocks = this.props.blocks[this.state.pageId];
     // const pageCover = this.state.page.imageUrl;
+    const result = []
+
+    // for (this.state.page.) {
+    //   result.push()
+    // }
 
     return (
       <div className="page">

@@ -181,6 +181,3 @@ page_1.block_ids = [
   block13.id,
   block14.id,
 ]
-
-
-

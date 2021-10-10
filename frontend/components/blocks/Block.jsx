@@ -12,6 +12,7 @@ import ParagraphContainer from './ParagraphContainer';
 import ToDoContainer from './ToDoContainer';
 import ToggleContainer from './ToggleContainer';
 import DividerContainer from './DividerContainer';
+import ImageContainer from './ImageContainer';
 
 import BlockSelectMenuContainer from '../menus/BlockSelectMenuContainer';
 
@@ -81,6 +82,9 @@ class Block extends React.Component {
         break;
       case 'divider':
         blockBody = <DividerContainer block={this.props.block} />
+        break;
+      case 'image':
+        blockBody = <Image block={this.props.block} />
         break;
       default:
         blockBody = <ParagraphContainer block={this.props.block} />;

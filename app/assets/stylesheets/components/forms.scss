@@ -98,54 +98,45 @@ input::placeholder {
   margin-bottom: 10px;
 }
 
-.domain-prefix {
-  color: $medium-light-gray;
-}
+// [type="file"] {
+//   border: 0;
+//   clip: rect(0, 0, 0, 0);
+//   height: 1px;
+//   overflow: hidden;
+//   margin: 0;
+//   padding: 0;
+//   position: absolute !important;
+//   white-space: nowrap;
+//   width: 1px;
 
-.input-domain {
-  margin: 0;
-  margin-left: 5px;
-}
+//   + label {
+//     // File upload button styles
+//     width: 100%;
+//     display: block;
+//     // height: 32px;
+//     padding: 8px 12px;
+//     background: $blue-300;
+//     border-radius: 3px;
+//     border: 1px solid $blue-500;
+//     color: white;
+//     cursor: pointer;
+//     margin-top: 3px;
+//     margin-bottom: 10px;
+//     transition: all 0.3s;
+//     text-align: center;
+//   }
 
-[type="file"] {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  position: absolute !important;
-  white-space: nowrap;
-  width: 1px;
+//   &:focus + label,
+//   + label:hover {
+//     // File upload hover state button styles
+//     background: $blue-700;
+//   }
 
-  + label {
-    // File upload button styles
-    width: 100%;
-    display: block;
-    // height: 32px;
-    padding: 8px 12px;
-    background: $blue-300;
-    border-radius: 3px;
-    border: 1px solid $blue-500;
-    color: white;
-    cursor: pointer;
-    margin-top: 3px;
-    margin-bottom: 10px;
-    transition: all 0.3s;
-    text-align: center;
-  }
-
-  &:focus + label,
-  + label:hover {
-    // File upload hover state button styles
-    background: $blue-700;
-  }
-
-  &:focus + label {
-    // File upload focus state button styles
-    background: $blue-700;
-  }
-}
+//   &:focus + label {
+//     // File upload focus state button styles
+//     background: $blue-700;
+//   }
+// }
 
 
 

@@ -8,7 +8,8 @@ import MediaMenuContainer from '../menus/MediaMenuContainer';
 class Page extends React.Component {
   constructor(props) {
     super(props);
-    this.OnDragEnd = this.OnDragEnd.bind(this);    
+    this.OnDragEnd = this.OnDragEnd.bind(this);
+    this.handleImageUpload = this.handleImageUpload.bind(this);
     this.state = {
       pages: this.props.pages,
       pageId: this.props.pageId,
@@ -21,14 +22,24 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchPage(this.state.pageId)
-    //   .then((page) => {
-    //     // console.log(page)
-    //     // this.setState({
-    //     //   page: page,
-    //     //   title: page.title
-    //     // })
-    //   });
+    if (!this.props.page || Object.keys(this.props.page).length === 0) {
+      this.props.fetchPage(this.state.pageId).then((res) => {
+        // console.log(page)
+        this.setState({
+          page: res.page,
+          title: res.page.title,
+          imageUrl: res.page.imageUrl,
+          blockIds: res.page.blockIds,
+        })
+      });
+    } else {
+      this.setState({
+        page: this.props.page,
+        title: this.props.page.title,
+        imageUrl: this.props.page.imageUrl,
+        blockIds: this.props.page.blockIds
+      });
+    }
     this.props.fetchBlocks(this.state.pageId)
       .then((res) => {
         this.setState({ 
@@ -39,14 +50,24 @@ class Page extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     let newPageId = this.props.location.pathname.slice(3);
-    if (this.state.pageId !== newPageId) {
-      this.props.fetchBlocks(newPageId)
+    if (prevProps.pageId !== newPageId) {
+      // this.props.fetchBlocks(newPageId)
+      //   .then((res) => {
+      //     this.setState({ 
+      //       blocks: res.blocks, 
+      //       pageId: newPageId 
+      //     });
+      //   });
+      this.props.fetchPage(newPageId)
         .then((res) => {
-          this.setState({ 
-            blocks: res.blocks, 
-            pageId: newPageId 
-          });
-        });
+          this.setState({
+            page: res.page,
+            title: res.page.title,
+            imageUrl: res.page.imageUrl,
+            blockIds: res.page.blockIds,
+          })
+        })
+        
     }
   }
 
@@ -68,29 +89,39 @@ class Page extends React.Component {
     });
   }
 
+  handleImageUpload(e) {
+    debugger
+
+  }
+
   render() {
     // console.log(this.props)
     if (!this.props.blocks || !this.props.pages || !this.props.page) return null;
     if (this.state.blocks.length === 0) return null;
     if (Object.keys(this.props.page).length === 0) return null;
-    
+    // console.log(this.props);
     const orderedBlocks = []
     const blockIds = this.props.page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {
       orderedBlocks.push(this.state.blocks[blockIds[i]])
     }
-    const pageCover = this.state.imageUrl;
+    // console.log(blockIds)
+    // console.log(orderedBlocks);
+    const pageHasCover = this.props.page.imageUrl.length > 0;
+
+    // check for attachment
+    // use default or user photo based on attachment
+    // const pageHasUserUploadedImage = this.props.page.hasUserPhoto 
     
     // console.log(orderedBlocks);
+
     console.log(this.state);
     return (
       <div className="page">
         <div className="topbar-wrapper">
           <div className="topbar">
             <div className="breadcrumb-wrapper">
-              <div className="breadcrumb">
-                {this.props.pages[this.state.pageId].title}
-              </div>
+              <div className="breadcrumb">{this.props.pages[this.state.pageId].title}</div>
             </div>
             <div className="topbar-action-buttons">
               <div className="more-button-wrapper">
@@ -105,18 +136,31 @@ class Page extends React.Component {
         <div className="page-scroller">
           <div className="page-header-wrapper">
             <div className="page-header">
-              {/* {pageCover ? <img src={this.state.page.imageUrl} className="page-cover" /> : null} */}
+              {pageHasCover ? <img src={this.props.page.imageUrl} className="page-cover" /> : null}
+              {/* <input type="file" name="" id="" /> */}
             </div>
           </div>
 
-          <PageHeader />
+          <div className="temp-picker">
+            <form onSubmit={this.handleImageUpload} className="picker-form">
+              <label htmlFor="page-cover-input">Choose a photo</label>
+              <input
+                type="file"
+                id="page-cover-input"
+                // value={this.state.page.imageUrl}
+                // onChange={this.handleImageUpload}
+              />
+              <button type="submit" id="picker-submit">Add cover photo</button>
+            </form>
+          </div>
+
+          {/* <PageHeader /> */}
 
           <div className="page-wrapper">
             <h1 className="page-title">{this.props.pages[this.state.pageId].title}</h1>
 
             <DragDropContext onDragEnd={this.OnDragEnd}>
               <div className="page-content">
-
                 <Droppable droppableId={this.state.pageId}>
                   {(provided, snapshot) => (
                     <div
@@ -125,17 +169,12 @@ class Page extends React.Component {
                       className="droppable-area"
                     >
                       {orderedBlocks.map((block, index) => (
-                        <BlockContainer 
-                          key={block.id} 
-                          block={block} 
-                          index={index} 
-                        />
+                        <BlockContainer key={block.id} block={block} index={index} />
                       ))}
                       {provided.placeholder}
                     </div>
                   )}
                 </Droppable>
-                
               </div>
             </DragDropContext>
           </div>

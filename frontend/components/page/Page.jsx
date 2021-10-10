@@ -16,7 +16,8 @@ class Page extends React.Component {
       page: this.props.page,
       title: '',
       blockIds: [],
-      imageUrl: '',
+      galleryImageUrl: '',
+      uploadedImageUrl: '',
       blocks: [],
     };
   }
@@ -28,16 +29,18 @@ class Page extends React.Component {
         this.setState({
           page: res.page,
           title: res.page.title,
-          imageUrl: res.page.imageUrl,
+          galleryImageUrl: res.page.galleryImageUrl,
+          uploadedImageUrl: res.page.uploadedImageUrl,
           blockIds: res.page.blockIds,
-        })
+        });
       });
     } else {
       this.setState({
         page: this.props.page,
         title: this.props.page.title,
-        imageUrl: this.props.page.imageUrl,
-        blockIds: this.props.page.blockIds
+        galleryImageUrl: this.props.page.galleryImageUrl,
+        uploadedImageUrl: this.props.page.uploadedImageUrl,
+        blockIds: this.props.page.blockIds,
       });
     }
     this.props.fetchBlocks(this.state.pageId)
@@ -63,9 +66,10 @@ class Page extends React.Component {
           this.setState({
             page: res.page,
             title: res.page.title,
-            imageUrl: res.page.imageUrl,
+            galleryImageUrl: res.page.galleryImageUrl,
+            uploadedImageUrl: res.page.uploadedImageUrl,
             blockIds: res.page.blockIds,
-          })
+          });
         })
         
     }
@@ -107,7 +111,8 @@ class Page extends React.Component {
     }
     // console.log(blockIds)
     // console.log(orderedBlocks);
-    const pageHasCover = this.props.page.imageUrl.length > 0;
+    const pageHasGalleryCover = this.props.page.galleryImageUrl.length > 0;
+    const pageHasUploadedCover = this.props.page.uploadedImageUrl.length > 0;
 
     // check for attachment
     // use default or user photo based on attachment
@@ -136,7 +141,7 @@ class Page extends React.Component {
         <div className="page-scroller">
           <div className="page-header-wrapper">
             <div className="page-header">
-              {pageHasCover ? <img src={this.props.page.imageUrl} className="page-cover" /> : null}
+              {pageHasGalleryCover ? <img src={this.props.page.galleryImageUrl} className="page-cover" /> : null}
               {/* <input type="file" name="" id="" /> */}
             </div>
           </div>
@@ -147,7 +152,7 @@ class Page extends React.Component {
               <input
                 type="file"
                 id="page-cover-input"
-                // value={this.state.page.imageUrl}
+                // value={this.state.page.galleryImageUrl}
                 // onChange={this.handleImageUpload}
               />
               <button type="submit" id="picker-submit">Add cover photo</button>

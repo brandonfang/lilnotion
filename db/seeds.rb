@@ -58,20 +58,20 @@ user_6 = User.create!(
 page_1 = Page.create!(
   user_id: user_1.id,
   title: 'This is a page',
-  image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
+  gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
   icon: '✋'
 )
 
 page_2 = Page.create!(
   user_id: user_1.id,
   title: 'This is a second page',
-  image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/gradient-8.png '
+  gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/gradient-8.png '
 )
 
 page_3 = Page.create!(
   user_id: user_1.id,
   title: 'This is a third page',
-  image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/nasa-the-blue-marble.jpeg'
+  gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/nasa-the-blue-marble.jpeg'
 )
 
 # Add demo blocks

@@ -45,6 +45,6 @@ class Api::PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:id, :user_id, :title, :block_ids, :image_url, :icon, :style, :created_at, :updated_at)
+    params.require(:page).permit(:id, :user_id, :title, :block_ids, :gallery_image_url, :uploaded_image_url, :icon, :style, :created_at, :updated_at)
   end
 end

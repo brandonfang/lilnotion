@@ -5,15 +5,19 @@ class PageHeader extends React.Component {
     super(props);
   }
 
+  handleTitleChange() {}
+
+  componentDidMount() {}
+  
+
   render() {
     if (!this.props.page) {
       return null;
     }
 
     return (
-      <div className="">
-
-      </div>
+      <>
+      </>
     );
   }
 }

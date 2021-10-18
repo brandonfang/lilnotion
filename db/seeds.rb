@@ -113,13 +113,14 @@ block_6 = Block.create!({
 })
 
 page_1.block_ids = [
-  block1.id,
-  block2.id,
-  block3.id,
-  block4.id,
-  block5.id,
-  block6.id,
+  block_1.id,
+  block_2.id,
+  block_3.id,
+  block_4.id,
+  block_5.id,
+  block_6.id
 ]
+
 
 block_7 = Block.create!({
   page_id: page_2.id,
@@ -133,9 +134,9 @@ block_8 = Block.create!({
   text: 'The codices of pre-Columbian Mesoamerica (Mexico and Central America) had the same form as the European codex, but were instead made with long folded strips of either fig bark (amatl) or plant fibers, often with a layer of whitewash applied before writing. New World codices were written as late as the 16th century (see Maya codices and Aztec codices). Those written before the Spanish conquests seem all to have been single long sheets folded concertina-style, sometimes written on both sides of the local amatl paper.'
 })
 
-page_1.block_ids = [
-  block7.id,
-  block8.id,
+page_2.block_ids = [
+  block_7.id,
+  block_8.id
 ]
 block_9 = Block.create!({
   page_id: page_3.id,
@@ -173,11 +174,11 @@ block_14 = Block.create!({
   text: 'Dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor.'
 })
 
-page_1.block_ids = [
-  block9.id,
-  block10.id,
-  block11.id,
-  block12.id,
-  block13.id,
-  block14.id,
+page_3.block_ids = [
+  block_9.id,
+  block_10.id,
+  block_11.id,
+  block_12.id,
+  block_13.id,
+  block_14.id,
 ]

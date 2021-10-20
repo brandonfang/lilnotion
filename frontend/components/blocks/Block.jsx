@@ -14,7 +14,7 @@ import ToggleContainer from './ToggleContainer';
 import DividerContainer from './DividerContainer';
 import ImageContainer from './ImageContainer';
 
-import BlockSelectMenuContainer from '../menus/BlockSelectMenuContainer';
+// import BlockSelectMenuContainer from '../menus/BlockSelectMenuContainer';
 
 // turn blocks into functional components if not using react-contenteditable
 class Block extends React.Component {
@@ -110,7 +110,7 @@ class Block extends React.Component {
               // tabIndex="0"
             >⋮⋮</div>
 
-            <BlockSelectMenuContainer />
+            {/* <BlockSelectMenuContainer /> */}
 
             {blockBody}
           </div>

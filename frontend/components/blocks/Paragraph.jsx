@@ -13,8 +13,7 @@ class Paragraph extends React.Component {
     };
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   componentDidUpdate(prevProps, prevState) {
     const htmlChanged = this.props.html !== this.state.html;

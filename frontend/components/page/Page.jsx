@@ -2,14 +2,12 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import BlockContainer from '../blocks/BlockContainer';
-import PageHeader from './PageHeader';
+import PageHeaderContainer from './PageHeaderContainer';
 import MediaMenuContainer from '../menus/MediaMenuContainer';
 
 class Page extends React.Component {
   constructor(props) {
     super(props);
-    this.OnDragEnd = this.OnDragEnd.bind(this);
-    this.handleImageUpload = this.handleImageUpload.bind(this);
     this.state = {
       pages: this.props.pages,
       pageId: this.props.pageId,
@@ -88,13 +86,28 @@ class Page extends React.Component {
     newBlockIds.splice(destination.index, 0, ...removed);
 
     this.setState({ blockIds: newBlockIds }, () => {
-      // const newPage = Object.assign(this.state.page, { blockIds: newBlockIds});
-      // this.props.updatePage(newPage);
+      const newPage = Object.assign(this.state.page, { blockIds: newBlockIds});
+      this.props.updatePage(newPage);
     });
   }
 
   handleImageUpload(e) {
-    debugger
+    // debugger
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append(page[title], this.state.title);
+    formData.append(page[photo], this.state.photoFile);
+
+    $.ajax({
+      url: `/api/pages/${this.state.pageId}`,
+      method: 'PATCH',
+      data: formData,
+      contentType: false,
+      processData: false
+    }).then(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
 
   }
 
@@ -118,21 +131,16 @@ class Page extends React.Component {
     // use default or user photo based on attachment
     // const pageHasUserUploadedImage = this.props.page.hasUserPhoto 
     
-    // console.log(orderedBlocks);
-
-    console.log(this.state);
     return (
       <div className="page">
-        <div className="topbar-wrapper">
-          <div className="topbar">
-            <div className="breadcrumb-wrapper">
-              <div className="breadcrumb">{this.props.pages[this.state.pageId].title}</div>
-            </div>
-            <div className="topbar-action-buttons">
-              <div className="more-button-wrapper">
-                <div className="more-button">
-                  <span></span>
-                </div>
+        <div className="topbar">
+          <div className="breadcrumb-wrapper">
+            <div className="breadcrumb">{this.props.pages[this.state.pageId].title}</div>
+          </div>
+          <div className="topbar-action-buttons">
+            <div className="more-button-wrapper">
+              <div className="more-button">
+                <span></span>
               </div>
             </div>
           </div>
@@ -142,29 +150,30 @@ class Page extends React.Component {
           <div className="page-header-wrapper">
             <div className="page-header">
               {pageHasGalleryCover ? <img src={this.props.page.galleryImageUrl} className="page-cover" /> : null}
-              {/* <input type="file" name="" id="" /> */}
             </div>
           </div>
 
           <div className="temp-picker">
-            <form onSubmit={this.handleImageUpload} className="picker-form">
+            <form onSubmit={this.handleImageUpload.bind(this)} id="picker-form">
               <label htmlFor="page-cover-input">Choose a photo</label>
               <input
                 type="file"
                 id="page-cover-input"
-                // value={this.state.page.galleryImageUrl}
-                // onChange={this.handleImageUpload}
+                // value={}
+                onChange={() => document.getElementById('picker-form').submit()}
               />
               <button type="submit" id="picker-submit">Add cover photo</button>
             </form>
           </div>
 
-          {/* <PageHeader /> */}
+          <PageHeaderContainer page={this.state.page} />
 
           <div className="page-wrapper">
-            <h1 className="page-title">{this.props.pages[this.state.pageId].title}</h1>
+            <div className="page-title-wrapper">
+              <h1 className="page-title">{this.props.pages[this.state.pageId].title}</h1>
+            </div>
 
-            <DragDropContext onDragEnd={this.OnDragEnd}>
+            <DragDropContext onDragEnd={this.OnDragEnd.bind(this)}>
               <div className="page-content">
                 <Droppable droppableId={this.state.pageId}>
                   {(provided, snapshot) => (

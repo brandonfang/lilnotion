@@ -24,6 +24,7 @@ class Block extends React.Component {
     this.dragHandleClick = this.dragHandleClick.bind(this);
     this.openBlockSelectMenu = this.openBlockSelectMenu.bind(this);
     this.closeBlockSelectMenu = this.closeBlockSelectMenu.bind(this);
+    this.calculateBlockSelectMenuPosition = this.calculateBlockSelectMenuPosition.bind(this);
 
     this.state = {
       blockSelectMenuOpen: false,
@@ -40,17 +41,27 @@ class Block extends React.Component {
     this.openBlockSelectMenu();
   }
 
-  openBlockSelectMenu() {
-    console.log('open menu')
-
+  openBlockSelectMenu(trigger) {
+    // console.log('open menu')
+    const { x, y } = this.calculateBlockSelectMenuPosition(trigger);
+    this.setState({
+      blockSelectMenuOpen: true,
+      blockSelectMenuPosition: { x: x, y: y },
+    });
+    document.addEventListener('click', this.closeBlockSelectMenu);
 
   }
 
   closeBlockSelectMenu() {
-    console.log('close menu')
-    // this.setState
-
+    // console.log('close menu')
+    this.setState({
+      blockSelectMenuOpen: false,
+      blockSelectMenuPosition: { x: null, y: null }
+    });
+    document.removeEventListener('click', this.closeBlockSelectMenu);
   }
+
+  calculateBlockSelectMenuPosition(triger) {}
 
   componentWillUnmount() {}
 

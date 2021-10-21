@@ -14,7 +14,7 @@ class BlockSelectMenu extends React.Component {
       <>
         <div className="block-select-menu-wrapper">
           <div className="block-select-menu">
-            Menu
+            <div className="menu-row">Turn into</div>
           </div>
         </div>
       </>

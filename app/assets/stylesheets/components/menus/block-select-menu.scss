@@ -13,4 +13,13 @@
   height: 160px;
   border-radius: 4px;
   background: rgb(116, 201, 108);
+
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+}
+
+.menu-row {
+  width: 100%;
+  padding: 0 8px;  
 }

@@ -1,7 +1,16 @@
 .block-select-menu-wrapper {
-  
+  z-index: 1;
+  position: absolute;
+  // display: none;
+  box-shadow: 
+    0px 0px 0px 1px rgba(15, 15, 15, 5%), 
+    0px 3px 6px rgba(15, 15, 15, 10%), 
+    0px 9px 24px rgba(15, 15, 15, 20%) 
 }
 
 .block-select-menu {
-  
+  width: 160px;
+  height: 160px;
+  border-radius: 4px;
+  background: rgb(116, 201, 108);
 }

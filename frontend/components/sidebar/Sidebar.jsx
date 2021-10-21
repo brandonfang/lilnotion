@@ -7,7 +7,6 @@ import { FiSearch, FiClock, FiSettings, FiFileText, FiGithub, FiLinkedin, FiTwit
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.newPage = this.newPage.bind(this);
   }
 
@@ -15,19 +14,18 @@ class Sidebar extends React.Component {
     // default / placeholder page 
     this.props.createPage({
       userId: this.props.currentUser.id,
-      title: 'Untitled',
-      imageUrl: '',
+      title: 'Untitled'
     }).then((page) => {
       // this.props.history.push(`/p/${page.id}`);
     })
   }
 
   render() {
-    if (!this.props.pages) { 
-      return null; 
-    } 
+    if (!this.props.pages) return null;
+    if (Object.keys(this.props.pages).length === 0) return null;
 
-    const { currentUser, pages } = this.props;
+    const { currentUser, pages, logout } = this.props;
+
     const pagesList = Object.keys(pages).map((pageKey) => {
       const page = pages[pageKey];
       return (
@@ -144,7 +142,7 @@ class Sidebar extends React.Component {
               <FiPlus className="sidebar-icon" size={16} />
               New page
             </div>
-            <div className="shortcut" onClick={this.props.logout}>
+            <div className="shortcut" onClick={logout}>
               <FiLogOut className="sidebar-icon" size={16} />
               Log out
             </div>

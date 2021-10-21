@@ -22,8 +22,8 @@ class Page extends React.Component {
 
   componentDidMount() {
     if (!this.props.page || Object.keys(this.props.page).length === 0) {
+      // if page data missing, fetch data and add it to component state
       this.props.fetchPage(this.state.pageId).then((res) => {
-        // console.log(page)
         this.setState({
           page: res.page,
           title: res.page.title,
@@ -33,6 +33,7 @@ class Page extends React.Component {
         });
       });
     } else {
+      // if page data exists, add it to component state
       this.setState({
         page: this.props.page,
         title: this.props.page.title,
@@ -52,13 +53,6 @@ class Page extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     let newPageId = this.props.location.pathname.slice(3);
     if (prevProps.pageId !== newPageId) {
-      // this.props.fetchBlocks(newPageId)
-      //   .then((res) => {
-      //     this.setState({ 
-      //       blocks: res.blocks, 
-      //       pageId: newPageId 
-      //     });
-      //   });
       this.props.fetchPage(newPageId)
         .then((res) => {
           this.setState({
@@ -69,7 +63,13 @@ class Page extends React.Component {
             blockIds: res.page.blockIds,
           });
         })
-        
+      this.props.fetchBlocks(newPageId)
+        .then((res) => {
+          this.setState({ 
+            blocks: res.blocks, 
+            pageId: newPageId 
+          });
+        });
     }
   }
 
@@ -96,34 +96,31 @@ class Page extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append(page[title], this.state.title);
-    formData.append(page[photo], this.state.photoFile);
+    // formData.append(page[photo], this.state.photoFile);
 
-    $.ajax({
-      url: `/api/pages/${this.state.pageId}`,
-      method: 'PATCH',
-      data: formData,
-      contentType: false,
-      processData: false
-    }).then(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-
+    // $.ajax({
+    //   url: `/api/pages/${this.state.pageId}`,
+    //   method: 'PATCH',
+    //   data: formData,
+    //   contentType: false,
+    //   processData: false
+    // }).then(
+    //   (res) => console.log(res),
+    //   (err) => console.log(err)
+    // );
   }
 
   render() {
-    // console.log(this.props)
     if (!this.props.blocks || !this.props.pages || !this.props.page) return null;
     if (this.state.blocks.length === 0) return null;
     if (Object.keys(this.props.page).length === 0) return null;
-    // console.log(this.props);
+
     const orderedBlocks = []
     const blockIds = this.props.page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {
       orderedBlocks.push(this.state.blocks[blockIds[i]])
     }
-    // console.log(blockIds)
-    // console.log(orderedBlocks);
+
     const pageHasGalleryCover = this.props.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.props.page.uploadedImageUrl.length > 0;
 
@@ -147,7 +144,7 @@ class Page extends React.Component {
         </div>
 
         <div className="page-scroller">
-          <div className="page-header-wrapper">
+          {/* <div className="page-header-wrapper">
             <div className="page-header">
               {pageHasGalleryCover ? <img src={this.props.page.galleryImageUrl} className="page-cover" /> : null}
             </div>
@@ -166,7 +163,7 @@ class Page extends React.Component {
             </form>
           </div>
 
-          <PageHeaderContainer page={this.state.page} />
+          <PageHeaderContainer page={this.state.page} /> */}
 
           <div className="page-wrapper">
             <div className="page-title-wrapper">

@@ -30,14 +30,16 @@ class Quote extends React.Component {
   render() {
     return (
       <div className="block-body">
-        <ContentEditable
-          innerRef={this.contentEditable}
-          html={this.state.html}
-          onChange={debounce(this.handleChange, 1000)}
-          tagName="blockquote"
-          className="quote"
-          placeholder="Type '/' for commands"
-        />
+        <div className="quote-wrapper">
+          <ContentEditable
+            innerRef={this.contentEditable}
+            html={this.state.html}
+            onChange={debounce(this.handleChange, 1000)}
+            tagName="blockquote"
+            className="quote"
+            placeholder="Type '/' for commands"
+            />
+        </div>
       </div>
     );
   }

@@ -14,22 +14,26 @@ import ToggleContainer from './ToggleContainer';
 import DividerContainer from './DividerContainer';
 import ImageContainer from './ImageContainer';
 
-// import BlockSelectMenuContainer from '../menus/BlockSelectMenuContainer';
+import BlockSelectMenuContainer from '../menus/BlockSelectMenuContainer';
 
 // turn blocks into functional components if not using react-contenteditable
 class Block extends React.Component {
   constructor(props) {
     super(props);
     this.contentEditable = React.createRef();
-    this.handleChange = this.handleChange.bind(this);
     this.dragHandleClick = this.dragHandleClick.bind(this);
     this.openBlockSelectMenu = this.openBlockSelectMenu.bind(this);
     this.closeBlockSelectMenu = this.closeBlockSelectMenu.bind(this);
+
+    this.state = {
+      blockSelectMenuOpen: false,
+      blockSelectMenuPosition: {
+        x: null,
+        y: null
+      },
+    }
   }
 
-  handleChange(e) {
-    this.setState({ html: e.target.value });
-  }
 
   dragHandleClick(e) {
     const dragHandle = e.target;
@@ -38,10 +42,14 @@ class Block extends React.Component {
 
   openBlockSelectMenu() {
     console.log('open menu')
+
+
   }
 
   closeBlockSelectMenu() {
     console.log('close menu')
+    // this.setState
+
   }
 
   componentWillUnmount() {}
@@ -97,6 +105,7 @@ class Block extends React.Component {
         index={this.props.index}
       >
         {(provided, snapshot) => (
+          // blocks contain block handle, select menu, and block body
           <div
             ref={provided.innerRef}
             {...provided.draggableProps}
@@ -107,10 +116,10 @@ class Block extends React.Component {
               {...provided.dragHandleProps}
               className="block-handle"
               role="button"
-              // tabIndex="0"
+              tabIndex="0"
             >⋮⋮</div>
 
-            {/* <BlockSelectMenuContainer /> */}
+            <BlockSelectMenuContainer />
 
             {blockBody}
           </div>

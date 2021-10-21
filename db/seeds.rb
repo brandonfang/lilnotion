@@ -152,23 +152,29 @@ block_10 = Block.create!({
 
 block_11 = Block.create!({
   page_id: page_3.id,
+  block_type: 'quote',
+  text: 'Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem.'
+})
+
+block_12 = Block.create!({
+  page_id: page_3.id,
   block_type: 'h2',
   text: 'Heading Two'
 })
 
-block_12 = Block.create!({
+block_13 = Block.create!({
   page_id: page_3.id,
   block_type: 'paragraph',
   text: 'Ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum.'
 })
 
-block_13 = Block.create!({
+block_14 = Block.create!({
   page_id: page_3.id,
   block_type: 'h3',
   text: 'Heading Three'
 })
 
-block_14 = Block.create!({
+block_15 = Block.create!({
   page_id: page_3.id,
   block_type: 'paragraph',
   text: 'Dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor.'
@@ -181,4 +187,5 @@ page_3.block_ids = [
   block_12.id,
   block_13.id,
   block_14.id,
+  block_15.id,
 ]

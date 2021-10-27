@@ -68,7 +68,7 @@ class Block extends React.Component {
     switch (initiator) {
       case 'ACTION_MENU':
         const { x: actionX, y: actionY } = this.state.actionMenuPosition;
-        return { x: actionX + 240, y: actionY - 80};
+        return { x: actionX + 240, y: actionY};
       default:
         return { x: null, y: null };
     }
@@ -163,6 +163,9 @@ class Block extends React.Component {
       case 'image':
         blockBody = <ImageContainer block={this.props.block} />;
         break;
+      // code
+      // link
+      // page
       default:
         blockBody = <ParagraphContainer block={this.props.block} />;
         break;

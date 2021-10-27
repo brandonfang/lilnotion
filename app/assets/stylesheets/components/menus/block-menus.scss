@@ -108,20 +108,57 @@
 }
 
 .select-menu-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  min-height: 28px;
+  height: 28px;
+  padding: 0px 14px;
+  color: rgb(55, 53, 47);
 
+  &:hover {
+    background:rgb(231, 231, 231);
+  }
+
+  &:active {
+    background:rgb(212, 212, 212);  
+  }
 }
 
-.select-block-image {
-
+.select-image-wrapper {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
 }
 
-.select-block-image-inner {
-
+.select-image {
+  display: block;
+  object-fit: cover;
+  border-radius: 3px;
+  background: white;
+  width: 22px;
+  height: 22px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  box-shadow: 0px 0px 0px 1px rgba(15, 15, 15, 10%);
 }
 
-.select-block-info
+.select-info {
+  width: 100%;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select-name {
+  font-size: 14px;
+  line-height: 120%;
+}
 
 .slash-menu-row {
+  position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -139,13 +176,13 @@
   }
 }
 
-.block-image {
+.block-type-image-wrapper {
   width: 46px;
   height: 46px;
   margin-right: 8px;
 }
 
-.block-image-inner {
+.block-type-image {
   display: block;
   object-fit: cover;
   border-radius: 3px;
@@ -157,23 +194,59 @@
   box-shadow: 0px 0px 0px 1px rgba(15, 15, 15, 10%);
 }
 
-.block-info {
+.block-type-info {
   width: 100%;
   flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.block-name {
+.block-type-name {
   font-size: 14px;
-  font-weight: 500;
   line-height: 120%;
-  margin-bottom: 2px;
 }
 
-.block-description {
+.block-type-description {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
   line-height: 120%;
   color: rgba(55, 53, 47, 0.6)
+}
+
+.tooltip-wrapper {
+  position: absolute;
+  width: 156px;
+  left: 204px;
+  height: fit-content;
+  z-index: 1;
+  border-radius: 3px;
+  background: rgb(15, 15, 15);
+  box-shadow: 
+    0px 0px 0px 1px rgba(15, 15, 15, 5%),
+    0px 3px 6px rgba(15, 15, 15, 10%); 
+  display: none;
+}
+
+.tooltip-wrapper.visible {
+  display: block;
+}
+
+.tooltip {
+  width: 100%;
+  padding: 8px;
+}
+
+.tooltip-image {
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.tooltip-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
 }

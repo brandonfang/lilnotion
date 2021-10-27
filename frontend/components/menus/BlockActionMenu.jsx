@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FiRepeat, FiTrash2 } from 'react-icons/fi';
 import { AiOutlineCaretRight } from 'react-icons/ai';
 
-import BlockSelectMenu from './BlockSelectMenu';
-
 const BlockActionMenu = ({ position, actions }) => {
-  const x = position.x;
-  const y = position.y;
+  const { x, y } = position;
 
   return (
     <div className="action-menu-wrapper" style={{ left: x, top: y }}>

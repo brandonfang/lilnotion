@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import matchSorter from 'match-sorter';
 import { FiImage } from 'react-icons/fi';
 
-const BlockSelectMenu = ({ position }) => {
+const BlockSlashMenu = ({ position }) => {
   const x = position.x;
   const y = position.y;
 
@@ -67,7 +67,7 @@ const BlockSelectMenu = ({ position }) => {
           <div className="select-menu-row" key={i}>
             <div className="block-image">
               {/* <FiImage className="block-image-svg" /> */}
-              <img 
+              <img
                 className="block-image-inner"
                 // src="https://www.notion.so/images/blocks/text.9fdb530b.png"
                 src={item.imageUrl}
@@ -84,4 +84,4 @@ const BlockSelectMenu = ({ position }) => {
   );
 };
 
-export default BlockSelectMenu;
+export default BlockSlashMenu;

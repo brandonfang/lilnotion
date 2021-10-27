@@ -60,11 +60,11 @@ const BlockSlashMenu = ({ position }) => {
   ];
 
   return (
-    <div className="select-menu-wrapper" style={{ left: x, top: y }}>
-      <div className="select-menu">
+    <div className="slash-menu-wrapper" style={{ left: x, top: y }}>
+      <div className="slash-menu">
         <div className="menu-header">Basic blocks</div>
         {menuData.map((item, i) => (
-          <div className="select-menu-row" key={i}>
+          <div className="slash-menu-row" key={i}>
             <div className="block-image">
               {/* <FiImage className="block-image-svg" /> */}
               <img

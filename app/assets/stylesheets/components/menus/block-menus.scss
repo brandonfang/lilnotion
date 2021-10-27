@@ -1,0 +1,153 @@
+.action-menu-wrapper {
+  position: absolute;
+  z-index: 1;
+  width: 240px;
+  height: fit-content;
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  box-shadow: 
+    0px 0px 0px 1px rgba(15, 15, 15, 5%), 
+    0px 3px 6px rgba(15, 15, 15, 10%), 
+    0px 9px 24px rgba(15, 15, 15, 20%);
+}
+
+.action-menu, .select-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+}
+
+.menu-header {
+  width: 100%;
+  padding: 6px 16px 8px 16px;
+  user-select: none;
+  color: rgba(55, 53, 47, 0.6);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 120%;
+  text-transform: uppercase;
+  // letter-spacing: 0.02em;
+  // border-bottom: 1px solid rgba(55, 53, 47, 0.1);
+}
+
+.action-menu-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: rgb(55, 53, 47);
+
+  &:hover {
+    background:rgb(231, 231, 231);
+  }
+
+  &:active {
+    background:rgb(212, 212, 212);
+  }
+}
+
+.action-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2px;
+  color: inherit;
+}
+
+.action-name {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  color: inherit;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+.cascading-menu-indicator {
+  color: rgba(55, 53, 47, 0.4);
+}
+
+.action-command {
+  color: rgba(55, 53, 47, 0.4);
+  font-size: 12px;
+  line-height: 120%;
+}
+
+
+.select-menu-wrapper {
+  z-index: 2;
+  position: absolute;
+  width: 320px;
+  height: fit-content;
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  box-shadow: 
+    0px 0px 0px 1px rgba(15, 15, 15, 5%), 
+    0px 3px 6px rgba(15, 15, 15, 10%), 
+    0px 9px 24px rgba(15, 15, 15, 20%);
+
+  // overflow-y: auto;
+}
+
+.select-menu-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  height: 55px;
+  padding: 4px 16px;
+  color: rgb(55, 53, 47);
+
+  &:hover {
+    background:rgb(231, 231, 231);
+  }
+
+  &:active {
+    background:rgb(212, 212, 212);  
+  }
+}
+
+.block-image {
+  width: 46px;
+  height: 46px;
+  margin-right: 8px;
+}
+
+.block-image-inner {
+  display: block;
+  object-fit: cover;
+  border-radius: 3px;
+  background: white;
+  width: 46px;
+  height: 46px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  box-shadow: 0px 0px 0px 1px rgba(15, 15, 15, 10%);
+}
+
+.block-info {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.block-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 120%;
+  margin-bottom: 2px;
+}
+
+.block-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 120%;
+  color: rgba(55, 53, 47, 0.6)
+}

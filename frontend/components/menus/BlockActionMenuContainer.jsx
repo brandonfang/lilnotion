@@ -1,23 +1,23 @@
 import { connect } from 'react-redux';
-import Block from './Block';
+import { withRouter } from 'react-router-dom';
+import BlockActionMenu from './BlockActionMenu';
 import {
-  fetchBlock,
-  fetchBlocks,
   createBlock,
+  fetchBlock,
   updateBlock,
   deleteBlock,
 } from '../../actions/block-actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  block: ownProps.block
+  errors: state.errors.session,
+  blocks: state.entities.blocks,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchBlock: (blockId) => dispatch(fetchBlock(blockId)),
-  fetchBlocks: (userId) => dispatch(fetchBlocks(userId)),
   createBlock: (block) => dispatch(createBlock(block)),
+  fetchBlock: (blockId) => dispatch(fetchBlock(blockId)),
   updateBlock: (block) => dispatch(updateBlock(block)),
   deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Block);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BlockActionMenu));

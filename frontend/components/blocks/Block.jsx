@@ -1,6 +1,6 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiMoreVertical } from 'react-icons/fi';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 import Heading1Container from './Heading1Container';
@@ -79,7 +79,14 @@ class Block extends React.Component {
     this.handleSelectMenu();
   }
 
-  plusHandleClick() {} // click to add a block below
+  plusHandleClick() { 
+    // make sure to insert after current block
+    this.props.createBlock({
+      pageId: this.props.block.pageId,
+      blockType: 'quote',
+      text: ''
+    });
+  }
 
   dragHandleClick(e) {
     //drag to move, click to open menu
@@ -264,7 +271,22 @@ class Block extends React.Component {
             >
               {/* ⋮⋮ */}
               {/* replace with custom svg */}
-              <BsThreeDotsVertical />
+  {/* <svg
+  stroke="currentColor"
+  fill="none"
+  stroke-width="2"
+  viewBox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  height="1em"
+  width="1em"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="12" cy="5" r="1"></circle>
+  <circle cx="12" cy="19" r="1"></circle>
+</svg>; */}
+              <FiMoreVertical />
             </div>
 
             {blockBody}

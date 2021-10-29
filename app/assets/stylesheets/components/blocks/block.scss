@@ -5,18 +5,22 @@
   position: relative;
 
   // increases the mouseover area of each block
-  // fix pseudoelement width calculation later
   &::before {
     content: '';
     position: absolute;
-    width: calc(100% + 152px);
+    width: 152px;
     height: 100%;
     left: -152px;
-    background: rgba(60, 195, 146, 0.3);
-    z-index: -1;
   }
-}
 
+  // &:hover {}
+
+  // &:focus {}
+
+  //&.isDragging {
+  //   opacity: 0.5;
+  // }
+}
 
 .block-body {
   padding: 3px 2px;
@@ -24,18 +28,16 @@
 
 .plus-handle {
   position: absolute;
-  width: 24x;
+  width: 24px;
   height: 24px;
-  top: 2px;
+  top: 3px;
   left: -42px;
-  padding: 0 5px;
   border-radius: 3px;
-  letter-spacing: -0.07em;
-  font-size: inherit;
   color: rgb(195, 194, 192);
-  // display: none;
-  background:rgba(245, 1, 253, 0.7);
-
+  transition: all 0.2s ease;
+  display: none;
+  // opacity: 0.8;
+  
   &:hover {
     background:rgba(190, 190, 190, 0.3)
   }
@@ -43,24 +45,28 @@
   &.visible {
     display: block;
   }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+  }
 }
 
 .drag-handle {
   position: absolute;
   width: 18px;
   height: 24px;
-  top: 2px;
+  top: 3px;
   left: -18px;
-  padding: 0 5px;
   border-radius: 3px;
   letter-spacing: -0.07em;
   font-weight: 800;
   font-size: inherit;
   color: rgb(195, 194, 192);
-  // display: none;
-
-  background:rgba(253, 1, 1, 0.7);
-
+  transition: all 0.2s ease;
+  display: none;
+  // opacity: 0.8;
 
   &:hover {
     background:rgba(190, 190, 190, 0.3)
@@ -69,20 +75,20 @@
   &.visible {
   display: block;
   }
-}
 
-// hover state
-// .block:hover {}
-
-// focus state
-// .block:focus {}
-
-// dragging state
-.block.isDragging {
-  opacity: 0.5;
+  svg {
+    width: 18px;
+    height: 24px;
+    padding: 0px 0px;
+  }
 }
 
 // BLOCK STYLES
+[contenteditable]:empty:after {
+  content: attr(placeholder);
+  color: rgb(175, 174, 172); 
+}
+
 .h1 {
   font-size: 1.875em; 
   font-weight: 600;
@@ -107,7 +113,7 @@
   margin-bottom: 1px;
 }
 
-.text {
+.paragraph {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5;

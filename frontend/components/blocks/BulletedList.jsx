@@ -36,7 +36,7 @@ class BulletedList extends React.Component {
           onChange={debounce(this.handleChange, 1000)}
           tagName="div"
           className="bulleted-list"
-          placeholder="Type '/' for commands"
+          placeholder="List"
         />
       </div>
     );

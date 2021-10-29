@@ -9,7 +9,8 @@ import {
 } from '../../actions/block-actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  block: ownProps.block
+  block: ownProps.block,
+  bahaha: ownProps
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

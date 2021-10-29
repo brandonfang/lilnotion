@@ -37,7 +37,7 @@ class Heading3 extends React.Component {
           onChange={debounce(this.handleChange, 1000)}
           tagName="h3"
           className="h3"
-          placeholder="Type '/' for commands"
+          placeholder="Heading 3"
         />
       </div>
     );

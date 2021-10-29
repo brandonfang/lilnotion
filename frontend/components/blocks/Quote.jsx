@@ -37,7 +37,7 @@ class Quote extends React.Component {
             onChange={debounce(this.handleChange, 1000)}
             tagName="blockquote"
             className="quote"
-            placeholder="Type '/' for commands"
+            placeholder="Empty quote"
             />
         </div>
       </div>

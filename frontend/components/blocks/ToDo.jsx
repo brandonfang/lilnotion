@@ -37,7 +37,7 @@ class ToDo extends React.Component {
           onChange={debounce(this.handleChange, 1000)}
           tagName="div"
           className="todo"
-          placeholder="Type '/' for commands"
+          placeholder="To-do"
         />
       </div>
     );

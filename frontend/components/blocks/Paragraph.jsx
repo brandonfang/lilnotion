@@ -35,7 +35,7 @@ class Paragraph extends React.Component {
           html={this.state.html}
           onChange={debounce(this.handleChange, 1000)}
           tagName="p"
-          className="text"
+          className="paragraph"
           placeholder="Type '/' for commands"
         />
       </div>

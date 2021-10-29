@@ -36,7 +36,7 @@ class NumberedList extends React.Component {
           onChange={debounce(this.handleChange, 1000)}
           tagName="div"
           className="numbered-list"
-          placeholder="Type '/' for commands"
+          placeholder="List"
         />
       </div>
     );

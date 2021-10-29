@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import SelectMenuRow from './SelectMenuRow';
 
-const BlockSelectMenu = ({ position, close, handleBlockSelect }) => {
+const BlockSelectMenu = ({
+  position,
+  closeSelectMenu,
+  handleBlockSelect,
+  toggleMouseOverSelectMenu,
+}) => {
   const { x, y } = position;
 
   const menuData = [
@@ -99,7 +104,12 @@ const BlockSelectMenu = ({ position, close, handleBlockSelect }) => {
   ];
 
   return (
-    <div className="select-menu-wrapper" style={{ left: x, top: y }}>
+    <div
+      className="select-menu-wrapper"
+      style={{ left: x, top: y }}
+      onMouseEnter={() => toggleMouseOverSelectMenu()}
+      onMouseLeave={() => toggleMouseOverSelectMenu()}
+    >
       <div className="select-menu">
         {menuData.map((item, i) => (
           <SelectMenuRow key={i} item={item} position={position} />

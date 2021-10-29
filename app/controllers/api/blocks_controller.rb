@@ -38,7 +38,7 @@ class Api::BlocksController < ApplicationController
     block = Block.find_by(id: params[:id])
     if block
       block.destroy
-    else 
+    else
       render json: {:error => "Not found"}.to_json, status: 404
     end
   end

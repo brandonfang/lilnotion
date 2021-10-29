@@ -3,35 +3,79 @@
   margin: 1px 0;
   background: rgba(255, 255, 255, 0.3);
   position: relative;
+
+  // increases the mouseover area of each block
+  // fix pseudoelement width calculation later
+  &::before {
+    content: '';
+    position: absolute;
+    width: calc(100% + 152px);
+    height: 100%;
+    left: -152px;
+    background: rgba(60, 195, 146, 0.3);
+    z-index: -1;
+  }
 }
+
 
 .block-body {
   padding: 3px 2px;
 }
 
-.block-handle {
+.plus-handle {
   position: absolute;
-  top: 3px;
-  left: -24px;
+  width: 24x;
+  height: 24px;
+  top: 2px;
+  left: -42px;
+  padding: 0 5px;
+  border-radius: 3px;
+  letter-spacing: -0.07em;
+  font-size: inherit;
+  color: rgb(195, 194, 192);
+  // display: none;
+  background:rgba(245, 1, 253, 0.7);
+
+  &:hover {
+    background:rgba(190, 190, 190, 0.3)
+  }
+
+  &.visible {
+    display: block;
+  }
+}
+
+.drag-handle {
+  position: absolute;
+  width: 18px;
+  height: 24px;
+  top: 2px;
+  left: -18px;
   padding: 0 5px;
   border-radius: 3px;
   letter-spacing: -0.07em;
   font-weight: 800;
   font-size: inherit;
   color: rgb(195, 194, 192);
+  // display: none;
+
+  background:rgba(253, 1, 1, 0.7);
+
 
   &:hover {
     background:rgba(190, 190, 190, 0.3)
   }
+
+  &.visible {
+  display: block;
+  }
 }
 
 // hover state
-.block:hover {
-}
+// .block:hover {}
 
 // focus state
-.block:focus {
-}
+// .block:focus {}
 
 // dragging state
 .block.isDragging {

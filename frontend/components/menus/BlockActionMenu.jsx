@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { FiRepeat, FiTrash2 } from 'react-icons/fi';
 import { AiOutlineCaretRight } from 'react-icons/ai';
 
-const BlockActionMenu = ({ position, actions }) => {
+const BlockActionMenu = ({
+  position,
+  turnInto,
+  openSelectMenu,
+  closeSelectMenu,
+  deleteBlock,
+  toggleMouseOverTurnInto,
+}) => {
   const { x, y } = position;
 
   return (
@@ -10,11 +17,11 @@ const BlockActionMenu = ({ position, actions }) => {
       <div className="action-menu">
         <div className="menu-header">Actions</div>
         {/* filter actions typeahead text input */}
+        {/* close select menu if  */}
         <div
           className="action-menu-row"
-          // onClick={() => actions.turnInto()}
-          onMouseEnter={() => actions.openSelectMenu()}
-          // onMouseLeave={() => actions.closeSelectMenu()}
+          onMouseEnter={() => toggleMouseOverTurnInto()}
+          onMouseLeave={() => toggleMouseOverTurnInto()}
           role="button"
           tabIndex="0"
         >
@@ -29,7 +36,8 @@ const BlockActionMenu = ({ position, actions }) => {
 
         <div
           className="action-menu-row"
-          onClick={() => actions.deleteBlock()}
+          onClick={() => deleteBlock()}
+          onMouseEnter={() => closeSelectMenu()}
           role="button"
           tabIndex="0"
         >

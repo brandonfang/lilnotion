@@ -1,4 +1,4 @@
-function debounce(func, wait, immediate) {
+export function debounce(func, wait, immediate) {
   var timeout;
   return function () {
     var context = this,
@@ -14,4 +14,6 @@ function debounce(func, wait, immediate) {
   };
 }
 
-export default debounce;
+export function getCaretPosition() {}
+
+export function setCaretToEnd() {}

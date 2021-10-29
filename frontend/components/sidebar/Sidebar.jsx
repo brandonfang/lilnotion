@@ -26,10 +26,10 @@ class Sidebar extends React.Component {
 
     const { currentUser, pages, logout } = this.props;
 
-    const pagesList = Object.keys(pages).map((pageKey) => {
+    const pagesList = Object.keys(pages).map((pageKey, i) => {
       const page = pages[pageKey];
       return (
-        <div className="outliner-item" key={page.id} onClick={() => this.props.history.push(`/p/${page.id}`)}>
+        <div className="outliner-item" key={`${page.id}-${i}`} onClick={() => this.props.history.push(`/p/${page.id}`)}>
           <div className="page-block">
             <FiFileText className="sidebar-icon" />
             <div className="page-block-title">{page.title}</div>

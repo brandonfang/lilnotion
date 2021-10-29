@@ -1,6 +1,6 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable';
-import debounce from './debounce';
+import { debounce } from '../../util/utils';
 
 class Heading1 extends React.Component {
   constructor(props) {

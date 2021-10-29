@@ -219,7 +219,7 @@
 .tooltip-wrapper {
   position: absolute;
   width: 156px;
-  left: 204px;
+  left: 208px;
   height: fit-content;
   z-index: 1;
   border-radius: 3px;
@@ -230,7 +230,11 @@
   display: none;
 }
 
-.tooltip-wrapper.visible {
+.tooltip-wrapper.slash {
+  left: 328px;
+}
+
+.tooltip-wrapper.visible, .tooltip.wrapper.visible.slash {
   display: block;
 }
 

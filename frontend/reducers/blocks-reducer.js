@@ -9,7 +9,7 @@ const blocksReducer = (state = {}, action) => {
       return Object.assign({}, state, { [action.block.id]: action.block });
     case REMOVE_BLOCK:
       let newState = Object.assign({}, state);
-      delete newState[action.block.id];
+      delete newState[action.blockId];
       return newState;
     default:
       return state;

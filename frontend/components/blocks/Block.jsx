@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import { FiPlus } from 'react-icons/fi';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 import Heading1Container from './Heading1Container';
 import Heading2Container from './Heading2Container';
@@ -15,11 +17,16 @@ import DividerContainer from './DividerContainer';
 import ImageContainer from './ImageContainer';
 import BlockActionMenu from '../menus/BlockActionMenu';
 import BlockSelectMenu from '../menus/BlockSelectMenu';
+// import BlockSlashMenu from '../menus/BlockSlashMenu';
 
-// use functional component if not using react-contenteditable
+const SLASH = '/';
+
 class Block extends React.Component {
   constructor(props) {
     super(props);
+    // this.showBlockHandles = this.showBlockHandles.bind(this);
+    // this.hideBlockHandles = this.hideBlockHandles.bind(this);
+    this.plusHandleClick = this.plusHandleClick.bind(this);
     this.dragHandleClick = this.dragHandleClick.bind(this);
     this.calculateActionMenuPosition = this.calculateActionMenuPosition.bind(this);
     this.calculateSelectMenuPosition = this.calculateSelectMenuPosition.bind(this);
@@ -28,7 +35,9 @@ class Block extends React.Component {
     this.openSelectMenu = this.openSelectMenu.bind(this);
     this.closeSelectMenu = this.closeSelectMenu.bind(this);
     this.handleBlockSelect = this.handleBlockSelect.bind(this);
-
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.toggleMouseOverTurnInto = this.toggleMouseOverTurnInto.bind(this);
+    this.toggleMouseOverSelectMenu = this.toggleMouseOverSelectMenu.bind(this);
     this.state = {
       blockType: this.props.block.blockType,
       actionMenuOpen: false,
@@ -36,17 +45,44 @@ class Block extends React.Component {
         x: null,
         y: null,
       },
-      // selectMenuOpen: true,
       selectMenuOpen: false,
       selectMenuPosition: {
         x: null,
         y: null,
       },
+      hover: false,
+      mouseOverTurnInto: false,
+      mouseOverSelectMenu: false,
     };
   }
 
+  handleSelectMenu() {
+    if (!mouseOverTurnInto && !mouseOverSelectMenu) {
+      this.closeSelectMenu();
+    }
+    // if (clickOutsideTurnInto || clickOutsideSelectMenu) {
+    //   this.closeSelectMenu();
+    // }
+  }
+
+  toggleMouseOverTurnInto() {
+    console.log('toggleMouseOverTurnInto');
+    const newState = !this.state.mouseOverTurnInto;
+    this.setState({ mouseOverTurnInto: newState });
+    this.handleSelectMenu();
+  }
+
+  toggleMouseOverSelectMenu() {
+    console.log('toggleMouseOverSelectMenu');
+    const newState = !this.state.mouseOverSelectMenu;
+    this.setState({ mouseOverSelectMenu: newState });
+    this.handleSelectMenu();
+  }
+
+  plusHandleClick() {} // click to add a block below
+
   dragHandleClick(e) {
-    // e.preventDefault();
+    //drag to move, click to open menu
     const dragHandle = e.target;
     this.openActionMenu(dragHandle, 'DRAG_HANDLE_CLICK');
   }
@@ -68,7 +104,7 @@ class Block extends React.Component {
     switch (initiator) {
       case 'ACTION_MENU':
         const { x: actionX, y: actionY } = this.state.actionMenuPosition;
-        return { x: actionX + 240, y: actionY};
+        return { x: actionX + 240, y: actionY };
       default:
         return { x: null, y: null };
     }
@@ -115,13 +151,20 @@ class Block extends React.Component {
     if (blockType === 'image') {
       // image file picker
     } else {
+      // this.props.updateBlock()
       this.setState({ blockType: blockType }, () => {
         this.closeSelectMenu();
       });
     }
   }
 
-  componentWillUnmount() {}
+  // showBlockHandles() {}
+  // hideBlockHandles() {}
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.closeActionMenu, false);
+    document.removeEventListener('click', this.closeActionMenu, false);
+  }
 
   render() {
     const blockType = this.props.block.blockType;
@@ -174,42 +217,58 @@ class Block extends React.Component {
     return (
       <Draggable draggableId={this.props.block.id} index={this.props.index}>
         {(provided, snapshot) => (
-          // each block contains 1) block handle, 2) action menu, 3) select menu, 4) block body
-          <div ref={provided.innerRef} {...provided.draggableProps} className="block">
-            {/* BEGIN */}
+          <div
+            className="block"
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            onMouseEnter={() => this.setState({ hover: true })}
+            onMouseLeave={() => this.setState({ hover: false })}
+          >
             {this.state.actionMenuOpen ? (
               <BlockActionMenu
                 position={this.state.actionMenuPosition}
-                actions={{
-                  // turnInto: () => this.openSelectMenu('ACTION_MENU'),
-                  turnInto: () => console.log('turn into fired'),
-                  openSelectMenu: () => this.openSelectMenu('ACTION_MENU'),
-                  closeSelectMenu: () => this.closeSelectMenu(),
-                  deleteBlock: () => this.props.deleteBlock({ blockId: this.props.block.id }),
-                }}
+                turnInto={this.openSelectMenu('ACTION_MENU')}
+                openSelectMenu={this.openSelectMenu('ACTION_MENU')}
+                closeSelectMenu={this.closeSelectMenu}
+                deleteBlock={this.props.deleteBlock(this.props.block.id)}
+                toggleMouseOverTurnInto={this.toggleMouseOverTurnInto}
               />
             ) : null}
 
             {this.state.selectMenuOpen ? (
               <BlockSelectMenu
                 position={this.state.selectMenuPosition}
-                close={this.closeSelectMenu}
+                closeSelectMenu={this.closeSelectMenu}
                 handleBlockSelect={this.handleBlockSelect}
+                toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}
               />
             ) : null}
 
             <div
-              onClick={this.dragHandleClick}
-              {...provided.dragHandleProps}
-              className="block-handle"
+              onClick={this.plusHandleClick}
+              className="plus-handle"
+              className={this.state.hover ? 'plus-handle visible' : 'plus-handle'}
               role="button"
               tabIndex="0"
             >
-              ⋮⋮
+              <FiPlus />
+            </div>
+
+            <div
+              onClick={this.dragHandleClick}
+              {...provided.dragHandleProps}
+              className="drag-handle"
+              className={this.state.hover ? 'drag-handle visible' : 'drag-handle'}
+              role="button"
+              tabIndex="0"
+            >
+              {/* ⋮⋮ */}
+              {/* replace with custom svg */}
+              <BsThreeDotsVertical />
             </div>
 
             {blockBody}
-            {/* END */}
+            {/* blockBody depends on blockType */}
           </div>
         )}
       </Draggable>

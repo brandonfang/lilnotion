@@ -71,6 +71,13 @@ class Page extends React.Component {
           });
         });
     }
+    // if (prevProps.blocks !== this.props.blocks) {
+    //   this.props.fetchBlocks(this.state.pageId).then((res) => {
+    //     this.setState({
+    //       blocks: res.blocks,
+    //     });
+    //   });
+    // }
   }
 
   OnDragEnd(result) {

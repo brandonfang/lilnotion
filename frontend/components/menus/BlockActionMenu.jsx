@@ -11,6 +11,7 @@ const BlockActionMenu = ({
   toggleMouseOverTurnInto,
 }) => {
   const { x, y } = position;
+  // console.log(position);
 
   return (
     <div className="action-menu-wrapper" style={{ left: x, top: y }}>
@@ -20,8 +21,9 @@ const BlockActionMenu = ({
         {/* close select menu if  */}
         <div
           className="action-menu-row"
-          onMouseEnter={() => toggleMouseOverTurnInto()}
-          onMouseLeave={() => toggleMouseOverTurnInto()}
+          onMouseEnter={openSelectMenu}
+          // onMouseEnter={() => toggleMouseOverTurnInto()}
+          // onMouseLeave={() => toggleMouseOverTurnInto()}
           role="button"
           tabIndex="0"
         >
@@ -36,8 +38,8 @@ const BlockActionMenu = ({
 
         <div
           className="action-menu-row"
-          onClick={() => deleteBlock()}
-          onMouseEnter={() => closeSelectMenu()}
+          onClick={deleteBlock}
+          onMouseEnter={closeSelectMenu}
           role="button"
           tabIndex="0"
         >

@@ -5,6 +5,7 @@ const BlockSelectMenu = ({
   position,
   closeSelectMenu,
   handleBlockSelect,
+  block,
   toggleMouseOverSelectMenu,
 }) => {
   const { x, y } = position;
@@ -107,12 +108,18 @@ const BlockSelectMenu = ({
     <div
       className="select-menu-wrapper"
       style={{ left: x, top: y }}
-      onMouseEnter={() => toggleMouseOverSelectMenu()}
-      onMouseLeave={() => toggleMouseOverSelectMenu()}
+      // onMouseEnter={() => toggleMouseOverSelectMenu()}
+      // onMouseLeave={() => toggleMouseOverSelectMenu()}
     >
       <div className="select-menu">
         {menuData.map((item, i) => (
-          <SelectMenuRow key={i} item={item} position={position} />
+          <SelectMenuRow
+            key={i}
+            item={item}
+            position={position}
+            handleBlockSelect={handleBlockSelect}
+            block={block}
+          />
         ))}
       </div>
     </div>

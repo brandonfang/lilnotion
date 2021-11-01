@@ -31,12 +31,13 @@
   width: 24px;
   height: 24px;
   top: 3px;
-  left: -42px;
+  left: -44px;
   border-radius: 3px;
   color: rgb(195, 194, 192);
   transition: all 0.2s ease;
-  display: none;
-  // opacity: 0.8;
+  z-index: 1;
+  // display: none;
+  cursor: grab;
   
   &:hover {
     background:rgba(190, 190, 190, 0.3)
@@ -50,23 +51,22 @@
     width: 24px;
     height: 24px;
     padding: 2px;
+    pointer-events: none;
   }
 }
 
 .drag-handle {
   position: absolute;
+  // width might be 19px
   width: 18px;
   height: 24px;
   top: 3px;
-  left: -18px;
+  left: -20px;
   border-radius: 3px;
-  letter-spacing: -0.07em;
-  font-weight: 800;
-  font-size: inherit;
   color: rgb(195, 194, 192);
   transition: all 0.2s ease;
-  display: none;
-  // opacity: 0.8;
+  z-index: 1;
+  // display: none;
 
   &:hover {
     background:rgba(190, 190, 190, 0.3)
@@ -80,6 +80,7 @@
     width: 18px;
     height: 24px;
     padding: 0px 0px;
+    pointer-events: none;
   }
 }
 

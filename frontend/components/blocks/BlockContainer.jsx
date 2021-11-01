@@ -10,7 +10,6 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
   block: ownProps.block,
-  bahaha: ownProps
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

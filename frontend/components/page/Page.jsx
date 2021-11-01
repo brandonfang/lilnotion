@@ -92,10 +92,13 @@ class Page extends React.Component {
     const removed = newBlockIds.splice(source.index, 1);
     newBlockIds.splice(destination.index, 0, ...removed);
 
-    this.setState({ blockIds: newBlockIds }, () => {
-      const newPage = Object.assign(this.state.page, { blockIds: newBlockIds});
-      this.props.updatePage(newPage);
-    });
+    // this.setState({ blockIds: newBlockIds }, () => {
+    //   const newPage = Object.assign(this.state.page, { blockIds: newBlockIds});
+    //   this.props.updatePage(newPage);
+    // });
+
+    const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
+    this.props.updatePage(newPage).then(this.setState({ blockIds: newBlockIds }));
   }
 
   handleImageUpload(e) {
@@ -122,7 +125,7 @@ class Page extends React.Component {
     if (this.state.blocks.length === 0) return null;
     if (Object.keys(this.props.page).length === 0) return null;
 
-    const orderedBlocks = []
+    const orderedBlocks = [];
     const blockIds = this.props.page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {
       orderedBlocks.push(this.state.blocks[blockIds[i]])

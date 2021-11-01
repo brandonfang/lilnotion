@@ -1,7 +1,7 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { FiPlus, FiMoreVertical } from 'react-icons/fi';
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import Plus from './Plus';
+import Dots from './Dots';
 
 import Heading1Container from './Heading1Container';
 import Heading2Container from './Heading2Container';
@@ -24,10 +24,9 @@ const SLASH = '/';
 class Block extends React.Component {
   constructor(props) {
     super(props);
-    // this.showBlockHandles = this.showBlockHandles.bind(this);
-    // this.hideBlockHandles = this.hideBlockHandles.bind(this);
     this.plusHandleClick = this.plusHandleClick.bind(this);
     this.dragHandleClick = this.dragHandleClick.bind(this);
+    this.calculateDragHandlePosition = this.calculateDragHandlePosition(this);
     this.calculateActionMenuPosition = this.calculateActionMenuPosition.bind(this);
     this.calculateSelectMenuPosition = this.calculateSelectMenuPosition.bind(this);
     this.openActionMenu = this.openActionMenu.bind(this);
@@ -38,6 +37,7 @@ class Block extends React.Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.toggleMouseOverTurnInto = this.toggleMouseOverTurnInto.bind(this);
     this.toggleMouseOverSelectMenu = this.toggleMouseOverSelectMenu.bind(this);
+
     this.state = {
       blockType: this.props.block.blockType,
       actionMenuOpen: false,
@@ -51,8 +51,8 @@ class Block extends React.Component {
         y: null,
       },
       hover: false,
-      mouseOverTurnInto: false,
-      mouseOverSelectMenu: false,
+      // mouseOverTurnInto: false,
+      // mouseOverSelectMenu: false,
     };
   }
 
@@ -83,8 +83,8 @@ class Block extends React.Component {
     // make sure to insert after current block
     this.props.createBlock({
       pageId: this.props.block.pageId,
-      blockType: 'quote',
-      text: ''
+      blockType: 'paragraph',
+      text: 'A block created by clicking on the plus handle.'
     });
   }
 
@@ -94,11 +94,13 @@ class Block extends React.Component {
     this.openActionMenu(dragHandle, 'DRAG_HANDLE_CLICK');
   }
 
+  calculateDragHandlePosition(blockType) {}
+
   calculateActionMenuPosition(parent, initiator) {
     // determine if menu opens to left or right of drag handle (in the future)
     switch (initiator) {
       case 'DRAG_HANDLE_CLICK':
-        const x = parent.offsetLeft + parent.scrollLeft + 24;
+        const x = parent.offsetLeft + parent.scrollLeft + 26;
         const y = parent.offsetTop + parent.scrollTop - 8;
         return { x: x, y: y };
       default:
@@ -154,19 +156,17 @@ class Block extends React.Component {
     document.removeEventListener('click', this.closeSelectMenu, false);
   }
 
-  handleBlockSelect(blockType) {
+  handleBlockSelect(blockType, block) {
     if (blockType === 'image') {
       // image file picker
     } else {
-      // this.props.updateBlock()
+      let newBlock = Object.assign({}, block, { blockType: blockType });
+      this.props.updateBlock(newBlock)
       this.setState({ blockType: blockType }, () => {
         this.closeSelectMenu();
       });
     }
   }
-
-  // showBlockHandles() {}
-  // hideBlockHandles() {}
 
   componentWillUnmount() {
     document.removeEventListener('click', this.closeActionMenu, false);
@@ -234,11 +234,11 @@ class Block extends React.Component {
             {this.state.actionMenuOpen ? (
               <BlockActionMenu
                 position={this.state.actionMenuPosition}
-                turnInto={this.openSelectMenu('ACTION_MENU')}
-                openSelectMenu={this.openSelectMenu('ACTION_MENU')}
-                closeSelectMenu={this.closeSelectMenu}
-                deleteBlock={this.props.deleteBlock(this.props.block.id)}
-                toggleMouseOverTurnInto={this.toggleMouseOverTurnInto}
+                turnInto={() => this.openSelectMenu('ACTION_MENU')}
+                openSelectMenu={() => this.openSelectMenu('ACTION_MENU')}
+                closeSelectMenu={() => this.closeSelectMenu()}
+                deleteBlock={() => this.props.deleteBlock(this.props.block.id)}
+                // toggleMouseOverTurnInto={this.toggleMouseOverTurnInto}
               />
             ) : null}
 
@@ -247,50 +247,43 @@ class Block extends React.Component {
                 position={this.state.selectMenuPosition}
                 closeSelectMenu={this.closeSelectMenu}
                 handleBlockSelect={this.handleBlockSelect}
-                toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}
+                block={this.props.block}
+                // toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}
               />
             ) : null}
 
             <div
               onClick={this.plusHandleClick}
-              className="plus-handle"
               className={this.state.hover ? 'plus-handle visible' : 'plus-handle'}
               role="button"
               tabIndex="0"
+              // style={{ top: y }}
             >
-              <FiPlus />
+              <Plus />
+              {/* <div className={show ? 'handle-tooltip visible' : 'handle-tooltip'}>
+                <div className="handle-tooltip-text"><span>Click</span> to add a block below</div>
+              </div> */}
             </div>
 
             <div
               onClick={this.dragHandleClick}
               {...provided.dragHandleProps}
-              className="drag-handle"
               className={this.state.hover ? 'drag-handle visible' : 'drag-handle'}
               role="button"
               tabIndex="0"
+              // style={{ top: y }}
             >
-              {/* ⋮⋮ */}
-              {/* replace with custom svg */}
-  {/* <svg
-  stroke="currentColor"
-  fill="none"
-  stroke-width="2"
-  viewBox="0 0 24 24"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  height="1em"
-  width="1em"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <circle cx="12" cy="12" r="1"></circle>
-  <circle cx="12" cy="5" r="1"></circle>
-  <circle cx="12" cy="19" r="1"></circle>
-</svg>; */}
-              <FiMoreVertical />
+              <Dots />
+              {/* <div className={show ? 'handle-tooltip visible' : 'handle-tooltip'}>
+                <div className="handle-tooltip-text">
+                  <span>Drag</span> to move
+                  <br />
+                  <span>Click</span> to open menu
+                </div>
+              </div> */}
             </div>
 
             {blockBody}
-            {/* blockBody depends on blockType */}
           </div>
         )}
       </Draggable>

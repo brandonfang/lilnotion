@@ -92,14 +92,18 @@ class Page extends React.Component {
     const removed = newBlockIds.splice(source.index, 1);
     newBlockIds.splice(destination.index, 0, ...removed);
 
-    // this.setState({ blockIds: newBlockIds }, () => {
-    //   const newPage = Object.assign(this.state.page, { blockIds: newBlockIds});
-    //   this.props.updatePage(newPage);
-    // });
-
+    // console.log(newBlockIds);
     const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-    this.props.updatePage(newPage).then(this.setState({ blockIds: newBlockIds }));
+    // console.log(newPage);
+
+    this.props.updatePage(newPage)
+      .then((res) => {
+        // console.log(res)
+        this.setState({ blockIds: newBlockIds })
+      });
   }
+
+  handleTitleChange(e) {}
 
   handleImageUpload(e) {
     // debugger
@@ -142,6 +146,7 @@ class Page extends React.Component {
       <div className="page">
         <div className="topbar">
           <div className="breadcrumb-wrapper">
+            {/* add handleTitleChange listener */}
             <div className="breadcrumb">{this.props.pages[this.state.pageId].title}</div>
           </div>
           <div className="topbar-action-buttons">

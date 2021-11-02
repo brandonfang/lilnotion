@@ -28,11 +28,10 @@ export const updatePage = (page) => (
     data: { page },
   })
 );
-  
+
 export const deletePage = (pageId) => (
   $.ajax({
     url: `/api/pages/${pageId}`,
     method: 'DELETE',
   })
 );
-  

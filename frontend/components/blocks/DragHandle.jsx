@@ -33,13 +33,13 @@ const DragHandle = (props) => {
         <circle cx="12" cy="12" r="0.5"></circle>
         <circle cx="12" cy="18" r="0.5"></circle>
       </svg>
-      <div className={show ? 'handle-tooltip visible' : 'handle-tooltip'}>
+      {/* <div className={show ? 'handle-tooltip visible' : 'handle-tooltip'}>
         <div className="handle-tooltip-text">
           <span>Drag</span> to move
           <br />
           <span>Click</span> to open menu
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

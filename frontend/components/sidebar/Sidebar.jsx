@@ -1,7 +1,21 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { FiSearch, FiClock, FiSettings, FiFileText, FiGithub, FiLinkedin, FiTwitter, FiGlobe, FiPlus, FiLogOut } from 'react-icons/fi';
+import {
+  FiMenu,
+  FiChevronsRight,
+  FiChevronsLeft,
+  FiSearch,
+  FiClock,
+  FiSettings,
+  FiFileText,
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+  FiGlobe,
+  FiPlus,
+  FiLogOut,
+} from 'react-icons/fi';
 
 
 class Sidebar extends React.Component {

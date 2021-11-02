@@ -1,7 +1,7 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import Plus from './Plus';
-import Dots from './Dots';
+import PlusHandle from './PlusHandle';
+import DragHandle from './DragHandle';
 
 import Heading1Container from './Heading1Container';
 import Heading2Container from './Heading2Container';
@@ -80,7 +80,7 @@ class Block extends React.Component {
   }
 
   plusHandleClick() { 
-    // make sure to insert after current block
+    // fix function to insert after current block
     this.props.createBlock({
       pageId: this.props.block.pageId,
       blockType: 'paragraph',
@@ -231,6 +231,17 @@ class Block extends React.Component {
             onMouseEnter={() => this.setState({ hover: true })}
             onMouseLeave={() => this.setState({ hover: false })}
           >
+            <PlusHandle
+              plusHandleClick={this.plusHandleClick}
+              hover={this.state.hover}
+            />
+
+            <DragHandle
+              dragHandleClick={this.dragHandleClick}
+              dragHandleProps={provided.dragHandleProps}
+              hover={this.state.hover}
+            />
+
             {this.state.actionMenuOpen ? (
               <BlockActionMenu
                 position={this.state.actionMenuPosition}
@@ -251,37 +262,6 @@ class Block extends React.Component {
                 // toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}
               />
             ) : null}
-
-            <div
-              onClick={this.plusHandleClick}
-              className={this.state.hover ? 'plus-handle visible' : 'plus-handle'}
-              role="button"
-              tabIndex="0"
-              // style={{ top: y }}
-            >
-              <Plus />
-              {/* <div className={show ? 'handle-tooltip visible' : 'handle-tooltip'}>
-                <div className="handle-tooltip-text"><span>Click</span> to add a block below</div>
-              </div> */}
-            </div>
-
-            <div
-              onClick={this.dragHandleClick}
-              {...provided.dragHandleProps}
-              className={this.state.hover ? 'drag-handle visible' : 'drag-handle'}
-              role="button"
-              tabIndex="0"
-              // style={{ top: y }}
-            >
-              <Dots />
-              {/* <div className={show ? 'handle-tooltip visible' : 'handle-tooltip'}>
-                <div className="handle-tooltip-text">
-                  <span>Drag</span> to move
-                  <br />
-                  <span>Click</span> to open menu
-                </div>
-              </div> */}
-            </div>
 
             {blockBody}
           </div>

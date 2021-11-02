@@ -36,7 +36,7 @@
   color: rgb(195, 194, 192);
   transition: all 0.2s ease;
   z-index: 1;
-  // display: none;
+  display: none;
   cursor: grab;
   
   &:hover {
@@ -57,6 +57,7 @@
 
 .drag-handle {
   position: absolute;
+  isolation: isolate;
   // width might be 19px
   width: 18px;
   height: 24px;
@@ -66,14 +67,14 @@
   color: rgb(195, 194, 192);
   transition: all 0.2s ease;
   z-index: 1;
-  // display: none;
+  display: none;
 
   &:hover {
     background:rgba(190, 190, 190, 0.3)
   }
 
   &.visible {
-  display: block;
+    display: block;
   }
 
   svg {
@@ -82,6 +83,43 @@
     padding: 0px 0px;
     pointer-events: none;
   }
+}
+
+.handle-tooltip {
+  position: absolute;
+  display: inline-block;
+  height: auto;
+  top: 32px;
+  // left: 0px;
+  transform: translateX(-50%) translateX(10px);
+  background: rgba(0, 0, 0, 1);
+  border-radius: 3px;
+  padding: 4px 8px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0px 0px 0px 1px rgba(15, 15, 15, 5%),
+    0px 3px 6px rgba(15, 15, 15, 10%); 
+  z-index: 10;
+  user-select: none;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.handle-tooltip-text {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(130, 129, 127);
+  // line-height: 1;
+  margin-bottom: 0;
+}
+
+.handle-tooltip-text > span {
+  color: rgb(231, 231, 231);
 }
 
 // BLOCK STYLES

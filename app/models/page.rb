@@ -10,7 +10,7 @@
 #  icon               :string           default("")
 #  uploaded_image_url :string           default("")
 #  style              :json
-#  block_ids          :string           default([]), is an Array
+#  block_ids          :string           default(""), not null
 #  gallery_image_url  :string           default("")
 #
 class Page < ApplicationRecord

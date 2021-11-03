@@ -26,7 +26,8 @@ class Api::PagesController < ApplicationController
   
   def update
     @page = Page.find_by(id: params[:id])
-    if @page && @page.update(page_params)
+    if @page.update(page_params)
+      # debugger
       render :show
     else 
       render json: @page.errors.full_messages, status: 422
@@ -45,6 +46,6 @@ class Api::PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:id, :user_id, :title, :gallery_image_url, :uploaded_image_url, :icon, :style, :created_at, :updated_at, block_ids: [])
+    params.require(:page).permit(:id, :user_id, :title, :gallery_image_url, :uploaded_image_url, :icon, :style, :created_at, :updated_at, :block_ids)
   end
 end

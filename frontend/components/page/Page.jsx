@@ -92,13 +92,11 @@ class Page extends React.Component {
     const removed = newBlockIds.splice(source.index, 1);
     newBlockIds.splice(destination.index, 0, ...removed);
 
-    // console.log(newBlockIds);
+    newBlockIds = newBlockIds.join(',');  
     const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-    // console.log(newPage);
 
     this.props.updatePage(newPage)
       .then((res) => {
-        // console.log(res)
         this.setState({ blockIds: newBlockIds })
       });
   }

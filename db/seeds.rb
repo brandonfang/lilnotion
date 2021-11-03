@@ -121,6 +121,7 @@ page_1.block_ids = [
   block_6.id
 ]
 
+# page_1.save!
 
 block_7 = Block.create!({
   page_id: page_2.id,
@@ -138,6 +139,9 @@ page_2.block_ids = [
   block_7.id,
   block_8.id
 ]
+
+# page_2.save!
+
 block_9 = Block.create!({
   page_id: page_3.id,
   block_type: 'h1',
@@ -189,3 +193,5 @@ page_3.block_ids = [
   block_14.id,
   block_15.id,
 ]
+
+# page_3.save!

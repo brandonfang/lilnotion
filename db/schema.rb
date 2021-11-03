@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_155117) do
+ActiveRecord::Schema.define(version: 2021_11_03_192220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_155117) do
     t.string "icon", default: ""
     t.string "uploaded_image_url", default: ""
     t.json "style", default: {}
-    t.string "block_ids", default: [], array: true
+    t.string "block_ids", default: "", null: false
     t.string "gallery_image_url", default: ""
     t.index ["block_ids"], name: "index_pages_on_block_ids"
     t.index ["title"], name: "index_pages_on_title"

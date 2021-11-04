@@ -59,19 +59,19 @@ page_1 = Page.create!(
   user_id: user_1.id,
   title: 'This is a page',
   gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
-  icon: '✋'
+  icon: '✋',
 )
 
 page_2 = Page.create!(
   user_id: user_1.id,
   title: 'This is a second page',
-  gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/gradient-8.png '
+  gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/gradient-8.png ',
 )
 
 page_3 = Page.create!(
   user_id: user_1.id,
   title: 'This is a third page',
-  gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/nasa-the-blue-marble.jpeg'
+  gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/nasa-the-blue-marble.jpeg',
 )
 
 # Add demo blocks
@@ -112,17 +112,6 @@ block_6 = Block.create!({
   text: 'The codices of pre-Columbian Mesoamerica (Mexico and Central America) had the same form as the European codex, but were instead made with long folded strips of either fig bark (amatl) or plant fibers, often with a layer of whitewash applied before writing. New World codices were written as late as the 16th century (see Maya codices and Aztec codices). Those written before the Spanish conquests seem all to have been single long sheets folded concertina-style, sometimes written on both sides of the local amatl paper.'
 })
 
-page_1.block_ids = [
-  block_1.id,
-  block_2.id,
-  block_3.id,
-  block_4.id,
-  block_5.id,
-  block_6.id
-]
-
-# page_1.save!
-
 block_7 = Block.create!({
   page_id: page_2.id,
   block_type: 'paragraph',
@@ -134,13 +123,6 @@ block_8 = Block.create!({
   block_type: 'paragraph',
   text: 'The codices of pre-Columbian Mesoamerica (Mexico and Central America) had the same form as the European codex, but were instead made with long folded strips of either fig bark (amatl) or plant fibers, often with a layer of whitewash applied before writing. New World codices were written as late as the 16th century (see Maya codices and Aztec codices). Those written before the Spanish conquests seem all to have been single long sheets folded concertina-style, sometimes written on both sides of the local amatl paper.'
 })
-
-page_2.block_ids = [
-  block_7.id,
-  block_8.id
-]
-
-# page_2.save!
 
 block_9 = Block.create!({
   page_id: page_3.id,
@@ -184,6 +166,20 @@ block_15 = Block.create!({
   text: 'Dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor.'
 })
 
+page_1.block_ids = [
+  block_1.id,
+  block_2.id,
+  block_3.id,
+  block_4.id,
+  block_5.id,
+  block_6.id
+]
+
+page_2.block_ids = [
+  block_7.id,
+  block_8.id
+]
+
 page_3.block_ids = [
   block_9.id,
   block_10.id,
@@ -194,4 +190,6 @@ page_3.block_ids = [
   block_15.id,
 ]
 
-# page_3.save!
+p('page_1', page_1.block_ids)
+p('page_2', page_2.block_ids)
+p('page_3', page_3.block_ids)

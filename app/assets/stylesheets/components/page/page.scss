@@ -91,6 +91,10 @@
   text-align: left;
 }
 
+.page-title[contenteditable]:empty:after {
+  content: attr(placeholder);
+}
+
 .page-content {}
 
 .temp-picker {

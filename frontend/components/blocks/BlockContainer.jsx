@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchBlock: (blockId) => dispatch(fetchBlock(blockId)),
-  fetchBlocks: (userId) => dispatch(fetchBlocks(userId)),
+  fetchBlocks: () => dispatch(fetchBlocks()),
   createBlock: (block) => dispatch(createBlock(block)),
   updateBlock: (block) => dispatch(updateBlock(block)),
   deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),

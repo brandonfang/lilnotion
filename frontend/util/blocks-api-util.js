@@ -6,12 +6,19 @@ export const createBlock = (block) => (
   })
 );
 
-export const fetchBlocks = (pageId) => (
+export const fetchBlocks = () => (
   $.ajax({
-    url: `api/pages/${pageId}/blocks`,
+    url: `api/blocks`,
     method: 'GET',
   })
 );
+
+// export const fetchBlocks = (pageId) => (
+//   $.ajax({
+//     url: `api/pages/${pageId}/blocks`,
+//     method: 'GET',
+//   })
+// );
   
 export const fetchBlock = (blockId) => (
   $.ajax({

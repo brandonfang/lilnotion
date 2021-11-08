@@ -2,6 +2,7 @@ class Api::BlocksController < ApplicationController
 
   def index
     # @blocks = Block.where(page_id: params[:page_id])
+    # workaround: fetch all blocks from all pages
     @blocks = Block.all
     @page_id = params[:page_id]
     if @blocks

@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import BlockContainer from '../blocks/BlockContainer';
-// import PageHeaderContainer from './PageHeaderContainer';
-// import MediaMenuContainer from '../menus/MediaMenuContainer';
 import ContentEditable from 'react-contenteditable';
 import { debounce } from '../../util/utils';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import BlockContainer from '../blocks/BlockContainer';
+import PageHeaderContainer from './PageHeaderContainer';
+import MediaMenuContainer from '../menus/MediaMenuContainer';
 
 class Page extends React.Component {
   isMounted = false;
@@ -15,56 +15,46 @@ class Page extends React.Component {
     this.contentEditable = React.createRef();
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
+    this.OnDragEnd = this.OnDragEnd.bind(this); 
     this.state = {
       pages: this.props.pages,
+      // page: this.props.page,
+      page: {},
       pageId: this.props.pageId,
-      page: this.props.page,
+      blocks: this.props.blocks,
       html: '',
-      title: '',
-      blockIds: [],
-      blocks: [],
+      photoFile: null,
+      photoUrl: null,
     };
   }
 
   componentDidMount() {
     this.isMounted = true;
+    // console.log(this.state);
 
     if (!this.props.page || Object.keys(this.props.page).length === 0) {
-      // if page data missing, fetch data and add it to component state
-      this.props.fetchPage(this.state.pageId).then((res) => {
+      this.props.fetchPage(this.props.pageId).then((res) => {
         if (this.isMounted) {
           this.setState({
             page: res.page,
             html: res.page.title,
             title: res.page.title,
-            galleryImageUrl: res.page.galleryImageUrl,
-            uploadedImageUrl: res.page.uploadedImageUrl,
-            blockIds: res.page.blockIds,
           });
         }
       });
     } else {
-      // if page data exists, add it to component state
-      if (this.isMounted) {
-        this.setState({
-          page: this.props.page,
-          html: this.props.page.title,
-          title: this.props.page.title,
-          galleryImageUrl: this.props.page.galleryImageUrl,
-          uploadedImageUrl: this.props.page.uploadedImageUrl,
-          blockIds: this.props.page.blockIds,
-        });
-      }
+      console.log('page already exists');
     }
 
-    this.props.fetchBlocks(this.state.pageId)
-      .then((res) => {
+    if (this.props.blocks.length === 0) {
+      this.props.fetchBlocks().then((res) => {
         if (this.isMounted) {
           this.setState({
             blocks: res.blocks,
           });
         }
       });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -74,13 +64,9 @@ class Page extends React.Component {
     //     .then((res) => {
     //       this.setState({
     //         page: res.page,
-    //         title: res.page.title,
-    //         galleryImageUrl: res.page.galleryImageUrl,
-    //         uploadedImageUrl: res.page.uploadedImageUrl,
-    //         blockIds: res.page.blockIds,
     //       });
     //     })
-    //   this.props.fetchBlocks(newPageId)
+    //   this.props.fetchBlocks()
     //     .then((res) => {
     //       this.setState({
     //         blocks: res.blocks,
@@ -89,13 +75,12 @@ class Page extends React.Component {
     //     });
     // }
     // if (prevProps.blocks !== this.props.blocks) {
-    //   this.props.fetchBlocks(this.state.pageId).then((res) => {
+    //   this.props.fetchBlocks().then((res) => {
     //     this.setState({
     //       blocks: res.blocks,
     //     });
     //   });
     // }
-
     // const htmlChanged = this.props.html !== this.state.html;
     // if (htmlChanged) {
     //   const newPage = Object.assign(this.props.page, { title: this.state.html });
@@ -107,6 +92,31 @@ class Page extends React.Component {
     this.isMounted = false;
   }
 
+  handleTitleChange(e) {
+    const newPage = Object.assign(this.state.page, { title: e.target.value });
+    this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
+  }
+
+  handleImageUpload(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('page[uploadedImageUrl]', this.state.photoFile);
+    console.log(this.state.photoFile);
+
+    $.ajax({
+      url: `/api/pages/${this.props.pageId}`,
+      method: 'PATCH',
+      data: formData,
+      contentType: false,
+      processData: false,
+    }).then(
+      (res) => {
+        this.props.updatePage(this.state.page);
+      },
+      (err) => console.log(err)
+    );
+  }
+
   OnDragEnd(result) {
     const { source, destination } = result;
 
@@ -114,63 +124,38 @@ class Page extends React.Component {
     if (!destination || source.index === destination.index) return;
 
     // reorder blocks ids (splice >1 if implementing multi-drag)
-    const blockIds = this.state.blockIds;
+    const blockIds = this.state.page.blockIds;
     const newBlockIds = [...blockIds];
     const removed = newBlockIds.splice(source.index, 1);
     newBlockIds.splice(destination.index, 0, ...removed);
 
     console.log(newBlockIds);
-    // const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
+    const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
 
     // this.props.updatePage(newPage)
     //   .then((res) => {
-    //     this.setState({ blockIds: newBlockIds })
+    //     this.setState({ page: newPage })
     //   });
 
-    this.setState({ blockIds: newBlockIds });
-  }
-
-  handleTitleChange(e) {
-    console.log(e.target.value)
-    // debugger
-    this.props
-      .updatePage(Object.assign(this.state.page, { title: e.target.value }))
-      .then((page) => {
-        this.setState({ html: page.title, title: page.title });
-      });
-  }
-
-  handleImageUpload(e) {
-    // debugger
-    // e.preventDefault();
-    // const formData = new FormData();
-    // formData.append(page[title], this.state.title);
-    // formData.append(page[photo], this.state.photoFile);
-    // $.ajax({
-    //   url: `/api/pages/${this.state.pageId}`,
-    //   method: 'PATCH',
-    //   data: formData,
-    //   contentType: false,
-    //   processData: false
-    // }).then(
-    //   (res) => console.log(res),
-    //   (err) => console.log(err)
-    // );
+    this.setState({ page: newPage });
   }
 
   render() {
     if (!this.props.blocks || !this.props.pages || !this.props.page) return null;
-    if (this.state.blocks.length === 0) return null;
     if (Object.keys(this.props.page).length === 0) return null;
+    if (this.props.blocks.length === 0) return null;
+    if (!this.state.page || Object.keys(this.state.page).length === 0) return null;
+    if (!this.state.page.blocks || this.state.page.blocks.length === 0) return null;
 
     const orderedBlocks = [];
-    const blockIds = this.props.page.blockIds;
+    const blockIds = this.state.page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {
       orderedBlocks.push(this.state.blocks[blockIds[i]]);
     }
 
     const pageHasGalleryCover = this.props.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.props.page.uploadedImageUrl.length > 0;
+    const preview = this.state.photoUrl ? <img src="this.state.photoUrl" /> : null;
 
     // check for attachment
     // use default or user photo based on attachment
@@ -200,7 +185,7 @@ class Page extends React.Component {
           </div>
 
           <div className="temp-picker">
-            <form onSubmit={this.handleImageUpload.bind(this)} id="picker-form">
+            <form onSubmit={this.handleImageUpload} id="picker-form">
               <label htmlFor="page-cover-input">Choose a photo</label>
               <input
                 type="file"
@@ -216,20 +201,17 @@ class Page extends React.Component {
 
           <div className="page-wrapper">
             <div className="page-title-wrapper">
-              {/* <h1 className="page-title">
-                {this.props.page.title}
-              </h1> */}
               <ContentEditable
                 innerRef={this.contentEditable}
                 html={this.state.html}
                 onChange={debounce(this.handleTitleChange, 1000)}
+                tagName="h1"
                 className="page-title"
                 placeholder="Untitled"
-                tagName="h1"
               />
             </div>
 
-            <DragDropContext onDragEnd={this.OnDragEnd.bind(this)}>
+            <DragDropContext onDragEnd={this.OnDragEnd}>
               <div className="page-content">
                 <Droppable droppableId={this.state.pageId}>
                   {(provided, snapshot) => (

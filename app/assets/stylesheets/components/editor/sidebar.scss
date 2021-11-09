@@ -1,9 +1,7 @@
 .sidebar {
-  flex-grow: 0;
-  flex-shrink: 0;
   width: 250px;
-  // resize: horizontal;
   height: 100vh;
+  // resize: horizontal;
   background: $gray-500;
   color: hsla(45, 19%, 8%, 0.6);
   font-weight: 500;
@@ -12,9 +10,10 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: visible;
+  // justify-content: space-between;
+  overflow: hidden;
   opacity: 1;
+  position: relative;
 
   // svg {
   //   stroke-width: 3px;
@@ -24,6 +23,13 @@
 .sidebar-top {
   // scroll
   // overflow: hidden auto;
+}
+
+.sidebar-bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 2;
 }
 
 .sidebar-switcher-wrapper {
@@ -156,7 +162,7 @@
   width: 100%;
   padding-top: 14px;
   padding-bottom: 20px;
-  overflow: hidden auto;
+  overflow: y auto;
 }
 
 .outliner-bookmarks-header {
@@ -176,6 +182,7 @@
 .outliner {
   display: block;
   width: 100%;
+  overflow-y: scroll;
 
   .outliner-item {
     display: block;

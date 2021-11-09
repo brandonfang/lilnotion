@@ -8,7 +8,11 @@ const AuthNavbar = (props) => {
         <div className="inner">
           <div className="logo-wrapper">
             <Link to="/">
-              <img className="logo" src={window.logo} alt="lilNotion logo" />
+              <img
+                className="logo"
+                src="https://lilnotion-dev.s3.us-west-1.amazonaws.com/lilnotion-logo-dark.svg"
+                alt="lilNotion logo"
+              />
             </Link>
           </div>
         </div>

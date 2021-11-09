@@ -31,6 +31,7 @@ class ToDo extends React.Component {
   render() {
     return (
       <div className="block-body">
+        {/* add input or custom checkbox */}
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.state.html}

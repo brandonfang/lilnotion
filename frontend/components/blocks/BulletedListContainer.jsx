@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchBlock, createBlock, updateBlock, deleteBlock } from '../../actions/block-actions';
-import Heading1 from './Heading1';
+import BulletedList from './BulletedList';
 
 const mapStateToProps = (state) => ({});
 
@@ -11,4 +11,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Heading1);
+export default connect(mapStateToProps, mapDispatchToProps)(BulletedList);

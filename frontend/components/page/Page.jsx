@@ -18,8 +18,8 @@ class Page extends React.Component {
     this.OnDragEnd = this.OnDragEnd.bind(this); 
     this.state = {
       pages: this.props.pages,
-      // page: this.props.page,
-      page: {},
+      page: this.props.page,
+      // page: {},
       pageId: this.props.pageId,
       blocks: this.props.blocks,
       html: '',
@@ -58,22 +58,22 @@ class Page extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // let newPageId = this.props.location.pathname.slice(3);
-    // if (prevProps.pageId !== newPageId) {
-    //   this.props.fetchPage(newPageId)
-    //     .then((res) => {
-    //       this.setState({
-    //         page: res.page,
-    //       });
-    //     })
-    //   this.props.fetchBlocks()
-    //     .then((res) => {
-    //       this.setState({
-    //         blocks: res.blocks,
-    //         pageId: newPageId
-    //       });
-    //     });
-    // }
+    let newPageId = this.props.location.pathname.slice(3);
+    if (prevProps.pageId !== newPageId) {
+      this.props.fetchPage(newPageId)
+        .then((res) => {
+          this.setState({
+            page: res.page,
+          });
+        })
+      this.props.fetchBlocks()
+        .then((res) => {
+          this.setState({
+            blocks: res.blocks,
+            pageId: newPageId
+          });
+        });
+    }
     // if (prevProps.blocks !== this.props.blocks) {
     //   this.props.fetchBlocks().then((res) => {
     //     this.setState({
@@ -152,6 +152,9 @@ class Page extends React.Component {
     for (let i = 0; i < blockIds.length; i++) {
       orderedBlocks.push(this.state.blocks[blockIds[i]]);
     }
+
+    console.log(orderedBlocks);
+    console.log('asdfalksdj;fkasdf')
 
     const pageHasGalleryCover = this.props.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.props.page.uploadedImageUrl.length > 0;

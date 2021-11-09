@@ -15,9 +15,10 @@ import ToDoContainer from './ToDoContainer';
 import ToggleContainer from './ToggleContainer';
 import DividerContainer from './DividerContainer';
 import ImageContainer from './ImageContainer';
+
 import BlockActionMenu from '../menus/BlockActionMenu';
 import BlockSelectMenu from '../menus/BlockSelectMenu';
-// import BlockSlashMenu from '../menus/BlockSlashMenu';
+import BlockSlashMenu from '../menus/BlockSlashMenu';
 
 const SLASH = '/';
 

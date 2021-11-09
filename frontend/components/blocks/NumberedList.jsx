@@ -30,6 +30,7 @@ class NumberedList extends React.Component {
   render() {
     return (
       <div className="block-body">
+        {/* add number styling */}
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.state.html}

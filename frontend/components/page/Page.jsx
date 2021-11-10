@@ -6,6 +6,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import BlockContainer from '../blocks/BlockContainer';
 import PageHeaderContainer from './PageHeaderContainer';
 import MediaMenuContainer from '../menus/MediaMenuContainer';
+import { FiMenu } from 'react-icons/fi';
 
 class Page extends React.Component {
   isMounted = false;
@@ -154,7 +155,6 @@ class Page extends React.Component {
     }
 
     console.log(orderedBlocks);
-    console.log('asdfalksdj;fkasdf')
 
     const pageHasGalleryCover = this.props.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.props.page.uploadedImageUrl.length > 0;

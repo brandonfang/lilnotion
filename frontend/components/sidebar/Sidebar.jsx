@@ -6,7 +6,6 @@ import {
   FiChevronsRight,
   FiChevronsLeft,
   FiSearch,
-  FiClock,
   FiSettings,
   FiFileText,
   FiGithub,
@@ -20,7 +19,15 @@ import {
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
     this.newPage = this.newPage.bind(this);
+    this.state = {
+      isCollapsed: false,
+    }
+  }
+
+  toggleSidebar() {
+    console.log('toggle sidebar');
   }
 
   newPage() {
@@ -28,18 +35,21 @@ class Sidebar extends React.Component {
     this.props
       .createPage({
         userId: this.props.currentUser.id,
-        title: 'Untitled',
+        title: 'Untitled Page',
       })
       .then((page) => {
+        console.log(page);
         // this.props.history.push(`/p/${page.id}`);
-      });
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
     if (!this.props.pages) return null;
     if (Object.keys(this.props.pages).length === 0) return null;
-
     const { currentUser, pages, logout } = this.props;
+
+    const toggleIcon = this.state.isCollapsed ? <FiChevronsRight /> : <FiChevronsLeft />;
 
     const pagesList = Object.keys(pages).map((pageKey, i) => {
       const page = pages[pageKey];
@@ -78,7 +88,12 @@ class Sidebar extends React.Component {
                   <div>{currentUser.firstName}'s lilNotion</div>
                 </div>
 
-                {/* sidebar collapse button*/}
+                <div className="sidebar-toggle" onClick={this.toggleSidebar}>
+                  {toggleIcon}
+                  <div className="toggle-tooltip">
+                    <div className="toggle-tooltip-text">Close sidebar</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -93,39 +108,42 @@ class Sidebar extends React.Component {
               </div>
             </div>
 
-            {/* <div className="sidebar-utility-wrapper">
-              <div className="sidebar-utility">
-                <div className="sidebar-utility-icon-wrapper">
-                  <FiClock />
-                </div>
-                <div className="sidebar-utility-label">All Updates</div>
-              </div>
-            </div> */}
-
-            {/* <div className="sidebar-utility-wrapper">
+            <div className="sidebar-utility-wrapper">
               <div className="sidebar-utility">
                 <div className="sidebar-utility-icon-wrapper">
                   <FiSettings />
                 </div>
                 <div className="sidebar-utility-label">Settings & Members</div>
               </div>
-            </div> */}
+            </div>
           </div>
+        </div>
 
-          {/* sidebar scroller component */}
-
-          <div className="sidebar-scroller-vertical">
-            <div className="outliner-bookmarks-header">Pages</div>
+        <div className="sidebar-middle">
+          <div className="sidebar-scroller">
+            <div className="outliner-header">Pages</div>
             <div className="outliner">{pagesList}</div>
           </div>
         </div>
 
         <div className="sidebar-bottom">
+          <div className="sidebar-shortcuts">
+            <div className="shortcut" onClick={this.newPage}>
+              <FiPlus className="sidebar-icon" size={16} />
+              New page
+            </div>
+            <div className="shortcut" onClick={logout}>
+              <FiLogOut className="sidebar-icon" size={16} />
+              Log out
+            </div>
+          </div>
+          {/* move credits above utilities */}
           <div className="sidebar-credits">
             <div className="credit">
               <FiGithub className="sidebar-icon" />
               <a
                 href="https://github.com/brandonfang/lilnotion"
+                className="credit-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -136,6 +154,7 @@ class Sidebar extends React.Component {
               <FiLinkedin className="sidebar-icon" />
               <a
                 href="https://www.linkedin.com/in/bdmfang"
+                className="credit-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -144,26 +163,25 @@ class Sidebar extends React.Component {
             </div>
             <div className="credit">
               <FiGlobe className="sidebar-icon" />
-              <a href="https://bdmfang.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://bdmfang.com"
+                className="credit-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Portfolio
               </a>
             </div>
             <div className="credit">
               <FiTwitter className="sidebar-icon" />
-              <a href="https://twitter.com/bdmfang" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://twitter.com/bdmfang"
+                className="credit-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Twitter
               </a>
-            </div>
-          </div>
-
-          <div className="sidebar-shortcuts">
-            <div className="shortcut" onClick={this.newPage}>
-              <FiPlus className="sidebar-icon" size={16} />
-              New page
-            </div>
-            <div className="shortcut" onClick={logout}>
-              <FiLogOut className="sidebar-icon" size={16} />
-              Log out
             </div>
           </div>
         </div>

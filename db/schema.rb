@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_174203) do
+ActiveRecord::Schema.define(version: 2021_11_11_183602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -50,10 +50,12 @@ ActiveRecord::Schema.define(version: 2021_11_11_174203) do
     t.boolean "expanded", default: true
     t.string "link_page_id", default: ""
     t.string "icon", default: ""
+    t.uuid "user_id", null: false
     t.index ["block_type"], name: "index_blocks_on_block_type"
     t.index ["image_url"], name: "index_blocks_on_image_url"
     t.index ["page_id"], name: "index_blocks_on_page_id"
     t.index ["text"], name: "index_blocks_on_text"
+    t.index ["user_id"], name: "index_blocks_on_user_id"
   end
 
   create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

@@ -8,6 +8,7 @@ import {
   updatePage,
   deletePage,
 } from '../../actions/page-actions';
+import { createBlock } from '../../actions/block-actions';
 import { logout } from '../../actions/session-actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -23,6 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPages: (userId) => dispatch(fetchPages(userId)),
   updatePage: (page) => dispatch(updatePage(page)),
   deletePage: (pageId) => dispatch(deletePage(pageId)),
+  createBlock: (block) => dispatch(createBlock(block)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

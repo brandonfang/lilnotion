@@ -17,6 +17,8 @@ class Editor extends React.Component {
       });
   }
 
+  // check for invalid url and redirect
+
   render() {
     return (
       <div className="editor">

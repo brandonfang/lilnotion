@@ -11,7 +11,7 @@
 #  uploaded_image_url :string           default("")
 #  style              :json
 #  gallery_image_url  :string           default("")
-#  block_ids          :text             default([]), is an Array
+#  block_ids          :string           default([]), is an Array
 #
 class Page < ApplicationRecord
   belongs_to :user,

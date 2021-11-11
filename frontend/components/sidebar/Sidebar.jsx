@@ -24,7 +24,7 @@ class Sidebar extends React.Component {
     this.state = {
       isCollapsed: false,
       toggleHover: false,
-    }
+    };
   }
 
   toggleSidebar() {
@@ -32,18 +32,28 @@ class Sidebar extends React.Component {
   }
 
   newPage() {
-    // default / placeholder page
-    this.props
+    // create untitled page and placeholder blocks
+    const page = await this.props
       .createPage({
         userId: this.props.currentUser.id,
         title: 'Untitled Page',
-      })
-      .then((page) => {
-        console.log(page);
-        // this.props.history.push(`/p/${page.id}`);
-      })
-      .catch((err) => console.log(err));
+        gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
+      });
+    const newPageId = page.id;
+    const newBlock = await this.props
+      .createBlock({
+        pageId: newPageId,
+        userId: this.props.currentUser.id,
+        blockType: 'paragraph',
+        text: '',
+      });
+    const newPage = Object.assign(page, { blockIds: [newBlock.id] });
+    this.updatePage(newPageId).then(() => {
+      this.props.history.push(`/p/${newPageId}`);
+    });
   }
+
+  componentDidUpdate() {}
 
   render() {
     if (!this.props.pages) return null;
@@ -144,7 +154,7 @@ class Sidebar extends React.Component {
               Log out
             </div>
           </div>
-          {/* move credits above utilities */}
+          {/* move credits above utilities? */}
           <div className="sidebar-credits">
             <div className="credit">
               <FiGithub className="sidebar-icon" />

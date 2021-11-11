@@ -4,6 +4,7 @@ class Api::BlocksController < ApplicationController
     # @blocks = Block.where(page_id: params[:page_id])
     # workaround: fetch all blocks from all pages
     @blocks = Block.all
+    # @blocks = Block.where(user_id: params[:user_id])
     @page_id = params[:page_id]
     if @blocks
       render :index
@@ -47,6 +48,6 @@ class Api::BlocksController < ApplicationController
   private
 
   def block_params
-    params.require(:block).permit(:id, :page_id, :block_type, :text, :image_url, :checked, :expanded, :list_index, :link_page_id, :icon, :format, :created_at, :updated_at)
+    params.require(:block).permit(:id, :user_id, :page_id, :block_type, :text, :image_url, :checked, :expanded, :list_index, :link_page_id, :icon, :format, :created_at, :updated_at)
   end
 end

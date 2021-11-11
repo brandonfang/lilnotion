@@ -10,8 +10,8 @@
 #  icon               :string           default("")
 #  uploaded_image_url :string           default("")
 #  style              :json
-#  block_ids          :string           default(""), not null
 #  gallery_image_url  :string           default("")
+#  block_ids          :text             default([]), is an Array
 #
 
 # This model initially had no columns defined. If you add columns to the

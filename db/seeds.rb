@@ -166,6 +166,7 @@ block_15 = Block.create!({
   text: 'Dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor.'
 })
 
+
 page_1.block_ids = [
   block_1.id,
   block_2.id,
@@ -190,6 +191,9 @@ page_3.block_ids = [
   block_15.id,
 ]
 
-p('page_1', page_1.block_ids)
-p('page_2', page_2.block_ids)
-p('page_3', page_3.block_ids)
+p page_1
+p page_1.block_ids
+
+# p('page_1', page_1.block_ids)
+# p('page_2', page_2.block_ids)
+# p('page_3', page_3.block_ids)

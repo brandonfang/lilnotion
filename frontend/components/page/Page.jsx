@@ -58,9 +58,9 @@ class Page extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     let newPageId = this.props.location.pathname.slice(3);
-    if (prevProps.pageId !== newPageId) {
+    if (newPageId !== prevProps.pageId) {
       this.props.fetchPage(newPageId)
         .then((res) => {
           this.setState({
@@ -143,7 +143,7 @@ class Page extends React.Component {
 
   render() {
     if (!this.props.blocks || !this.props.pages || !this.props.page) return null;
-    if (Object.keys(this.props.page).length === 0) return null;
+    // if (Object.keys(this.props.page).length === 0) return null;
     if (this.props.blocks.length === 0) return null;
     if (!this.state.page || Object.keys(this.state.page).length === 0) return null;
     if (!this.state.page.blocks || this.state.page.blocks.length === 0) return null;
@@ -154,7 +154,8 @@ class Page extends React.Component {
       orderedBlocks.push(this.state.blocks[blockIds[i]]);
     }
 
-    console.log(orderedBlocks);
+    console.log('page.jsx loaded')
+    // console.log(orderedBlocks);
 
     const pageHasGalleryCover = this.props.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.props.page.uploadedImageUrl.length > 0;

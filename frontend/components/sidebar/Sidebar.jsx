@@ -23,6 +23,7 @@ class Sidebar extends React.Component {
     this.newPage = this.newPage.bind(this);
     this.state = {
       isCollapsed: false,
+      toggleHover: false,
     }
   }
 
@@ -50,6 +51,7 @@ class Sidebar extends React.Component {
     const { currentUser, pages, logout } = this.props;
 
     const toggleIcon = this.state.isCollapsed ? <FiChevronsRight /> : <FiChevronsLeft />;
+    const toggleHover = this.state.toggleHover;
 
     const pagesList = Object.keys(pages).map((pageKey, i) => {
       const page = pages[pageKey];
@@ -88,9 +90,14 @@ class Sidebar extends React.Component {
                   <div>{currentUser.firstName}'s lilNotion</div>
                 </div>
 
-                <div className="sidebar-toggle" onClick={this.toggleSidebar}>
+                <div
+                  className="sidebar-toggle"
+                  onClick={this.toggleSidebar}
+                  onMouseEnter={() => this.setState({ toggleHover: true })}
+                  onMouseLeave={() => this.setState({ toggleHover: false })}
+                >
                   {toggleIcon}
-                  <div className="toggle-tooltip">
+                  <div className={toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip'}>
                     <div className="toggle-tooltip-text">Close sidebar</div>
                   </div>
                 </div>

@@ -1,8 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import SidebarContainer from '../sidebar/SidebarContainer';
 import PageContainer from '../page/PageContainer';
-// import ModalWrapper from '../modal/ModalWrapper';
 
 class Editor extends React.Component {
   constructor(props) {

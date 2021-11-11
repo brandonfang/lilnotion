@@ -10,8 +10,8 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
+  // justify-content: space-between;
+  // overflow: hidden;
   opacity: 1;
 }
 
@@ -105,7 +105,9 @@
   background: rgb(218, 217, 214);
   background: transparent;
   color: rgb(153, 151, 147);
-  // padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:hover {
     background: rgb(218, 217, 214);
@@ -125,12 +127,21 @@
 
 .toggle-tooltip {
   position: absolute;
-  z-index: 200;
-  left: -100px;
-  top: 0px;
-  background: black;
+  z-index: 2;
+  left: -32px;
+  top: 30px;
+  border-radius: 3px;
+  padding: 8px 8px;
+  background: rgb(15, 15, 15);
+  box-shadow: 
+    0px 0px 0px 1px rgba(15, 15, 15, 5%),
+    0px 3px 6px rgba(15, 15, 15, 10%);
+  user-select: none;
+  display: none;
 
-
+  &.visible {
+    display: block;
+  }
 }
 
 .toggle-tooltip-text {
@@ -258,11 +269,10 @@
 .sidebar-bottom {
   flex: 0 0 auto;
   width: 100%;
-  z-index: 2;
+  // z-index: 1;
 }
 
 .sidebar-credits {
-  background: $gray-500;
   padding: 16px 0;
   box-shadow: 0 -1px 0 0 #d4d4d8;
 }
@@ -286,7 +296,7 @@
 }
 
 .sidebar-shortcuts {
-  background: $gray-500;
+  width: 100%;
 }
 
 .shortcut {

@@ -320,3 +320,11 @@
   width: 16px;
   height: 16px;
 }
+
+@media (max-width: 450px) {
+  .sidebar {
+    width: 240px;
+  }
+  // smaller padding
+  // smaller font sizes
+}

@@ -5,19 +5,20 @@ import PageContainer from '../page/PageContainer';
 class Editor extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pageId: this.props.location.pathname.slice(3)
+    }
   }
   
   componentDidMount() {
     this.props.fetchPages(this.props.currentUser.id)
-      .then(() => {
-        if (this.props.location.pathname === '/') {
-          const page = Object.values(this.props.pages)[0];
+      .then((res) => {
+        if (!res.pages[this.state.pageId]) {
+          const page = Object.values(res.pages)[0];
           this.props.history.push(`/p/${page.id}`);
         }
       });
   }
-
-  // check for invalid url and redirect
 
   render() {
     return (

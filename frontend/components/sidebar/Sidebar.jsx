@@ -22,35 +22,57 @@ class Sidebar extends React.Component {
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.newPage = this.newPage.bind(this);
     this.state = {
-      isCollapsed: false,
+      sidebarExpanded: true,
       toggleHover: false,
     };
   }
 
   toggleSidebar() {
-    console.log('toggle sidebar');
+    if (this.state.sidebarExpanded) {
+      // close sidebar
+      document.getElementById('sidebar').style.transform = 'translateX(-200px)';
+      this.setState({ sidebarExpanded: false, toggleHover: false });
+    } else {
+      // open sidebar
+      document.getElementById('sidebar').style.transform = 'translateX(0px)';
+      this.setState({ sidebarExpanded: true });
+    }
+    
+    // persist sidebar state into localstorage
+
+    // this.props.toggleSidebar()
+    //   .then((res) => this.setState({ 
+    //     sidebarExpanded: !this.state.sidebarExpanded 
+    //   }));
   }
 
   newPage() {
     // create untitled page and placeholder blocks
-    const page = await this.props
+
+    // let newPage;
+    this.props
       .createPage({
         userId: this.props.currentUser.id,
         title: 'Untitled Page',
-        gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
+        // gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
+      })
+      .then((res) => {
+        this.props.history.push(`/p/${res.page.id}`);
       });
-    const newPageId = page.id;
-    const newBlock = await this.props
-      .createBlock({
-        pageId: newPageId,
-        userId: this.props.currentUser.id,
-        blockType: 'paragraph',
-        text: '',
-      });
-    const newPage = Object.assign(page, { blockIds: [newBlock.id] });
-    this.updatePage(newPageId).then(() => {
-      this.props.history.push(`/p/${newPageId}`);
-    });
+    // .then((res) => {
+    //   newPage = res.page;
+    //   this.props.createBlock({
+    //     userId: this.props.currentUser.id,
+    //     pageId: newPage.id,
+    //     blockType: 'paragraph',
+    //     text: '',
+    //   });
+    // })
+    // .then((res) => {
+    //   const newBlock = res.block;
+    //   const newerPage = Object.assign(newPage, { blockIds: [newBlock.id] });
+    //   this.props.updatePage(newerPage)
+    // });
   }
 
   componentDidUpdate() {}
@@ -60,16 +82,20 @@ class Sidebar extends React.Component {
     if (Object.keys(this.props.pages).length === 0) return null;
     const { currentUser, pages, logout } = this.props;
 
-    const toggleIcon = this.state.isCollapsed ? <FiChevronsRight /> : <FiChevronsLeft />;
-    const toggleHover = this.state.toggleHover;
+    const toggleIcon = this.state.sidebarExpanded ? <FiChevronsLeft /> : <FiChevronsRight />;
+    const tooltipText = this.state.sidebarExpanded ? 'Close sidebar' : 'Lock sidebar open';
+    const { sidebarExpanded, toggleHover } = this.state;
 
     const pagesList = Object.keys(pages).map((pageKey, i) => {
       const page = pages[pageKey];
       return (
         <div
+          onClick={() => this.props.history.push(`/p/${page.id}`)}
+          // >
+          // <div
           className="outliner-item"
           key={`${page.id}-${i}`}
-          onClick={() => this.props.history.push(`/p/${page.id}`)}
+          to={`/p/${page.id}`}
         >
           <div className="page-block">
             <FiFileText className="sidebar-icon" />
@@ -81,7 +107,7 @@ class Sidebar extends React.Component {
 
     return (
       // wrap sidebar in <DragDropContext> if dnd needed
-      <div className="sidebar">
+      <div id="sidebar" className={sidebarExpanded ? 'sidebar expanded' : 'sidebar'}>
         <div className="sidebar-top">
           <div className="sidebar-switcher-wrapper">
             <div className="sidebar-switcher">
@@ -108,7 +134,7 @@ class Sidebar extends React.Component {
                 >
                   {toggleIcon}
                   <div className={toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip'}>
-                    <div className="toggle-tooltip-text">Close sidebar</div>
+                    <div className="toggle-tooltip-text">{tooltipText}</div>
                   </div>
                 </div>
               </div>
@@ -159,7 +185,7 @@ class Sidebar extends React.Component {
             <div className="credit">
               <FiGithub className="sidebar-icon" />
               <a
-                href="https://github.com/brandonfang/lilnotion"
+                href="https://github.com/brandonfang"
                 className="credit-link"
                 target="_blank"
                 rel="noopener noreferrer"

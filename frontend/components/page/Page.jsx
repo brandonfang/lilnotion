@@ -31,10 +31,10 @@ class Page extends React.Component {
 
   componentDidMount() {
     this.isMounted = true;
-    // console.log(this.state);
 
     if (!this.props.page || Object.keys(this.props.page).length === 0) {
       this.props.fetchPage(this.props.pageId).then((res) => {
+        // 
         if (this.isMounted) {
           this.setState({
             page: res.page,
@@ -49,6 +49,7 @@ class Page extends React.Component {
 
     if (this.props.blocks.length === 0) {
       this.props.fetchBlocks().then((res) => {
+        // 
         if (this.isMounted) {
           this.setState({
             blocks: res.blocks,
@@ -58,7 +59,7 @@ class Page extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     let newPageId = this.props.location.pathname.slice(3);
     if (newPageId !== prevProps.pageId) {
       this.props.fetchPage(newPageId)
@@ -75,13 +76,6 @@ class Page extends React.Component {
           });
         });
     }
-    // if (prevProps.blocks !== this.props.blocks) {
-    //   this.props.fetchBlocks().then((res) => {
-    //     this.setState({
-    //       blocks: res.blocks,
-    //     });
-    //   });
-    // }
     // const htmlChanged = this.props.html !== this.state.html;
     // if (htmlChanged) {
     //   const newPage = Object.assign(this.props.page, { title: this.state.html });
@@ -91,6 +85,7 @@ class Page extends React.Component {
 
   componentWillUnmount() {
     this.isMounted = false;
+    // unsubscribe
   }
 
   handleTitleChange(e) {
@@ -143,10 +138,11 @@ class Page extends React.Component {
 
   render() {
     if (!this.props.blocks || !this.props.pages || !this.props.page) return null;
-    // if (Object.keys(this.props.page).length === 0) return null;
+    // if (Object.keys(this.props.page).length === 0) return <div>2</div>;
     if (this.props.blocks.length === 0) return null;
     if (!this.state.page || Object.keys(this.state.page).length === 0) return null;
-    if (!this.state.page.blocks || this.state.page.blocks.length === 0) return null;
+    // if (!this.state.page.blocks || this.state.page.blocks.length === 0) return <div>x</div>;
+    if (!this.state.page.blocks) return <div>x</div>;
 
     const orderedBlocks = [];
     const blockIds = this.state.page.blockIds;

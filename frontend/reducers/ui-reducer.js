@@ -1,9 +1,9 @@
-// import
-
 const uiReducer = (state = {}, action) => {
-  Object.freeze;
-  // add switch statement later
-  return state;
+  Object.freeze(state);
+  switch (action.type) {
+    default:
+      return state;
+  }
 };
 
 export default uiReducer;

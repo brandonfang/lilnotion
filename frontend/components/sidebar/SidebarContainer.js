@@ -25,6 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   updatePage: (page) => dispatch(updatePage(page)),
   deletePage: (pageId) => dispatch(deletePage(pageId)),
   createBlock: (block) => dispatch(createBlock(block)),
+
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Sidebar));

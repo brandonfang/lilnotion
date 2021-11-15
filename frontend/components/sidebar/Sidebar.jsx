@@ -1,8 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {
-  FiMenu,
   FiChevronsRight,
   FiChevronsLeft,
   FiSearch,
@@ -19,42 +17,39 @@ import {
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.ref = React.createRef();
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.newPage = this.newPage.bind(this);
     this.state = {
-      sidebarExpanded: true,
+      sidebarCollapsed: false,
       toggleHover: false,
     };
   }
 
   toggleSidebar() {
-    if (this.state.sidebarExpanded) {
-      // close sidebar
-      document.getElementById('sidebar').style.transform = 'translateX(-200px)';
-      this.setState({ sidebarExpanded: false, toggleHover: false });
+    const sidebar = this.ref.current;
+    if (this.state.sidebarCollapsed) {
+      sidebar.classList.remove('collapsed');
+      localStorage.setItem('sidebarCollapsed', false);
+      this.setState({ sidebarCollapsed: false, toggleHover: false });
     } else {
-      // open sidebar
-      document.getElementById('sidebar').style.transform = 'translateX(0px)';
-      this.setState({ sidebarExpanded: true });
+      sidebar.classList.add('collapsed');
+      localStorage.setItem('sidebarCollapsed', true);
+      this.setState({ sidebarCollapsed: true, toggleHover: false });
     }
-    
-    // persist sidebar state into localstorage
+  }
 
-    // this.props.toggleSidebar()
-    //   .then((res) => this.setState({ 
-    //     sidebarExpanded: !this.state.sidebarExpanded 
-    //   }));
+  componentDidUpdate() {
+    // update active page in sidebar
   }
 
   newPage() {
-    // create untitled page and placeholder blocks
-
-    // let newPage;
+    let newPage;
     this.props
       .createPage({
         userId: this.props.currentUser.id,
         title: 'Untitled Page',
-        // gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
+        gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
       })
       .then((res) => {
         this.props.history.push(`/p/${res.page.id}`);
@@ -75,24 +70,26 @@ class Sidebar extends React.Component {
     // });
   }
 
-  componentDidUpdate() {}
-
   render() {
     if (!this.props.pages) return null;
     if (Object.keys(this.props.pages).length === 0) return null;
-    const { currentUser, pages, logout } = this.props;
 
-    const toggleIcon = this.state.sidebarExpanded ? <FiChevronsLeft /> : <FiChevronsRight />;
-    const tooltipText = this.state.sidebarExpanded ? 'Close sidebar' : 'Lock sidebar open';
-    const { sidebarExpanded, toggleHover } = this.state;
+    const { currentUser, pages, logout } = this.props;
+    const { sidebarCollapsed, toggleHover } = this.state;
+    const toggleIcon = sidebarCollapsed ? <FiChevronsRight /> : <FiChevronsLeft />;
+    const tooltipText = sidebarCollapsed ? 'Lock sidebar open' : 'Close sidebar';
+    let tooltipClassName;
+    if (sidebarCollapsed) {
+      tooltipClassName = toggleHover ? 'toggle-tooltip visible right' : 'toggle-tooltip right';
+    } else {
+      tooltipClassName = toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip';
+    }
 
     const pagesList = Object.keys(pages).map((pageKey, i) => {
       const page = pages[pageKey];
       return (
         <div
-          onClick={() => this.props.history.push(`/p/${page.id}`)}
-          // >
-          // <div
+          onClick={(e) => this.props.history.push(`/p/${page.id}`)}
           className="outliner-item"
           key={`${page.id}-${i}`}
           to={`/p/${page.id}`}
@@ -107,17 +104,13 @@ class Sidebar extends React.Component {
 
     return (
       // wrap sidebar in <DragDropContext> if dnd needed
-      <div id="sidebar" className={sidebarExpanded ? 'sidebar expanded' : 'sidebar'}>
+      <div ref={this.ref} className={sidebarCollapsed ? 'sidebar collapsed' : 'sidebar'}>
         <div className="sidebar-top">
           <div className="sidebar-switcher-wrapper">
             <div className="sidebar-switcher">
               <div className="switcher-outer">
                 <div className="switcher-inner">
-                  <div className="switcher-icon">
-                    <span role="" aria-label="">
-                      {currentUser.firstName[0].toUpperCase()}
-                    </span>
-                  </div>
+                  <div className="switcher-icon">{currentUser.firstName[0].toUpperCase()}</div>
                 </div>
               </div>
 
@@ -133,7 +126,7 @@ class Sidebar extends React.Component {
                   onMouseLeave={() => this.setState({ toggleHover: false })}
                 >
                   {toggleIcon}
-                  <div className={toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip'}>
+                  <div className={tooltipClassName}>
                     <div className="toggle-tooltip-text">{tooltipText}</div>
                   </div>
                 </div>

@@ -34,7 +34,7 @@ class Page extends React.Component {
 
     if (!this.props.page || Object.keys(this.props.page).length === 0) {
       this.props.fetchPage(this.props.pageId).then((res) => {
-        // 
+        // bad
         if (this.isMounted) {
           this.setState({
             page: res.page,
@@ -49,7 +49,7 @@ class Page extends React.Component {
 
     if (this.props.blocks.length === 0) {
       this.props.fetchBlocks().then((res) => {
-        // 
+        // bad
         if (this.isMounted) {
           this.setState({
             blocks: res.blocks,
@@ -142,7 +142,7 @@ class Page extends React.Component {
     if (this.props.blocks.length === 0) return null;
     if (!this.state.page || Object.keys(this.state.page).length === 0) return null;
     // if (!this.state.page.blocks || this.state.page.blocks.length === 0) return <div>x</div>;
-    if (!this.state.page.blocks) return <div>x</div>;
+    if (!this.state.page.blocks) return <div className="">x</div>;
 
     const orderedBlocks = [];
     const blockIds = this.state.page.blockIds;

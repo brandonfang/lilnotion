@@ -1,6 +1,6 @@
 .page {
-  flex-grow: 1;
-  flex-shrink: 1;
+  // flex-grow: 1;
+  // flex-shrink: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -8,6 +8,7 @@
   background: white;
   cursor: text;
   transition: 0.5s;
+  background: pink;
 }
 
 .topbar {

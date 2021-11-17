@@ -15,6 +15,7 @@
 #  expanded     :boolean          default(TRUE)
 #  link_page_id :string           default("")
 #  icon         :string           default("")
+#  user_id      :uuid             not null
 #
 require 'test_helper'
 

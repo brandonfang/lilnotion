@@ -14,7 +14,8 @@
 #  block_ids          :string           default([]), is an Array
 #
 class Page < ApplicationRecord
-  belongs_to :user,
+  belongs_to :user, 
+    optional: true,
     foreign_key: :user_id,
     class_name: :User
 

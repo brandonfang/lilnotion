@@ -74,6 +74,19 @@ page_3 = Page.create!(
   gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/nasa-the-blue-marble.jpeg',
 )
 
+page_4 = Page.create!(
+  user_id: user_2.id,
+  title: 'This page belongs to Ted',
+  gallery_image_url: '',
+)
+
+page_5 = Page.create!(
+  user_id: user_3.id,
+  title: 'This page belongs to Ada',
+  gallery_image_url: '',
+)
+
+
 # Add demo blocks
 
 block_1 = Block.create!({
@@ -181,6 +194,56 @@ block_15 = Block.create!({
   text: 'Dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor dolor.'
 })
 
+block_16 = Block.create!({
+  user_id: user_2.id,
+  page_id: page_4.id,
+  block_type: 'paragraph',
+  text: 'There is, however, something so mysterious in all you have seen or heard of this wretched man, that I am unwilling to stamp a bad impression of his character upon so slight and partial a knowledge of it. Where any thing is doubtful, the ties of society, and the laws of humanity, claim a favourable interpretation; but remember, my dear child, that those of discretion have an equal claim to your regard.
+
+'
+})
+
+block_17 = Block.create!({
+  user_id: user_2.id,
+  page_id: page_4.id,
+  block_type: 'paragraph',
+  text: 'As to Sir Clement Willoughby, I know not how to express my indignation at his conduct. Insolence so insufferable, and the implication of suspicions so shocking, irritate me to a degree of wrath, which I hardly thought my almost worn-out passions were capable of again experiencing. You must converse with him no more: he imagines, from the pliability of your temper, that he may offend you with impunity; but his behaviour justifies, nay, calls for your avowed resentment; do not, therefore, hesitate in forbidding him your sight.'
+})
+
+block_18 = Block.create!({
+  user_id: user_2.id,
+  page_id: page_4.id,
+  block_type: 'paragraph',
+  text: 'The Branghtons, Mr. Smith, and young Brown, however ill-bred and disagreeable, are objects too contemptible for serious displeasure; yet I grieve much that my Evelina should be exposed to their rudeness and impertinence.'
+})
+
+block_19 = Block.create!({
+  user_id: user_2.id,
+  page_id: page_4.id,
+  block_type: 'paragraph',
+  text:  'The very day that this tedious month expires, I shall send Mrs. Clinton to town, who will accompany you to Howard Grove. Your stay there will, I hope, be short; for I feel daily an increasing impatience to fold my beloved child to my bosom! ARTHUR VILLARS.'
+})
+
+block_20 = Block.create!({
+  user_id: user_3.id,
+  page_id: page_5.id,
+  block_type: 'paragraph',
+  text: 'Monocle ipsum dolor sit amet flat white exquisite Lufthansa boutique Winkreative. Global ANA Asia-Pacific signature, K-pop elegant impeccable sleepy first-class destination conversation exclusive Lufthansa airport cosy. Helsinki espresso first-class K-pop cutting-edge sophisticated, flat white bespoke sharp. Handsome St Moritz boulevard, extraordinary Lufthansa alluring ryokan global wardrobe Helsinki joy Scandinavian discerning efficient. Baggu cosy craftsmanship, hand-crafted boutique sharp Boeing 787 intricate. Finest hub craftsmanship essential charming carefully curated. Helsinki Tsutaya iconic smart Comme des Garçons Boeing 787 Singapore artisanal boutique Shinkansen intricate hand-crafted extraordinary.'
+})
+
+block_21 = Block.create!({
+  user_id: user_3.id,
+  page_id: page_5.id,
+  block_type: 'paragraph',
+  text: 'Emerging ANA joy, sharp flat white signature hub charming bureaux remarkable vibrant Sunspel bespoke craftsmanship hand-crafted. Eclectic impeccable St Moritz concierge, cutting-edge airport classic premium Helsinki. Tote bag Winkreative charming handsome. Premium signature extraordinary lovely tote bag hand-crafted joy ryokan ANA Gaggenau sleepy, Comme des Garçons Sunspel. Comme des Garçons artisanal finest global, bespoke eclectic soft power cosy smart Toto remarkable ryokan. Exquisite joy Porter signature.'
+})
+
+block_22 = Block.create!({
+  user_id: user_3.id,
+  page_id: page_5.id,
+  block_type: 'paragraph',
+  text: 'Carefully curated sophisticated Shinkansen the highest quality Helsinki cosy. Porter airport classic liveable Scandinavian, alluring finest punctual Muji Boeing 787 Marylebone artisanal sleepy hand-crafted. Ryokan airport classic, destination finest Singapore boutique punctual delightful Swiss. Concierge Lufthansa Washlet classic bureaux intricate Scandinavian the best extraordinary. Marylebone classic Melbourne Boeing 787. Signature destination first-class Melbourne boulevard Airbus A380 boutique Ginza Asia-Pacific. Artisanal Baggu sleepy, cosy charming carefully curated soft power airport conversation.'
+})
 
 page_1.block_ids = [
   block_1.id,
@@ -204,6 +267,19 @@ page_3.block_ids = [
   block_13.id,
   block_14.id,
   block_15.id,
+]
+
+page_4.block_ids = [
+  block_16.id,
+  block_17.id,
+  block_18.id,
+  block_19.id,
+]
+
+page_5.block_ids = [
+  block_20.id,
+  block_21.id,
+  block_22.id,
 ]
 
 # p('page_1', page_1.block_ids)

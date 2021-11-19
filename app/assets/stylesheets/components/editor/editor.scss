@@ -1,7 +1,19 @@
-.editor {
+#root {
   width: 100vw;
   height: 100vh;
+}
+
+#editor {
+  width: 100%;
+  height: 100%;
   position: relative;
-  display: flex;
-  flex-direction: row;
+  // display: flex;
+  // flex-direction: row;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  transition: 0.5s;
+
+  &.collapsed {
+    grid-template-columns: 50px 1fr;
+  }
 }

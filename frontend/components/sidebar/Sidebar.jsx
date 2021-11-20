@@ -28,12 +28,15 @@ class Sidebar extends React.Component {
 
   toggleSidebar() {
     const sidebar = this.ref.current;
+    const editor = document.getElementById('editor');
     if (this.state.sidebarCollapsed) {
       sidebar.classList.remove('collapsed');
+      editor.classList.remove('collapsed');
       localStorage.setItem('sidebarCollapsed', false);
       this.setState({ sidebarCollapsed: false, toggleHover: false });
     } else {
       sidebar.classList.add('collapsed');
+      editor.classList.add('collapsed');
       localStorage.setItem('sidebarCollapsed', true);
       this.setState({ sidebarCollapsed: true, toggleHover: false });
     }
@@ -43,17 +46,16 @@ class Sidebar extends React.Component {
     // update active page in sidebar
   }
 
-  newPage() {
+  async newPage() {
     let newPage;
-    this.props
-      .createPage({
-        userId: this.props.currentUser.id,
-        title: 'Untitled Page',
-        gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
-      })
-      .then((res) => {
-        this.props.history.push(`/p/${res.page.id}`);
-      });
+    const page = await this.props.createPage({
+      userId: this.props.currentUser.id,
+      title: 'Untitled Page',
+      gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
+      blockIds: []
+    });
+    this.props.history.push(`/p/${page.id}`);
+
     // .then((res) => {
     //   newPage = res.page;
     //   this.props.createBlock({
@@ -71,8 +73,7 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    if (!this.props.pages) return null;
-    if (Object.keys(this.props.pages).length === 0) return null;
+    if (!this.props.pages || Object.keys(this.props.pages).length === 0) return null;
 
     const { currentUser, pages, logout } = this.props;
     const { sidebarCollapsed, toggleHover } = this.state;
@@ -105,119 +106,115 @@ class Sidebar extends React.Component {
     return (
       // wrap sidebar in <DragDropContext> if dnd needed
       <div ref={this.ref} className={sidebarCollapsed ? 'sidebar collapsed' : 'sidebar'}>
-        <div className="sidebar-top">
-          <div className="sidebar-switcher-wrapper">
-            <div className="sidebar-switcher">
-              <div className="switcher-outer">
-                <div className="switcher-inner">
-                  <div className="switcher-icon">{currentUser.firstName[0].toUpperCase()}</div>
+        <div className="sidebar-inner">
+          <div className="sidebar-top">
+            <div className="sidebar-switcher-wrapper">
+              <div className="sidebar-switcher">
+                <div className="switcher-outer">
+                  <div className="switcher-inner">
+                    <div className="switcher-icon">{currentUser.firstName[0].toUpperCase()}</div>
+                  </div>
                 </div>
-              </div>
-
-              <div className="switcher-label-wrapper">
-                <div className="switcher-label">
-                  <div>{currentUser.firstName}'s lilNotion</div>
-                </div>
-
-                <div
-                  className="sidebar-toggle"
-                  onClick={this.toggleSidebar}
-                  onMouseEnter={() => this.setState({ toggleHover: true })}
-                  onMouseLeave={() => this.setState({ toggleHover: false })}
-                >
-                  {toggleIcon}
-                  <div className={tooltipClassName}>
-                    <div className="toggle-tooltip-text">{tooltipText}</div>
+                <div className="switcher-label-wrapper">
+                  <div className="switcher-label">
+                    <div>{currentUser.firstName}'s lilNotion</div>
+                  </div>
+                  <div
+                    className="sidebar-toggle"
+                    onClick={this.toggleSidebar}
+                    onMouseEnter={() => this.setState({ toggleHover: true })}
+                    onMouseLeave={() => this.setState({ toggleHover: false })}
+                  >
+                    {toggleIcon}
+                    <div className={tooltipClassName}>
+                      <div className="toggle-tooltip-text">{tooltipText}</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="sidebar-utilities">
-            <div className="sidebar-utility-wrapper">
-              <div className="sidebar-utility">
-                <div className="sidebar-utility-icon-wrapper">
-                  <FiSearch />
+            <div className="sidebar-utilities">
+              <div className="sidebar-utility-wrapper">
+                <div className="sidebar-utility">
+                  <div className="sidebar-utility-icon-wrapper">
+                    <FiSearch />
+                  </div>
+                  <div className="sidebar-utility-label">Quick Find</div>
                 </div>
-                <div className="sidebar-utility-label">Quick Find</div>
+              </div>
+              <div className="sidebar-utility-wrapper">
+                <div className="sidebar-utility">
+                  <div className="sidebar-utility-icon-wrapper">
+                    <FiSettings />
+                  </div>
+                  <div className="sidebar-utility-label">Settings & Members</div>
+                </div>
               </div>
             </div>
-
-            <div className="sidebar-utility-wrapper">
-              <div className="sidebar-utility">
-                <div className="sidebar-utility-icon-wrapper">
-                  <FiSettings />
-                </div>
-                <div className="sidebar-utility-label">Settings & Members</div>
+          </div>
+          <div className="sidebar-middle">
+            <div className="sidebar-scroller">
+              <div className="outliner-header">Pages</div>
+              <div className="outliner">{pagesList}</div>
+            </div>
+          </div>
+          <div className="sidebar-bottom">
+            <div className="sidebar-shortcuts">
+              <div className="shortcut" onClick={this.newPage}>
+                <FiPlus className="sidebar-icon" size={16} />
+                New page
+              </div>
+              <div className="shortcut" onClick={logout}>
+                <FiLogOut className="sidebar-icon" size={16} />
+                Log out
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="sidebar-middle">
-          <div className="sidebar-scroller">
-            <div className="outliner-header">Pages</div>
-            <div className="outliner">{pagesList}</div>
-          </div>
-        </div>
-
-        <div className="sidebar-bottom">
-          <div className="sidebar-shortcuts">
-            <div className="shortcut" onClick={this.newPage}>
-              <FiPlus className="sidebar-icon" size={16} />
-              New page
-            </div>
-            <div className="shortcut" onClick={logout}>
-              <FiLogOut className="sidebar-icon" size={16} />
-              Log out
-            </div>
-          </div>
-          {/* move credits above utilities? */}
-          <div className="sidebar-credits">
-            <div className="credit">
-              <FiGithub className="sidebar-icon" />
-              <a
-                href="https://github.com/brandonfang"
-                className="credit-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-            </div>
-            <div className="credit">
-              <FiLinkedin className="sidebar-icon" />
-              <a
-                href="https://www.linkedin.com/in/bdmfang"
-                className="credit-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-            </div>
-            <div className="credit">
-              <FiGlobe className="sidebar-icon" />
-              <a
-                href="https://bdmfang.com"
-                className="credit-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Portfolio
-              </a>
-            </div>
-            <div className="credit">
-              <FiTwitter className="sidebar-icon" />
-              <a
-                href="https://twitter.com/bdmfang"
-                className="credit-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
+            {/* move credits above utilities? */}
+            <div className="sidebar-credits">
+              <div className="credit">
+                <FiGithub className="sidebar-icon" />
+                <a
+                  href="https://github.com/brandonfang"
+                  className="credit-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+              <div className="credit">
+                <FiLinkedin className="sidebar-icon" />
+                <a
+                  href="https://www.linkedin.com/in/bdmfang"
+                  className="credit-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <div className="credit">
+                <FiGlobe className="sidebar-icon" />
+                <a
+                  href="https://bdmfang.com"
+                  className="credit-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Portfolio
+                </a>
+              </div>
+              <div className="credit">
+                <FiTwitter className="sidebar-icon" />
+                <a
+                  href="https://twitter.com/bdmfang"
+                  className="credit-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Twitter
+                </a>
+              </div>
             </div>
           </div>
         </div>

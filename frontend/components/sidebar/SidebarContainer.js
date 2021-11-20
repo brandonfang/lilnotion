@@ -14,7 +14,6 @@ import { logout } from '../../actions/session-actions';
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
   currentUser: state.entities.users[state.session.currentUserId],
-  pages: state.entities.pages,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

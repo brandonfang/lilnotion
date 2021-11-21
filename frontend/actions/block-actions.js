@@ -30,8 +30,8 @@ export const removeErrors = () => ({
   type: REMOVE_ERRORS
 });
 
-export const fetchBlocks = () => (dispatch) => (
-  APIUtil.fetchBlocks().then(
+export const fetchBlocks = (userId) => (dispatch) => (
+  APIUtil.fetchBlocks(userId).then(
     (blocks) => dispatch(receiveBlocks(blocks)),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   )

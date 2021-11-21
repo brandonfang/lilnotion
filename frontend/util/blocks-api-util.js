@@ -6,9 +6,9 @@ export const createBlock = (block) => (
   })
 );
 
-export const fetchBlocks = () => (
+export const fetchBlocks = (userId) => (
   $.ajax({
-    url: `api/blocks`,
+    url: `api/users/${userId}/blocks`,
     method: 'GET',
   })
 );

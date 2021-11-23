@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
 import { debounce } from '../../util/utils';
+import equal from 'fast-deep-equal';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import BlockContainer from '../blocks/BlockContainer';
 import PageHeaderContainer from './PageHeaderContainer';
@@ -9,83 +10,41 @@ import MediaMenuContainer from '../menus/MediaMenuContainer';
 import { FiMenu } from 'react-icons/fi';
 
 class Page extends React.Component {
-  isMounted = false;
-
   constructor(props) {
     super(props);
     this.contentEditable = React.createRef();
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
-    this.OnDragEnd = this.OnDragEnd.bind(this); 
+    this.OnDragEnd = this.OnDragEnd.bind(this);
     this.state = {
-      pages: this.props.pages,
-      page: this.props.page,
-      // page: {},
-      pageId: this.props.pageId,
-      blocks: this.props.blocks,
+      pageId: this.props.location.pathname.slice(3),
+      page: this.props.pages[this.props.location.pathname.slice(3)],
       html: '',
       photoFile: null,
       photoUrl: null,
+      // sidebarCollapsed
     };
   }
 
   componentDidMount() {
-    this.isMounted = true;
-
-    if (!this.props.page || Object.keys(this.props.page).length === 0) {
-      this.props.fetchPage(this.props.pageId).then((res) => {
-        // bad
-        if (this.isMounted) {
-          this.setState({
-            page: res.page,
-            html: res.page.title,
-            title: res.page.title,
-          });
-        }
-      });
-    } else {
-      console.log('page already exists');
-    }
-
-    if (this.props.blocks.length === 0) {
-      this.props.fetchBlocks().then((res) => {
-        // bad
-        if (this.isMounted) {
-          this.setState({
-            blocks: res.blocks,
-          });
-        }
-      });
-    }
+    // console.log('componentDidMount()');
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let newPageId = this.props.location.pathname.slice(3);
-    if (newPageId !== prevProps.pageId) {
-      this.props.fetchPage(newPageId)
-        .then((res) => {
-          this.setState({
-            page: res.page,
-          });
-        })
-      this.props.fetchBlocks()
-        .then((res) => {
-          this.setState({
-            blocks: res.blocks,
-            pageId: newPageId
-          });
-        });
+    const newPageId = this.props.location.pathname.slice(3);
+    // if (newPageId !== prevProps.location.pathname.slice(3)) {
+    if (!equal(prevProps, this.props)) {
+      // console.log('componentDidUpdate()');
+      this.setState({
+        pageId: newPageId,
+        page: this.props.pages[newPageId],
+      });
     }
     // const htmlChanged = this.props.html !== this.state.html;
     // if (htmlChanged) {
     //   const newPage = Object.assign(this.props.page, { title: this.state.html });
     //   this.props.updatePage(newPage);
     // }
-  }
-
-  componentWillUnmount() {
-    this.isMounted = false;
-    // unsubscribe
   }
 
   handleTitleChange(e) {
@@ -115,46 +74,35 @@ class Page extends React.Component {
 
   OnDragEnd(result) {
     const { source, destination } = result;
-
     // if dropped outside the area or no movement
     if (!destination || source.index === destination.index) return;
-
     // reorder blocks ids (splice >1 if implementing multi-drag)
     const blockIds = this.state.page.blockIds;
     const newBlockIds = [...blockIds];
     const removed = newBlockIds.splice(source.index, 1);
     newBlockIds.splice(destination.index, 0, ...removed);
-
-    console.log(newBlockIds);
     const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-
-    // this.props.updatePage(newPage)
-    //   .then((res) => {
-    //     this.setState({ page: newPage })
-    //   });
-
-    this.setState({ page: newPage });
+    this.setState({ page: newPage }, () => this.props.updatePage(newPage));
+    console.log(newBlockIds);
   }
 
   render() {
-    if (!this.props.blocks || !this.props.pages || !this.props.page) return null;
-    // if (Object.keys(this.props.page).length === 0) return <div>2</div>;
-    if (this.props.blocks.length === 0) return null;
-    if (!this.state.page || Object.keys(this.state.page).length === 0) return null;
-    // if (!this.state.page.blocks || this.state.page.blocks.length === 0) return <div>x</div>;
-    if (!this.state.page.blocks) return <div className="">x</div>;
+    // console.log('render()');
+    // console.log(this.props);
+
+    if (!this.props.pages || !this.props.blocks) return null;
+
+    const { currentUser, pages, blocks } = this.props;
+    const page = pages[this.state.pageId];
 
     const orderedBlocks = [];
-    const blockIds = this.state.page.blockIds;
+    const blockIds = page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {
-      orderedBlocks.push(this.state.blocks[blockIds[i]]);
+      orderedBlocks.push(blocks[blockIds[i]]);
     }
 
-    console.log('page.jsx loaded')
-    // console.log(orderedBlocks);
-
-    const pageHasGalleryCover = this.props.page.galleryImageUrl.length > 0;
-    const pageHasUploadedCover = this.props.page.uploadedImageUrl.length > 0;
+    const pageHasGalleryCover = this.state.page.galleryImageUrl.length > 0;
+    const pageHasUploadedCover = this.state.page.uploadedImageUrl.length > 0;
     const preview = this.state.photoUrl ? <img src="this.state.photoUrl" /> : null;
 
     // check for attachment
@@ -166,7 +114,7 @@ class Page extends React.Component {
         <div className="topbar">
           <div className="breadcrumb-wrapper">
             {/* add handleTitleChange listener */}
-            <div className="breadcrumb">{this.props.pages[this.state.pageId].title}</div>
+            <div className="breadcrumb">{page.title}</div>
           </div>
           <div className="topbar-action-buttons">
             <div className="more-button-wrapper">
@@ -212,9 +160,9 @@ class Page extends React.Component {
             </div>
 
             <DragDropContext onDragEnd={this.OnDragEnd}>
-              <div className="page-content">
+              <div className="page-body">
                 <Droppable droppableId={this.state.pageId}>
-                  {(provided, snapshot) => (
+                  {(provided) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.droppableProps}

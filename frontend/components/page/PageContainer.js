@@ -18,10 +18,10 @@ import {
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
   currentUser: state.entities.users[state.session.currentUserId],
-  pages: state.entities.pages,
-  page: state.entities.pages[ownProps.location.pathname.slice(3)],
-  pageId: ownProps.location.pathname.slice(3),
-  blocks: state.entities.blocks,
+  // pages: state.entities.pages,
+  // page: state.entities.pages[ownProps.location.pathname.slice(3)],
+  // pageId: ownProps.location.pathname.slice(3),
+  // blocks: state.entities.blocks,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

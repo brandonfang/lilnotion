@@ -1,10 +1,10 @@
 import React from 'react';
+import { BiImage } from 'react-icons/bi';
 
 class Image extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleImageUpload = this.handleImageUpload.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.state = {
       placeholder: '',
     };
@@ -14,23 +14,28 @@ class Image extends React.Component {
 
   componentDidUpdate() {}
 
-  handleChange(e) {
-  }
-
-  handleImageUpload(e) {
-
+  handleUpload(e) {
+     this.setState({
+       file: URL.createObjectURL(e.target.files[0]),
+     });
   }
 
   render() {
     return (
       <div className="block-body">
-        <input
-          type="file"
-          className="image-block-input"
-          onChange={this.handleImageUpload}
-          hidden
-        />
-        this is an image block
+        <div className="image-block">
+          <label className="image-block-upload-label">
+            <BiImage className="image-upload-icon" />
+            Add an image
+            <input
+              type="file"
+              className="image-block-upload"
+              id="image-block-upload"
+              onChange={this.handleUpload}
+              hidden
+            />
+          </label>
+        </div>
       </div>
     );
   }

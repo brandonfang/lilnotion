@@ -101,7 +101,7 @@ class Page extends React.Component {
   }
 
   render() {
-    // console.log('render()');
+    console.log('page.jsx render()');
     // console.log(this.props);
     const { currentUser, pages, blocks, location, history } = this.props;
 

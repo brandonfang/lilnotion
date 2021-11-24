@@ -158,7 +158,7 @@ class Block extends React.Component {
   }
 
   handleBlockSelect(blockType, block) {
-    if (blockType === 'image') {
+    if (blockType === '') {
       // image file picker
     } else {
       let newBlock = Object.assign({}, block, { blockType: blockType });
@@ -179,6 +179,7 @@ class Block extends React.Component {
     let blockBody;
     switch (blockType) {
       case 'h1':
+        console.log('h1 reached');
         blockBody = <Heading1Container block={this.props.block} />;
         break;
       case 'h2':

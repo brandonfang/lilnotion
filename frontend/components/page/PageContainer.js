@@ -18,6 +18,8 @@ import {
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
   currentUser: state.entities.users[state.session.currentUserId],
+  pages: ownProps.pages,
+  blocks: ownProps.blocks,
   // pages: state.entities.pages,
   // page: state.entities.pages[ownProps.location.pathname.slice(3)],
   // pageId: ownProps.location.pathname.slice(3),

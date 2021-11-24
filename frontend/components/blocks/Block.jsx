@@ -158,15 +158,9 @@ class Block extends React.Component {
   }
 
   handleBlockSelect(blockType, block) {
-    if (blockType === '') {
-      // image file picker
-    } else {
-      let newBlock = Object.assign({}, block, { blockType: blockType });
-      this.props.updateBlock(newBlock)
-      this.setState({ blockType: blockType }, () => {
-        this.closeSelectMenu();
-      });
-    }
+    let newBlock = Object.assign({}, block, { blockType: blockType });
+    this.props.updateBlock(newBlock)
+    this.setState({ blockType: blockType }, () => this.closeSelectMenu());
   }
 
   componentWillUnmount() {

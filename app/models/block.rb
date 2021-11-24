@@ -28,4 +28,6 @@ class Block < ApplicationRecord
     foreign_key: :page_id,
     class_name: :Page
 
+  has_one_attached :image
+
 end

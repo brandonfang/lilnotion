@@ -173,7 +173,6 @@ class Block extends React.Component {
     let blockBody;
     switch (blockType) {
       case 'h1':
-        console.log('h1 reached');
         blockBody = <Heading1Container block={this.props.block} />;
         break;
       case 'h2':

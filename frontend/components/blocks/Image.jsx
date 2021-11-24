@@ -24,8 +24,6 @@ class Image extends React.Component {
     console.log('image handle submit reached')
     const formData = new FormData();
     formData.append('block[image]', this.state.photoFile);
-    console.log(this.state.photoFile);
-    console.log(this.props.block.id); 
     $.ajax({
       url: `/api/blocks/${this.props.block.id}`,
       method: 'PATCH',
@@ -35,7 +33,6 @@ class Image extends React.Component {
     }).then(
       (res) => {
         console.log(res);
-        // this.props.updateBlock(this.state.page);
       },
       (err) => console.log(err)
     );
@@ -46,9 +43,10 @@ class Image extends React.Component {
     const { block } = this.props;
     
     console.log(block.image)
-    const imageComponent =
-      block.image.length > 0 ? (
+    const imageBody =
+      (block.image.length > 0) ? (
         <div>
+          image
           <img src={block.image} alt="" />
         </div>
       ) : (
@@ -69,18 +67,7 @@ class Image extends React.Component {
     return (
       <div className="block-body">
         <div className="image-block">
-          {/* {imageComponent} */}
-          <label className="image-block-upload-label">
-            <BiImage className="image-upload-icon" />
-            Add an image
-            <input
-              type="file"
-              className="image-block-upload"
-              id="image-block-upload"
-              onChange={this.handleUpload}
-              hidden
-            />
-          </label>
+          {imageBody}
         </div>
       </div>
     );

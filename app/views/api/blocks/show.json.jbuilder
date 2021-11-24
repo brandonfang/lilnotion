@@ -1,1 +1,1 @@
-json.extract! @block, :id, :page_id, :block_type, :text, :image_url, :checked
+json.extract! @block, :id, :page_id, :block_type, :text, :image, :checked

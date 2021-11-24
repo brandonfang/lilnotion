@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_183602) do
+ActiveRecord::Schema.define(version: 2021_11_24_165600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_183602) do
     t.datetime "updated_at", null: false
     t.uuid "page_id", null: false
     t.string "text", default: ""
-    t.string "image_url", default: ""
+    t.string "image", default: ""
     t.integer "list_index", default: 1
     t.boolean "checked", default: false
     t.boolean "expanded", default: true
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_183602) do
     t.string "icon", default: ""
     t.uuid "user_id", null: false
     t.index ["block_type"], name: "index_blocks_on_block_type"
-    t.index ["image_url"], name: "index_blocks_on_image_url"
+    t.index ["image"], name: "index_blocks_on_image"
     t.index ["page_id"], name: "index_blocks_on_page_id"
     t.index ["text"], name: "index_blocks_on_text"
     t.index ["user_id"], name: "index_blocks_on_user_id"

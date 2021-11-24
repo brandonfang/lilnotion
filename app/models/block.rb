@@ -9,7 +9,7 @@
 #  updated_at   :datetime         not null
 #  page_id      :uuid             not null
 #  text         :string           default("")
-#  image_url    :string           default("")
+#  image        :string           default("")
 #  list_index   :integer          default(1)
 #  checked      :boolean          default(FALSE)
 #  expanded     :boolean          default(TRUE)
@@ -28,6 +28,6 @@ class Block < ApplicationRecord
     foreign_key: :page_id,
     class_name: :Page
 
-  has_one_attached :image
+  has_one_attached :photo
 
 end

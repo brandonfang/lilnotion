@@ -17,7 +17,7 @@ class Image extends React.Component {
   handleChange(e) {
   }
 
-  handleImageUpload() {
+  handleImageUpload(e) {
 
   }
 
@@ -26,9 +26,11 @@ class Image extends React.Component {
       <div className="block-body">
         <input
           type="file"
+          className="image-block-input"
           onChange={this.handleImageUpload}
           hidden
         />
+        this is an image block
       </div>
     );
   }

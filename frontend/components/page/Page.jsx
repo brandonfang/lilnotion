@@ -1,27 +1,29 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ContentEditable from 'react-contenteditable';
 import { debounce } from '../../util/utils';
 import equal from 'fast-deep-equal';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import ContentEditable from 'react-contenteditable';
 import BlockContainer from '../blocks/BlockContainer';
 import PageHeaderContainer from './PageHeaderContainer';
 import MediaMenuContainer from '../menus/MediaMenuContainer';
-import { FiMenu } from 'react-icons/fi';
+import { FiMenu, FiPlus } from 'react-icons/fi';
 
 class Page extends React.Component {
   constructor(props) {
     super(props);
     this.contentEditable = React.createRef();
+    this.newBlock = this.newBlock.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.OnDragEnd = this.OnDragEnd.bind(this);
     this.state = {
-      pageId: this.props.location.pathname.slice(3),
-      page: this.props.pages[this.props.location.pathname.slice(3)],
+      pageId: props.location.pathname.slice(3),
+      page: props.pages[this.props.location.pathname.slice(3)],
       html: '',
       photoFile: null,
       photoUrl: null,
+      blocks: {},
       // sidebarCollapsed
     };
   }
@@ -38,6 +40,7 @@ class Page extends React.Component {
       this.setState({
         pageId: newPageId,
         page: this.props.pages[newPageId],
+        blocks: this.props.blocks,
       });
     }
     // const htmlChanged = this.props.html !== this.state.html;
@@ -50,6 +53,17 @@ class Page extends React.Component {
   handleTitleChange(e) {
     const newPage = Object.assign(this.state.page, { title: e.target.value });
     this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
+  }
+
+  newBlock() {
+    console.log(this.props.currentUser)
+    const block = {
+      userId: this.props.currentUser.id,
+      pageId: this.props.location.pathname.slice(3),
+      blockType: 'paragraph',
+      text: '',
+    };
+    this.props.createBlock(block).then((res) => console.log(res))
   }
 
   handleImageUpload(e) {
@@ -89,12 +103,16 @@ class Page extends React.Component {
   render() {
     // console.log('render()');
     // console.log(this.props);
+    const { currentUser, pages, blocks, location, history } = this.props;
 
-    if (!this.props.pages || !this.props.blocks) return null;
+    if (!pages || !blocks) return null;
+    if (location.pathname.length <= 1) {
+      const firstPage = Object.values(pages)[0];
+      history.push(`/p/${firstPage.id}`);
+      return null;
+    }
 
-    const { currentUser, pages, blocks } = this.props;
-    const page = pages[this.state.pageId];
-
+    const page = pages[location.pathname.slice(3)];
     const orderedBlocks = [];
     const blockIds = page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {
@@ -151,12 +169,16 @@ class Page extends React.Component {
             <div className="page-title-wrapper">
               <ContentEditable
                 innerRef={this.contentEditable}
-                html={this.state.html}
+                // html={this.state.html}
+                html={page.title}
                 onChange={debounce(this.handleTitleChange, 1000)}
                 tagName="h1"
                 className="page-title"
                 placeholder="Untitled"
               />
+              <div className="add-block-button" onClick={this.newBlock}>
+                <FiPlus />
+              </div>
             </div>
 
             <DragDropContext onDragEnd={this.OnDragEnd}>

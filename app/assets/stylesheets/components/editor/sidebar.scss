@@ -145,8 +145,8 @@
 .toggle-tooltip {
   position: absolute;
   z-index: 2;
-  left: -32px;
-  top: 30px;
+  // left: -32px;
+  // top: 30px;
   border-radius: 3px;
   padding: 8px 8px;
   background: rgb(15, 15, 15);
@@ -158,6 +158,8 @@
 
   &.visible {
     display: block;
+    top: -5px;
+    left: 30px;
   }
 
   &.right {

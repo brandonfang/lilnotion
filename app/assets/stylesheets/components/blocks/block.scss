@@ -70,7 +70,7 @@
   display: none;
 
   &:hover {
-    background:rgba(190, 190, 190, 0.3)
+    background:rgba(190, 190, 190, 0.3);
   }
 
   &.visible {
@@ -187,4 +187,17 @@
 }
 
 .todo {
+}
+
+.divider {
+  width: 100%;
+  height: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid rgba(55, 53, 47, 0.09);
 }

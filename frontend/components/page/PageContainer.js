@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   deletePage: (pageId) => dispatch(deletePage(pageId)),
   createBlock: (block) => dispatch(createBlock(block)),
   fetchBlock: (blockId) => dispatch(fetchBlock(blockId)),
-  fetchBlocks: () => dispatch(fetchBlocks()),
+  fetchBlocks: (userId) => dispatch(fetchBlocks(userId)),
   updateBlock: (block) => dispatch(updateBlock(block)),
   deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
 });

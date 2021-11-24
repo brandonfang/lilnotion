@@ -31,12 +31,14 @@ class Editor extends React.Component {
   }
 
   render() {
+    console.log('editor.jsx being rendered')
     if (this.state.isLoading) {
       return (
+        // change to loader component
         <div>Loading...</div>
         );
     }
-
+    // console.log(this.state.pages)
     return (
       <div id="editor">
         <SidebarContainer pages={this.state.pages} />

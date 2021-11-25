@@ -4,9 +4,11 @@ import { BiImage } from 'react-icons/bi';
 class Image extends React.Component {
   constructor(props) {
     super(props);
-    this.handleUpload = this.handleUpload.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       photoFile: null,
+      photoUrl: null,
     };
   }
 
@@ -14,16 +16,44 @@ class Image extends React.Component {
 
   componentDidUpdate() {}
 
-  handleUpload(e) {
-    this.setState({
-      photoFile: e.target.files[0],
-    }, () => this.handleSubmit());
+  handleFile(e) {
+    e.preventDefault();
+    console.log('image handleFile');
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    console.log("file: ", file);
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+      fileReader.onloadend = () => {
+        console.log("result: ", fileReader.result)
+        this.setState({
+            photoFile: file,
+            photoUrl: fileReader.result,
+          },
+          () => this.handleSubmit()
+        );
+      };
+    }
   }
 
+  // for (var key of formData.entries()) {
+  //   console.log(key[0] + ', ' + key[1]);
+  //  }
+  // write down notes of what i have to do and the substeps 
   handleSubmit() {
-    console.log('image handle submit reached')
+    console.log('image handleSubmit');
     const formData = new FormData();
+    // formData.append('id', this.props.block.id);
+    // formData.append('blockType', this.props.block.blockType);
+    // formData.append('userId', this.props.block.userId);
+    // formData.append('pageId', this.props.block.pageId);
     formData.append('block[image]', this.state.photoFile);
+
+    for (var key of formData.entries()) {
+      console.log(key[0] + ', ' + key[1]);
+    }
+
     $.ajax({
       url: `/api/blocks/${this.props.block.id}`,
       method: 'PATCH',
@@ -39,36 +69,45 @@ class Image extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     const { block } = this.props;
-    
-    console.log(block.image)
+    // console.log(block.image);
+
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt=""/> : null;
+
     const imageBody =
-      (block.image.length > 0) ? (
+      block.image.length > 0 ? (
         <div>
           image
           <img src={block.image} alt="" />
         </div>
       ) : (
-        <label className="image-block-upload-label">
-          <BiImage className="image-upload-icon" />
-          Add an image
-          <input
-            type="file"
-            className="image-block-upload"
-            id="image-block-upload"
-            onChange={this.handleUpload}
-            hidden
-          />
-        </label>
+        <>
+          <form>
+            <input name="_method" type="hidden" value="patch" />
+            <label className="image-block-upload-label">
+              <BiImage className="image-upload-icon" />
+              Add an image
+              <input
+                type="file"
+                className="image-block-upload"
+                id="image-block-upload"
+                accept="image/*"
+                onChange={this.handleFile}
+                hidden
+              />
+            </label>
+          </form>
+          {/* <div className="temp-submit" onClick={this.handleSubmit}>
+            Submit
+          </div> */}
+        </>
       );
-
 
     return (
       <div className="block-body">
-        <div className="image-block">
-          {imageBody}
-        </div>
+        <div className="image-block">{imageBody}</div>
+        {preview}
       </div>
     );
   }

@@ -26,7 +26,6 @@ class Api::BlocksController < ApplicationController
   def update
     @block = Block.find_by(id: params[:id])
     if @block.update(block_params)
-      debugger
       render :show
     else 
       render json: @block.errors.full_messages, status: 422

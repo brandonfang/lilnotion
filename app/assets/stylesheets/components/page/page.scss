@@ -18,6 +18,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
 }
 
 .breadcrumb-wrapper {
@@ -42,14 +45,15 @@
 .page-scroller {
   background: white;
   display: flex;
+  height: 100vh;
   flex-direction: column;
   // z-index: 1;
   flex-grow: 1;
   position: relative;
   align-items: center;
   overflow: auto;
-  margin-right: 0px;
-  margin-bottom: 0px;
+  margin: 0 0 0 0;
+  padding: 45px 0 0 0;
 }
 
 .page-wrapper {
@@ -64,7 +68,7 @@
   width: 100%;
   // width: 640px;
   margin: 32px auto;
-  padding: 0px calc(96px + 10vw) 30vh calc(96px + 10vw);
+  padding: 0px calc(96px + 10vw) 25vh calc(96px + 10vw);
 
   display: flex;
   flex-direction: column;

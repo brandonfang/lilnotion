@@ -34,7 +34,7 @@ class Heading1 extends React.Component {
       <div className="block-body">
         <ContentEditable
           innerRef={this.contentEditable}
-          html={this.state.html}
+          html={this.props.block.text}
           onChange={debounce(this.handleChange, 1000)}
           tagName="h1"
           className="h1"

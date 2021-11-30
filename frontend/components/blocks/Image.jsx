@@ -77,10 +77,7 @@ class Image extends React.Component {
 
     const imageBody =
       block.image.length > 0 ? (
-        <div>
-          image
-          <img src={block.image} alt="" />
-        </div>
+        <img className="block-image" src={block.image} alt="" />
       ) : (
         <>
           <form>
@@ -106,7 +103,7 @@ class Image extends React.Component {
 
     return (
       <div className="block-body">
-        <div className="image-block">{imageBody}</div>
+        <div className="image-block-wrapper">image{imageBody}</div>
         {preview}
       </div>
     );

@@ -72,10 +72,11 @@
   }
 }
 
-.cta-signup {
+.cta-try {
   color: white;
   background: $red-400;
   border: 1px solid $red-600;
+  cursor: pointer;
 
   &:hover {
     background: $red-500;

@@ -190,6 +190,10 @@
 .todo {
 }
 
+.code {
+  background:rgb(195, 194, 192)
+}
+
 .divider {
   width: 100%;
   height: 13px;
@@ -203,10 +207,14 @@
   border-bottom: 1px solid rgba(55, 53, 47, 0.09);
 }
 
-.image-block {
+.image-block-wrapper {
   width: 100%;
   border-radius: 3px;
   background: rgb(242, 241, 238);
+}
+
+.block-image {
+  
 }
 
 .image-upload-icon {

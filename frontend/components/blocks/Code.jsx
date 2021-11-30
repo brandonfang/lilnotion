@@ -33,7 +33,7 @@ class Code extends React.Component {
         {/* add code block styling */}
         <ContentEditable
           innerRef={this.contentEditable}
-          html={this.state.html}
+          html={this.props.block.text}
           onChange={debounce(this.handleChange, 1000)}
           tagName="div"
           className="code"

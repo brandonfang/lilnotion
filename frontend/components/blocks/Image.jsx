@@ -21,13 +21,14 @@ class Image extends React.Component {
     console.log('image handleFile');
     const file = e.target.files[0];
     const fileReader = new FileReader();
-    console.log("file: ", file);
+    console.log('file: ', file);
 
     if (file) {
       fileReader.readAsDataURL(file);
       fileReader.onloadend = () => {
-        console.log("result: ", fileReader.result)
-        this.setState({
+        // console.log("result: ", fileReader.result)
+        this.setState(
+          {
             photoFile: file,
             photoUrl: fileReader.result,
           },
@@ -36,22 +37,36 @@ class Image extends React.Component {
       };
     }
   }
+  // formData.append('id', this.props.block.id);
+  // formData.append('blockType', this.props.block.blockType);
+  // formData.append('userId', this.props.block.userId);
+  // formData.append('pageId', this.props.block.pageId);
 
-  // for (var key of formData.entries()) {
-  //   console.log(key[0] + ', ' + key[1]);
-  //  }
-  // write down notes of what i have to do and the substeps 
-  handleSubmit() {
-    console.log('image handleSubmit');
+  // handleSubmit() {
+  //   console.log('image handleSubmit');
+  //   const formData = new FormData();
+  //   formData.append('_method', 'patch');
+  //   formData.append('block[image]', this.state.photoFile);
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const file = e.target.files[0];
+    console.log('file: ', file);
+
     const formData = new FormData();
-    // formData.append('id', this.props.block.id);
-    // formData.append('blockType', this.props.block.blockType);
-    // formData.append('userId', this.props.block.userId);
-    // formData.append('pageId', this.props.block.pageId);
-    formData.append('block[image]', this.state.photoFile);
+    formData.append('_method', 'patch');
+    formData.append('block[id]', this.props.block.id);
+    formData.append('block[userId]', this.props.block.userId);
+    formData.append('block[pageId]', this.props.block.pageId);
+    formData.append('block[blockType]', this.props.block.blockType);
+    formData.append('block[text]', this.props.block.text);
+    formData.append('block[checked]', this.props.block.checked);
+    formData.append('block[expanded]', this.props.block.expanded);
+    formData.append('block[image]', file);
 
-    for (var key of formData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
+    // display formData's key/value pairs
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
     }
 
     $.ajax({
@@ -62,9 +77,9 @@ class Image extends React.Component {
       processData: false,
     }).then(
       (res) => {
-        console.log(res);
+        console.log('res: ', res);
       },
-      (err) => console.log(err)
+      (err) => console.log('error: ', err)
     );
   }
 
@@ -73,37 +88,34 @@ class Image extends React.Component {
     const { block } = this.props;
     // console.log(block.image);
 
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt=""/> : null;
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt="" /> : null;
 
     const imageBody =
       block.image.length > 0 ? (
         <img className="block-image" src={block.image} alt="" />
       ) : (
         <>
-          <form>
-            <input name="_method" type="hidden" value="patch" />
-            <label className="image-block-upload-label">
+          {/* <form> */}
+            {/* <input name="_method" type="hidden" value="patch" /> */}
+            <label className="image-upload-label">
               <BiImage className="image-upload-icon" />
-              Add an image
+              <div className="image-upload-text">Add an image</div>
               <input
                 type="file"
-                className="image-block-upload"
-                id="image-block-upload"
+                className="image-upload-input"
                 accept="image/*"
-                onChange={this.handleFile}
+                onChange={this.handleSubmit}
                 hidden
               />
             </label>
-          </form>
-          {/* <div className="temp-submit" onClick={this.handleSubmit}>
-            Submit
-          </div> */}
+          {/* </form> */}
         </>
       );
 
     return (
       <div className="block-body">
-        <div className="image-block-wrapper">image{imageBody}</div>
+        image
+        <div className="image-block-wrapper">{imageBody}</div>
         {preview}
       </div>
     );

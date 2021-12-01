@@ -75,6 +75,13 @@
   align-items: flex-start;
 }
 
+// temp
+@media screen and (max-width: 1200px) {
+  .page-wrapper {
+    padding: 0px calc(96px) 25vh calc(96px);
+  }
+}
+
 .page-header-wrapper {
   width: 100%;
 }

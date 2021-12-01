@@ -24,6 +24,7 @@ class Api::BlocksController < ApplicationController
   end
   
   def update
+    p params
     @block = Block.find_by(id: params[:id])
     if @block.update(block_params)
       render :show

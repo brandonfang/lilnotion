@@ -39,9 +39,9 @@
   z-index: 1;
   display: none;
   cursor: grab;
-  
+
   &:hover {
-    background:rgba(190, 190, 190, 0.3)
+    background: rgba(190, 190, 190, 0.3);
   }
 
   &.visible {
@@ -71,7 +71,7 @@
   display: none;
 
   &:hover {
-    background:rgba(190, 190, 190, 0.3);
+    background: rgba(190, 190, 190, 0.3);
   }
 
   &.visible {
@@ -98,9 +98,7 @@
   padding: 4px 8px;
   white-space: nowrap;
   transition: all 0.2s ease;
-  box-shadow: 
-    0px 0px 0px 1px rgba(15, 15, 15, 5%),
-    0px 3px 6px rgba(15, 15, 15, 10%); 
+  box-shadow: 0px 0px 0px 1px rgba(15, 15, 15, 5%), 0px 3px 6px rgba(15, 15, 15, 10%);
   z-index: 1;
   user-select: none;
   display: none;
@@ -126,11 +124,11 @@
 // BLOCK STYLES
 [contenteditable]:empty:after {
   content: attr(placeholder);
-  color: rgb(175, 174, 172); 
+  color: rgb(175, 174, 172);
 }
 
 .h1 {
-  font-size: 1.875em; 
+  font-size: 1.875em;
   font-weight: 600;
   line-height: 1.3;
   // margin-top: 2em;
@@ -138,7 +136,7 @@
 }
 
 .h2 {
-  font-size: 1.5em; 
+  font-size: 1.5em;
   font-weight: 600;
   line-height: 1.3;
   // margin-top: 1.4em;
@@ -146,7 +144,7 @@
 }
 
 .h3 {
-  font-size: 1.25em; 
+  font-size: 1.25em;
   font-weight: 600;
   line-height: 1.3;
   // margin-top: 1em;
@@ -191,7 +189,7 @@
 }
 
 .code {
-  background:rgb(195, 194, 192)
+  background: rgb(195, 194, 192);
 }
 
 .divider {
@@ -210,11 +208,10 @@
 .image-block-wrapper {
   width: 100%;
   border-radius: 3px;
-  background: rgb(242, 241, 238);
+  margin: 4px 0;
 }
 
 .block-image {
-  
 }
 
 .image-upload-icon {
@@ -225,11 +222,15 @@
   color: rgba(55, 53, 47, 0.4);
 }
 
-input[type="file"].image-block-upload {
-    display: none;
+.image-upload-text {
+  user-select: none;
 }
 
-.image-block-upload-label {
+input[type='file'].image-upload-input {
+  display: none;
+}
+
+.image-upload-label {
   width: 100%;
   padding: 12px 36px 12px 12px;
   border-radius: 3px;
@@ -237,8 +238,13 @@ input[type="file"].image-block-upload {
   align-items: center;
   font-size: 14px;
   line-height: 1.5;
-  color: rgba(55, 53, 47, 0.6);
   cursor: pointer;
+  color: rgba(55, 53, 47, 0.6);
+  background: rgb(240, 239, 236);
+
+  &:hover {
+    background: rgb(227, 226, 223);
+  }
 }
 
 .temp-submit {
@@ -249,4 +255,3 @@ input[type="file"].image-block-upload {
   width: 80px;
   padding: 12px;
 }
-

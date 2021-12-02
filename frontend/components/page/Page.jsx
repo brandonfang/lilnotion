@@ -56,7 +56,7 @@ class Page extends React.Component {
   }
 
   newBlock() {
-    console.log(this.props.currentUser)
+    // console.log(this.props.currentUser)
     const block = {
       userId: this.props.currentUser.id,
       pageId: this.props.location.pathname.slice(3),
@@ -171,17 +171,17 @@ class Page extends React.Component {
                 innerRef={this.contentEditable}
                 // html={this.state.html}
                 html={page.title}
-                onChange={debounce(this.handleTitleChange, 1000)}
+                onChange={debounce((e) => this.handleTitleChange(e), 1000)}
                 tagName="h1"
                 className="page-title"
                 placeholder="Untitled"
               />
-              <div className="add-block-button" onClick={this.newBlock}>
+              <div className="add-block-button" onClick={() => this.newBlock()}>
                 <FiPlus />
               </div>
             </div>
 
-            <DragDropContext onDragEnd={this.OnDragEnd}>
+            <DragDropContext onDragEnd={(result) => this.OnDragEnd(result)}>
               <div className="page-body">
                 <Droppable droppableId={this.state.pageId}>
                   {(provided) => (

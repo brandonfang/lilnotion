@@ -25,9 +25,10 @@ class Api::BlocksController < ApplicationController
   
   def update
     @block = Block.find_by(id: params[:id])
+
     # check for image param and manually attach
     image = params[:block][:image]
-    if image != '' && !@block.photo.attached?
+    if image && image != '' && !@block.photo.attached?
       p image
       p image.path
       p image.original_filename

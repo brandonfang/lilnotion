@@ -25,14 +25,16 @@ class Api::BlocksController < ApplicationController
   
   def update
     @block = Block.find_by(id: params[:id])
-    # image = params[:block][:image]
-
-    # if !@block.photo.attached? && image != ''
-    #   @block.photo.attach(io: File.open(params[:block][:image].path), filename: image.original_filename)
-    # end
+    # check for image param and manually attach
+    image = params[:block][:image]
+    if image != '' && !@block.photo.attached?
+      p image
+      p image.path
+      p image.original_filename
+      @block.photo.attach(io: File.open(image.path), filename: image.original_filename)
+    end
 
     if @block.update(block_params)
-      debugger
       render :show
     else 
       render json: @block.errors.full_messages, status: 422

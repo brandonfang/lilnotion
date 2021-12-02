@@ -9,6 +9,7 @@ import {
 } from '../../actions/block-actions';
 
 const mapStateToProps = (state, ownProps) => ({
+  currentUser: state.entities.users[state.session.currentUserId],
   block: ownProps.block,
 });
 

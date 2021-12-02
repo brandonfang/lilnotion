@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Page from './Page';
 import {
   fetchPage,
   createPage,
@@ -14,6 +13,7 @@ import {
   updateBlock,
   deleteBlock,
 } from '../../actions/block-actions';
+import Page from './Page';
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
@@ -21,9 +21,9 @@ const mapStateToProps = (state, ownProps) => ({
   pages: ownProps.pages,
   blocks: ownProps.blocks,
   // pages: state.entities.pages,
+  // blocks: state.entities.blocks,
   // page: state.entities.pages[ownProps.location.pathname.slice(3)],
   // pageId: ownProps.location.pathname.slice(3),
-  // blocks: state.entities.blocks,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

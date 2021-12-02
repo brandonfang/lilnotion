@@ -3,6 +3,8 @@
   margin: 1px 0;
   background: rgba(255, 255, 255, 0.3);
   position: relative;
+  // subpixel padding to prevent margin collapse
+  padding: 0.1px 0;
 
   // increases the mouseover area of each block
   &::before {
@@ -25,6 +27,11 @@
 .block-body {
   width: 100%;
   padding: 3px 2px;
+
+  &.image {
+    margin: 0 0 8px 0;
+    padding: 0;
+  }
 }
 
 .plus-handle {
@@ -121,7 +128,7 @@
   color: rgb(231, 231, 231);
 }
 
-// BLOCK STYLES
+// BLOCK BODY STYLES
 [contenteditable]:empty:after {
   content: attr(placeholder);
   color: rgb(175, 174, 172);

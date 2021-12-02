@@ -15,6 +15,7 @@ import ToDoContainer from './ToDoContainer';
 import ToggleContainer from './ToggleContainer';
 import DividerContainer from './DividerContainer';
 import ImageContainer from './ImageContainer';
+import CodeContainer from './CodeContainer';
 
 import BlockActionMenu from '../menus/BlockActionMenu';
 import BlockSelectMenu from '../menus/BlockSelectMenu';
@@ -83,6 +84,7 @@ class Block extends React.Component {
   plusHandleClick() { 
     // fix function to insert after current block
     this.props.createBlock({
+      userId: this.props.currentUser.id,
       pageId: this.props.block.pageId,
       blockType: 'paragraph',
       text: 'A block created by clicking on the plus handle.'
@@ -208,7 +210,9 @@ class Block extends React.Component {
       case 'image':
         blockBody = <ImageContainer block={this.props.block} />;
         break;
-      // code
+      case 'code':
+        blockBody = <CodeContainer block={this.props.block} />;
+        break;
       // link
       // page
       default:

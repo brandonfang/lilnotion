@@ -93,7 +93,6 @@ class Sidebar extends React.Component {
           onClick={(e) => this.props.history.push(`/p/${page.id}`)}
           className="outliner-item"
           key={`${page.id}-${i}`}
-          to={`/p/${page.id}`}
         >
           <div className="page-block">
             <FiFileText className="sidebar-icon" />

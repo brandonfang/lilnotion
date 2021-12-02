@@ -29,10 +29,11 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    console.log('page.jsx componentDidMount()');
+    // console.log('page.jsx componentDidMount()');
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('page.jsx componentDidUpdate()');
     const newPageId = this.props.location.pathname.slice(3);
     // if (newPageId !== prevProps.location.pathname.slice(3)) {
     if (!equal(prevProps, this.props)) {
@@ -62,7 +63,14 @@ class Page extends React.Component {
       blockType: 'paragraph',
       text: '',
     };
-    this.props.createBlock(block).then((res) => console.log(res))
+    this.props.createBlock(block)
+      .then((block) => {
+        console.log(block);
+        const newBlockIds = this.state.page.blockIds.push(block.id);
+        const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
+        console.log(newPage)
+        this.props.updatePage(newPage);
+      });
   }
 
   handleImageUpload(e) {
@@ -101,7 +109,7 @@ class Page extends React.Component {
 
   render() {
     console.log('page.jsx render()');
-    // console.log(this.props);
+    console.log("page block length: ", Object.keys(this.props.blocks).length);
     const { currentUser, pages, blocks, location, history } = this.props;
 
     if (!pages || !blocks) return null;

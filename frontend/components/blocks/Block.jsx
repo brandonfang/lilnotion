@@ -229,12 +229,14 @@ class Block extends React.Component {
             <PlusHandle
               plusHandleClick={this.plusHandleClick}
               hover={this.state.hover}
+              // custom style top distance
             />
 
             <DragHandle
               dragHandleClick={this.dragHandleClick}
               dragHandleProps={provided.dragHandleProps}
               hover={this.state.hover}
+              // custom style top distance
             />
 
             {this.state.actionMenuOpen ? (

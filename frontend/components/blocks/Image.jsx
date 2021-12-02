@@ -40,7 +40,7 @@ class Image extends React.Component {
 
       fileReader.onloadend = () => {
         const formData = new FormData();
-        formData.append('block[image]', file);
+        formData.append('block[imageUrl]', file);
 
         $.ajax({
           url: `/api/blocks/${this.props.block.id}`,
@@ -61,12 +61,12 @@ class Image extends React.Component {
     const { block } = this.props;
 
     const preview = this.state.photoUrl ? (
-      <img className="block-image" src={this.state.photoUrl} alt="" />
+      <img className="block-image-preview" src={this.state.photoUrl} alt="" />
     ) : null;
 
     const imageBody =
-      (block.image && block.image.length > 0) ? (
-        <img className="block-image" src={block.image} alt="" />
+      (block.imageUrl && block.imageUrl.length > 0) ? (
+        <img className="block-image" src={block.imageUrl} alt="" />
       ) : (
         <>
           {/* <input name="_method" type="hidden" value="patch" /> */}

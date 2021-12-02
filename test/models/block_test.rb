@@ -9,7 +9,7 @@
 #  updated_at   :datetime         not null
 #  page_id      :uuid             not null
 #  text         :string           default("")
-#  image        :string           default("")
+#  image_url    :string           default(""), not null
 #  list_index   :integer          default(1)
 #  checked      :boolean          default(FALSE)
 #  expanded     :boolean          default(TRUE)

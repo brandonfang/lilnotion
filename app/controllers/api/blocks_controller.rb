@@ -26,8 +26,9 @@ class Api::BlocksController < ApplicationController
   def update
     @block = Block.find_by(id: params[:id])
 
-    # check for image param and manually attach
-    image = params[:block][:image]
+    # check for image file and manually attach
+    # do not allow attachment if image already exists
+    image = params[:block][:image_url]
     if image && image != '' && !@block.photo.attached?
       p image
       p image.path
@@ -54,6 +55,6 @@ class Api::BlocksController < ApplicationController
   private
 
   def block_params
-    params.require(:block).permit(:id, :user_id, :page_id, :block_type, :text, :image, :checked, :expanded, :list_index, :link_page_id, :icon, :format, :created_at, :updated_at)
+    params.require(:block).permit(:id, :user_id, :page_id, :block_type, :text, :image_url, :checked, :expanded, :list_index, :link_page_id, :icon, :format, :created_at, :updated_at)
   end
 end

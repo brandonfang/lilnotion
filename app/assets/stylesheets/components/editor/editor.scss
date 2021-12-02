@@ -1,7 +1,7 @@
-#root {
-  width: 100vw;
-  height: 100vh;
-}
+// #root {
+//   width: 100vw;
+//   height: 100vh;
+// }
 
 #editor {
   width: 100%;
@@ -16,4 +16,18 @@
   &.collapsed {
     grid-template-columns: 50px 1fr;
   }
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.loader-text {
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(192, 192, 192);
 }

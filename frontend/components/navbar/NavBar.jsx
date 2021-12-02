@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  
   return (
     <header className="header">
       <div className="outer">
@@ -62,5 +61,5 @@ const Navbar = (props) => {
     </header>
   );
 };
- 
+
 export default Navbar;

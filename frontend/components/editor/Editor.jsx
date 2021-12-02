@@ -1,6 +1,7 @@
 import React from 'react';
 import SidebarContainer from '../sidebar/SidebarContainer';
 import PageContainer from '../page/PageContainer';
+import Loader from './Loader';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -18,27 +19,26 @@ class Editor extends React.Component {
     const blockRes = await this.props.fetchBlocks(this.props.currentUser.id);
     const pages = pageRes.pages;
     const blocks = blockRes.blocks;
-    this.setState({
-      pages: pages,
-      blocks: blocks,
-      isLoading: false,
-    }, () => {
-      if (!pages[this.state.pageId]) {
-        const firstPage = Object.values(pages)[0];
-        this.props.history.push(`/p/${firstPage.id}`);
+    this.setState(
+      {
+        pages: pages,
+        blocks: blocks,
+        isLoading: false,
+      },
+      () => {
+        if (!pages[this.state.pageId]) {
+          const firstPage = Object.values(pages)[0];
+          this.props.history.push(`/p/${firstPage.id}`);
+        }
       }
-    })
+    );
   }
 
   render() {
-    console.log('editor.jsx being rendered')
+    console.log('editor.jsx being rendered');
     if (this.state.isLoading) {
-      return (
-        // change to loader component
-        <div>Loading...</div>
-        );
+      return <Loader />;
     }
-    // console.log(this.state.pages)
     return (
       <div id="editor">
         <SidebarContainer pages={this.state.pages} />

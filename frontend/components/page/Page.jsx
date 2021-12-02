@@ -29,7 +29,7 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('componentDidMount()');
+    console.log('page.jsx componentDidMount()');
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -56,7 +56,6 @@ class Page extends React.Component {
   }
 
   newBlock() {
-    // console.log(this.props.currentUser)
     const block = {
       userId: this.props.currentUser.id,
       pageId: this.props.location.pathname.slice(3),

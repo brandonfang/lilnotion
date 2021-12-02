@@ -15,6 +15,7 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
+    console.log('editor.jsx componentDidMount()');
     const pageRes = await this.props.fetchPages(this.props.currentUser.id);
     const blockRes = await this.props.fetchBlocks(this.props.currentUser.id);
     const pages = pageRes.pages;
@@ -35,7 +36,7 @@ class Editor extends React.Component {
   }
 
   render() {
-    console.log('editor.jsx being rendered');
+    console.log('editor.jsx render()');
     if (this.state.isLoading) {
       return <Loader />;
     }

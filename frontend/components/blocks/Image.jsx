@@ -4,7 +4,7 @@ import { BiImage } from 'react-icons/bi';
 class Image extends React.Component {
   constructor(props) {
     super(props);
-    this.handleFile = this.handleFile.bind(this);
+    this.handlePreview = this.handlePreview.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       photoFile: null,
@@ -12,11 +12,7 @@ class Image extends React.Component {
     };
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate() {}
-
-  handleFile(e) {
+  handlePreview(e) {
     e.preventDefault();
     const file = e.target.files[0];
     const fileReader = new FileReader();
@@ -35,17 +31,15 @@ class Image extends React.Component {
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const file = e.target.files[0];
-
+  handleSubmit() {
+    // e.preventDefault();
+    const file = this.state.photoFile;
     if (file) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
 
       fileReader.onloadend = () => {
         const formData = new FormData();
-        formData.append('_method', 'patch');
         formData.append('block[image]', file);
 
         $.ajax({
@@ -55,50 +49,45 @@ class Image extends React.Component {
           contentType: false,
           processData: false,
         }).then(
-          (res) => {
-            console.log('res: ', res);
-          },
+          // remove
+          (res) => console.log('res: ', res),
           (err) => console.log('error: ', err)
         );
       };
     }
-
-    // display formData's key/value pairs
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ', ' + pair[1]);
-    // }
   }
 
   render() {
     const { block } = this.props;
 
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt="" /> : null;
+    const preview = this.state.photoUrl ? (
+      <img className="block-image" src={this.state.photoUrl} alt="" />
+    ) : null;
 
     const imageBody =
       (block.image && block.image.length > 0) ? (
         <img className="block-image" src={block.image} alt="" />
       ) : (
         <>
-          <form>
-            <input name="_method" type="hidden" value="patch" />
-            <label className="image-upload-label">
-              <BiImage className="image-upload-icon" />
-              <div className="image-upload-text">Add an image</div>
-              <input
-                type="file"
-                className="image-upload-input"
-                accept="image/*"
-                onChange={this.handleSubmit}
-                hidden
-              />
-            </label>
-          </form>
+          {/* <input name="_method" type="hidden" value="patch" /> */}
+          <label className="image-upload-label">
+            <BiImage className="image-upload-icon" />
+            <div className="image-upload-text">Add an image</div>
+            <input
+              type="file"
+              className="image-upload-input"
+              accept="image/*"
+              onChange={this.handlePreview}
+              hidden
+            />
+          </label>
           {preview}
         </>
       );
 
     return (
-      <div className="block-body">
+      // change body class
+      <div className="block-body image"> 
         <div className="image-block-wrapper">{imageBody}</div>
       </div>
     );

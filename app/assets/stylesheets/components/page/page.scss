@@ -68,7 +68,7 @@
   width: 100%;
   // width: 640px;
   margin: 32px auto;
-  padding: 0px calc(96px + 10vw) 25vh calc(96px + 10vw);
+  padding: 0px calc(96px + 10vw) 40vh calc(96px + 10vw);
 
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@
 // temp
 @media screen and (max-width: 1200px) {
   .page-wrapper {
-    padding: 0px calc(96px) 35vh calc(96px);
+    padding: 0px calc(96px) 40vh calc(96px);
   }
 }
 

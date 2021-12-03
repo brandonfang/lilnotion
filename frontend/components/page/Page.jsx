@@ -23,26 +23,24 @@ class Page extends React.Component {
       html: '',
       photoFile: null,
       photoUrl: null,
-      blocks: {},
-      // sidebarCollapsed
+      blocks: props.blocks,
     };
-  }
-
-  componentDidMount() {
-    // console.log('page.jsx componentDidMount()');
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('page.jsx componentDidUpdate()');
+    console.log("prevProps: ", prevProps);
+    console.log("new Props: ", this.props);
+
     const newPageId = this.props.location.pathname.slice(3);
-    // if (newPageId !== prevProps.location.pathname.slice(3)) {
-    if (!equal(prevProps, this.props)) {
-      // console.log('componentDidUpdate()');
+    if (!equal(this.props.blocks, this.state.blocks)) {
+      console.log('inside componentDidUpdate() conditional');
       this.setState({
         pageId: newPageId,
         page: this.props.pages[newPageId],
         blocks: this.props.blocks,
       });
+      // debugger;
     }
     // const htmlChanged = this.props.html !== this.state.html;
     // if (htmlChanged) {
@@ -109,8 +107,7 @@ class Page extends React.Component {
   }
 
   render() {
-    console.log('page.jsx render()');
-    console.log("page block length: ", Object.keys(this.props.blocks).length);
+    // console.log('page.jsx render()');
     const { currentUser, pages, blocks, location, history } = this.props;
 
     if (!pages || !blocks) return null;

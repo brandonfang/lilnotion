@@ -6,8 +6,6 @@ const blocksReducer = (state = {}, action) => {
     case RECEIVE_BLOCKS:
       return Object.assign({}, state, action.blocks);
     case RECEIVE_BLOCK:
-      console.log('inside blocks reducer');
-      console.log(action);
       return Object.assign({}, state, { [action.block.id]: action.block });
     case REMOVE_BLOCK:
       let newState = Object.assign({}, state);

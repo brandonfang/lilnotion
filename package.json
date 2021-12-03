@@ -1,7 +1,7 @@
 {
   "name": "lilnotion",
   "private": true,
-  "description": "notion clone",
+  "description": "A fullstack Notion clone built with React, Redux, Ruby on Rails, and PostgreSQL",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
@@ -22,7 +22,7 @@
     "url": "git+https://github.com/brandonfang/lilnotion.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Brandon Fang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/brandonfang/lilnotion/issues"
@@ -43,6 +43,7 @@
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
+    "react-tooltip": "^4.2.21",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "webpack": "^4.46.0"

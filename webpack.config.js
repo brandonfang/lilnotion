@@ -17,6 +17,10 @@ module.exports = {
           plugins: [['@babel/transform-runtime']],
         },
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   devtool: 'source-map',

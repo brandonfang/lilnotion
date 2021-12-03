@@ -3,7 +3,6 @@ import NavBarContainer from '../navbar/NavBarContainer';
 import { login } from '../../actions/session-actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import logo from '../../assets/notion-hero-1.png';
 
 const SplashHome = ({ login }) => {
   const loginDemo = () => {
@@ -20,8 +19,8 @@ const SplashHome = ({ login }) => {
         <div className="align-center-wrapper">
           <div className="hero-image-wrapper">
             <img
-              src={require("../../assets/notion-hero-1.png")}
-              // src={logo}
+              src="https://lilnotion-dev.s3.us-west-1.amazonaws.com/notion-hero-1.png"
+              // src={require('../../assets/hero-1.png')}
               alt="People using Notion"
             />
           </div>

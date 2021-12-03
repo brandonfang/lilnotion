@@ -10,6 +10,7 @@ const BlockSelectMenu = ({
 }) => {
   const { x, y } = position;
 
+  // store 
   const menuData = [
     {
       name: 'Text',

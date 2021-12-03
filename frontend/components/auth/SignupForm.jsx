@@ -19,10 +19,27 @@ class SignupForm extends React.Component {
     this.props.removeErrors();
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
+    // create new user
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    const { currentUser } = await this.props.signup(user);
+    console.log(currentUser)
+    // create placeholder data
+    const { page } = await this.props.createPage({
+      userId: currentUser.id,
+      title: '',
+      blockIds: [],
+    });
+    console.log(page);
+
+    const { block } = await this.props.createBlock({
+      userId: currentUser.id,
+      pageId: page.id,
+      blockType: 'paragraph',
+      text: '',
+    });
+    console.log(block);
   }
 
   loginDemo(e) {

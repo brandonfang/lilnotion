@@ -52,10 +52,10 @@ class Sidebar extends React.Component {
       title: '',
       blockIds: [],
     });
-    
+
     const { block } = await this.props.createBlock({
-      userID: this.props.currentUser.id,
-      pageID: page.id,
+      userId: this.props.currentUser.id,
+      pageId: page.id,
       blockType: 'paragraph',
       text: '',
     });

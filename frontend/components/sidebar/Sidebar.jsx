@@ -47,29 +47,23 @@ class Sidebar extends React.Component {
   }
 
   async newPage() {
-    let newPage;
-    const page = await this.props.createPage({
+    const { page } = await this.props.createPage({
       userId: this.props.currentUser.id,
-      title: 'Untitled Page',
-      gallery_image_url: 'https://lilnotion-dev.s3.us-west-1.amazonaws.com/solid-blue.png',
-      blockIds: []
+      title: '',
+      blockIds: [],
     });
-    this.props.history.push(`/p/${page.id}`);
+    
+    const { block } = await this.props.createBlock({
+      userID: this.props.currentUser.id,
+      pageID: page.id,
+      blockType: 'paragraph',
+      text: '',
+    });
 
-    // .then((res) => {
-    //   newPage = res.page;
-    //   this.props.createBlock({
-    //     userId: this.props.currentUser.id,
-    //     pageId: newPage.id,
-    //     blockType: 'paragraph',
-    //     text: '',
-    //   });
-    // })
-    // .then((res) => {
-    //   const newBlock = res.block;
-    //   const newerPage = Object.assign(newPage, { blockIds: [newBlock.id] });
-    //   this.props.updatePage(newerPage)
-    // });
+    const newPage = Object.assign(page, { blockIds: [block.id] });
+    this.props.updatePage(newPage)
+      .then(() => this.props.history.push(`/p/${page.id}`))
+      .then(() => document.getElementById('page-title').focus());
   }
 
   render() {
@@ -88,6 +82,7 @@ class Sidebar extends React.Component {
 
     const pagesList = Object.keys(pages).map((pageKey, i) => {
       const page = pages[pageKey];
+      const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
       return (
         <div
           onClick={(e) => this.props.history.push(`/p/${page.id}`)}
@@ -96,7 +91,7 @@ class Sidebar extends React.Component {
         >
           <div className="page-block">
             <FiFileText className="sidebar-icon" />
-            <div className="page-block-title">{page.title}</div>
+            <div className="page-block-title">{pageTitle}</div>
           </div>
         </div>
       );

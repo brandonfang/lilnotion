@@ -28,9 +28,9 @@ class Page extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('page.jsx componentDidUpdate()');
-    console.log("prevProps: ", prevProps);
-    console.log("new Props: ", this.props);
+    // console.log('page.jsx componentDidUpdate()');
+    // console.log("prevProps: ", prevProps);
+    // console.log("new Props: ", this.props);
 
     const newPageId = this.props.location.pathname.slice(3);
     if (!equal(this.props.blocks, this.state.blocks)) {
@@ -178,8 +178,9 @@ class Page extends React.Component {
                 html={page.title}
                 onChange={debounce((e) => this.handleTitleChange(e), 1000)}
                 tagName="h1"
-                className="page-title"
                 placeholder="Untitled"
+                className="page-title"
+                id="page-title"
               />
               <div className="add-block-button" onClick={() => this.newBlock()}>
                 <FiPlus />

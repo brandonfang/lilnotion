@@ -10,7 +10,7 @@ const Navbar = (props) => {
             <Link to="/">
               <img
                 className="logo"
-                src="https://lilnotion-dev.s3.us-west-1.amazonaws.com/lilnotion-logo-dark.svg"
+                src="../../assets/lilnotion-favicon-dark.svg"
                 alt="lilNotion logo"
               />
             </Link>

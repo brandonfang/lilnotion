@@ -64,9 +64,10 @@ class Page extends React.Component {
       text: '',
     };
     this.props.createBlock(block)
-      .then((block) => {
-        console.log(block);
-        const newBlockIds = this.state.page.blockIds.push(block.id);
+      .then((res) => {
+        // console.log("page before update: ", this.state.page)
+        // console.log("blockids before update: ", this.state.page.blockIds)
+        const newBlockIds = [...this.state.page.blockIds, res.block.id];
         const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
         console.log(newPage)
         this.props.updatePage(newPage);

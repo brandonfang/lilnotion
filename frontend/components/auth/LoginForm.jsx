@@ -124,8 +124,8 @@ class LoginForm extends React.Component {
           
           <section className="auth-section-wrapper" id="demo-login">
             <div className="auth-header-wrapper">
-              <h2 className="auth-subtitle">Want to use lilNotion without making an account?</h2>
-              <p className="auth-subtext">You can try lilNotion now by logging in as one of our demo users.</p>
+              <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
+              <p className="auth-subtext">You can use lilNotion now by logging in as one of our demo users.</p>
             </div>
             <div className="form-wrapper">
               <form onSubmit={this.loginDemo} className="auth-form">

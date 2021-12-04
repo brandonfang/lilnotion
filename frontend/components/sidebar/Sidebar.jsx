@@ -16,6 +16,7 @@ import {
   FiPlus,
   FiLogOut,
 } from 'react-icons/fi';
+import OutlinerRow from '../page/OutlinerRow';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class Sidebar extends React.Component {
       return (
         <div
           onClick={(e) => this.props.history.push(`/p/${page.id}`)}
-          className="outliner-item"
+          className="outliner-row"
           key={`${page.id}-${i}`}
         >
           <div className="page-block">

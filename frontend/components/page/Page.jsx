@@ -27,6 +27,10 @@ class Page extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // update document.title
+  }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     // console.log('page.jsx componentDidUpdate()');
     // console.log("prevProps: ", prevProps);
@@ -52,6 +56,7 @@ class Page extends React.Component {
   handleTitleChange(e) {
     const newPage = Object.assign(this.state.page, { title: e.target.value });
     this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
+    // update document title
   }
 
   newBlock() {

@@ -19,8 +19,7 @@ const SplashHome = ({ login }) => {
         <div className="align-center-wrapper">
           <div className="hero-image-wrapper">
             <img
-              src="https://lilnotion-dev.s3.us-west-1.amazonaws.com/notion-hero-1.png"
-              // src={require('../../assets/hero-1.png')}
+              src={'/assets/' + require('../../assets/hero-1.png').default}
               alt="People using Notion"
             />
           </div>

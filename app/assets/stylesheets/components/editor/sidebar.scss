@@ -264,18 +264,30 @@
     }
 
     .page-block {
+      max-width: 100%;
       display: flex;
       align-items: center;
     }
 
     .page-block-title {
+      flex: 1;
+      white-space: nowrap;
       text-overflow: ellipsis;
+
     }
 
     a {
       text-decoration: none;
     }
   }
+}
+
+.sidebar-icon {
+  color: $t-gray-400;
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .sidebar-logout {
@@ -338,12 +350,6 @@
   }
 }
 
-.sidebar-icon {
-  color: $t-gray-400;
-  margin-right: 8px;
-  width: 16px;
-  height: 16px;
-}
 
 @media (max-width: 450px) {
   .sidebar {

@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import {
+  FiMoreHorizontal,
+  FiTrash2,
+  FiEdit,
+} from 'react-icons/fi';
 
 const OutlinerRow = (props) => {
   const { x, y } = position;

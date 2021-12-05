@@ -6,9 +6,6 @@ import {
   FiSearch,
   FiSettings,
   FiFileText,
-  FiMoreHorizontal,
-  FiTrash2,
-  FiEdit,
   FiGithub,
   FiLinkedin,
   FiTwitter,
@@ -88,23 +85,24 @@ class Sidebar extends React.Component {
       const page = pages[pageKey];
       const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
       return (
-        <div
-          onClick={(e) => this.props.history.push(`/p/${page.id}`)}
-          className="outliner-row"
-          key={`${page.id}-${i}`}
-        >
-          <div className="page-block">
-            {/* add emoji  */}
-            <FiFileText className="sidebar-icon" />
-            <div className="page-block-title">{pageTitle}</div>
-            {/* FiMoreHorizonal for more button */}
-            {/* FiMoreHorizonal for deleting page */}
-            {/* FiEdit for renaming page */}
-            {/* <div className="x" onClick={(e) => }>
-              <FiMoreHorizontal className="sidebar-icon" />
-            </div> */}
-          </div>
-        </div>
+        // <div
+        //   onClick={(e) => this.props.history.push(`/p/${page.id}`)}
+        //   className="outliner-row"
+        //   key={`${page.id}-${i}`}
+        // >
+        //   <div className="page-block">
+        //     {/* add emoji  */}
+        //     <FiFileText className="sidebar-icon" />
+        //     <div className="page-block-title">{pageTitle}</div>
+        //     {/* FiMoreHorizonal for more button */}
+        //     {/* FiMoreHorizonal for deleting page */}
+        //     {/* FiEdit for renaming page */}
+        //     {/* <div className="x" onClick={(e) => }>
+        //       <FiMoreHorizontal className="sidebar-icon" />
+        //     </div> */}
+        //   </div>
+        // </div>
+        <OutlinerRow key={`${page.id}-${i}`} page={page} />
       );
     });
 

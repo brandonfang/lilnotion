@@ -66,15 +66,14 @@ class Page extends React.Component {
       blockType: 'paragraph',
       text: '',
     };
-    this.props.createBlock(block)
-      .then((res) => {
-        // console.log("page before update: ", this.state.page)
-        // console.log("blockids before update: ", this.state.page.blockIds)
-        const newBlockIds = [...this.state.page.blockIds, res.block.id];
-        const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-        console.log(newPage)
-        this.props.updatePage(newPage);
-      });
+    this.props.createBlock(block).then((res) => {
+      // console.log("page before update: ", this.state.page)
+      // console.log("blockids before update: ", this.state.page.blockIds)
+      const newBlockIds = [...this.state.page.blockIds, res.block.id];
+      const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
+      console.log(newPage);
+      this.props.updatePage(newPage);
+    });
   }
 
   handleImageUpload(e) {
@@ -111,6 +110,8 @@ class Page extends React.Component {
     console.log(newBlockIds);
   }
 
+  getPagePadding() {}
+
   render() {
     // console.log('page.jsx render()');
     const { currentUser, pages, blocks, location, history } = this.props;
@@ -131,15 +132,12 @@ class Page extends React.Component {
 
     const pageHasGalleryCover = this.state.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.state.page.uploadedImageUrl.length > 0;
-    const preview = this.state.photoUrl ? <img src="this.state.photoUrl" /> : null;
-
-    // check for attachment
-    // use default or user photo based on attachment
-    // const pageHasUserUploadedImage = this.props.page.hasUserPhoto
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
 
     return (
       <div className="page">
         <div className="topbar">
+          {/* <FiMenu /> */}
           <div className="breadcrumb-wrapper">
             {/* add handleTitleChange listener */}
             <div className="breadcrumb">{page.title}</div>

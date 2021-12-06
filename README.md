@@ -2,9 +2,9 @@
 
 ## About
 
-lilNotion is a fullstack, single-page web app that clones some of [Notion](https://www.notion.so/)'s functionalities. lilNotion is a workspace that allows users to write rich-text notes and wikis in a flexible format.
+lilNotion is a fullstack, single-page web app that clones some of [Notion](https://www.notion.so/product)'s features. lilNotion is a document editor that allows users to write notes and wikis in a flexible format.
 
-**Live Demo: [lilnotion.herokuapp.com](https://lilnotion.herokuapp.com)**
+### **Live Demo: [lilnotion.herokuapp.com](https://lilnotion.herokuapp.com)**
 
 ## Technologies
 
@@ -12,14 +12,15 @@ lilNotion is a fullstack, single-page web app that clones some of [Notion](https
 - Backend: Ruby on Rails/PostgreSQL
 - Storage: AWS S3
 - Hosting: Heroku
+- Drag and Drop: react-beautiful-dnd
 
 ## Key Features
 
-### User Auth
+### User Authentication
 
-Users can create an account to hold their data. Visitors who don't want to make an account can log in as a demo user.
+Users can create an account to store their private pages. Visitors who don't want to make an account can log in as a demo user.
 
-![user-auth]()
+![user authentication]()
 
 ### Pages and Blocks
 
@@ -33,9 +34,20 @@ A block can be turned into another type of block using the `⌘` + `/` command o
 
 ![blocks]()
 
+### Slash Commands
 
-## Future Features
 
-- Additional block types
-- Block nesting
-- Database collections
+![slash commands]()
+
+### Drag and Drop
+
+![drag and drop]()
+
+### Image Support 
+
+![image support]()
+
+
+## Acknowledgment
+
+This project was inspired by Konstantin Münster's [blog post](https://medium.com/swlh/how-to-build-a-text-editor-like-notion-c510aedfdfcc).

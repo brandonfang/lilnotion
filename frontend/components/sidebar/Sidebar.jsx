@@ -1,11 +1,10 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import {
   FiChevronsRight,
   FiChevronsLeft,
   FiSearch,
   FiSettings,
-  FiFileText,
   FiGithub,
   FiLinkedin,
   FiTwitter,
@@ -13,7 +12,7 @@ import {
   FiPlus,
   FiLogOut,
 } from 'react-icons/fi';
-import OutlinerRow from '../page/OutlinerRow';
+import OutlinerRow from './OutlinerRow';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -80,10 +79,11 @@ class Sidebar extends React.Component {
     } else {
       tooltipClassName = toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip';
     }
+    
+    const arrayOfPages = Object.values(pages);
+    arrayOfPages.sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
 
-    const pagesList = Object.keys(pages).map((pageKey, i) => {
-      const page = pages[pageKey];
-      const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
+    const pagesList = arrayOfPages.map((page, i) => {
       return (
         // <div
         //   onClick={(e) => this.props.history.push(`/p/${page.id}`)}
@@ -207,7 +207,7 @@ class Sidebar extends React.Component {
                   Portfolio
                 </a>
               </div>
-              <div className="credit">
+              {/* <div className="credit">
                 <FiTwitter className="sidebar-icon" />
                 <a
                   href="https://twitter.com/bdmfang"
@@ -217,7 +217,7 @@ class Sidebar extends React.Component {
                 >
                   Twitter
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

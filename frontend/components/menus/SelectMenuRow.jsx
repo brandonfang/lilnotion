@@ -19,7 +19,7 @@ const SelectMenuRow = ({ item, position, handleBlockSelect, block }) => {
       <div className="select-info">
         <div className="select-name">{item.name}</div>
       </div>
-      <div className={show ? 'tooltip-wrapper visible' : 'tooltip-wrapper'}>
+      <div className={show ? "tooltip-wrapper visible" : "tooltip-wrapper"}>
         <div className="tooltip">
           <img className="tooltip-image" src={item.tooltip} />
           <div className="tooltip-text">{item.description}</div>

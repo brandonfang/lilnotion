@@ -28,7 +28,7 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    // update document.title
+    document.title = this.props.pages[this.props.location.pathname.slice(3)].title;
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -56,7 +56,7 @@ class Page extends React.Component {
   handleTitleChange(e) {
     const newPage = Object.assign(this.state.page, { title: e.target.value });
     this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
-    // update document title
+    document.title = newPage.title;
   }
 
   newBlock() {

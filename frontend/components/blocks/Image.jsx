@@ -32,7 +32,6 @@ class Image extends React.Component {
   }
 
   handleSubmit() {
-    // e.preventDefault();
     const file = this.state.photoFile;
     if (file) {
       const fileReader = new FileReader();

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { FiFileText, FiMoreHorizontal, FiTrash2, FiEdit } from 'react-icons/fi';
+import { FiFileText, FiTrash2, FiEdit } from 'react-icons/fi';
 
-const OutlinerRow = ({ page, history }) => {
+// FiMoreHorizonal for more button
+// FiTrash2 for deleting page
+// FiEdit for renaming page
+
+const OutlinerRow = ({ page, goToPage, deletePage }) => {
   // const { x, y } = position;
   const [hover, setHover] = useState(false);
+  const [actionMenuOpen, setActionMenuOpen] = useState(false);
+
   const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
 
   return (
@@ -12,7 +18,7 @@ const OutlinerRow = ({ page, history }) => {
       className="outliner-row-wrapper"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      onClick={() => history.push(`/p/${page.id}`)}
+      onClick={() => goToPage(page.id, page.title)}
     >
       <div className="outliner-row">
         {/* caret to show nested pages */}
@@ -21,7 +27,13 @@ const OutlinerRow = ({ page, history }) => {
           <FiFileText className="outliner-icon" />
         </div>
         <div className="outliner-page-title">{pageTitle}</div>
-        <div className={hover ? 'outliner-actions visible' : 'outliner-actions'}>
+        <div
+          className={hover ? 'outliner-actions visible' : 'outliner-actions'}
+          onClick={(e) => {
+            e.stopPropagation();
+            setActionMenuOpen(true);
+          }}
+        >
           <svg viewBox="0 0 13 3" className="outliner-actions-icon" fill="currentColor">
             <g>
               <path d="M3,1.5A1.5,1.5,0,1,1,1.5,0,1.5,1.5,0,0,1,3,1.5Z"></path>
@@ -30,6 +42,20 @@ const OutlinerRow = ({ page, history }) => {
             </g>
           </svg>
         </div>
+        {actionMenuOpen ? (
+          <div
+            className="action-menu-row"
+            onClick={() => deletePage(page.id)}
+            role="button"
+            tabIndex="0"
+          >
+            <div className="action-icon">
+              <FiTrash2 />
+            </div>
+            <div className="action-name">Delete</div>
+            <div className="action-command">Del</div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

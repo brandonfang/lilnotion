@@ -9,7 +9,7 @@ const pagesReducer = (state = {}, action) => {
       return Object.assign({}, action.pages);
     case REMOVE_PAGE:
       let newState = Object.assign({}, state);
-      delete newState[action.page.id];
+      delete newState[action.pageId];
       return newState;
     default:
       return state;

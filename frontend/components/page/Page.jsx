@@ -31,6 +31,7 @@ class Page extends React.Component {
     document.title = this.props.pages[this.props.location.pathname.slice(3)].title;
   }
 
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     // console.log('page.jsx componentDidUpdate()');
     // console.log("prevProps: ", prevProps);
@@ -44,6 +45,7 @@ class Page extends React.Component {
         page: this.props.pages[newPageId],
         blocks: this.props.blocks,
       });
+      document.title = this.props.pages[newPageId].title;
       // debugger;
     }
     // const htmlChanged = this.props.html !== this.state.html;
@@ -179,7 +181,7 @@ class Page extends React.Component {
                 innerRef={this.contentEditable}
                 // html={this.state.html}
                 html={page.title}
-                onChange={debounce((e) => this.handleTitleChange(e), 1000)}
+                onChange={debounce((e) => this.handleTitleChange(e), 500)}
                 tagName="h1"
                 placeholder="Untitled"
                 className="page-title"

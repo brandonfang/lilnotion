@@ -19,7 +19,9 @@ class Sidebar extends React.Component {
     super(props);
     this.ref = React.createRef();
     this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.goToPage = this.goToPage.bind(this);
     this.newPage = this.newPage.bind(this);
+    this.deletePage = this.deletePage.bind(this);
     this.state = {
       sidebarCollapsed: false,
       toggleHover: false,
@@ -46,6 +48,11 @@ class Sidebar extends React.Component {
     // update active page in sidebar
   }
 
+  goToPage(pageId, pageTitle) {
+    this.props.history.push(`/p/${pageId}`);
+    document.title = page.title;
+  }
+
   async newPage() {
     const { page } = await this.props.createPage({
       userId: this.props.currentUser.id,
@@ -61,15 +68,21 @@ class Sidebar extends React.Component {
     });
 
     const newPage = Object.assign(page, { blockIds: [block.id] });
-    this.props.updatePage(newPage)
+    this.props
+      .updatePage(newPage)
       .then(() => this.props.history.push(`/p/${page.id}`))
       .then(() => document.getElementById('page-title').focus());
+  }
+
+  async deletePage(pageId) {
+    await this.props.deletePage(pageId);
+    this.props.history.push('/');
   }
 
   render() {
     if (!this.props.pages || Object.keys(this.props.pages).length === 0) return null;
 
-    const { currentUser, pages, logout } = this.props;
+    const { currentUser, pages, deletePage, logout } = this.props;
     const { sidebarCollapsed, toggleHover } = this.state;
     const toggleIcon = sidebarCollapsed ? <FiChevronsRight /> : <FiChevronsLeft />;
     const tooltipText = sidebarCollapsed ? 'Lock sidebar open' : 'Close sidebar';
@@ -79,30 +92,18 @@ class Sidebar extends React.Component {
     } else {
       tooltipClassName = toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip';
     }
-    
+
+    // sort pages by creation timestamp
     const arrayOfPages = Object.values(pages);
     arrayOfPages.sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
 
     const pagesList = arrayOfPages.map((page, i) => {
       return (
-        // <div
-        //   onClick={(e) => this.props.history.push(`/p/${page.id}`)}
-        //   className="outliner-row"
-        //   key={`${page.id}-${i}`}
-        // >
-        //   <div className="page-block">
-        //     {/* add emoji  */}
-        //     <FiFileText className="sidebar-icon" />
-        //     <div className="page-block-title">{pageTitle}</div>
-        //     {/* FiMoreHorizonal for more button */}
-        //     {/* FiMoreHorizonal for deleting page */}
-        //     {/* FiEdit for renaming page */}
-        //     {/* <div className="x" onClick={(e) => }>
-        //       <FiMoreHorizontal className="sidebar-icon" />
-        //     </div> */}
-        //   </div>
-        // </div>
-        <OutlinerRow key={`${page.id}-${i}`} page={page} />
+        <OutlinerRow 
+          key={`${page.id}-${i}`} 
+          page={page} 
+          goToPage={this.goToPage}
+          deletePage={deletePage} />
       );
     });
 

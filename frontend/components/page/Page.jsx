@@ -8,6 +8,8 @@ import BlockContainer from '../blocks/BlockContainer';
 import PageHeaderContainer from './PageHeaderContainer';
 import MediaMenuContainer from '../menus/MediaMenuContainer';
 import { FiMenu, FiPlus } from 'react-icons/fi';
+import { BiImage } from 'react-icons/bi';
+
 
 class Page extends React.Component {
   constructor(props) {
@@ -15,7 +17,9 @@ class Page extends React.Component {
     this.contentEditable = React.createRef();
     this.newBlock = this.newBlock.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleImageUpload = this.handleImageUpload.bind(this);
+    this.handlePreview = this.handlePreview.bind(this);
+    this.getRandomCover = this.getRandomCover.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.OnDragEnd = this.OnDragEnd.bind(this);
     this.state = {
       pageId: props.location.pathname.slice(3),
@@ -31,15 +35,14 @@ class Page extends React.Component {
     document.title = this.state.page.title;
   }
 
-
   componentDidUpdate(prevProps, prevState, snapshot) {
     // console.log('page.jsx componentDidUpdate()');
     // console.log("prevProps: ", prevProps);
     // console.log("new Props: ", this.props);
 
     const newPageId = this.props.location.pathname.slice(3);
-    if (!equal(this.props.blocks, this.state.blocks)) {
-      console.log('inside componentDidUpdate() conditional');
+    if (!equal(this.props.blocks, this.state.blocks) || this.props.location !== prevProps.location) {
+      // console.log('inside componentDidUpdate() conditional');
       this.setState({
         pageId: newPageId,
         page: this.props.pages[newPageId],
@@ -61,6 +64,8 @@ class Page extends React.Component {
     document.title = e.target.value;
   }
 
+  getRandomCover() {}
+
   newBlock() {
     const block = {
       userId: this.props.currentUser.id,
@@ -78,24 +83,47 @@ class Page extends React.Component {
     });
   }
 
-  handleImageUpload(e) {
+  handlePreview(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('page[uploadedImageUrl]', this.state.photoFile);
-    console.log(this.state.photoFile);
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    if (file) {
+      fileReader.readAsDataURL(file);
+      fileReader.onloadend = () => {
+        this.setState(
+          {
+            photoFile: file,
+            photoUrl: fileReader.result,
+          },
+          () => this.handleUpload()
+        );
+      };
+    }
+  }
 
-    $.ajax({
-      url: `/api/pages/${this.props.pageId}`,
-      method: 'PATCH',
-      data: formData,
-      contentType: false,
-      processData: false,
-    }).then(
-      (res) => {
-        this.props.updatePage(this.state.page);
-      },
-      (err) => console.log(err)
-    );
+  handleUpload() {
+    const file = this.state.photoFile;
+
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onloadend = () => {
+        const formData = new FormData();
+        formData.append('page[uploadedImageUrl]', file);
+
+        $.ajax({
+          url: `/api/pages/${this.state.page.id}`,
+          method: 'PATCH',
+          data: formData,
+          contentType: false,
+          processData: false,
+        }).then(
+          (res) => console.log('res: ', res),
+          (err) => console.log('error: ', err)
+        );
+      };
+    }
   }
 
   OnDragEnd(result) {
@@ -115,8 +143,8 @@ class Page extends React.Component {
   getPagePadding() {}
 
   render() {
-    // console.log('page.jsx render()');
-    const { currentUser, pages, blocks, location, history } = this.props;
+    console.log('page.jsx render()');
+    const { pages, blocks, location, history } = this.props;
 
     if (!pages || !blocks) return null;
     if (location.pathname.length <= 1) {
@@ -134,17 +162,20 @@ class Page extends React.Component {
 
     const pageHasGalleryCover = this.state.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.state.page.uploadedImageUrl.length > 0;
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
+    const preview = this.state.photoUrl ? <img className="page-cover-preview" src={this.state.photoUrl} /> : null;
 
     return (
       <div className="page">
         <div className="topbar">
-          {/* <FiMenu /> */}
-          <div className="breadcrumb-wrapper">
-            {/* add handleTitleChange listener */}
-            <div className="breadcrumb">{page.title}</div>
+          <div className="topbar-left">
+            <div className="topbar-menu-wrapper">
+              <FiMenu className="topbar-menu" />
+            </div>
+            <div className="breadcrumb-wrapper">
+              <div className="breadcrumb">{page.title}</div>
+            </div>
           </div>
-          <div className="topbar-action-buttons">
+          <div className="topbar-actions">
             <div className="more-button-wrapper">
               <div className="more-button">
                 <span></span>
@@ -154,33 +185,37 @@ class Page extends React.Component {
         </div>
 
         <div className="page-scroller">
-          {/* <div className="page-header-wrapper">
+          <div className="page-header-wrapper">
             <div className="page-header">
-              {pageHasGalleryCover ? <img src={this.props.page.galleryImageUrl} className="page-cover" /> : null}
+              {pageHasGalleryCover ? (
+                <img src={page.galleryImageUrl} className="page-cover" />
+              ) : null}
             </div>
           </div>
 
           <div className="temp-picker">
-            <form onSubmit={this.handleImageUpload} id="picker-form">
-              <label htmlFor="page-cover-input">Choose a photo</label>
+            <label className="cover-upload-label">
+              <BiImage className="image-upload-icon" />
+              Add cover
               <input
                 type="file"
-                id="page-cover-input"
-                // value={}
-                onChange={() => document.getElementById('picker-form').submit()}
+                id=""
+                className="cover-upload-input"
+                accept="image/*"
+                onChange={this.handlePreview}
+                hidden
               />
-              <button type="submit" id="picker-submit">Add cover photo</button>
-            </form>
+            </label>
           </div>
 
-          <PageHeaderContainer page={this.state.page} /> */}
+          <PageHeaderContainer page={this.state.page} />
 
           <div className="page-wrapper">
             <div className="page-title-wrapper">
               <ContentEditable
                 innerRef={this.contentEditable}
                 // html={this.state.html}
-                html={page.title}
+                html={this.state.page.title}
                 onChange={debounce((e) => this.handleTitleChange(e), 500)}
                 tagName="h1"
                 placeholder="Untitled"

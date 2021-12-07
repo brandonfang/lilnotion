@@ -4,7 +4,7 @@ import { FiTrash2, FiEdit } from 'react-icons/fi';
 
 export default function OutlinerMenu({ position, deletePage }) {
   const [thing, setThing] = React.useState(null);
-  
+
   return ReactDOM.createPortal(
     <>
       <div
@@ -12,6 +12,7 @@ export default function OutlinerMenu({ position, deletePage }) {
         onClick={() => deletePage(page.id)}
         role="button"
         tabIndex="0"
+        style={{left: position.x, top: position.y}}
       >
         <div className="outliner-action-menu-row">
           <div className="action-icon">

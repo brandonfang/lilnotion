@@ -23,8 +23,25 @@
   top: 0;
 }
 
+.topbar-menu-wrapper {
+  width: 45px;
+  height: 45px;
+  padding: 11px;
+  cursor: pointer;
+
+  &:hover {
+    // background: #f5f5f5;
+  }
+}
+
+.topbar-menu {
+  width: 23px;
+  height: 23px;
+  color: rgba(55, 53, 47, 0.8);
+}
+
 .breadcrumb-wrapper {
-  padding-left: 12px;
+  cursor: pointer;
 }
 
 .breadcrumb {
@@ -38,8 +55,13 @@
   }
 }
 
-.topbar-action-buttons {
+.topbar-actions {
   padding: 0 10px;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
 }
 
 .page-scroller {
@@ -125,6 +147,27 @@
 
 .droppable-area {
   width: 100%;
+}
+
+input[type='file'].cover-upload-input {
+  display: none;
+}
+
+.cover-upload-label {
+  width: 100px;
+  padding: 12px 36px 12px 12px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+  color: rgba(55, 53, 47, 0.6);
+  background: rgb(240, 239, 236);
+
+  &:hover {
+    background: rgb(227, 226, 223);
+  }
 }
 
 .temp-picker {

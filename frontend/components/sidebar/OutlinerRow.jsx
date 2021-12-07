@@ -13,14 +13,13 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
   const [menuPosition, setMenuPosition] = useState({x: null, y: null});
   const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
 
-  const calculateMenuPosition = (e) => {
-    
-  }
-
+  // const calculateMenuPosition = (e) => {
+  // }
 
   const openMenu = (e) => {
     e.stopPropagation();
     setMenuOpen(true);
+    setMenuPosition({x: e.clientX, y: e.clientY});
   }
 
   return (
@@ -51,7 +50,7 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
         </div>
       </div>
       {menuOpen ? (
-        <OutlinerMenu deletePage={deletePage} position={position}/>
+        <OutlinerMenu deletePage={deletePage} position={menuPosition}/>
       ) : null}
     </div>
   );

@@ -5,7 +5,7 @@ class Image extends React.Component {
   constructor(props) {
     super(props);
     this.handlePreview = this.handlePreview.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.state = {
       photoFile: null,
       photoUrl: null,
@@ -16,7 +16,6 @@ class Image extends React.Component {
     e.preventDefault();
     const file = e.target.files[0];
     const fileReader = new FileReader();
-
     if (file) {
       fileReader.readAsDataURL(file);
       fileReader.onloadend = () => {
@@ -25,13 +24,13 @@ class Image extends React.Component {
             photoFile: file,
             photoUrl: fileReader.result,
           },
-          () => this.handleSubmit()
+          () => this.handleUpload()
         );
       };
     }
   }
 
-  handleSubmit() {
+  handleUpload() {
     const file = this.state.photoFile;
     if (file) {
       const fileReader = new FileReader();
@@ -48,7 +47,6 @@ class Image extends React.Component {
           contentType: false,
           processData: false,
         }).then(
-          // remove
           (res) => console.log('res: ', res),
           (err) => console.log('error: ', err)
         );
@@ -68,7 +66,6 @@ class Image extends React.Component {
         <img className="block-image" src={block.imageUrl} alt="" />
       ) : (
         <>
-          {/* <input name="_method" type="hidden" value="patch" /> */}
           <label className="image-upload-label">
             <BiImage className="image-upload-icon" />
             <div className="image-upload-text">Add an image</div>
@@ -85,7 +82,6 @@ class Image extends React.Component {
       );
 
     return (
-      // change body class
       <div className="block-body image"> 
         <div className="image-block-wrapper">{imageBody}</div>
       </div>

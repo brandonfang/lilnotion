@@ -14,16 +14,6 @@ class ToDo extends React.Component {
     };
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate(prevProps, prevState) {
-    const htmlChanged = this.props.html !== this.state.html;
-    if (htmlChanged) {
-      const newBlock = Object.assign(this.props.block, { text: this.state.html });
-      this.props.updateBlock(newBlock);
-    }
-  }
-
   handleChange(e) {
     this.setState({ html: e.target.value });
   }

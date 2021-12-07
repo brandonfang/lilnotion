@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { FiFileText, FiTrash2, FiEdit } from 'react-icons/fi';
+import OutlinerMenu from './OutlinerMenu';
+import { FiFileText } from 'react-icons/fi';
 
 // FiMoreHorizonal for more button
 // FiTrash2 for deleting page
 // FiEdit for renaming page
 
 const OutlinerRow = ({ page, goToPage, deletePage }) => {
-  // const { x, y } = position;
   const [hover, setHover] = useState(false);
-  const [actionMenuOpen, setActionMenuOpen] = useState(false);
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({x: null, y: null});
   const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
+
+  const calculateMenuPosition = (e) => {
+    
+  }
+
+
+  const openMenu = (e) => {
+    e.stopPropagation();
+    setMenuOpen(true);
+  }
 
   return (
     <div
@@ -29,10 +39,7 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
         <div className="outliner-page-title">{pageTitle}</div>
         <div
           className={hover ? 'outliner-actions visible' : 'outliner-actions'}
-          onClick={(e) => {
-            e.stopPropagation();
-            setActionMenuOpen(true);
-          }}
+          onClick={openMenu}
         >
           <svg viewBox="0 0 13 3" className="outliner-actions-icon" fill="currentColor">
             <g>
@@ -42,21 +49,10 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
             </g>
           </svg>
         </div>
-        {actionMenuOpen ? (
-          <div
-            className="action-menu-row"
-            onClick={() => deletePage(page.id)}
-            role="button"
-            tabIndex="0"
-          >
-            <div className="action-icon">
-              <FiTrash2 />
-            </div>
-            <div className="action-name">Delete</div>
-            <div className="action-command">Del</div>
-          </div>
-        ) : null}
       </div>
+      {menuOpen ? (
+        <OutlinerMenu deletePage={deletePage} position={position}/>
+      ) : null}
     </div>
   );
 };

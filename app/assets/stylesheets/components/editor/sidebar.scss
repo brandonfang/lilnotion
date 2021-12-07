@@ -249,6 +249,7 @@
 
 .outliner-row-wrapper {
   display: block;
+  position: relative;
   cursor: pointer;
   // adjust padding-left for caret
   padding: 3px 14px 3px 14px;
@@ -305,7 +306,7 @@
   &:hover {
     background: rgba(199, 198, 195, 0.6);
   }
-  
+
   &.visible {
     display: block;
   }
@@ -316,6 +317,36 @@
   height: 20px;
   user-select: none;
   color: rgba(25, 23, 17, 0.6);
+}
+
+.outliner-action-menu {
+  
+  width: 240px;
+  // top: 0;
+  // left: 24px;
+  // right: -24px;
+  left: 240px;
+  // width: 20px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  background: white;
+  border-radius: 3px;
+  cursor: pointer;
+  // user-select: none;
+}
+
+.outliner-action-menu-row {
+  display: flex;
+  align-items: center;
+  padding: 0px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(25, 23, 17, 0.6);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 .sidebar-icon {

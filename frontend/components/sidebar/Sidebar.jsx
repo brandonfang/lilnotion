@@ -49,8 +49,9 @@ class Sidebar extends React.Component {
   }
 
   goToPage(pageId, pageTitle) {
+    if (pageTitle === '') pageTitle = 'Untitled';
+    document.title = pageTitle;
     this.props.history.push(`/p/${pageId}`);
-    document.title = page.title;
   }
 
   async newPage() {
@@ -80,6 +81,7 @@ class Sidebar extends React.Component {
   }
 
   render() {
+    console.log('sidebar.jsx render()');
     if (!this.props.pages || Object.keys(this.props.pages).length === 0) return null;
 
     const { currentUser, pages, deletePage, logout } = this.props;

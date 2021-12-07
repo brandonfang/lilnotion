@@ -28,7 +28,7 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    document.title = this.props.pages[this.props.location.pathname.slice(3)].title;
+    document.title = this.state.page.title;
   }
 
 
@@ -45,7 +45,7 @@ class Page extends React.Component {
         page: this.props.pages[newPageId],
         blocks: this.props.blocks,
       });
-      document.title = this.props.pages[newPageId].title;
+      document.title = this.state.page.title;
       // debugger;
     }
     // const htmlChanged = this.props.html !== this.state.html;
@@ -58,7 +58,7 @@ class Page extends React.Component {
   handleTitleChange(e) {
     const newPage = Object.assign(this.state.page, { title: e.target.value });
     this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
-    document.title = newPage.title;
+    document.title = e.target.value;
   }
 
   newBlock() {

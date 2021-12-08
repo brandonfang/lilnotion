@@ -4,13 +4,14 @@
     <title>lilNotion</title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag asset_path('lilnotion-favicon-dark.svg') %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta property="og:title" content="lilNotion" />
     <meta property="og:url" content="https://lilnotion.herokuapp.com/" />
     <meta property="og:type" content="website">
     <meta property="og:description" content="A fullstack Notion clone built with React, Redux, Ruby on Rails, and PostgreSQL" />
     <meta property="og:image" content="<%= asset_path('meta.png') %>" />
+
     <meta name="twitter:title" content="lilNotion">
     <meta name="twitter:url" content="https://lilnotion.herokuapp.com">
     <meta name="twitter:description" content="A fullstack Notion clone built with React, Redux, Ruby on Rails, and PostgreSQL">
@@ -19,6 +20,43 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script type="text/javascript">
+      window.logo = "<%= image_url('lilnotion-logo-dark.svg') %>";
+      window.hero = "<%= image_url('hero-1.png') %>";
+      window.text = "<%= image_url('text.png') %>";
+      window.textTooltip = "<%= image_url('text-tooltip.png') %>";
+      window.h1 = "<%= image_url('h1.png') %>";
+      window.h1Tooltip = "<%= image_url('h1-tooltip.png') %>";
+      window.h2 = "<%= image_url('h2.png') %>";
+      window.h2Tooltip = "<%= image_url('h2-tooltip.png') %>";
+      window.h3 = "<%= image_url('h3.png') %>";
+      window.h3Tooltip = "<%= image_url('h3-tooltip.png') %>";
+      window.toDo = "<%= image_url('to-do.png') %>";
+      window.toDoTooltip = "<%= image_url('to-do-tooltip.png') %>";
+      window.bulletedList = "<%= image_url('bulleted-list.png') %>";
+      window.bulletedListTooltip = "<%= image_url('bulleted-list-tooltip.png') %>";
+      window.numberedList = "<%= image_url('numbered-list.png') %>";
+      window.numberedListTooltip = "<%= image_url('numbered-list-tooltip.png') %>";
+      window.toggle = "<%= image_url('toggle.png') %>";
+      window.toggleTooltip = "<%= image_url('toggle-tooltip.png') %>";
+      window.code = "<%= image_url('code.png') %>";
+      window.codeTooltip = "<%= image_url('code-tooltip.png') %>";
+      window.quote = "<%= image_url('quote.png') %>";
+      window.quoteTooltip = "<%= image_url('quote-tooltip.png') %>";
+      window.callout = "<%= image_url('callout.png') %>";
+      window.calloutTooltip = "<%= image_url('callout-tooltip.png') %>";
+      window.divider = "<%= image_url('divider.png') %>";
+      window.dividerTooltip = "<%= image_url('divider-tooltip.png') %>";
+      window.image = "<%= image_url('image.png') %>";
+      window.imageTooltip = "<%= image_url('image-tooltip.png') %>";
+      window.board = "<%= image_url('board.png') %>";
+      window.boardInline = "<%= image_url('board-inline.png') %>";
+      window.boardTooltip = "<%= image_url('board-tooltip.png') %>";
+      window.table = "<%= image_url('table.png') %>";
+      window.tableInline = "<%= image_url('table-inline.png') %>";
+      window.tableTooltip = "<%= image_url('table-tooltip.png') %>";
+    </script>
   </head>
 
   <body>

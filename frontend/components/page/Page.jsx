@@ -30,7 +30,9 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    document.title = this.state.page.title;
+    if (this.state.page.title) {
+      document.title = this.state.page.title;
+    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {

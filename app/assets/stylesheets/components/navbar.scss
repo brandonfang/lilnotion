@@ -1,9 +1,11 @@
 .header {
   height: 64px;
   box-sizing: border-box;
+  color: #111111;
+  background: #fffefc;
 
   .outer {
-    max-width: 1024px;
+    max-width: 1200px;
     height: 64px;
     margin: 0 auto;
     padding: 0 32px;

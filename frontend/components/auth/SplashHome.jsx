@@ -34,13 +34,15 @@ const SplashHome = ({ login }) => {
                   Log in
                 </Link>
               </div>
-              <p className="caption">lilNotion is a clone of <a href="https://www.notion.so/product" target="_blank" rel="noopener noreferrer">Notion</a>.</p>
+              <p className="caption">
+                lilNotion is a clone of <a href="https://www.notion.so/product" target="_blank" rel="noopener noreferrer">Notion</a>.
+              </p>
             </div>
           </section>
 
           <section className="align-center-wrapper showcase">
             <div className="screenshot-wrapper">
-              <img classname="screenshot" src={window.wiki} alt="Wiki" />
+              <img className="screenshot" src={window.wiki} alt="Wiki" />
             </div>
           </section>
 
@@ -144,12 +146,15 @@ const SplashHome = ({ login }) => {
             </div>
           </section>
 
-          <section className="align-center-wrapper margin-l">
-            <h2>And connect the whole company</h2>
-            <h3>No more context switching or silos.</h3>
+          <section className="align-center-wrapper">
+            <h2 className="global-title">And connect the whole company</h2>
+            <h3 className="global-subtitle">No more context switching or silos.</h3>
             <div className="cta-container">
               <Link to="/signup" className="cta cta-try">
-                Signup
+                Sign up
+              </Link>
+              <Link to="/login" className="cta cta-login">
+                Log in
               </Link>
             </div>
           </section>

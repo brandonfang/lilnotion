@@ -3,7 +3,7 @@ import NavBarContainer from '../navbar/NavBarContainer';
 import { login } from '../../actions/session-actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Hero from 'hero-1.png'
+// import Hero from 'hero-1.png'
 
 const SplashHome = ({ login }) => {
   const loginDemo = () => {
@@ -21,7 +21,7 @@ const SplashHome = ({ login }) => {
           <div className="hero-image-wrapper">
             <img
               // src={'/assets/' + require('../../assets/hero-1.png').default}
-              src={Hero}
+              // src={Hero}
               alt="People using Notion"
             />
           </div>

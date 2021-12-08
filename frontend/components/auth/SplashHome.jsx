@@ -17,7 +17,7 @@ const SplashHome = ({ login }) => {
       <NavBarContainer />
       <div className="splash-bg">
         <main className="splash-main">
-          <div className="align-center-wrapper">
+          <section className="align-center-wrapper">
             <div className="hero-image-wrapper">
               <img src={window.hero} alt="People using Notion" />
             </div>
@@ -27,29 +27,57 @@ const SplashHome = ({ login }) => {
                 One tool for your whole team. Write, plan, and get organized.
               </h2>
               <div className="cta-container">
-                {/* <Link to="/login" className="cta cta-login">
-                  Log in
-                </Link> */}
                 <div onClick={loginDemo} className="cta cta-try">
                   Try lilNotion now
                 </div>
+                <Link to="/login" className="cta cta-login">
+                  Log in
+                </Link>
+              </div>
+              <p className="caption">lilNotion is a clone of <a href="https://www.notion.so/product" target="_blank" rel="noopener noreferrer">Notion</a>.</p>
+            </div>
+          </section>
+
+          <section className="align-center-wrapper showcase">
+            <div className="screenshot-wrapper">
+              <img classname="screenshot" src={window.wiki} alt="Wiki" />
+            </div>
+          </section>
+
+          <section className="companies">
+            <h2 className="trusted">Trusted by teams at</h2>
+            <div className="logos">
+              <div className="company-logo">
+                <img src={window.squareLogo} alt="Square" />
+              </div>
+              <div className="company-logo">
+                <img src={window.loomLogo} alt="Loom" />
+              </div>
+              <div className="company-logo">
+                <img src={window.pixarLogo} alt="Pixar" />
+              </div>
+              <div className="company-logo">
+                <img src={window.ibmLogo} alt="IBM" />
+              </div>
+              <div className="company-logo">
+                <img src={window.nikeLogo} alt="Nike" />
+              </div>
+              <div className="company-logo">
+                <img src={window.spotifyLogo} alt="Spotify" />
+              </div>
+              <div className="company-logo">
+                <img src={window.slackLogo} alt="Slack" />
               </div>
             </div>
-          </div>
-          <div className="align-center-wrapper">
-          </div>
-          <div className="align-center-wrapper showcase">
-            <div className="screenshot-wrapper">
-              <img classname="screenshot" src={window.wiki} alt="wiki" />
-            </div>
-          </div>
-          <div className="align-center-wrapper margin-l">
+          </section>
+
+          <section className="align-center-wrapper margin-l">
             <h2 className="global-title">Build to empower every team</h2>
             <h3 className="global-subtitle">lilNotion solves problems unique to every function.</h3>
             <div className="persona-grid">
               <div className="persona-grid-item">
                 <div className="persona-grid-image">
-                  <img src={window.product} alt="product" />
+                  <img src={window.product} alt="Product" />
                 </div>
                 <h4 className="persona-title">Product</h4>
                 <ul className="persona-list">
@@ -60,7 +88,7 @@ const SplashHome = ({ login }) => {
               </div>
               <div className="persona-grid-item">
                 <div className="persona-grid-image">
-                  <img src={window.engineering} alt="engineering" />
+                  <img src={window.engineering} alt="Engineering" />
                 </div>
                 <h4 className="persona-title">Engineering</h4>
                 <ul className="persona-list">
@@ -71,7 +99,7 @@ const SplashHome = ({ login }) => {
               </div>
               <div className="persona-grid-item">
                 <div className="persona-grid-image">
-                  <img src={window.hr} alt="hr" />
+                  <img src={window.hr} alt="HR" />
                 </div>
                 <h4 className="persona-title">HR</h4>
                 <ul className="persona-list">
@@ -82,7 +110,7 @@ const SplashHome = ({ login }) => {
               </div>
               <div className="persona-grid-item">
                 <div className="persona-grid-image">
-                  <img src={window.design} alt="design" />
+                  <img src={window.design} alt="Design" />
                 </div>
                 <h4 className="persona-title">Design</h4>
                 <ul className="persona-list">
@@ -93,7 +121,7 @@ const SplashHome = ({ login }) => {
               </div>
               <div className="persona-grid-item">
                 <div className="persona-grid-image">
-                  <img src={window.sales} alt="sales" />
+                  <img src={window.sales} alt="Sales" />
                 </div>
                 <h4 className="persona-title">Sales</h4>
                 <ul className="persona-list">
@@ -104,7 +132,7 @@ const SplashHome = ({ login }) => {
               </div>
               <div className="persona-grid-item">
                 <div className="persona-grid-image">
-                  <img src={window.marketing} alt="marketing" />
+                  <img src={window.marketing} alt="Marketing" />
                 </div>
                 <h4 className="persona-title">Marketing</h4>
                 <ul className="persona-list">
@@ -114,7 +142,17 @@ const SplashHome = ({ login }) => {
                 </ul>
               </div>
             </div>
-          </div>
+          </section>
+
+          <section className="align-center-wrapper margin-l">
+            <h2>And connect the whole company</h2>
+            <h3>No more context switching or silos.</h3>
+            <div className="cta-container">
+              <Link to="/signup" className="cta cta-try">
+                Signup
+              </Link>
+            </div>
+          </section>
         </main>
       </div>
     </>

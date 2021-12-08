@@ -2,9 +2,11 @@
 
 ## About
 
-lilNotion is a fullstack, single-page web app that clones some of [Notion](https://www.notion.so/product)'s features. lilNotion is a document editor that allows users to write notes and wikis in a flexible format.
+lilNotion is a fullstack, single-page web app that clones some of [Notion](https://www.notion.so/product)'s features. Similar to Notion, it is a document editor that allows users to write notes, projects, and wikis in a flexible format.
 
 ### **Live Demo: [lilnotion.herokuapp.com](https://lilnotion.herokuapp.com)**
+
+![lilNotion home](https://raw.githubusercontent.com/brandonfang/lilnotion/main/app/assets/images/readme-1.png)
 
 ## Technologies
 

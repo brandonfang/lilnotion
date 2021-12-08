@@ -50,7 +50,6 @@ class Page extends React.Component {
         blocks: this.props.blocks,
       });
       document.title = this.state.page.title;
-      // debugger;
     }
     // const htmlChanged = this.props.html !== this.state.html;
     // if (htmlChanged) {

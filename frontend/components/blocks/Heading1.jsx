@@ -14,6 +14,13 @@ class Heading1 extends React.Component {
     };
   }
 
+  handleChange(e) {
+    this.setState({ html: e.target.value }, () => {
+      const newBlock = Object.assign(this.props.block, { text: this.state.html });
+      this.props.updateBlock(newBlock);
+    });
+  }
+
   render() {
     return (
       <div className="block-body">

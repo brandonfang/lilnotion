@@ -14,7 +14,10 @@ class Callout extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ html: e.target.value });
+    this.setState({ html: e.target.value }, () => {
+      const newBlock = Object.assign(this.props.block, { text: this.state.html });
+      this.props.updateBlock(newBlock);
+    });
   }
 
   render() {

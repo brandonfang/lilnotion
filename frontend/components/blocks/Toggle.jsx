@@ -10,22 +10,16 @@ class Toggle extends React.Component {
     this.state = {
       html: this.props.block.text,
       checked: this.props.block.checked,
+      expanded: this.props.block.expanded,
       placeholder: '',
     };
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate(prevProps, prevState) {
-    const htmlChanged = this.props.html !== this.state.html;
-    if (htmlChanged) {
+  handleChange(e) {
+    this.setState({ html: e.target.value }, () => {
       const newBlock = Object.assign(this.props.block, { text: this.state.html });
       this.props.updateBlock(newBlock);
-    }
-  }
-
-  handleChange(e) {
-    this.setState({ html: e.target.value });
+    });
   }
 
   render() {

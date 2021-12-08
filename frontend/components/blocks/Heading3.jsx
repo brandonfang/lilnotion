@@ -7,7 +7,6 @@ class Heading3 extends React.Component {
     super(props);
     this.contentEditable = React.createRef();
     this.handleChange = this.handleChange.bind(this);
-
     this.state = {
       html: this.props.block.text,
       placeholder: '',
@@ -15,7 +14,10 @@ class Heading3 extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ html: e.target.value });
+    this.setState({ html: e.target.value }, () => {
+      const newBlock = Object.assign(this.props.block, { text: this.state.html });
+      this.props.updateBlock(newBlock);
+    });
   }
 
   render() {

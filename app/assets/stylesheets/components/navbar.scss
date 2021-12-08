@@ -87,7 +87,7 @@
           }
         }
 
-        .divider {
+        .nav-divider {
           width: 1px;
           height: 20px;
           margin: 0 10px;
@@ -109,7 +109,7 @@
   border-bottom: 1px solid $light-gray;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 672px) {
   .divider {
     display: none;
   }

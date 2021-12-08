@@ -28,7 +28,7 @@ const Navbar = (props) => {
                 </li>
               </ul>
 
-              <div className="divider"></div>
+              <div className="nav-divider"></div>
 
               <ul className="nav-list links">
                 <li className="item">

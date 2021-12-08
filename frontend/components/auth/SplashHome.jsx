@@ -3,7 +3,6 @@ import NavBarContainer from '../navbar/NavBarContainer';
 import { login } from '../../actions/session-actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import Hero from 'hero-1.png'
 
 const SplashHome = ({ login }) => {
   const loginDemo = () => {
@@ -11,7 +10,7 @@ const SplashHome = ({ login }) => {
     // add demo2 later
     const demo = Math.random() < 0.5 ? demo1 : demo1;
     login(demo);
-  }
+  };
 
   return (
     <>
@@ -19,11 +18,7 @@ const SplashHome = ({ login }) => {
       <main className="splash-main">
         <div className="align-center-wrapper">
           <div className="hero-image-wrapper">
-            <img
-              // src={'/assets/' + require('../../assets/hero-1.png').default}
-              // src={Hero}
-              alt="People using Notion"
-            />
+            <img src={window.hero} alt="People using Notion" />
           </div>
 
           <div className="center-text-wrapper">
@@ -33,27 +28,83 @@ const SplashHome = ({ login }) => {
             </h2>
 
             <div className="cta-container">
-              <Link to="/login" className="cta cta-login">
+              {/* <Link to="/login" className="cta cta-login">
                 Log in
-              </Link>
+              </Link> */}
               <div onClick={loginDemo} className="cta cta-try">
                 Try lilNotion now
               </div>
             </div>
-
-            {/* <p className="caption">Not affiliated with Notion.</p> */}
           </div>
         </div>
-
-        {/* More marketing here */}
-        {/* Footer here */}
+        
+        <div className="align-center-wrapper"> {/* margin vertical 80px */}
+          <h2>Build to empower every team</h2>
+          <h3>lilNotion solves problems unique to every function.</h3>
+          <div className="persona-grid"> {/* margin vertical 40px */}
+              <div className="persona-grid-item">
+                <div className="persona-grid-image"><img src={window.product} alt="product" /></div>
+                <h4 className="persona-title">Product</h4>
+                <ul className="persona-list">
+                  <li>Visualize your product roadmap</li>
+                  <li>Write feature specs</li>
+                  <li>Cross-functional collaboration</li>
+                </ul>
+              </div>
+              <div className="persona-grid-item">
+                <div className="persona-grid-image"><img src={window.engineering} alt="engineering" /></div>
+                <h4 className="persona-title">Engineering</h4>
+                <ul className="persona-list">
+                  <li>Coordinate releases</li>
+                  <li>Codify processes</li>
+                  <li>Write docs to ship fast</li>
+                </ul>
+              </div>
+              <div className="persona-grid-item">
+                <div className="persona-grid-image"><img src={window.hr} alt="hr" /></div>
+                <h4 className="persona-title">HR</h4>
+                <ul className="persona-list">
+                  <li>Create a company wiki</li>
+                  <li>Answer questions at scale</li>
+                  <li>Onboard new employees</li>
+                </ul>
+              </div>
+              <div className="persona-grid-item">
+                <div className="persona-grid-image"><img src={window.design} alt="design" /></div>
+                <h4 className="persona-title">Design</h4>
+                <ul className="persona-list">
+                  <li>Track every project</li>
+                  <li>Catalog fonts, logos, and assets</li>
+                  <li>Publish a design system</li>
+                </ul>
+              </div>
+              <div className="persona-grid-item">
+                <div className="persona-grid-image"><img src={window.sales} alt="sales" /></div>
+                <h4 className="persona-title">Sales</h4>
+                <ul className="persona-list">
+                  <li>Build a flexible CRM</li>
+                  <li>Organize all meeting notes</li>
+                  <li>Share a single playbook</li>
+                </ul>
+              </div>
+              <div className="persona-grid-item">
+                <div className="persona-grid-image"><img src={window.marketing} alt="marketing" /></div>
+                <h4 className="persona-title">Marketing</h4>
+                <ul className="persona-list">
+                  <li>Make a style guide</li>
+                  <li>Track your content calendar</li>
+                  <li>Keep tabs on everything</li>
+                </ul>
+              </div>
+          </div>
+        </div>
       </main>
     </>
   );
 };
 
 const mapStateToProps = (state) => ({
-  currentUser: state.entities.users[state.session.currentUserId]
+  currentUser: state.entities.users[state.session.currentUserId],
 });
 
 const mapDispatchToProps = (dispatch) => ({

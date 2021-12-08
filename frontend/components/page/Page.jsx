@@ -8,8 +8,6 @@ import BlockContainer from '../blocks/BlockContainer';
 import PageHeaderContainer from './PageHeaderContainer';
 import MediaMenuContainer from '../menus/MediaMenuContainer';
 import { FiMenu, FiPlus } from 'react-icons/fi';
-import { BiImage } from 'react-icons/bi';
-
 
 class Page extends React.Component {
   constructor(props) {
@@ -41,7 +39,10 @@ class Page extends React.Component {
     // console.log("new Props: ", this.props);
 
     const newPageId = this.props.location.pathname.slice(3);
-    if (!equal(this.props.blocks, this.state.blocks) || this.props.location !== prevProps.location) {
+    if (
+      !equal(this.props.blocks, this.state.blocks) ||
+      this.props.location !== prevProps.location
+    ) {
       // console.log('inside componentDidUpdate() conditional');
       this.setState({
         pageId: newPageId,
@@ -143,7 +144,7 @@ class Page extends React.Component {
   getPagePadding() {}
 
   render() {
-    console.log('page.jsx render()');
+    // console.log('page.jsx render()');
     const { pages, blocks, location, history } = this.props;
 
     if (!pages || !blocks) return null;
@@ -162,13 +163,18 @@ class Page extends React.Component {
 
     const pageHasGalleryCover = this.state.page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = this.state.page.uploadedImageUrl.length > 0;
-    const preview = this.state.photoUrl ? <img className="page-cover-preview" src={this.state.photoUrl} /> : null;
+    const preview = this.state.photoUrl ? (
+      <img className="page-cover-preview" src={this.state.photoUrl} />
+    ) : null;
 
     return (
       <div className="page">
         <div className="topbar">
           <div className="topbar-left">
-            <div className="topbar-menu-wrapper">
+            <div
+              className="topbar-menu-wrapper"
+              // onClick={() => console.log(localStorage.getItem('sidebar')))}
+            >
               <FiMenu className="topbar-menu" />
             </div>
             <div className="breadcrumb-wrapper">
@@ -193,9 +199,15 @@ class Page extends React.Component {
             </div>
           </div>
 
-          <div className="temp-picker">
+          <div className="page-controls">
             <label className="cover-upload-label">
-              <BiImage className="image-upload-icon" />
+              <svg viewBox="0 0 14 14" className="cover-upload-icon">
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M2 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 12h10L8.5 5.5l-2 4-2-1.5L2 12z"
+                ></path>
+              </svg>
               Add cover
               <input
                 type="file"

@@ -7,7 +7,6 @@ import {
   FiSettings,
   FiGithub,
   FiLinkedin,
-  FiTwitter,
   FiGlobe,
   FiPlus,
   FiLogOut,
@@ -44,10 +43,6 @@ class Sidebar extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    // update active page in sidebar
-  }
-
   goToPage(pageId, pageTitle) {
     if (pageTitle === '') pageTitle = 'Untitled';
     document.title = pageTitle;
@@ -81,7 +76,7 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    console.log('sidebar.jsx render()');
+    // console.log('sidebar.jsx render()');
     if (!this.props.pages || Object.keys(this.props.pages).length === 0) return null;
 
     const { currentUser, pages, deletePage, logout } = this.props;
@@ -210,17 +205,6 @@ class Sidebar extends React.Component {
                   Portfolio
                 </a>
               </div>
-              {/* <div className="credit">
-                <FiTwitter className="sidebar-icon" />
-                <a
-                  href="https://twitter.com/bdmfang"
-                  className="credit-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </a>
-              </div> */}
             </div>
           </div>
         </div>

@@ -1,12 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import ContentEditable from 'react-contenteditable';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import sanitizeHtml from 'sanitize-html';
 import { debounce } from '../../util/utils';
 import equal from 'fast-deep-equal';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import ContentEditable from 'react-contenteditable';
 import BlockContainer from '../blocks/BlockContainer';
-import PageHeaderContainer from './PageHeaderContainer';
 import MediaMenuContainer from '../menus/MediaMenuContainer';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker, Emoji } from 'emoji-mart';
+import coverData from './coverData';
 import { FiMenu, FiPlus } from 'react-icons/fi';
 
 class Page extends React.Component {
@@ -66,7 +69,18 @@ class Page extends React.Component {
     document.title = e.target.value;
   }
 
-  getRandomCover() {}
+  // getRandomCover(arr) {
+  //   return arr[Math.floor(Math.random() * arr.length)];
+  // }
+  getRandomCover(obj) {
+    const keys = Object.keys(obj);
+    return obj[keys[(keys.length * Math.random()) << 0]];
+  }
+
+  getRandomEmoji(obj) {
+    const keys = Object.keys(obj);
+    return obj[keys[(keys.length * Math.random()) << 0]];
+  }
 
   newBlock() {
     const block = {
@@ -144,6 +158,10 @@ class Page extends React.Component {
 
   getPagePadding() {}
 
+  selectEmoji(emoji) {
+    console.log(emoji);
+  }
+
   render() {
     // console.log('page.jsx render()');
     const { pages, blocks, location, history } = this.props;
@@ -167,6 +185,14 @@ class Page extends React.Component {
     const preview = this.state.photoUrl ? (
       <img className="page-cover-preview" src={this.state.photoUrl} />
     ) : null;
+
+    console.log(coverData)
+
+    const html = '<strong>hello world</strong>';
+    console.log(sanitizeHtml(html));
+    console.log(sanitizeHtml("<img src=x onerror=alert('img') />").length);
+    console.log(sanitizeHtml("console.log('hello world')"));
+    console.log(sanitizeHtml("<script>alert('hello world')</script>").length);
 
     return (
       <div className="page">
@@ -201,6 +227,24 @@ class Page extends React.Component {
           </div>
 
           <div className="page-controls">
+            <Picker
+              set="apple"
+              color="#37352f"
+              emoji=""
+              title=""
+              autoFocus={true}
+              perLine={12}
+              theme="light"
+              sheetSize={64}
+              defaultSkin={4}
+              emojiTooltip={false}
+              showPreview={false}
+              showSkinTones={true}
+              useButton={false}
+              onSkinChange={this.handleSkinChange}
+              onSelect={this.selectEmoji}
+            />
+
             <label className="cover-upload-label">
               <svg viewBox="0 0 14 14" className="cover-upload-icon">
                 <path
@@ -221,8 +265,6 @@ class Page extends React.Component {
             </label>
           </div>
 
-          <PageHeaderContainer page={this.state.page} />
-
           <div className="page-wrapper">
             <div className="page-title-wrapper">
               <ContentEditable
@@ -238,6 +280,7 @@ class Page extends React.Component {
               <div className="add-block-button" onClick={() => this.newBlock()}>
                 <FiPlus />
               </div>
+              {/* <Emoji emoji="santa" set="apple" skin={5} size={78} tooltip={true} /> */}
             </div>
 
             <DragDropContext onDragEnd={(result) => this.OnDragEnd(result)}>

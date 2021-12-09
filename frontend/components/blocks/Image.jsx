@@ -9,6 +9,7 @@ class Image extends React.Component {
     this.state = {
       photoFile: null,
       photoUrl: null,
+      // imageCaption
     };
   }
 

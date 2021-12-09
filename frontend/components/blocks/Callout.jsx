@@ -27,7 +27,7 @@ class Callout extends React.Component {
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.state.html}
-          onChange={debounce(this.handleChange, 1000)}
+          onChange={debounce(this.handleChange, 500)}
           tagName="div"
           className="callout"
           placeholder="Type something"

@@ -27,7 +27,7 @@ class Heading1 extends React.Component {
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.props.block.text}
-          onChange={debounce(this.handleChange, 1000)}
+          onChange={debounce(this.handleChange, 500)}
           tagName="h1"
           className="h1"
           placeholder="Heading 1"

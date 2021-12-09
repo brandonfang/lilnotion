@@ -10,7 +10,7 @@ const AuthNavbar = (props) => {
             <Link to="/">
               <img
                 className="logo"
-                src="https://lilnotion-dev.s3.us-west-1.amazonaws.com/lilnotion-logo-dark.svg"
+                src={window.logo}
                 alt="lilNotion logo"
               />
             </Link>

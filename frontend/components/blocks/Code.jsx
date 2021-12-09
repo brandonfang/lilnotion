@@ -27,7 +27,7 @@ class Code extends React.Component {
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.props.block.text}
-          onChange={debounce(this.handleChange, 1000)}
+          onChange={debounce(this.handleChange, 500)}
           tagName="div"
           className="code"
           placeholder=""

@@ -91,48 +91,43 @@ class LoginForm extends React.Component {
       <>
         <AuthNavBarContainer />
 
-        <div className="auth-page-wrapper">
-          <section className="auth-section-wrapper">
-            <div className="auth-header-wrapper">
-              <h1 className="auth-title">Log in</h1>
-            </div>
-
-            {this.renderErrors()}
-            
-            <div className="form-wrapper">
-              <form onSubmit={this.handleSubmit} className="auth-form">
-                <label>Email
-                  <input type="text" required value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
-                </label>
-
-                {this.props.errors.email ? <p>{this.props.errors.email}</p> : ''}
-
-                <label>Password
-                  <input type="password" required value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
-                </label>
-
-                <div className="spacer-8"></div>
-
-                <button className="auth-submit-primary" type="submit">Sign in</button>
-              </form>
-
-              <p>New to lilNotion? <Link to="/signup">Sign up</Link></p>
-            </div>
-          </section>
-
-          <div className="auth-section-divider"></div>
+        <div className="auth-bg">
+          <div className="auth-page-wrapper">
+            <section className="auth-section-wrapper">
+              <div className="auth-header-wrapper">
+                <h1 className="auth-title">Log in</h1>
+              </div>
+              {this.renderErrors()}
           
-          <section className="auth-section-wrapper" id="demo-login">
-            <div className="auth-header-wrapper">
-              <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
-              <p className="auth-subtext">You can use lilNotion now by logging in as one of our demo users.</p>
-            </div>
-            <div className="form-wrapper">
-              <form onSubmit={this.loginDemo} className="auth-form">
-                <button className="auth-submit-demo" type="submit">Log in as demo user</button>
-              </form>
-            </div>
-          </section>
+              <div className="form-wrapper">
+                <form onSubmit={this.handleSubmit} className="auth-form">
+                  <label>Email
+                    <input type="text" required value={this.state.email} placeholder="Your email address" onChange={this.handleChange('email')} id="email-input" />
+                  </label>
+                  {this.props.errors.email ? <p>{this.props.errors.email}</p> : ''}
+                  <label>Password
+                    <input type="password" required value={this.state.password} placeholder="Your password" onChange={this.handleChange('password')} id="password-input" />
+                  </label>
+                  <div className="spacer-8"></div>
+                  <button className="auth-submit-primary" type="submit">Sign in</button>
+                </form>
+                <p>New to lilNotion? <Link to="/signup">Sign up</Link></p>
+              </div>
+            </section>
+            <div className="auth-section-divider"></div>
+          
+            <section className="auth-section-wrapper" id="demo-login">
+              <div className="auth-header-wrapper">
+                <h2 className="auth-subtitle">Want to try lilNotion without making an account?</h2>
+                <p className="auth-subtext">You can use lilNotion now by logging in as one of our demo users.</p>
+              </div>
+              <div className="form-wrapper">
+                <form onSubmit={this.loginDemo} className="auth-form">
+                  <button className="auth-submit-demo" type="submit">Log in as demo user</button>
+                </form>
+              </div>
+            </section>
+          </div>
         </div>
       </>
     );

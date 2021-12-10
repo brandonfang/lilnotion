@@ -45,7 +45,6 @@ class Sidebar extends React.Component {
 
   goToPage(pageId, pageTitle) {
     if (pageTitle === '') pageTitle = 'Untitled';
-    document.title = pageTitle;
     this.props.history.push(`/p/${pageId}`);
   }
 

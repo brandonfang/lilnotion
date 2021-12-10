@@ -21,16 +21,14 @@ class Page extends React.Component {
     this.changeFavicon = this.changeFavicon.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
     this.getFaviconUrl = this.getFaviconUrl.bind(this);
-    this.getRandomCover = this.getRandomCover.bind(this);
+    this.addRandomCover = this.addRandomCover.bind(this);
     this.addBlock = this.addBlock.bind(this);
     this.OnDragEnd = this.OnDragEnd.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
-    this.getRandomCover = this.getRandomCover.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
     this.selectEmoji = this.selectEmoji.bind(this);
     this.openEmojiPicker = this.openEmojiPicker.bind(this);
     this.closeEmojiPicker = this.closeEmojiPicker.bind(this);
-    this.myEventListener = this.myEventListener.bind(this);
 
     this.state = {
       pageId: props.location.pathname.slice(3),
@@ -101,6 +99,7 @@ class Page extends React.Component {
   }
 
   changeFavicon(emoji) {
+    return;
     // temp solution to get favicon url
     const url = this.getFaviconUrl(emoji);
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -116,15 +115,16 @@ class Page extends React.Component {
     this.changeTitle(e.target.value);
   }
 
-  getRandomCover(arr) {
+  addRandomCover(arr) {
     const cover = arr[Math.floor(Math.random() * arr.length)];
+    console.log(cover)
     return cover;
   }
 
-  // getRandomCover(obj) {
-  //   const keys = Object.keys(obj);
-  //   return obj[keys[(keys.length * Math.random()) << 0]];
-  // }
+  addRandomCover(obj) {
+    const keys = Object.keys(obj);
+    return obj[keys[(keys.length * Math.random()) << 0]];
+  }
 
   addBlock() {
     const block = {
@@ -200,31 +200,18 @@ class Page extends React.Component {
   getPagePadding() {}
 
   selectEmoji(emoji) {
-    console.log(emoji);
+    this.closeEmojiPicker();
     this.changeFavicon(emoji);
     const newPage = Object.assign(this.state.page, { icon: emoji });
-    this.closeEmojiPicker();
     this.setState(newPage, () => this.props.updatePage(newPage));
   }
 
-  myEventListener(e) {
-    // if (e.target.closest('emoji-mart') !== document.getElementById('emoji-mart')) {
-    if (!e.target.closest('emoji-mart')) {
-      console.log('clicked outside emoji picker');
-      this.closeEmojiPicker();
-    }
-  }
-
   openEmojiPicker() {
-    console.log('openEmojiPicker()');
     this.setState({ emojiPickerOpen: true });
-    document.addEventListener('click', this.myEventListener, false);
   }
 
   closeEmojiPicker() {
-    console.log('closeEmojiPicker()');
     this.setState({ emojiPickerOpen: false });
-    document.removeEventListener('click', this.myEventListener, false);
   }
 
   render() {
@@ -283,21 +270,19 @@ class Page extends React.Component {
         </div>
 
         <div className="page-scroller">
-          <div className="page-header-wrapper">
+          {/* <div className="page-header-wrapper">
             <div className="page-header">
               {pageHasGalleryCover ? (
                 <img src={page.galleryImageUrl} className="page-cover" />
               ) : null}
             </div>
-          </div>
+          </div> */}
 
           <div className="page-wrapper">
             <div className="page-controls">
               <div className="page-icon-wrapper" onClick={this.openEmojiPicker}>
                 <div className="page-icon">{emoji.get(page.icon.id)}</div>
               </div>
-
-              <Emoji size={78} emoji={page.icon.id} />
 
               {this.state.emojiPickerOpen && (
                 <Picker
@@ -320,7 +305,10 @@ class Page extends React.Component {
                 />
               )}
 
-              <label className="cover-upload-label">
+              {/* <label 
+                className="cover-upload-label" 
+                onClick={() => this.addRandomCover(coverData)}
+              >
                 <svg viewBox="0 0 14 14" className="cover-upload-icon">
                   <path
                     fillRule="evenodd"
@@ -337,7 +325,7 @@ class Page extends React.Component {
                   onChange={this.handlePreview}
                   hidden
                 />
-              </label>
+              </label> */}
             </div>
 
             <div className="page-title-wrapper">

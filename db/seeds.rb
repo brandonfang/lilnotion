@@ -60,8 +60,7 @@ p1 = Page.create!(
     "short_names": [
       "sparkles"
     ],
-    "colons": ":sparkles:",
-    "emoticons": [],
+    "colons": ":sparkles:", "emoticons": [],
     "unified": "2728",
     "skin": nil,
     "native": "✨"
@@ -74,16 +73,16 @@ p2 = Page.create!(
   title: "Do Things that Don't Scale",
   gallery_image_url: '',
   icon: {
-    "id": "computer",
-    "name": "Personal Computer",
+    "id": "herb",
+    "name": "Herb",
     "short_names": [
-      "computer"
+      "herb"
     ],
-    "colons": ":computer:",
+    "colons": ":herb:",
     "emoticons": [],
-    "unified": "1f4bb",
+    "unified": "1f33f",
     "skin": nil,
-    "native": "💻"
+    "native": "🌿"
   }
 )
 # p2.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/'), filename: '')

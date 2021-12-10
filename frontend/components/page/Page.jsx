@@ -20,6 +20,7 @@ class Page extends React.Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.changeFavicon = this.changeFavicon.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
+    this.getFaviconUrl = this.getFaviconUrl.bind(this);
     this.getRandomCover = this.getRandomCover.bind(this);
     this.addBlock = this.addBlock.bind(this);
     this.OnDragEnd = this.OnDragEnd.bind(this);
@@ -27,6 +28,7 @@ class Page extends React.Component {
     this.getRandomCover = this.getRandomCover.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
     this.openEmojiPicker = this.openEmojiPicker.bind(this);
+    this.closeEmojiPicker = this.closeEmojiPicker.bind(this);
     this.selectEmoji = this.selectEmoji.bind(this);
     this.state = {
       pageId: props.location.pathname.slice(3),
@@ -43,7 +45,8 @@ class Page extends React.Component {
     console.log('page.jsx componentDidMount()');
 
     if (this.state.page && Object.keys(this.state.page).length > 0 && this.state.page.title) {
-      document.title = this.state.page.title;
+      this.changeFavicon(this.state.page.icon);
+      this.changeTitle(this.state.page.title);
     }
   }
 
@@ -51,21 +54,23 @@ class Page extends React.Component {
     console.log('page.jsx componentDidUpdate()');
 
     // console.log("prevProps: ", prevProps);
-    // console.log("new Props: ", this.props);
+    // console.log('new Props: ', this.props);
 
     const newPageId = this.props.location.pathname.slice(3);
+    const newPage = this.props.pages[newPageId];
+    const locationChanged = !equal(this.props.location, prevProps.location);
+    const pageChanged = !equal(newPage, prevState.page);
+    const blocksChanged = !equal(this.props.blocks, prevProps.blocks);
 
-    if (
-      !equal(this.props.blocks, prevProps.blocks) ||
-      this.props.location !== prevProps.location
-    ) {
-      // console.log('inside componentDidUpdate() conditional');
+    if (locationChanged || pageChanged || blocksChanged) {
+      console.log('componentDidUpdate() something changed');
       this.setState({
         pageId: newPageId,
-        page: this.props.pages[newPageId],
+        page: newPage,
         blocks: this.props.blocks,
       });
-      document.title = this.state.page.title;
+      this.changeFavicon(newPage.icon);
+      this.changeTitle(newPage.title);
     }
     // const htmlChanged = this.props.html !== this.state.html;
     // if (htmlChanged) {
@@ -78,33 +83,46 @@ class Page extends React.Component {
     document.title = title;
   }
 
-  getFaviconUrl(emojiId) {
-    // get image data from <span> from onClick event
-    const set = 'apple';
-    const emojiDatasourceVersion = '5.0.1';
-    const sheetSize = '64';
-    return `https://unpkg.com/emoji-datasource-${set}@${emojiDatasourceVersion}/img/${set}/sheets-256/${sheetSize}.png`;
+  getFaviconUrl(emoji) {
+    // try getting background-position data from <span> from onClick event
+    // const set = 'apple';
+    // const emojiDatasourceVersion = '5.0.1';
+    // const sheetSize = '64';
+    // this returns the entire emoji sheet
+    // return `https://unpkg.com/emoji-datasource-${set}@${emojiDatasourceVersion}/img/${set}/sheets-256/${sheetSize}.png`;
+
+    // temp solution to get favicon url
+    // only works sometimes
+    const id = emoji.id;
+    const unified = emoji.unified;
+    return `https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/${id}_${unified}.png`;
   }
 
-  changeFavicon(image) {
-    const link = document.querySelector('link[rel="icon"]');
-    link.href = imageSrc;
+  changeFavicon(emoji) {
+    // temp solution to get favicon url
+    const url = this.getFaviconUrl(emoji);
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/png';
+    link.rel = 'shortcut icon';
+    link.href = url;
+    document.head.appendChild(link);
   }
 
   handleTitleChange(e) {
     const newPage = Object.assign(this.state.page, { title: e.target.value });
     this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
-    document.title = e.target.value;
+    this.changeTitle(e.target.value);
   }
 
-  // getRandomCover(arr) {
-  //   return arr[Math.floor(Math.random() * arr.length)];
+  getRandomCover(arr) {
+    const cover = arr[Math.floor(Math.random() * arr.length)];
+    return cover;
+  }
+
+  // getRandomCover(obj) {
+  //   const keys = Object.keys(obj);
+  //   return obj[keys[(keys.length * Math.random()) << 0]];
   // }
-
-  getRandomCover(obj) {
-    const keys = Object.keys(obj);
-    return obj[keys[(keys.length * Math.random()) << 0]];
-  }
 
   addBlock() {
     const block = {
@@ -157,15 +175,12 @@ class Page extends React.Component {
 
   handleUpload() {
     const file = this.state.photoFile;
-
     if (file) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
-
       fileReader.onloadend = () => {
         const formData = new FormData();
         formData.append('page[uploadedImageUrl]', file);
-
         $.ajax({
           url: `/api/pages/${this.state.page.id}`,
           method: 'PATCH',
@@ -184,13 +199,22 @@ class Page extends React.Component {
 
   selectEmoji(emoji) {
     console.log(emoji);
+    this.changeFavicon(emoji);
     const newPage = Object.assign(this.state.page, { icon: emoji });
+    this.closeEmojiPicker();
     this.setState(newPage, () => this.props.updatePage(newPage));
-    this.setState({ emojiPickerOpen: false });
   }
 
   openEmojiPicker() {
+    console.log('openEmojiPicker()');
     this.setState({ emojiPickerOpen: true });
+    document.addEventListener('click', () => this.closeEmojiPicker, false);
+    // document.addEventListener('click', this.closeEmojiPicker, false);
+  }
+
+  closeEmojiPicker() {
+    this.setState({ emojiPickerOpen: false });
+    document.removeEventListener('click', this.closeEmojiPicker, false);
   }
 
   render() {
@@ -216,8 +240,6 @@ class Page extends React.Component {
     const preview = this.state.photoUrl ? (
       <img className="page-cover-preview" src={this.state.photoUrl} />
     ) : null;
-
-
 
     // console.log(coverData)
 
@@ -261,34 +283,32 @@ class Page extends React.Component {
 
           <div className="page-wrapper">
             <div className="page-controls">
-              <div 
-                className="page-icon-wrapper"
-                onClick={this.openEmojiPicker}
-              >
+              <div className="page-icon-wrapper" onClick={this.openEmojiPicker}>
                 <div className="page-icon">{emoji.get(page.icon.id)}</div>
               </div>
 
               <Emoji size={78} emoji={page.icon.id} />
-               
 
-              {this.state.emojiPickerOpen && <Picker
-                set="apple"
-                color="#37352f"
-                emoji=""
-                title=""
-                autoFocus={true}
-                perLine={12}
-                theme="light"
-                sheetSize={64}
-                defaultSkin={4}
-                emojiTooltip={false}
-                showPreview={false}
-                showSkinTones={true}
-                useButton={false}
-                onSkinChange={this.handleSkinChange}
-                onSelect={this.selectEmoji}
-                style={{ position: 'absolute', zIndex: 2, top: '78px', left: '-80px'}}
-              />}
+              {this.state.emojiPickerOpen && (
+                <Picker
+                  set="apple"
+                  color="#37352f"
+                  emoji=""
+                  title=""
+                  autoFocus={true}
+                  perLine={12}
+                  theme="light"
+                  sheetSize={64}
+                  defaultSkin={4}
+                  emojiTooltip={false}
+                  showPreview={false}
+                  showSkinTones={true}
+                  useButton={false}
+                  onSkinChange={this.handleSkinChange}
+                  onSelect={this.selectEmoji}
+                  style={{ position: 'absolute', zIndex: 2, top: '78px', left: '-200px' }}
+                />
+              )}
 
               <label className="cover-upload-label">
                 <svg viewBox="0 0 14 14" className="cover-upload-icon">

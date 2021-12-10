@@ -3,7 +3,7 @@
   <head>
     <title>lilNotion</title>
     <%= csrf_meta_tags %>
-    <%= favicon_link_tag asset_path('lilnotion-favicon-dark.svg') %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="og:title" content="lilNotion" />
@@ -23,6 +23,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script type="text/javascript">
+      window.favicon = "<%= image_url('favicon.png') %>";
       window.logo = "<%= image_url('lilnotion-logo-dark.svg') %>";
       window.hero = "<%= image_url('hero-1.png') %>";
       window.hero2 = "<%= image_url('hero-2.png') %>";

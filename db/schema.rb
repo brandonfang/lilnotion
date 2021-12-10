@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_184854) do
+ActiveRecord::Schema.define(version: 2021_12_10_000613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -38,19 +38,21 @@ ActiveRecord::Schema.define(version: 2021_12_02_184854) do
   end
 
   create_table "blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "page_id", null: false
     t.string "block_type", default: "paragraph", null: false
-    t.json "format", default: {}
+    t.text "text", default: ""
+    t.string "image_url", default: ""
+    t.string "image_caption", default: ""
+    t.boolean "checked", default: false
+    t.boolean "expanded", default: false
+    t.string "toggle_inner_text", default: ""
+    t.string "link_page_id", default: ""
+    t.jsonb "format", default: {}
+    t.jsonb "icon", default: {}
+    t.integer "order_index", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "page_id", null: false
-    t.string "text", default: ""
-    t.string "image_url", default: "", null: false
-    t.integer "list_index", default: 1
-    t.boolean "checked", default: false
-    t.boolean "expanded", default: true
-    t.string "link_page_id", default: ""
-    t.string "icon", default: ""
-    t.uuid "user_id", null: false
     t.index ["block_type"], name: "index_blocks_on_block_type"
     t.index ["image_url"], name: "index_blocks_on_image_url"
     t.index ["page_id"], name: "index_blocks_on_page_id"
@@ -59,18 +61,17 @@ ActiveRecord::Schema.define(version: 2021_12_02_184854) do
   end
 
   create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.string "title", default: ""
-    t.string "icon", default: ""
-    t.string "uploaded_image_url", default: ""
-    t.json "style", default: {}
-    t.string "gallery_image_url", default: ""
     t.string "block_ids", default: [], array: true
+    t.string "gallery_image_url", default: ""
+    t.string "uploaded_image_url", default: ""
+    t.json "icon", default: {}
+    t.json "style", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["block_ids"], name: "index_pages_on_block_ids"
     t.index ["title"], name: "index_pages_on_title"
-    t.index ["uploaded_image_url"], name: "index_pages_on_uploaded_image_url"
     t.index ["user_id"], name: "index_pages_on_user_id"
   end
 

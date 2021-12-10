@@ -54,6 +54,16 @@ class Sidebar extends React.Component {
       userId: this.props.currentUser.id,
       title: '',
       blockIds: [],
+      icon: {
+        id: 'page_facing_up',
+        name: 'Page Facing Up',
+        short_names: ['page_facing_up'],
+        colons: ':page_facing_up:',
+        emoticons: [],
+        unified: '1f4c4',
+        skin: null,
+        native: '📄',
+      },
     });
 
     const { block } = await this.props.createBlock({

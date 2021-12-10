@@ -274,15 +274,23 @@
 }
 
 .outliner-icon-wrapper {
-}
+  width: 22px;
+  height: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+  position: relative;
+  font-size: 18px;
+  line-height: 1;
+  flex: 0 0 auto;
+  user-select: none;
 
-.outliner-icon {
-  color: $t-gray-400;
-  margin-right: 8px;
-  width: 16px;
-  height: 16px;
-  flex-grow: 0;
-  flex-shrink: 0;
+  span {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .outliner-page-title {
@@ -320,7 +328,6 @@
 }
 
 .outliner-action-menu {
-  
   width: 240px;
   // top: 0;
   // left: 24px;

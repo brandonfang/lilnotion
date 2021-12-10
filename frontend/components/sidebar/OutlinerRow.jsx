@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import OutlinerMenu from './OutlinerMenu';
-import { FiFileText } from 'react-icons/fi';
+import { Emoji } from 'emoji-mart';
 
 // FiMoreHorizonal for more button
 // FiTrash2 for deleting page
@@ -33,13 +33,10 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
         {/* caret to show nested pages */}
         {/* <div className="outliner-caret-wrapper"></div> */}
         <div className="outliner-icon-wrapper">
-          <FiFileText className="outliner-icon" />
+          <Emoji size={18} emoji={page.icon.id} className="outliner-icon" />
         </div>
         <div className="outliner-page-title">{pageTitle}</div>
-        <div
-          className={hover ? 'outliner-actions visible' : 'outliner-actions'}
-          onClick={openMenu}
-        >
+        <div className={hover ? 'outliner-actions visible' : 'outliner-actions'} onClick={openMenu}>
           <svg viewBox="0 0 13 3" className="outliner-actions-icon" fill="currentColor">
             <g>
               <path d="M3,1.5A1.5,1.5,0,1,1,1.5,0,1.5,1.5,0,0,1,3,1.5Z"></path>
@@ -49,9 +46,7 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
           </svg>
         </div>
       </div>
-      {menuOpen ? (
-        <OutlinerMenu deletePage={deletePage} position={menuPosition}/>
-      ) : null}
+      {menuOpen ? <OutlinerMenu deletePage={deletePage} position={menuPosition} /> : null}
     </div>
   );
 };

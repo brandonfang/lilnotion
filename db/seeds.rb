@@ -60,10 +60,10 @@ p1 = Page.create!(
     "short_names": [
       "sparkles"
     ],
-    # "colons": ":sparkles:",
+    "colons": ":sparkles:",
     "emoticons": [],
     "unified": "2728",
-    # "skin": null,
+    "skin": nil,
     "native": "✨"
   }
 )
@@ -74,16 +74,16 @@ p2 = Page.create!(
   title: "Do Things that Don't Scale",
   gallery_image_url: '',
   icon: {
-    "id": "sun_with_face",
-    "name": "Sun with Face",
+    "id": "computer",
+    "name": "Personal Computer",
     "short_names": [
-      "sun_with_face"
+      "computer"
     ],
-    # "colons": ":sun_with_face:",
+    "colons": ":computer:",
     "emoticons": [],
-    "unified": "1f31e",
-    # "skin": null,
-    "native": "🌞"
+    "unified": "1f4bb",
+    "skin": nil,
+    "native": "💻"
   }
 )
 # p2.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/'), filename: '')
@@ -98,10 +98,10 @@ p3 = Page.create!(
     "short_names": [
       "sun_with_face"
     ],
-    # "colons": ":sun_with_face:",
+    "colons": ":sun_with_face:",
     "emoticons": [],
     "unified": "1f31e",
-    # "skin": null,
+    "skin": nil,
     "native": "🌞"
   }
 )
@@ -119,7 +119,7 @@ p4 = Page.create!(
     # "colons": ":pencil2:",
     "emoticons": [],
     "unified": "270f-fe0f",
-    # "skin": null,
+    "skin": nil,
     "native": "✏️"
   }
 )

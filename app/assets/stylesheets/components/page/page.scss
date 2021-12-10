@@ -155,6 +155,7 @@
   // padding: 0px 240px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 input[type='file'].cover-upload-input {
@@ -213,8 +214,15 @@ input[type='file'].cover-upload-input {
   }
 }
 
-.page-emoji {
+.page-icon-wrapper {
+  width: 78px;
+  height: 78px;
+}
+
+.page-icon {
   width: 78px;
   height: 78px;
   font-size: 78px;
+  line-height: 1;
+  user-select: none;
 }

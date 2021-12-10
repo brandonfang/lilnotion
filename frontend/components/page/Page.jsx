@@ -11,7 +11,7 @@ import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
 import coverData from './coverData';
 import { FiMenu, FiPlus } from 'react-icons/fi';
-import emoji from 'node-emoji'
+import emoji from 'node-emoji';
 
 class Page extends React.Component {
   constructor(props) {
@@ -25,6 +25,8 @@ class Page extends React.Component {
     this.handlePreview = this.handlePreview.bind(this);
     this.getRandomCover = this.getRandomCover.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
+    this.openEmojiPicker = this.openEmojiPicker.bind(this);
+    this.selectEmoji = this.selectEmoji.bind(this);
     this.state = {
       pageId: props.location.pathname.slice(3),
       page: props.pages[this.props.location.pathname.slice(3)],
@@ -32,6 +34,7 @@ class Page extends React.Component {
       photoFile: null,
       photoUrl: null,
       // blocks: props.blocks,
+      emojiPickerOpen: false,
     };
   }
 
@@ -167,6 +170,11 @@ class Page extends React.Component {
 
   selectEmoji(emoji) {
     console.log(emoji);
+    this.setState({ emojiPickerOpen: false });
+  }
+
+  openEmojiPicker() {
+    this.setState({ emojiPickerOpen: true });
   }
 
   render() {
@@ -237,13 +245,14 @@ class Page extends React.Component {
 
           <div className="page-wrapper">
             <div className="page-controls">
-              {console.log(emoji)}
-              {console.log(emoji.get(page.icon.id))}
+              <div 
+                className="page-icon-wrapper"
+                onClick={this.openEmojiPicker}
+              >
+                <div className="page-icon">{emoji.get(page.icon.id)}</div>
+              </div>
 
-              <h1 className="page-emoji">{emoji.get(page.icon.id)}</h1>
-              <Emoji className="page-emoji" size={78} emoji={page.icon.id} />
-
-              <Picker
+              {this.state.emojiPickerOpen && <Picker
                 set="apple"
                 color="#37352f"
                 emoji=""
@@ -259,7 +268,8 @@ class Page extends React.Component {
                 useButton={false}
                 onSkinChange={this.handleSkinChange}
                 onSelect={this.selectEmoji}
-              />
+                style={{ position: 'absolute', zIndex: 2, top: '78px', left: '-80px'}}
+              />}
 
               <label className="cover-upload-label">
                 <svg viewBox="0 0 14 14" className="cover-upload-icon">

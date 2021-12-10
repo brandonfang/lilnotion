@@ -272,6 +272,7 @@ class Page extends React.Component {
                   hidden
                 />
               </label>
+              <Emoji className="page-emoji" emoji={page.icon.id} size={78}/>
             </div>
 
             <div className="page-title-wrapper">

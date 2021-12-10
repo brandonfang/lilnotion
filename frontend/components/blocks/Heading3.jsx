@@ -23,7 +23,7 @@ class Heading3 extends React.Component {
 
   render() {
     return (
-      <div className="block-body">
+      <div className="block-body h3">
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.state.html}

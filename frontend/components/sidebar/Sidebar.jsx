@@ -21,10 +21,25 @@ class Sidebar extends React.Component {
     this.goToPage = this.goToPage.bind(this);
     this.newPage = this.newPage.bind(this);
     this.deletePage = this.deletePage.bind(this);
+    let initialState;
+    if (localStorage.getItem('sidebarCollapsed') !== null) {
+      initialState = localStorage.getItem('sidebarCollapsed');
+    } else {
+      initialState = false;
+    }
     this.state = {
-      sidebarCollapsed: false,
+      sidebarCollapsed: initialState,
       toggleHover: false,
     };
+  }
+  
+  componentDidMount() {
+    if (!this.state.sidebarCollapsed) {
+      const sidebar = this.ref.current;
+      const editor = document.getElementById('editor');
+      sidebar.classList.remove('collapsed');
+      editor.classList.remove('collapsed');
+    }
   }
 
   toggleSidebar() {
@@ -129,7 +144,7 @@ class Sidebar extends React.Component {
                   <div className="switcher-label">
                     <div>{currentUser.firstName}'s lilNotion</div>
                   </div>
-                  <div
+                  {/* <div
                     className="sidebar-toggle"
                     onClick={this.toggleSidebar}
                     onMouseEnter={() => this.setState({ toggleHover: true })}
@@ -139,7 +154,7 @@ class Sidebar extends React.Component {
                     <div className={tooltipClassName}>
                       <div className="toggle-tooltip-text">{tooltipText}</div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

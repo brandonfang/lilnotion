@@ -23,7 +23,7 @@ class Heading1 extends React.Component {
 
   render() {
     return (
-      <div className="block-body">
+      <div className="block-body h1">
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.props.block.text}

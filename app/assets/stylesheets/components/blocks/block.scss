@@ -4,7 +4,8 @@
   background: rgba(255, 255, 255, 0.3);
   position: relative;
   // subpixel padding to prevent margin collapse
-  padding: 0.1px 0;
+  // padding: 0.1px 0;
+  padding: 0;
 
   // increases the mouseover area of each block
   &::before {
@@ -137,33 +138,44 @@
 }
 
 .h1 {
-  font-size: 1.875em;
+  font-size: 1.875rem;
   font-weight: 600;
   line-height: 1.3;
-  // margin-top: 2em;
+  letter-spacing: -0.01em;
   margin-bottom: 4px;
+  
+  &.block-body {
+    margin-top: 2rem;  
+  }
 }
 
 .h2 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.3;
-  // margin-top: 1.4em;
   margin-bottom: 1px;
+
+  &.block-body {
+    margin-top: 1rem;  
+  }
 }
 
 .h3 {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.3;
-  // margin-top: 1em;
   margin-bottom: 1px;
+
+  &.block-body {
+    margin-top: 0.5rem;  
+  }
 }
 
 .paragraph {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+  margin-bottom: 4px;
 }
 
 .quote-wrapper {
@@ -194,11 +206,61 @@
   list-style-type: decimal;
 }
 
+.block-body-todo {
+  display: flex;
+  padding-left: 2px;
+}
+
+.todo-control {
+  width: 24px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2px;
+  // margin-right: 4px;
+  cursor: pointer;
+
+  > .todo-bg {
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    user-select: none;
+
+    &:hover {
+      background: rgba(55, 53, 47, 0.08);
+    }
+  }
+}
+
+.checkbox-wrapper {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s;
+}
+
+.check-wrapper {
+  width: 16px;
+  height: 16px;
+  background: rgb(46, 170, 220);
+  transition: 0.2s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
 .todo {
+  padding: 3px 2px;
+  font-size: 1rem;
 }
 
 .code {
   background: rgb(195, 194, 192);
+  font-family: monospace;
 }
 
 .divider {
@@ -217,7 +279,8 @@
 .image-block-wrapper {
   width: 100%;
   border-radius: 3px;
-  margin: 4px 0;
+  // margin: 4px 0;
+  margin: 8px 0;
 }
 
 .block-image {
@@ -260,11 +323,3 @@ input[type='file'].image-upload-input {
   }
 }
 
-.temp-submit {
-  background: deeppink;
-  color: white;
-  font-weight: 600;
-  border-radius: 3px;
-  width: 80px;
-  padding: 12px;
-}

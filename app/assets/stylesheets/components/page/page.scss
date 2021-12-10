@@ -42,6 +42,23 @@
 
 .breadcrumb-wrapper {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 3px;
+  margin-left: 16px;
+
+  &:hover {
+    background: rgba(55, 53, 47, 0.08);
+  }
+}
+
+.breadcrumb-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  line-height: 1;
+  user-select: none;
 }
 
 .breadcrumb {
@@ -51,7 +68,7 @@
   line-height: 1;
 
   &:hover {
-    background: rgba(55, 53, 47, 0.08);
+    // background: rgba(55, 53, 47, 0.08);
   }
 }
 

@@ -244,7 +244,7 @@ b16 = Block.create!({
 b17 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Recruiting"
 })
 
@@ -300,7 +300,7 @@ b24 = Block.create!({
 b25 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Fragile"
 })
 
@@ -342,7 +342,7 @@ b30 = Block.create!({
 b31 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Delight"
 })
 
@@ -398,7 +398,7 @@ b38 = Block.create!({
 b39 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Experience"
 })
 
@@ -440,7 +440,7 @@ b44 = Block.create!({
 b45 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Fire"
 })
 
@@ -483,7 +483,7 @@ b50 = Block.create!({
 b51 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Meraki"
 })
 
@@ -511,7 +511,7 @@ b54 = Block.create!({
 b55 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Consult"
 })
 
@@ -539,7 +539,7 @@ b58 = Block.create!({
 b59 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Manual"
 })
 
@@ -609,7 +609,7 @@ b68 = Block.create!({
 b69 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
-  block_type: 'h2',
+  block_type: 'h3',
   text: "Vector"
 })
 

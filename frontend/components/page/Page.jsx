@@ -51,7 +51,7 @@ class Page extends React.Component {
   closeAddBlockMenu(e) {}
 
   componentDidMount() {
-    console.log('page.jsx componentDidMount()');
+    // console.log('page.jsx componentDidMount()');
 
     if (this.state.page && Object.keys(this.state.page).length > 0 && this.state.page.title) {
       this.changeFavicon(this.state.page.icon);
@@ -60,7 +60,7 @@ class Page extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('page.jsx componentDidUpdate()');
+    // console.log('page.jsx componentDidUpdate()');
     // console.log("prevProps:", prevProps);
     // console.log('new Props:', this.props);
 
@@ -213,7 +213,7 @@ class Page extends React.Component {
   }
 
   render() {
-    console.log('page.jsx render()');
+    // console.log('page.jsx render()');
     const { pages, blocks, location, history } = this.props;
 
     if (!pages || !blocks) return null;
@@ -241,13 +241,14 @@ class Page extends React.Component {
       <div className="page">
         <div className="topbar">
           <div className="topbar-left">
-            <div
+            {/* <div
               className="topbar-menu-wrapper"
               // onClick={() => console.log(localStorage.getItem('sidebar')))}
             >
               <FiMenu className="topbar-menu" />
-            </div>
+            </div> */}
             <div className="breadcrumb-wrapper">
+              <div className="breadcrumb-icon">{emoji.get(page.icon.id)}</div>
               <div className="breadcrumb">{page.title}</div>
             </div>
           </div>

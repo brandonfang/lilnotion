@@ -186,13 +186,15 @@ class Page extends React.Component {
       <img className="page-cover-preview" src={this.state.photoUrl} />
     ) : null;
 
-    console.log(coverData)
 
-    const html = '<strong>hello world</strong>';
-    console.log(sanitizeHtml(html));
-    console.log(sanitizeHtml("<img src=x onerror=alert('img') />").length);
-    console.log(sanitizeHtml("console.log('hello world')"));
-    console.log(sanitizeHtml("<script>alert('hello world')</script>").length);
+    
+    // console.log(coverData)
+
+    // const html = '<strong>hello world</strong>';
+    // console.log(sanitizeHtml(html));
+    // console.log(sanitizeHtml("<img src=x onerror=alert('img') />").length);
+    // console.log(sanitizeHtml("console.log('hello world')"));
+    // console.log(sanitizeHtml("<script>alert('hello world')</script>").length);
 
     return (
       <div className="page">
@@ -227,7 +229,7 @@ class Page extends React.Component {
           </div>
 
           <div className="page-controls">
-            <Picker
+            {/* <Picker
               set="apple"
               color="#37352f"
               emoji=""
@@ -243,7 +245,7 @@ class Page extends React.Component {
               useButton={false}
               onSkinChange={this.handleSkinChange}
               onSelect={this.selectEmoji}
-            />
+            /> */}
 
             <label className="cover-upload-label">
               <svg viewBox="0 0 14 14" className="cover-upload-icon">

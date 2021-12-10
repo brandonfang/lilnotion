@@ -206,7 +206,7 @@ b13 = Block.create!({
   user_id: u1.id,
   page_id: p2.id,
   block_type: 'paragraph',
-  text: "Source: http://www.paulgraham.com/ds.html"
+  text: "Source: <a contenteditable='false' href='http://www.paulgraham.com/ds.html' target='_blank'>Paul Graham</a>"
 })
 
 b14 = Block.create!({
@@ -809,7 +809,7 @@ b98 = Block.create!({
 b99 = Block.create!({
   user_id: u1.id,
   page_id: p3.id,
-  block_type: 'paragraph',
+  block_type: 'h3',
   text: 'Is it a Breakthrough Idea?'
 })
 
@@ -931,7 +931,7 @@ b116 = Block.create!({
   user_id: u1.id,
   page_id: p4.id,
   block_type: 'paragraph',
-  text: "Source: http://blogs.getty.edu/iris/5-food-icons-on-the-evolving-role-of-mexican-cuisine-in-la/"
+  text: "Source: <a contenteditable='false' href='http://blogs.getty.edu/iris/5-food-icons-on-the-evolving-role-of-mexican-cuisine-in-la/' target='_blank'>Food Icons on the Evolving Role of Mexican Cuisine in LA</a>"
 })
 
 b117 = Block.create!({
@@ -1151,7 +1151,6 @@ p2.block_ids = [
 ]
 
 p3.block_ids = [
-
   b73.id,
   b74.id,
   b75.id,

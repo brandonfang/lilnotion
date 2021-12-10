@@ -27,9 +27,11 @@ class Page extends React.Component {
     this.handlePreview = this.handlePreview.bind(this);
     this.getRandomCover = this.getRandomCover.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
+    this.selectEmoji = this.selectEmoji.bind(this);
     this.openEmojiPicker = this.openEmojiPicker.bind(this);
     this.closeEmojiPicker = this.closeEmojiPicker.bind(this);
-    this.selectEmoji = this.selectEmoji.bind(this);
+    this.myEventListener = this.myEventListener.bind(this);
+
     this.state = {
       pageId: props.location.pathname.slice(3),
       page: props.pages[this.props.location.pathname.slice(3)],
@@ -205,16 +207,24 @@ class Page extends React.Component {
     this.setState(newPage, () => this.props.updatePage(newPage));
   }
 
+  myEventListener(e) {
+    // if (e.target.closest('emoji-mart') !== document.getElementById('emoji-mart')) {
+    if (!e.target.closest('emoji-mart')) {
+      console.log('clicked outside emoji picker');
+      this.closeEmojiPicker();
+    }
+  }
+
   openEmojiPicker() {
     console.log('openEmojiPicker()');
     this.setState({ emojiPickerOpen: true });
-    document.addEventListener('click', () => this.closeEmojiPicker, false);
-    // document.addEventListener('click', this.closeEmojiPicker, false);
+    document.addEventListener('click', this.myEventListener, false);
   }
 
   closeEmojiPicker() {
+    console.log('closeEmojiPicker()');
     this.setState({ emojiPickerOpen: false });
-    document.removeEventListener('click', this.closeEmojiPicker, false);
+    document.removeEventListener('click', this.myEventListener, false);
   }
 
   render() {

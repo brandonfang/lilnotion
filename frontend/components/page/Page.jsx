@@ -16,36 +16,42 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     this.contentEditable = React.createRef();
-    this.newBlock = this.newBlock.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.getRandomCover = this.getRandomCover.bind(this);
+    this.getRandomEmoji = this.getRandomEmoji.bind(this);
+    this.addBlock = this.addBlock.bind(this);
+    this.OnDragEnd = this.OnDragEnd.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
     this.getRandomCover = this.getRandomCover.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
-    this.OnDragEnd = this.OnDragEnd.bind(this);
     this.state = {
       pageId: props.location.pathname.slice(3),
       page: props.pages[this.props.location.pathname.slice(3)],
       html: '',
       photoFile: null,
       photoUrl: null,
-      blocks: props.blocks,
+      // blocks: props.blocks,
     };
   }
 
   componentDidMount() {
-    if (this.state.page.title) {
+    console.log('page.jsx componentDidMount()');
+
+    if (this.state.page && Object.keys(this.state.page).length > 0 && this.state.page.title) {
       document.title = this.state.page.title;
     }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // console.log('page.jsx componentDidUpdate()');
+    console.log('page.jsx componentDidUpdate()');
+
     // console.log("prevProps: ", prevProps);
     // console.log("new Props: ", this.props);
 
     const newPageId = this.props.location.pathname.slice(3);
+
     if (
-      !equal(this.props.blocks, this.state.blocks) ||
+      !equal(this.props.blocks, prevProps.blocks) ||
       this.props.location !== prevProps.location
     ) {
       // console.log('inside componentDidUpdate() conditional');
@@ -82,7 +88,7 @@ class Page extends React.Component {
     return obj[keys[(keys.length * Math.random()) << 0]];
   }
 
-  newBlock() {
+  addBlock() {
     const block = {
       userId: this.props.currentUser.id,
       pageId: this.props.location.pathname.slice(3),
@@ -97,6 +103,20 @@ class Page extends React.Component {
       console.log(newPage);
       this.props.updatePage(newPage);
     });
+  }
+
+  OnDragEnd(result) {
+    const { source, destination } = result;
+    // if dropped outside the area or no movement
+    if (!destination || source.index === destination.index) return;
+    // reorder blocks ids (splice >1 if implementing multi-drag)
+    const blockIds = this.state.page.blockIds;
+    const newBlockIds = [...blockIds];
+    const removed = newBlockIds.splice(source.index, 1);
+    newBlockIds.splice(destination.index, 0, ...removed);
+    const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
+    this.setState({ page: newPage }, () => this.props.updatePage(newPage));
+    console.log(newBlockIds);
   }
 
   handlePreview(e) {
@@ -142,20 +162,6 @@ class Page extends React.Component {
     }
   }
 
-  OnDragEnd(result) {
-    const { source, destination } = result;
-    // if dropped outside the area or no movement
-    if (!destination || source.index === destination.index) return;
-    // reorder blocks ids (splice >1 if implementing multi-drag)
-    const blockIds = this.state.page.blockIds;
-    const newBlockIds = [...blockIds];
-    const removed = newBlockIds.splice(source.index, 1);
-    newBlockIds.splice(destination.index, 0, ...removed);
-    const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-    this.setState({ page: newPage }, () => this.props.updatePage(newPage));
-    console.log(newBlockIds);
-  }
-
   getPagePadding() {}
 
   selectEmoji(emoji) {
@@ -163,7 +169,7 @@ class Page extends React.Component {
   }
 
   render() {
-    // console.log('page.jsx render()');
+    console.log('page.jsx render()');
     const { pages, blocks, location, history } = this.props;
 
     if (!pages || !blocks) return null;
@@ -187,7 +193,7 @@ class Page extends React.Component {
     ) : null;
 
 
-    
+
     // console.log(coverData)
 
     // const html = '<strong>hello world</strong>';
@@ -228,8 +234,9 @@ class Page extends React.Component {
             </div>
           </div>
 
-          <div className="page-controls">
-            {/* <Picker
+          <div className="page-wrapper">
+            <div className="page-controls">
+              {/* <Picker
               set="apple"
               color="#37352f"
               emoji=""
@@ -247,27 +254,26 @@ class Page extends React.Component {
               onSelect={this.selectEmoji}
             /> */}
 
-            <label className="cover-upload-label">
-              <svg viewBox="0 0 14 14" className="cover-upload-icon">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M2 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 12h10L8.5 5.5l-2 4-2-1.5L2 12z"
-                ></path>
-              </svg>
-              Add cover
-              <input
-                type="file"
-                id=""
-                className="cover-upload-input"
-                accept="image/*"
-                onChange={this.handlePreview}
-                hidden
-              />
-            </label>
-          </div>
+              <label className="cover-upload-label">
+                <svg viewBox="0 0 14 14" className="cover-upload-icon">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M2 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 12h10L8.5 5.5l-2 4-2-1.5L2 12z"
+                  ></path>
+                </svg>
+                Add cover
+                <input
+                  type="file"
+                  id=""
+                  className="cover-upload-input"
+                  accept="image/*"
+                  onChange={this.handlePreview}
+                  hidden
+                />
+              </label>
+            </div>
 
-          <div className="page-wrapper">
             <div className="page-title-wrapper">
               <ContentEditable
                 innerRef={this.contentEditable}
@@ -279,7 +285,7 @@ class Page extends React.Component {
                 className="page-title"
                 id="page-title"
               />
-              <div className="add-block-button" onClick={() => this.newBlock()}>
+              <div className="add-block-button" onClick={() => this.addBlock()}>
                 <FiPlus />
               </div>
               {/* <Emoji emoji="santa" set="apple" skin={5} size={78} tooltip={true} /> */}
@@ -295,7 +301,12 @@ class Page extends React.Component {
                       className="droppable-area"
                     >
                       {orderedBlocks.map((block, index) => (
-                        <BlockContainer key={block.id} block={block} index={index} />
+                        <BlockContainer
+                          key={block.id}
+                          block={block}
+                          index={index}
+                          blockIds={this.state.page.blockIds}
+                        />
                       ))}
                       {provided.placeholder}
                     </div>

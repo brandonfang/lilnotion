@@ -7,6 +7,12 @@ import {
   updateBlock,
   deleteBlock,
 } from '../../actions/block-actions';
+import {
+  fetchPage,
+  createPage,
+  updatePage,
+  deletePage,
+} from '../../actions/page-actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.currentUserId],
@@ -19,6 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   createBlock: (block) => dispatch(createBlock(block)),
   updateBlock: (block) => dispatch(updateBlock(block)),
   deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
+  updatePage: (page) => dispatch(updatePage(page)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Block);

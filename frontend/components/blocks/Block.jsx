@@ -82,13 +82,23 @@ class Block extends React.Component {
   }
 
   plusHandleClick() { 
-    // fix function to insert after current block
+    const currentBlockId = this.props.block.id;
+    const blockIds = this.props.blockIds;
+
     this.props.createBlock({
       userId: this.props.currentUser.id,
       pageId: this.props.block.pageId,
       blockType: 'paragraph',
-      text: 'A block created by clicking on the plus handle.'
-    });
+      text: '',
+    }).then((res) => {
+      for (let i = 0; i < blockIds.length; i++) {
+        if (blockIds[i] === currentBlockId) {
+          const newBlockIds = [...blockIds.slice(0, i + 1), res.block.id, ...blockIds.slice(i + 1)];
+          // Object.assign
+          this.props.updatePage({id: this.props.block.pageId, blockIds: newBlockIds })
+        }
+      }
+    })
   }
 
   dragHandleClick(e) {

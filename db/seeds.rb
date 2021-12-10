@@ -170,7 +170,7 @@ b8 = Block.create!({
   user_id: u1.id,
   page_id: p1.id,
   block_type: 'todo',
-  text: 'Click the ⋮⋮ button and change this block into a '
+  text: 'Click the ⋮⋮ button and change this block into a Heading 2'
 })
 
 b9 = Block.create!({

@@ -11,6 +11,7 @@ import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
 import coverData from './coverData';
 import { FiMenu, FiPlus } from 'react-icons/fi';
+import emoji from 'node-emoji'
 
 class Page extends React.Component {
   constructor(props) {
@@ -236,23 +237,29 @@ class Page extends React.Component {
 
           <div className="page-wrapper">
             <div className="page-controls">
-              {/* <Picker
-              set="apple"
-              color="#37352f"
-              emoji=""
-              title=""
-              autoFocus={true}
-              perLine={12}
-              theme="light"
-              sheetSize={64}
-              defaultSkin={4}
-              emojiTooltip={false}
-              showPreview={false}
-              showSkinTones={true}
-              useButton={false}
-              onSkinChange={this.handleSkinChange}
-              onSelect={this.selectEmoji}
-            /> */}
+              {console.log(emoji)}
+              {console.log(emoji.get(page.icon.id))}
+
+              <h1 className="page-emoji">{emoji.get(page.icon.id)}</h1>
+              <Emoji className="page-emoji" size={78} emoji={page.icon.id} />
+
+              <Picker
+                set="apple"
+                color="#37352f"
+                emoji=""
+                title=""
+                autoFocus={true}
+                perLine={12}
+                theme="light"
+                sheetSize={64}
+                defaultSkin={4}
+                emojiTooltip={false}
+                showPreview={false}
+                showSkinTones={true}
+                useButton={false}
+                onSkinChange={this.handleSkinChange}
+                onSelect={this.selectEmoji}
+              />
 
               <label className="cover-upload-label">
                 <svg viewBox="0 0 14 14" className="cover-upload-icon">
@@ -272,7 +279,6 @@ class Page extends React.Component {
                   hidden
                 />
               </label>
-              <Emoji className="page-emoji" emoji={page.icon.id} size={78}/>
             </div>
 
             <div className="page-title-wrapper">

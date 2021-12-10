@@ -10,7 +10,7 @@ import MediaMenuContainer from '../menus/MediaMenuContainer';
 import { FiMenu, FiPlus } from 'react-icons/fi';
 import emoji from 'node-emoji';
 import 'emoji-mart/css/emoji-mart.css';
-import { Picker } from 'emoji-mart';
+import { Picker, Emoji } from 'emoji-mart';
 import coverData from './coverData';
 
 class Page extends React.Component {
@@ -18,8 +18,9 @@ class Page extends React.Component {
     super(props);
     this.contentEditable = React.createRef();
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.changeFavicon = this.changeFavicon.bind(this);
+    this.changeTitle = this.changeTitle.bind(this);
     this.getRandomCover = this.getRandomCover.bind(this);
-    this.getRandomEmoji = this.getRandomEmoji.bind(this);
     this.addBlock = this.addBlock.bind(this);
     this.OnDragEnd = this.OnDragEnd.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
@@ -77,7 +78,15 @@ class Page extends React.Component {
     document.title = title;
   }
 
-  changeFavicon(imageSrc) {
+  getFaviconUrl(emojiId) {
+    // get image data from <span> from onClick event
+    const set = 'apple';
+    const emojiDatasourceVersion = '5.0.1';
+    const sheetSize = '64';
+    return `https://unpkg.com/emoji-datasource-${set}@${emojiDatasourceVersion}/img/${set}/sheets-256/${sheetSize}.png`;
+  }
+
+  changeFavicon(image) {
     const link = document.querySelector('link[rel="icon"]');
     link.href = imageSrc;
   }
@@ -258,6 +267,9 @@ class Page extends React.Component {
               >
                 <div className="page-icon">{emoji.get(page.icon.id)}</div>
               </div>
+
+              <Emoji size={78} emoji={page.icon.id} />
+               
 
               {this.state.emojiPickerOpen && <Picker
                 set="apple"

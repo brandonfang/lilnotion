@@ -70,6 +70,14 @@ class Api::PagesController < ApplicationController
 
   private
 
+  def format(hash)
+    output = Hash.new
+    hash.each do |key, value|
+      output[key] = value
+    end
+    output
+  end
+
   def page_params
     params[:page][:block_ids] = [] if params[:page][:block_ids] == nil
     # params.require(:page).permit(:id, :user_id, :title, :gallery_image_url, :uploaded_image_url, :style, :created_at, :updated_at, block_ids: [], :icon => [:id, :name, :colons, :text, :unified, :skin, :native, :custom, :image_url, :short_names => [], :emoticons => [], ])

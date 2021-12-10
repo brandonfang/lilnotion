@@ -47,7 +47,7 @@ class SignupForm extends React.Component {
     this.resetInputs();
 
     const demo1 = { firstName: 'Doug', lastName: 'Engelbart', email: 'doug@engelbart.com', password: 'password' };
-    const demo2 = { firstName: 'Ada', lastName: 'Lovelace', email: 'ada@lovelace.com', password: 'password' };
+    // const demo2 = { firstName: 'Ada', lastName: 'Lovelace', email: 'ada@lovelace.com', password: 'password' };
     const demo = Math.random() < 0.5 ? demo1 : demo1;
     
     const demoFirstName = demo.firstName.split('');
@@ -91,7 +91,6 @@ class SignupForm extends React.Component {
     const submitDelay = 100 + time * (demoFirstName.length + demoLastName.length + demoEmail.length + demoPassword.length);
 
     setTimeout(() => this.props.loginDemo(demo), submitDelay);
-    // setTimeout(() => this.props.history.push('/'), submitDelay);
   }
 
   handleChange(field) {

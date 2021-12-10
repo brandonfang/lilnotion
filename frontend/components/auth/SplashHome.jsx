@@ -6,9 +6,7 @@ import { connect } from 'react-redux';
 
 const SplashHome = ({ login }) => {
   const loginDemo = () => {
-    const demo1 = { email: 'doug@engelbart.com', password: 'password' };
-    // add demo2 later
-    const demo = Math.random() < 0.5 ? demo1 : demo1;
+    const demo = { email: 'doug@engelbart.com', password: 'password' };
     login(demo);
   };
 

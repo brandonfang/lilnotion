@@ -54,18 +54,18 @@ p1 = Page.create!(
   user_id: u1.id,
   title: "Get Started",
   gallery_image_url: '',
-  # icon: {
-  #   "id": "sparkles",
-  #   "name": "Sparkles",
-  #   "short_names": [
-  #     "sparkles"
-  #   ],
-  #   "colons": ":sparkles:",
-  #   "emoticons": [],
-  #   "unified": "2728",
-  #   "skin": null,
-  #   "native": "✨"
-  # }
+  icon: {
+    "id": "sparkles",
+    "name": "Sparkles",
+    "short_names": [
+      "sparkles"
+    ],
+    # "colons": ":sparkles:",
+    "emoticons": [],
+    "unified": "2728",
+    # "skin": null,
+    "native": "✨"
+  }
 )
 
 # Do Things that Don't Scale
@@ -73,6 +73,18 @@ p2 = Page.create!(
   user_id: u1.id,
   title: "Do Things that Don't Scale",
   gallery_image_url: '',
+  icon: {
+    "id": "sun_with_face",
+    "name": "Sun with Face",
+    "short_names": [
+      "sun_with_face"
+    ],
+    # "colons": ":sun_with_face:",
+    "emoticons": [],
+    "unified": "1f31e",
+    # "skin": null,
+    "native": "🌞"
+  }
 )
 # p2.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/'), filename: '')
 
@@ -80,38 +92,38 @@ p2 = Page.create!(
 p3 = Page.create!(
   user_id: u1.id,
   title: '3 Minute Journal',
-  # icon: {
-  #   "id": "sun_with_face",
-  #   "name": "Sun with Face",
-  #   "short_names": [
-  #     "sun_with_face"
-  #   ],
-  #   "colons": ":sun_with_face:",
-  #   "emoticons": [],
-  #   "unified": "1f31e",
-  #   "skin": null,
-  #   "native": "🌞"
-  # }
+  icon: {
+    "id": "sun_with_face",
+    "name": "Sun with Face",
+    "short_names": [
+      "sun_with_face"
+    ],
+    # "colons": ":sun_with_face:",
+    "emoticons": [],
+    "unified": "1f31e",
+    # "skin": null,
+    "native": "🌞"
+  }
 )
 
 # Blog Post
 p4 = Page.create!(
   user_id: u1.id,
   title: 'Blog Post',
-  # icon: {
-  #   "id": "pencil2",
-  #   "name": "Pencil",
-  #   "short_names": [
-  #     "pencil2"
-  #   ],
-  #   "colons": ":pencil2:",
-  #   "emoticons": [],
-  #   "unified": "270f-fe0f",
-  #   "skin": null,
-  #   "native": "✏️"
-  # }
+  icon: {
+    "id": "pencil2",
+    "name": "Pencil",
+    "short_names": [
+      "pencil2"
+    ],
+    # "colons": ":pencil2:",
+    "emoticons": [],
+    "unified": "270f-fe0f",
+    # "skin": null,
+    "native": "✏️"
+  }
 )
-# p4.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-0.jpeg'), filename: 'blog-post-0.jpeg')
+p4.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-0.jpeg'), filename: 'blog-post-0.jpeg')
 
 # ADD P1 BLOCKS
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const SelectMenuRow = ({ item, position, handleBlockSelect, block }) => {
-  const { x, y } = position;
   // calculate responsive tooltip position
+  const { tooltipX, tooltipY } = position;
   const [show, setShow] = useState(false);
 
   return (

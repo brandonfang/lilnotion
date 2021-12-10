@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import SlashMenuRow from './SlashMenuRow';
-import matchSorter from 'match-sorter';
 
 const BlockSlashMenu = ({ position }) => {
   const { x, y } = position;
@@ -100,7 +99,11 @@ const BlockSlashMenu = ({ position }) => {
   ];
 
   return (
-    <div className="slash-menu-wrapper" style={{ left: x, top: y }}>
+    <div
+      className="slash-menu-wrapper"
+      style={{ left: x, top: y }}
+      // onMouseEnter={(e) => console.log(e)}
+    >
       <div className="slash-menu">
         <div className="menu-header">Basic blocks</div>
         {menuData.map((item, i) => (

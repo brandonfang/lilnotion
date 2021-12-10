@@ -129,9 +129,11 @@
 }
 
 // BLOCK BODY STYLES
-[contenteditable]:empty:after {
+[contenteditable]:focus:empty:after {
   content: attr(placeholder);
   color: rgb(175, 174, 172);
+  opacity: 1;
+  transition: all 0.2s ease;
 }
 
 .h1 {

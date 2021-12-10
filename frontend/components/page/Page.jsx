@@ -28,6 +28,9 @@ class Page extends React.Component {
     this.selectEmoji = this.selectEmoji.bind(this);
     this.openEmojiPicker = this.openEmojiPicker.bind(this);
     this.closeEmojiPicker = this.closeEmojiPicker.bind(this);
+    this.calculateAddBlockMenuPosition = this.calculateAddBlockMenuPosition.bind(this);
+    this.openAddBlockMenu = this.openAddBlockMenu.bind(this);
+    this.closeAddBlockMenu = this.closeAddBlockMenu.bind(this);
 
     this.state = {
       pageId: props.location.pathname.slice(3),
@@ -35,8 +38,17 @@ class Page extends React.Component {
       photoFile: null,
       photoUrl: null,
       emojiPickerOpen: false,
+      addBlockMenuOpen: false,
+      addBlockMenuPosition: {
+        x: null,
+        y: null,
+      },
     };
   }
+
+  calculateAddBlockMenuPosition(e) {}
+  openAddBlockMenu(e) {}
+  closeAddBlockMenu(e) {}
 
   componentDidMount() {
     console.log('page.jsx componentDidMount()');
@@ -122,6 +134,8 @@ class Page extends React.Component {
       const newBlockIds = [...this.state.page.blockIds, res.block.id];
       const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
       this.props.updatePage(newPage);
+    }).then(() => {
+      document.getElementById('block-input').focus(); 
     });
   }
 
@@ -318,7 +332,6 @@ class Page extends React.Component {
               <div className="add-block-button" onClick={() => this.addBlock()}>
                 <FiPlus />
               </div>
-              {/* <Emoji emoji="santa" set="apple" skin={5} size={78} tooltip={true} /> */}
             </div>
 
             <DragDropContext onDragEnd={(result) => this.OnDragEnd(result)}>

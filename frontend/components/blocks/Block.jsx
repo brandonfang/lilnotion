@@ -52,6 +52,11 @@ class Block extends React.Component {
         x: null,
         y: null,
       },
+      slashMenuOpen: false,
+      slashMenuPosition: {
+        x: null,
+        y: null,
+      },
       hover: false,
       // mouseOverTurnInto: false,
       // mouseOverSelectMenu: false,
@@ -268,6 +273,16 @@ class Block extends React.Component {
               <BlockSelectMenu
                 position={this.state.selectMenuPosition}
                 closeSelectMenu={this.closeSelectMenu}
+                handleBlockSelect={this.handleBlockSelect}
+                block={this.props.block}
+                // toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}
+              />
+            ) : null}
+
+            {this.state.slashMenuOpen ? (
+              <BlockSlashMenu
+                position={this.state.selectMenuPosition}
+                closeSlashMenu={this.closeSlashMenu}
                 handleBlockSelect={this.handleBlockSelect}
                 block={this.props.block}
                 // toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}

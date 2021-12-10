@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-const SlashMenuRow = ({ item, position }) => {
-  const { x, y } = position;
+const SlashMenuRow = ({ item, handleBlockSelect, block }) => {
   // calculate responsive tooltip position
+  const { tooltipX, tooltipY } = position;
   const [show, setShow] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ const SlashMenuRow = ({ item, position }) => {
       className="slash-menu-row"
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
-      // onClick={() => handleBlockSelect(item.blockType)}
+      onClick={() => handleBlockSelect(item.blockType, block)}
     >
       <div className="block-type-image-wrapper">
         <img className="block-type-image" src={item.thumbnail} />

@@ -22,6 +22,13 @@ class Paragraph extends React.Component {
   }
 
   render() {
+    // const html = '<strong>hello world</strong>';
+    // console.log(sanitizeHtml(html));
+    // console.log(sanitizeHtml("<img src=x onerror=alert('img') />").length);
+    // console.log(sanitizeHtml("console.log('hello world')"));
+    // console.log(sanitizeHtml("<script>alert('hello world')</script>").length);
+    
+    
     return (
       <div className="block-body">
         <ContentEditable

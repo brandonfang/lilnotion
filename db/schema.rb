@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_000613) do
+ActiveRecord::Schema.define(version: 2021_12_10_115758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,9 +54,19 @@ ActiveRecord::Schema.define(version: 2021_12_10_000613) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["block_type"], name: "index_blocks_on_block_type"
+    t.index ["checked"], name: "index_blocks_on_checked"
+    t.index ["created_at"], name: "index_blocks_on_created_at"
+    t.index ["expanded"], name: "index_blocks_on_expanded"
+    t.index ["format"], name: "index_blocks_on_format"
+    t.index ["icon"], name: "index_blocks_on_icon"
+    t.index ["image_caption"], name: "index_blocks_on_image_caption"
     t.index ["image_url"], name: "index_blocks_on_image_url"
+    t.index ["link_page_id"], name: "index_blocks_on_link_page_id"
+    t.index ["order_index"], name: "index_blocks_on_order_index"
     t.index ["page_id"], name: "index_blocks_on_page_id"
     t.index ["text"], name: "index_blocks_on_text"
+    t.index ["toggle_inner_text"], name: "index_blocks_on_toggle_inner_text"
+    t.index ["updated_at"], name: "index_blocks_on_updated_at"
     t.index ["user_id"], name: "index_blocks_on_user_id"
   end
 
@@ -66,8 +76,8 @@ ActiveRecord::Schema.define(version: 2021_12_10_000613) do
     t.string "block_ids", default: [], array: true
     t.string "gallery_image_url", default: ""
     t.string "uploaded_image_url", default: ""
-    t.json "icon", default: {}
-    t.json "style", default: {}
+    t.jsonb "icon", default: {}
+    t.jsonb "style", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["block_ids"], name: "index_pages_on_block_ids"

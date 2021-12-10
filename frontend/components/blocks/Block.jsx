@@ -82,9 +82,9 @@ class Block extends React.Component {
   }
 
   plusHandleClick() { 
+    // add a new block below current block
     const currentBlockId = this.props.block.id;
     const blockIds = this.props.blockIds;
-
     this.props.createBlock({
       userId: this.props.currentUser.id,
       pageId: this.props.block.pageId,
@@ -102,7 +102,7 @@ class Block extends React.Component {
   }
 
   dragHandleClick(e) {
-    //drag to move, click to open menu
+    // drag to move, click to open menu
     const dragHandle = e.target;
     this.openActionMenu(dragHandle, 'DRAG_HANDLE_CLICK');
   }

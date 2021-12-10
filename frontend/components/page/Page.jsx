@@ -2,16 +2,15 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import sanitizeHtml from 'sanitize-html';
 import { debounce } from '../../util/utils';
 import equal from 'fast-deep-equal';
 import BlockContainer from '../blocks/BlockContainer';
-import MediaMenuContainer from '../menus/MediaMenuContainer';
 import { FiMenu, FiPlus } from 'react-icons/fi';
 import emoji from 'node-emoji';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
 import coverData from './coverData';
+import MediaMenuContainer from '../menus/MediaMenuContainer';
 
 class Page extends React.Component {
   constructor(props) {
@@ -33,10 +32,8 @@ class Page extends React.Component {
     this.state = {
       pageId: props.location.pathname.slice(3),
       page: props.pages[this.props.location.pathname.slice(3)],
-      html: '',
       photoFile: null,
       photoUrl: null,
-      // blocks: props.blocks,
       emojiPickerOpen: false,
     };
   }
@@ -50,11 +47,10 @@ class Page extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState) {
     console.log('page.jsx componentDidUpdate()');
-
-    // console.log("prevProps: ", prevProps);
-    // console.log('new Props: ', this.props);
+    // console.log("prevProps:", prevProps);
+    // console.log('new Props:', this.props);
 
     const newPageId = this.props.location.pathname.slice(3);
     const newPage = this.props.pages[newPageId];
@@ -63,7 +59,7 @@ class Page extends React.Component {
     const blocksChanged = !equal(this.props.blocks, prevProps.blocks);
 
     if (locationChanged || pageChanged || blocksChanged) {
-      console.log('componentDidUpdate() something changed');
+      // console.log('componentDidUpdate() something changed');
       this.setState({
         pageId: newPageId,
         page: newPage,
@@ -72,11 +68,6 @@ class Page extends React.Component {
       this.changeFavicon(newPage.icon);
       this.changeTitle(newPage.title);
     }
-    // const htmlChanged = this.props.html !== this.state.html;
-    // if (htmlChanged) {
-    //   const newPage = Object.assign(this.props.page, { title: this.state.html });
-    //   this.props.updatePage(newPage);
-    // }
   }
 
   changeTitle(title) {
@@ -111,19 +102,13 @@ class Page extends React.Component {
 
   handleTitleChange(e) {
     const newPage = Object.assign(this.state.page, { title: e.target.value });
-    this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
+    this.setState(newPage, () => this.props.updatePage(newPage));
     this.changeTitle(e.target.value);
   }
 
   addRandomCover(arr) {
     const cover = arr[Math.floor(Math.random() * arr.length)];
-    console.log(cover)
     return cover;
-  }
-
-  addRandomCover(obj) {
-    const keys = Object.keys(obj);
-    return obj[keys[(keys.length * Math.random()) << 0]];
   }
 
   addBlock() {
@@ -134,11 +119,8 @@ class Page extends React.Component {
       text: '',
     };
     this.props.createBlock(block).then((res) => {
-      // console.log("page before update: ", this.state.page)
-      // console.log("blockids before update: ", this.state.page.blockIds)
       const newBlockIds = [...this.state.page.blockIds, res.block.id];
       const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-      console.log(newPage);
       this.props.updatePage(newPage);
     });
   }
@@ -154,7 +136,7 @@ class Page extends React.Component {
     newBlockIds.splice(destination.index, 0, ...removed);
     const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
     this.setState({ page: newPage }, () => this.props.updatePage(newPage));
-    console.log(newBlockIds);
+    // console.log(newBlockIds);
   }
 
   handlePreview(e) {
@@ -190,16 +172,17 @@ class Page extends React.Component {
           contentType: false,
           processData: false,
         }).then(
-          (res) => console.log('res: ', res),
-          (err) => console.log('error: ', err)
+          (res) => console.log('res:', res),
+          (err) => console.log('error:', err)
         );
       };
     }
   }
 
-  getPagePadding() {}
+  getPagePadding(width) {}
 
   selectEmoji(emoji) {
+    console.log(emoji);
     this.closeEmojiPicker();
     this.changeFavicon(emoji);
     const newPage = Object.assign(this.state.page, { icon: emoji });
@@ -208,6 +191,7 @@ class Page extends React.Component {
 
   openEmojiPicker() {
     this.setState({ emojiPickerOpen: true });
+    // add event listener to close emoji picker on click outside
   }
 
   closeEmojiPicker() {
@@ -238,13 +222,6 @@ class Page extends React.Component {
       <img className="page-cover-preview" src={this.state.photoUrl} />
     ) : null;
 
-    // console.log(coverData)
-
-    // const html = '<strong>hello world</strong>';
-    // console.log(sanitizeHtml(html));
-    // console.log(sanitizeHtml("<img src=x onerror=alert('img') />").length);
-    // console.log(sanitizeHtml("console.log('hello world')"));
-    // console.log(sanitizeHtml("<script>alert('hello world')</script>").length);
 
     return (
       <div className="page">
@@ -301,7 +278,7 @@ class Page extends React.Component {
                   useButton={false}
                   onSkinChange={this.handleSkinChange}
                   onSelect={this.selectEmoji}
-                  style={{ position: 'absolute', zIndex: 2, top: '78px', left: '-200px' }}
+                  style={{ position: 'absolute', zIndex: 2, top: '178px', left: '-96px' }}
                 />
               )}
 
@@ -331,7 +308,6 @@ class Page extends React.Component {
             <div className="page-title-wrapper">
               <ContentEditable
                 innerRef={this.contentEditable}
-                // html={this.state.html}
                 html={this.state.page.title}
                 onChange={debounce((e) => this.handleTitleChange(e), 500)}
                 tagName="h1"

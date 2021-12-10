@@ -13,6 +13,7 @@
   // overflow: hidden;
   // resize: horizontal;
   transform: translateX(0);
+  z-index: 0;
 
   &.collapsed {
     transform: translateX(-200px);
@@ -144,7 +145,7 @@
 
 .toggle-tooltip {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   // left: -32px;
   // top: 30px;
   border-radius: 3px;

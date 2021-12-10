@@ -122,7 +122,7 @@ p4 = Page.create!(
     "native": "✏️"
   }
 )
-p4.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-0.jpeg'), filename: 'blog-post-0.jpeg')
+# p4.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-0.jpeg'), filename: 'blog-post-0.jpeg')
 
 # ADD P1 BLOCKS
 

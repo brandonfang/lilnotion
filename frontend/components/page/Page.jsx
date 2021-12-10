@@ -7,11 +7,11 @@ import { debounce } from '../../util/utils';
 import equal from 'fast-deep-equal';
 import BlockContainer from '../blocks/BlockContainer';
 import MediaMenuContainer from '../menus/MediaMenuContainer';
-import 'emoji-mart/css/emoji-mart.css';
-import { Picker, Emoji } from 'emoji-mart';
-import coverData from './coverData';
 import { FiMenu, FiPlus } from 'react-icons/fi';
 import emoji from 'node-emoji';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
+import coverData from './coverData';
 
 class Page extends React.Component {
   constructor(props) {
@@ -73,6 +73,15 @@ class Page extends React.Component {
     // }
   }
 
+  changeTitle(title) {
+    document.title = title;
+  }
+
+  changeFavicon(imageSrc) {
+    const link = document.querySelector('link[rel="icon"]');
+    link.href = imageSrc;
+  }
+
   handleTitleChange(e) {
     const newPage = Object.assign(this.state.page, { title: e.target.value });
     this.setState({ page: newPage, html: e.target.value }, () => this.props.updatePage(newPage));
@@ -82,12 +91,8 @@ class Page extends React.Component {
   // getRandomCover(arr) {
   //   return arr[Math.floor(Math.random() * arr.length)];
   // }
-  getRandomCover(obj) {
-    const keys = Object.keys(obj);
-    return obj[keys[(keys.length * Math.random()) << 0]];
-  }
 
-  getRandomEmoji(obj) {
+  getRandomCover(obj) {
     const keys = Object.keys(obj);
     return obj[keys[(keys.length * Math.random()) << 0]];
   }
@@ -170,6 +175,8 @@ class Page extends React.Component {
 
   selectEmoji(emoji) {
     console.log(emoji);
+    const newPage = Object.assign(this.state.page, { icon: emoji });
+    this.setState(newPage, () => this.props.updatePage(newPage));
     this.setState({ emojiPickerOpen: false });
   }
 

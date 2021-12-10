@@ -1,13 +1,11 @@
+<noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">React is broken</div>
+    <div id="portal"></div>
     <% if logged_in? %>
-      <script type="text/javascript">
+      <script type="text/javascript" id="currentUserScript">
         window.currentUser = {
           "id": "<%= current_user.id%>",
-          "firstName": "<%= current_user.first_name%>",
-          "lastName": "<%= current_user.last_name%>",
           "email": "<%= current_user.email%>",
         }
       </script>
     <% end %>
-<noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">React is broken</div>
-    <div id="portal"></div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable';
+import sanitizeHtml from 'sanitize-html';
 import { debounce } from '../../util/utils';
 
 class Toggle extends React.Component {
@@ -11,6 +12,7 @@ class Toggle extends React.Component {
       html: this.props.block.text,
       checked: this.props.block.checked,
       expanded: this.props.block.expanded,
+      // toggleInnerText
       placeholder: '',
     };
   }

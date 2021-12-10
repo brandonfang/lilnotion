@@ -217,6 +217,17 @@ input[type='file'].cover-upload-input {
 .page-icon-wrapper {
   width: 78px;
   height: 78px;
+  margin: 0;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(190, 190, 190, 0.2);
+  }
 }
 
 .page-icon {

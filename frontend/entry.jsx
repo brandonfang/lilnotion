@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+
+  document.body.removeChild(document.getElementById('currentUserScript'));
   
   // Only for debugging purposes; remove for production
   // window.currentUser = store.currentUser;

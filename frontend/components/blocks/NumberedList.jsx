@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable';
+import sanitizeHtml from 'sanitize-html';
 import { debounce } from '../../util/utils';
 
 class NumberedList extends React.Component {

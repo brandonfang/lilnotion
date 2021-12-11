@@ -102,7 +102,7 @@ class Page extends React.Component {
   }
 
   changeFavicon(emoji) {
-    return;
+    // return;
     // temp solution to get favicon url
     const url = this.getFaviconUrl(emoji);
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -243,7 +243,6 @@ class Page extends React.Component {
           <div className="topbar-left">
             {/* <div
               className="topbar-menu-wrapper"
-              // onClick={() => console.log(localStorage.getItem('sidebar')))}
             >
               <FiMenu className="topbar-menu" />
             </div> */}

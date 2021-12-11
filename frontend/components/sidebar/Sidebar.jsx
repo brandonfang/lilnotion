@@ -22,17 +22,12 @@ class Sidebar extends React.Component {
     this.newPage = this.newPage.bind(this);
     this.deletePage = this.deletePage.bind(this);
     let initialState;
-    if (localStorage.getItem('sidebarCollapsed') !== null) {
-      initialState = localStorage.getItem('sidebarCollapsed');
-    } else {
-      initialState = false;
-    }
     this.state = {
       sidebarCollapsed: initialState,
       toggleHover: false,
     };
   }
-  
+
   componentDidMount() {
     if (!this.state.sidebarCollapsed) {
       const sidebar = this.ref.current;
@@ -48,12 +43,10 @@ class Sidebar extends React.Component {
     if (this.state.sidebarCollapsed) {
       sidebar.classList.remove('collapsed');
       editor.classList.remove('collapsed');
-      localStorage.setItem('sidebarCollapsed', false);
       this.setState({ sidebarCollapsed: false, toggleHover: false });
     } else {
       sidebar.classList.add('collapsed');
       editor.classList.add('collapsed');
-      localStorage.setItem('sidebarCollapsed', true);
       this.setState({ sidebarCollapsed: true, toggleHover: false });
     }
   }
@@ -120,11 +113,12 @@ class Sidebar extends React.Component {
 
     const pagesList = arrayOfPages.map((page, i) => {
       return (
-        <OutlinerRow 
-          key={`${page.id}-${i}`} 
-          page={page} 
+        <OutlinerRow
+          key={`${page.id}-${i}`}
+          page={page}
           goToPage={this.goToPage}
-          deletePage={deletePage} />
+          deletePage={deletePage}
+        />
       );
     });
 
@@ -158,7 +152,8 @@ class Sidebar extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="sidebar-utilities">
+
+            {/* <div className="sidebar-utilities">
               <div className="sidebar-utility-wrapper">
                 <div className="sidebar-utility">
                   <div className="sidebar-utility-icon-wrapper">
@@ -176,58 +171,60 @@ class Sidebar extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="sidebar-middle">
-            <div className="sidebar-scroller">
-              <div className="outliner-header">Pages</div>
-              <div className="outliner">{pagesList}</div>
-            </div>
-          </div>
-          <div className="sidebar-bottom">
-            <div className="sidebar-shortcuts">
-              <div className="shortcut" onClick={this.newPage}>
-                <FiPlus className="sidebar-icon" size={16} />
-                New page
-              </div>
-              <div className="shortcut" onClick={logout}>
-                <FiLogOut className="sidebar-icon" size={16} />
-                Log out
+          </div> */}
+
+            <div className="sidebar-middle">
+              <div className="sidebar-scroller">
+                <div className="outliner-header">Pages</div>
+                <div className="outliner">{pagesList}</div>
               </div>
             </div>
-            {/* move credits above utilities? */}
-            <div className="sidebar-credits">
-              <div className="credit">
-                <FiGithub className="sidebar-icon" />
-                <a
-                  href="https://github.com/brandonfang"
-                  className="credit-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
+            <div className="sidebar-bottom">
+              <div className="sidebar-shortcuts">
+                <div className="shortcut" onClick={this.newPage}>
+                  <FiPlus className="sidebar-icon" size={16} />
+                  New page
+                </div>
+                <div className="shortcut" onClick={logout}>
+                  <FiLogOut className="sidebar-icon" size={16} />
+                  Log out
+                </div>
               </div>
-              <div className="credit">
-                <FiLinkedin className="sidebar-icon" />
-                <a
-                  href="https://www.linkedin.com/in/bdmfang"
-                  className="credit-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </div>
-              <div className="credit">
-                <FiGlobe className="sidebar-icon" />
-                <a
-                  href="https://bdmfang.com"
-                  className="credit-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Portfolio
-                </a>
+              {/* move credits above utilities? */}
+              <div className="sidebar-credits">
+                <div className="credit">
+                  <FiGithub className="sidebar-icon" />
+                  <a
+                    href="https://github.com/brandonfang"
+                    className="credit-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </div>
+                <div className="credit">
+                  <FiLinkedin className="sidebar-icon" />
+                  <a
+                    href="https://www.linkedin.com/in/bdmfang"
+                    className="credit-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+                <div className="credit">
+                  <FiGlobe className="sidebar-icon" />
+                  <a
+                    href="https://bdmfang.com"
+                    className="credit-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Portfolio
+                  </a>
+                </div>
               </div>
             </div>
           </div>

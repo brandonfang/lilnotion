@@ -21,15 +21,14 @@ class Sidebar extends React.Component {
     this.goToPage = this.goToPage.bind(this);
     this.newPage = this.newPage.bind(this);
     this.deletePage = this.deletePage.bind(this);
-    let initialState;
     this.state = {
-      sidebarCollapsed: initialState,
+      sidebarClosed: props.sidebarClosed,
       toggleHover: false,
     };
   }
 
   componentDidMount() {
-    if (!this.state.sidebarCollapsed) {
+    if (!this.state.sidebarClosed) {
       const sidebar = this.ref.current;
       const editor = document.getElementById('editor');
       sidebar.classList.remove('collapsed');
@@ -37,19 +36,19 @@ class Sidebar extends React.Component {
     }
   }
 
-  toggleSidebar() {
-    const sidebar = this.ref.current;
-    const editor = document.getElementById('editor');
-    if (this.state.sidebarCollapsed) {
-      sidebar.classList.remove('collapsed');
-      editor.classList.remove('collapsed');
-      this.setState({ sidebarCollapsed: false, toggleHover: false });
-    } else {
-      sidebar.classList.add('collapsed');
-      editor.classList.add('collapsed');
-      this.setState({ sidebarCollapsed: true, toggleHover: false });
-    }
-  }
+  // toggleSidebar() {
+  //   const sidebar = this.ref.current;
+  //   const editor = document.getElementById('editor');
+  //   if (this.state.sidebarClosed) {
+  //     sidebar.classList.remove('collapsed');
+  //     editor.classList.remove('collapsed');
+  //     this.setState({ sidebarClosed: false, toggleHover: false });
+  //   } else {
+  //     sidebar.classList.add('collapsed');
+  //     editor.classList.add('collapsed');
+  //     this.setState({ sidebarClosed: true, toggleHover: false });
+  //   }
+  // }
 
   goToPage(pageId, pageTitle) {
     if (pageTitle === '') pageTitle = 'Untitled';
@@ -97,11 +96,11 @@ class Sidebar extends React.Component {
     if (!this.props.pages || Object.keys(this.props.pages).length === 0) return null;
 
     const { currentUser, pages, deletePage, logout } = this.props;
-    const { sidebarCollapsed, toggleHover } = this.state;
-    const toggleIcon = sidebarCollapsed ? <FiChevronsRight /> : <FiChevronsLeft />;
-    const tooltipText = sidebarCollapsed ? 'Lock sidebar open' : 'Close sidebar';
+    const { sidebarClosed, toggleHover } = this.state;
+    const toggleIcon = sidebarClosed ? <FiChevronsRight /> : <FiChevronsLeft />;
+    const tooltipText = sidebarClosed ? 'Lock sidebar open' : 'Close sidebar';
     let tooltipClassName;
-    if (sidebarCollapsed) {
+    if (sidebarClosed) {
       tooltipClassName = toggleHover ? 'toggle-tooltip visible right' : 'toggle-tooltip right';
     } else {
       tooltipClassName = toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip';
@@ -124,7 +123,7 @@ class Sidebar extends React.Component {
 
     return (
       // wrap sidebar in <DragDropContext> if dnd needed
-      <div ref={this.ref} className={sidebarCollapsed ? 'sidebar collapsed' : 'sidebar'}>
+      <div ref={this.ref} className={sidebarClosed ? 'sidebar collapsed' : 'sidebar'}>
         <div className="sidebar-inner">
           <div className="sidebar-top">
             <div className="sidebar-switcher-wrapper">

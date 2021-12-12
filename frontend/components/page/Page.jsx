@@ -43,6 +43,7 @@ class Page extends React.Component {
         x: null,
         y: null,
       },
+      sidebarClosed: props.sidebarClosed,
     };
   }
 
@@ -214,7 +215,8 @@ class Page extends React.Component {
 
   render() {
     // console.log('page.jsx render()');
-    const { pages, blocks, location, history } = this.props;
+    const { pages, blocks, location, history, toggleSidebar } = this.props;
+    const { pageId, page, emojiPickerOpen, photoUrl, sidebarClosed } = this.state;
 
     if (!pages || !blocks) return null;
     if (location.pathname.length <= 1) {
@@ -230,10 +232,10 @@ class Page extends React.Component {
       orderedBlocks.push(blocks[blockIds[i]]);
     }
 
-    const pageHasGalleryCover = this.state.page.galleryImageUrl.length > 0;
-    const pageHasUploadedCover = this.state.page.uploadedImageUrl.length > 0;
-    const preview = this.state.photoUrl ? (
-      <img className="page-cover-preview" src={this.state.photoUrl} />
+    const pageHasGalleryCover = page.galleryImageUrl.length > 0;
+    const pageHasUploadedCover = page.uploadedImageUrl.length > 0;
+    const preview = photoUrl ? (
+      <img className="page-cover-preview" src={photoUrl} />
     ) : null;
 
 
@@ -241,11 +243,11 @@ class Page extends React.Component {
       <div className="page">
         <div className="topbar">
           <div className="topbar-left">
-            {/* <div
-              className="topbar-menu-wrapper"
-            >
-              <FiMenu className="topbar-menu" />
-            </div> */}
+            {/* {sidebarClosed && (
+              <div className="topbar-menu-wrapper" onClick={toggleSidebar}>
+                <FiMenu className="topbar-menu" />
+              </div>
+            )} */}
             <div className="breadcrumb-wrapper">
               <div className="breadcrumb-icon">{emoji.get(page.icon.id)}</div>
               <div className="breadcrumb">{page.title}</div>
@@ -275,7 +277,7 @@ class Page extends React.Component {
                 <div className="page-icon">{emoji.get(page.icon.id)}</div>
               </div>
 
-              {this.state.emojiPickerOpen && (
+              {emojiPickerOpen && (
                 <Picker
                   set="apple"
                   color="#37352f"
@@ -322,7 +324,7 @@ class Page extends React.Component {
             <div className="page-title-wrapper">
               <ContentEditable
                 innerRef={this.contentEditable}
-                html={this.state.page.title}
+                html={page.title}
                 onChange={debounce((e) => this.handleTitleChange(e), 500)}
                 tagName="h1"
                 placeholder="Untitled"
@@ -336,7 +338,7 @@ class Page extends React.Component {
 
             <DragDropContext onDragEnd={(result) => this.OnDragEnd(result)}>
               <div className="page-body">
-                <Droppable droppableId={this.state.pageId}>
+                <Droppable droppableId={pageId}>
                   {(provided) => (
                     <div
                       ref={provided.innerRef}
@@ -348,7 +350,7 @@ class Page extends React.Component {
                           key={block.id}
                           block={block}
                           index={index}
-                          blockIds={this.state.page.blockIds}
+                          blockIds={page.blockIds}
                         />
                       ))}
                       {provided.placeholder}

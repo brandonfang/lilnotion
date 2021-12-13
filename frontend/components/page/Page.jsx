@@ -198,7 +198,6 @@ class Page extends React.Component {
   getPagePadding(width) {}
 
   selectEmoji(emoji) {
-    console.log(emoji);
     this.closeEmojiPicker();
     this.changeFavicon(emoji);
     const newPage = Object.assign(this.state.page, { icon: emoji });
@@ -232,7 +231,8 @@ class Page extends React.Component {
     for (let i = 0; i < blockIds.length; i++) {
       orderedBlocks.push(blocks[blockIds[i]]);
     }
-
+    
+    const breadcrumbTitle = page.title.length > 0 ? page.title : 'Untitled';
     const pageHasGalleryCover = page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = page.uploadedImageUrl.length > 0;
     const preview = photoUrl ? (
@@ -257,7 +257,7 @@ class Page extends React.Component {
               style={sidebarClosed ? { marginLeft: 0 } : { marginLeft: '16px' }}
             >
               <div className="breadcrumb-icon">{emoji.get(page.icon.id)}</div>
-              <div className="breadcrumb">{page.title}</div>
+              <div className="breadcrumb">{breadcrumbTitle}</div>
             </div>
           </div>
           <div className="topbar-actions">

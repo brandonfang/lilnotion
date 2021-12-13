@@ -8,12 +8,12 @@
   background: white;
   cursor: text;
   transition: 0.5s;
+  color: rgb(55, 53, 47);
 }
 
 .topbar {
   width: 100%;
   height: 45px;
-  background: white;
   opacity: 1;
   display: flex;
   justify-content: space-between;
@@ -22,6 +22,10 @@
   z-index: 1;
   top: 0;
   cursor: default;
+  background: white;
+  color: rgb(55, 53, 47);
+  // temp
+  background: #fdfdfd;
 }
 
 .topbar-menu-wrapper {
@@ -107,6 +111,7 @@
   overflow: auto;
   margin: 0 0 0 0;
   padding: 45px 0 0 0;
+  color: rgb(55, 53, 47);
 }
 
 .page-wrapper {

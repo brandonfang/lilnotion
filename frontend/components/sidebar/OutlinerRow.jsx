@@ -18,6 +18,7 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
 
   const openMenu = (e) => {
     e.stopPropagation();
+    return;
     setMenuOpen(true);
     setMenuPosition({x: e.clientX, y: e.clientY});
   }

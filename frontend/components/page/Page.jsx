@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { debounce } from '../../util/utils';
@@ -63,17 +63,31 @@ class Page extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // console.log('page.jsx componentDidUpdate()');
-    // console.log("prevProps:", prevProps);
-    // console.log('new Props:', this.props);
+    console.log("prevProps:", prevProps);
+    console.log('new Props:', this.props);
+
+
 
     const newPageId = this.props.location.pathname.slice(3);
+    console.log({newPageId});
+
     const newPage = this.props.pages[newPageId];
+    const isNewPageIdValid = this.props.pages.hasOwnProperty(newPageId);
+    if (!isNewPageIdValid) {
+      const firstPage = Object.values(this.props.pages)[0];
+      console.log('redirecting the first page.........')
+      console.log({firstPage});
+      this.props.history.push(`/p/${firstPage.id}`);
+      return;
+    }
+
     const locationChanged = !equal(this.props.location, prevProps.location);
     const pageChanged = !equal(newPage, prevState.page);
     const blocksChanged = !equal(this.props.blocks, prevProps.blocks);
 
     if (locationChanged || pageChanged || blocksChanged) {
-      // console.log('componentDidUpdate() something changed');
+      console.log('componentDidUpdate() if statement');
+      console.log(newPage);
       this.setState({
         pageId: newPageId,
         page: newPage,
@@ -216,16 +230,22 @@ class Page extends React.Component {
   render() {
     // console.log('page.jsx render()');
     const { pages, blocks, location, history, toggleSidebar } = this.props;
-    const { pageId, emojiPickerOpen, photoUrl, sidebarClosed } = this.state;
+    const { emojiPickerOpen, photoUrl, sidebarClosed } = this.state;
+    const pageId = location.pathname.slice(3);
 
     if (!pages || !blocks) return null;
-    if (location.pathname.length <= 1) {
-      const firstPage = Object.values(pages)[0];
-      history.push(`/p/${firstPage.id}`);
-      return null;
-    }
+    // if (location.pathname.length <= 1 || !pages.hasOwnProperty(pageId)) {
+    //   const firstPage = Object.values(pages)[0];
+    //   console.log("asdfasdf", pageId)
+    //   console.log({ firstPage });
+    //   // history.push(`/p/${firstPage.id}`);
+    //   return <Redirect to={`/p/${firstPage.id}`} />;
+    // }
 
     const page = pages[location.pathname.slice(3)];
+    if (!page) return null;
+    if (!page.blockIds) return null;
+
     const orderedBlocks = [];
     const blockIds = page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {

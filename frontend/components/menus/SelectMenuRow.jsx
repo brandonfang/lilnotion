@@ -10,7 +10,6 @@ const SelectMenuRow = ({ item, position, handleBlockSelect, block }) => {
       className="select-menu-row"
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
-      // onClick={() => console.log(item.blockType)}
       onClick={() => handleBlockSelect(item.blockType, block)}
     >
       <div className="select-image-wrapper">

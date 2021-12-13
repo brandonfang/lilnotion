@@ -27,12 +27,12 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.state.sidebarClosed) {
-      const sidebar = this.ref.current;
-      const editor = document.getElementById('editor');
-      sidebar.classList.remove('collapsed');
-      editor.classList.remove('collapsed');
-    }
+    // if (!this.state.sidebarClosed) {
+    //   const sidebar = this.ref.current;
+    //   const editor = document.getElementById('editor');
+    //   sidebar.classList.remove('collapsed');
+    //   editor.classList.remove('collapsed');
+    // }
   }
 
   // toggleSidebar() {
@@ -85,9 +85,26 @@ class Sidebar extends React.Component {
       .then(() => document.getElementById('page-title').focus());
   }
 
-  async deletePage(pageId) {
-    await this.props.deletePage(pageId);
-    this.props.history.push('/');
+  deletePage(pageId) {
+    console.log(pageId)
+    // check if deleted page is the current page
+    if (this.props.match.params.id === pageId) {
+      // if so, redirect to another page
+      const pages = this.props.pages;
+      const firstPage = pages[Object.keys(pages)[0]];
+      const secondPage = pages[Object.keys(pages)[1]];
+      if (pageId !== firstPage.id) {
+        console.log('redirecting to first page')
+        this.props.history.push(`/p/${firstPage.id}`);
+      } else {
+        console.log('redirecting to second page')
+        this.props.history.push(`/p/${secondPage.id}`);
+      }
+    }
+    this.props.deletePage(pageId).then((res) => {
+      console.log(res);
+    });
+    
   }
 
   render() {
@@ -115,7 +132,7 @@ class Sidebar extends React.Component {
           key={`${page.id}-${i}`}
           page={page}
           goToPage={this.goToPage}
-          deletePage={deletePage}
+          deletePage={this.deletePage}
         />
       );
     });

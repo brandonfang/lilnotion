@@ -5,7 +5,8 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { debounce } from '../../util/utils';
 import equal from 'fast-deep-equal';
 import BlockContainer from '../blocks/BlockContainer';
-import { FiMenu, FiPlus } from 'react-icons/fi';
+import { FiMenu, FiChevronsRight, FiPlus, FiMoreHorizontal } from 'react-icons/fi';
+import { AiOutlineMenu } from 'react-icons/ai';
 import emoji from 'node-emoji';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
@@ -103,7 +104,7 @@ class Page extends React.Component {
   }
 
   changeFavicon(emoji) {
-    // return;
+    return;
     // temp solution to get favicon url
     const url = this.getFaviconUrl(emoji);
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -243,12 +244,18 @@ class Page extends React.Component {
       <div className="page">
         <div className="topbar">
           <div className="topbar-left">
-            {/* {sidebarClosed && (
+            {sidebarClosed && (
               <div className="topbar-menu-wrapper" onClick={toggleSidebar}>
-                <FiMenu className="topbar-menu" />
+                <div className="topbar-menu">
+                  {/* change to FiChevronRight on hover */}
+                  <AiOutlineMenu className="topbar-menu-icon" />
+                </div>
               </div>
-            )} */}
-            <div className="breadcrumb-wrapper">
+            )}
+            <div 
+              className="breadcrumb-wrapper"
+              style={sidebarClosed ? { marginLeft: 0 } : { marginLeft: '16px' }}
+            >
               <div className="breadcrumb-icon">{emoji.get(page.icon.id)}</div>
               <div className="breadcrumb">{page.title}</div>
             </div>
@@ -287,9 +294,9 @@ class Page extends React.Component {
                   perLine={12}
                   theme="light"
                   sheetSize={64}
-                  defaultSkin={4}
+                  defaultSkin={1}
+                  showPreview={true}
                   emojiTooltip={false}
-                  showPreview={false}
                   showSkinTones={true}
                   useButton={false}
                   onSkinChange={this.handleSkinChange}

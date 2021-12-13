@@ -7,7 +7,7 @@ class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarClosed = false,
+      sidebarClosed: false,
     }
   }
 

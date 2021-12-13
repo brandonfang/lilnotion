@@ -17,7 +17,6 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
-    this.toggleSidebar = this.toggleSidebar.bind(this);
     this.goToPage = this.goToPage.bind(this);
     this.newPage = this.newPage.bind(this);
     this.deletePage = this.deletePage.bind(this);
@@ -123,7 +122,7 @@ class Sidebar extends React.Component {
 
     return (
       // wrap sidebar in <DragDropContext> if dnd needed
-      <div ref={this.ref} className={sidebarClosed ? 'sidebar collapsed' : 'sidebar'}>
+      <div ref={this.ref} className="sidebar">
         <div className="sidebar-inner">
           <div className="sidebar-top">
             <div className="sidebar-switcher-wrapper">
@@ -152,6 +151,42 @@ class Sidebar extends React.Component {
               </div>
             </div>
 
+            <div className="sidebar-credits">
+              <div className="credit">
+                <FiGithub className="sidebar-icon" />
+                <a
+                  href="https://github.com/brandonfang"
+                  className="credit-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+              <div className="credit">
+                <FiLinkedin className="sidebar-icon" />
+                <a
+                  href="https://www.linkedin.com/in/bdmfang"
+                  className="credit-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <div className="credit">
+                <FiGlobe className="sidebar-icon" />
+                <a
+                  href="https://bdmfang.com"
+                  className="credit-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Portfolio
+                </a>
+              </div>
+            </div>
+
             {/* <div className="sidebar-utilities">
               <div className="sidebar-utility-wrapper">
                 <div className="sidebar-utility">
@@ -169,61 +204,25 @@ class Sidebar extends React.Component {
                   <div className="sidebar-utility-label">Settings & Members</div>
                 </div>
               </div>
-            </div>
-          </div> */}
+            </div> */}
+          </div>
 
-            <div className="sidebar-middle">
-              <div className="sidebar-scroller">
-                <div className="outliner-header">Pages</div>
-                <div className="outliner">{pagesList}</div>
-              </div>
+          <div className="sidebar-middle">
+            <div className="sidebar-scroller">
+              <div className="outliner-header">Pages</div>
+              <div className="outliner">{pagesList}</div>
             </div>
-            <div className="sidebar-bottom">
-              <div className="sidebar-shortcuts">
-                <div className="shortcut" onClick={this.newPage}>
-                  <FiPlus className="sidebar-icon" size={16} />
-                  New page
-                </div>
-                <div className="shortcut" onClick={logout}>
-                  <FiLogOut className="sidebar-icon" size={16} />
-                  Log out
-                </div>
+          </div>
+
+          <div className="sidebar-bottom">
+            <div className="sidebar-shortcuts">
+              <div className="shortcut" onClick={this.newPage}>
+                <FiPlus className="sidebar-icon" size={16} />
+                New page
               </div>
-              {/* move credits above utilities? */}
-              <div className="sidebar-credits">
-                <div className="credit">
-                  <FiGithub className="sidebar-icon" />
-                  <a
-                    href="https://github.com/brandonfang"
-                    className="credit-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </div>
-                <div className="credit">
-                  <FiLinkedin className="sidebar-icon" />
-                  <a
-                    href="https://www.linkedin.com/in/bdmfang"
-                    className="credit-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
-                <div className="credit">
-                  <FiGlobe className="sidebar-icon" />
-                  <a
-                    href="https://bdmfang.com"
-                    className="credit-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Portfolio
-                  </a>
-                </div>
+              <div className="shortcut" onClick={logout}>
+                <FiLogOut className="sidebar-icon" size={16} />
+                Log out
               </div>
             </div>
           </div>

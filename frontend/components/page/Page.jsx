@@ -216,7 +216,7 @@ class Page extends React.Component {
   render() {
     // console.log('page.jsx render()');
     const { pages, blocks, location, history, toggleSidebar } = this.props;
-    const { pageId, page, emojiPickerOpen, photoUrl, sidebarClosed } = this.state;
+    const { pageId, emojiPickerOpen, photoUrl, sidebarClosed } = this.state;
 
     if (!pages || !blocks) return null;
     if (location.pathname.length <= 1) {

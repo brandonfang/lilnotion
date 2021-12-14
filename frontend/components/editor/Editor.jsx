@@ -8,7 +8,7 @@ class Editor extends React.Component {
     super(props);
     this.state = {
       sidebarClosed: false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -39,16 +39,16 @@ class Editor extends React.Component {
     if (pages && blocks && Object.keys(pages).length > 0 && Object.keys(blocks).length > 0) {
       return (
         <div id="editor">
-          <SidebarContainer 
-            pages={pages} 
-            sidebarClosed={this.state.sidebarClosed} 
-            toggleSidebar={this.toggleSidebar} 
+          <SidebarContainer
+            pages={pages}
+            sidebarClosed={this.state.sidebarClosed}
+            toggleSidebar={this.toggleSidebar}
           />
-          <PageContainer 
-            pages={pages} 
-            blocks={blocks} 
-            sidebarClosed={this.state.sidebarClosed} 
-            toggleSidebar={this.toggleSidebar} 
+          <PageContainer
+            pages={pages}
+            blocks={blocks}
+            sidebarClosed={this.state.sidebarClosed}
+            toggleSidebar={this.toggleSidebar}
           />
         </div>
       );

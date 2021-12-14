@@ -86,28 +86,8 @@ class Sidebar extends React.Component {
   }
 
   deletePage(pageId) {
-    console.log({pageId})
-    console.log(this.props.location.pathname.slice(3));
-
-    this.props.deletePage(pageId)
-    .then(() => {
-      console.log('deleted page line 93');
-      // check if deleted page is the current page
-      if (this.props.location.pathname.slice(3) === pageId) {
-        // if so, redirect to another page
-        const pages = this.props.pages;
-        const firstPage = pages[Object.keys(pages)[0]];
-        const secondPage = pages[Object.keys(pages)[1]];
-        if (pageId !== firstPage.id) {
-          console.log('redirecting to first page');
-          console.log(firstPage.id);
-          this.props.history.push(`/p/${firstPage.id}`);
-        } else {
-          console.log('redirecting to second page');
-          this.props.history.push(`/p/${secondPage.id}`);
-        }
-      }
-    });
+    // write deleteCurrentPage() and deleteOtherPage(pageId);
+    this.props.deletePage(pageId);
   }
 
   render() {

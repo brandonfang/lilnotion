@@ -16,10 +16,16 @@ import ToggleContainer from './ToggleContainer';
 import DividerContainer from './DividerContainer';
 import ImageContainer from './ImageContainer';
 import CodeContainer from './CodeContainer';
+import LinkContainer from './LinkContainer';
 
 import BlockActionMenu from '../menus/BlockActionMenu';
 import BlockSelectMenu from '../menus/BlockSelectMenu';
 import BlockSlashMenu from '../menus/BlockSlashMenu';
+
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import RadixSelectMenu from '../menus/RadixSelectMenu';
 
 const SLASH = '/';
 
@@ -86,30 +92,24 @@ class Block extends React.Component {
     this.handleSelectMenu();
   }
 
-  plusHandleClick() {
+  plusHandleClick() { 
     // add a new block below current block
     const currentBlockId = this.props.block.id;
     const blockIds = this.props.blockIds;
-    this.props
-      .createBlock({
-        userId: this.props.currentUser.id,
-        pageId: this.props.block.pageId,
-        blockType: 'paragraph',
-        text: '',
-      })
-      .then((res) => {
-        for (let i = 0; i < blockIds.length; i++) {
-          if (blockIds[i] === currentBlockId) {
-            const newBlockIds = [
-              ...blockIds.slice(0, i + 1),
-              res.block.id,
-              ...blockIds.slice(i + 1),
-            ];
-            // Object.assign
-            this.props.updatePage({ id: this.props.block.pageId, blockIds: newBlockIds });
-          }
+    this.props.createBlock({
+      userId: this.props.currentUser.id,
+      pageId: this.props.block.pageId,
+      blockType: 'paragraph',
+      text: '',
+    }).then((res) => {
+      for (let i = 0; i < blockIds.length; i++) {
+        if (blockIds[i] === currentBlockId) {
+          const newBlockIds = [...blockIds.slice(0, i + 1), res.block.id, ...blockIds.slice(i + 1)];
+          // Object.assign
+          this.props.updatePage({id: this.props.block.pageId, blockIds: newBlockIds })
         }
-      });
+      }
+    })
   }
 
   dragHandleClick(e) {
@@ -182,7 +182,7 @@ class Block extends React.Component {
 
   handleBlockSelect(blockType, block) {
     let newBlock = Object.assign({}, block, { blockType: blockType });
-    this.props.updateBlock(newBlock);
+    this.props.updateBlock(newBlock)
     this.setState({ blockType: blockType }, () => this.closeSelectMenu());
   }
 
@@ -234,8 +234,9 @@ class Block extends React.Component {
       case 'code':
         blockBody = <CodeContainer block={this.props.block} />;
         break;
-      // link
-      // page
+      case 'link':
+        blockBody = <LinkContainer block={this.props.block} />;
+        break;
       default:
         blockBody = <ParagraphContainer block={this.props.block} />;
         break;
@@ -251,50 +252,51 @@ class Block extends React.Component {
             onMouseEnter={() => this.setState({ hover: true })}
             onMouseLeave={() => this.setState({ hover: false })}
           >
-            <PlusHandle
-              plusHandleClick={this.plusHandleClick}
-              hover={this.state.hover}
-              // custom style top distance
-            />
+            <PlusHandle plusHandleClick={this.plusHandleClick} hover={this.state.hover} />
 
-            <DragHandle
-              dragHandleClick={this.dragHandleClick}
-              dragHandleProps={provided.dragHandleProps}
-              hover={this.state.hover}
-              // custom style top distance
-            />
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger>
+                <DragHandle
+                  dragHandleClick={this.dragHandleClick}
+                  dragHandleProps={provided.dragHandleProps}
+                  hover={this.state.hover}
+                />
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content className="action-menu-wrapper">
+                <DropdownMenu.Item className="action-menu-row">
+                  <div className="action-icon">
+                    <FiRepeat />
+                  </div>
+                  <div className="action-name">Turn into</div>
+                  <div className="cascading-menu-indicator">
+                    <AiOutlineCaretRight />
+                  </div>
+                </DropdownMenu.Item>
 
-            {this.state.actionMenuOpen ? (
-              <BlockActionMenu
-                position={this.state.actionMenuPosition}
-                turnInto={() => this.openSelectMenu('ACTION_MENU')}
-                openSelectMenu={() => this.openSelectMenu('ACTION_MENU')}
-                closeSelectMenu={() => this.closeSelectMenu()}
-                deleteBlock={() => this.props.deleteBlock(this.props.block.id)}
-                // toggleMouseOverTurnInto={this.toggleMouseOverTurnInto}
-              />
-            ) : null}
+                <DropdownMenu.Root className="action-menu-row">
+                  <DropdownMenu.Trigger>
+                    <div className="action-icon">
+                      <FiRepeat />
+                    </div>
+                    <div className="action-name">Turn into</div>
+                    <div className="cascading-menu-indicator">
+                      <AiOutlineCaretRight />
+                    </div>
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Content>
+                    <RadixSelectMenu />
+                  </DropdownMenu.Content>
+                </DropdownMenu.Root>
 
-            {this.state.selectMenuOpen ? (
-              <BlockSelectMenu
-                position={this.state.selectMenuPosition}
-                closeSelectMenu={this.closeSelectMenu}
-                handleBlockSelect={this.handleBlockSelect}
-                block={this.props.block}
-                // toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}
-              />
-            ) : null}
-
-            {this.state.slashMenuOpen ? (
-              <BlockSlashMenu
-                position={this.state.selectMenuPosition}
-                closeSlashMenu={this.closeSlashMenu}
-                handleBlockSelect={this.handleBlockSelect}
-                block={this.props.block}
-                // toggleMouseOverSelectMenu={this.toggleMouseOverSelectMenu}
-              />
-            ) : null}
-
+                <DropdownMenu.Item className="action-menu-row">
+                  <div className="action-icon">
+                    <FiTrash2 />
+                  </div>
+                  <div className="action-name">Delete</div>
+                  <div className="action-command">Del</div>
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
             {blockBody}
           </div>
         )}

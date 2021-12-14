@@ -36,7 +36,7 @@ class Api::PagesController < ApplicationController
       num_blocks.times { @page.block_ids.pop }
       # Re-add all new block_ids
       page_params[:block_ids].each do |block_id|
-        p 'shoveling a block id of ' + block_id
+        # p 'shoveling a block id of ' + block_id
         @page.block_ids << block_id
       end
       if @page.save!

@@ -7,11 +7,10 @@ import equal from 'fast-deep-equal';
 import BlockContainer from '../blocks/BlockContainer';
 import { FiMenu, FiChevronsRight, FiPlus, FiMoreHorizontal } from 'react-icons/fi';
 import { AiOutlineMenu } from 'react-icons/ai';
-import emoji from 'node-emoji';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
 import coverData from './coverData';
-import MediaMenuContainer from '../menus/MediaMenuContainer';
+import emoji from 'node-emoji';
 
 class Page extends React.Component {
   constructor(props) {
@@ -54,6 +53,10 @@ class Page extends React.Component {
 
   componentDidMount() {
     // console.log('page.jsx componentDidMount()');
+    if (this.props.location.pathname.length <= 1) {
+      const firstPage = Object.values(this.props.pages)[0];
+      this.props.history.push(`/p/${firstPage.id}`);
+    }
 
     if (this.state.page && Object.keys(this.state.page).length > 0 && this.state.page.title) {
       this.changeFavicon(this.state.page.icon);
@@ -136,6 +139,9 @@ class Page extends React.Component {
 
   addRandomCover(arr) {
     const cover = arr[Math.floor(Math.random() * arr.length)];
+    // console.log(cover)
+    // set cover image src to imageUrl
+    // const imageUrl = cover.imageUrl;
     return cover;
   }
 
@@ -264,11 +270,13 @@ class Page extends React.Component {
                 </div>
               </div>
             )}
-            <div 
+            <div
               className="breadcrumb-wrapper"
               style={sidebarClosed ? { marginLeft: 0 } : { marginLeft: '16px' }}
             >
-              <div className="breadcrumb-icon">{emoji.get(page.icon.id)}</div>
+              <div className="breadcrumb-icon">
+                <Emoji set="apple" emoji={page.icon.id} size={16} />
+              </div>
               <div className="breadcrumb">{breadcrumbTitle}</div>
             </div>
           </div>
@@ -293,7 +301,9 @@ class Page extends React.Component {
           <div className="page-wrapper">
             <div className="page-controls">
               <div className="page-icon-wrapper" onClick={this.openEmojiPicker}>
-                <div className="page-icon">{emoji.get(page.icon.id)}</div>
+                <div className="page-icon">
+                  <Emoji set="apple" emoji={page.icon.id} size={64} />
+                </div>
               </div>
 
               {emojiPickerOpen && (

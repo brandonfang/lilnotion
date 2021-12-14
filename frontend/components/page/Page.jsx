@@ -81,8 +81,6 @@ class Page extends React.Component {
 
     if (!isNewPageIdValid) {
       const firstPage = Object.values(this.props.pages)[0];
-      // console.log('redirecting the first page.........')
-      // console.log({firstPage});
       this.props.history.push(`/p/${firstPage.id}`);
       return;
     }
@@ -90,8 +88,6 @@ class Page extends React.Component {
     
 
     if (locationChanged || pageChanged || blocksChanged) {
-      // console.log('componentDidUpdate() if statement');
-      // console.log(newPage);
       this.setState({
         pageId: newPageId,
         page: newPage,

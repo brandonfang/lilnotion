@@ -8,7 +8,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchBlock: (blockId) => dispatch(fetchBlock(blockId)),
   createBlock: (block) => dispatch(createBlock(block)),
   updateBlock: (block) => dispatch(updateBlock(block)),
-  deleteBlock: (blockId) => dispatch(deleteBlock(blockId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Paragraph);

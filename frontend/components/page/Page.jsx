@@ -63,7 +63,6 @@ class Page extends React.Component {
     // console.log('new Props:', this.props);
 
     const newPageId = this.props.location.pathname.slice(3);
-
     const newPage = this.props.pages[newPageId];
 
     const isNewPageIdValid = this.props.pages.hasOwnProperty(newPageId);
@@ -71,17 +70,13 @@ class Page extends React.Component {
     const pageChanged = !equal(newPage, prevState.page);
     const blocksChanged = !equal(this.props.blocks, prevProps.blocks);
     
-    if (locationChanged && !isNewPageIdValid) {
-      return;
-    }
+    if (locationChanged && !isNewPageIdValid) return;
 
     if (!isNewPageIdValid) {
       const firstPage = Object.values(this.props.pages)[0];
       this.props.history.push(`/p/${firstPage.id}`);
       return;
     }
-
-    
 
     if (locationChanged || pageChanged || blocksChanged) {
       this.setState({
@@ -95,6 +90,7 @@ class Page extends React.Component {
   }
 
   changeTitle(title) {
+    if (title === '') title = 'Untitled';
     document.title = title;
   }
 

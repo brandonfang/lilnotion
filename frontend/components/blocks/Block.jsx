@@ -16,6 +16,7 @@ import ToggleContainer from './ToggleContainer';
 import DividerContainer from './DividerContainer';
 import ImageContainer from './ImageContainer';
 import CodeContainer from './CodeContainer';
+import LinkContainer from './LinkContainer';
 
 import BlockActionMenu from '../menus/BlockActionMenu';
 import BlockSelectMenu from '../menus/BlockSelectMenu';
@@ -114,9 +115,7 @@ class Block extends React.Component {
   }
 
   deleteBlock() {
-    // console.log('Block.jsx deleteBlock()');
     const idToDelete = this.props.block.id;
-    // console.log(idToDelete);
     this.props.deleteBlock(idToDelete)
     const newBlockIds = this.props.blockIds.filter((id) => id !== idToDelete);
     this.props.updatePage({ id: this.props.block.pageId, blockIds: newBlockIds });
@@ -207,48 +206,48 @@ class Block extends React.Component {
     let blockBody;
     switch (blockType) {
       case 'h1':
-        blockBody = <Heading1Container block={this.props.block} />;
+        blockBody = <Heading1Container block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'h2':
-        blockBody = <Heading2Container block={this.props.block} />;
+        blockBody = <Heading2Container block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'h3':
-        blockBody = <Heading3Container block={this.props.block} />;
+        blockBody = <Heading3Container block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'paragraph':
-        blockBody = <ParagraphContainer block={this.props.block} />;
+        blockBody = <ParagraphContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'quote':
-        blockBody = <QuoteContainer block={this.props.block} />;
+        blockBody = <QuoteContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'callout':
-        blockBody = <CalloutContainer block={this.props.block} />;
+        blockBody = <CalloutContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'bulletedList':
-        blockBody = <BulletedListContainer block={this.props.block} />;
+        blockBody = <BulletedListContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'numberedList':
-        blockBody = <NumberedListContainer block={this.props.block} />;
+        blockBody = <NumberedListContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'todo':
-        blockBody = <ToDoContainer block={this.props.block} />;
+        blockBody = <ToDoContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'toggle':
-        blockBody = <ToggleContainer block={this.props.block} />;
+        blockBody = <ToggleContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'divider':
-        blockBody = <DividerContainer block={this.props.block} />;
+        blockBody = <DividerContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'image':
-        blockBody = <ImageContainer block={this.props.block} />;
+        blockBody = <ImageContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
       case 'code':
-        blockBody = <CodeContainer block={this.props.block} />;
+        blockBody = <CodeContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
-      // link
-      // page
+      case 'link':
+        blockBody = <LinkContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
       default:
-        blockBody = <ParagraphContainer block={this.props.block} />;
+        blockBody = <ParagraphContainer block={this.props.block} deleteBlock={this.deleteBlock} />;
         break;
     }
 

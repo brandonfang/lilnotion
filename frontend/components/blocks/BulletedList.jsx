@@ -24,7 +24,7 @@ class BulletedList extends React.Component {
   render() {
     return (
       <div className="block-body-bulleted-list">
-        <div className="bulleted-list-pseduo">
+        <div className="bulleted-list-pseudo">
         </div>
         <ContentEditable
           innerRef={this.contentEditable}

@@ -60,13 +60,13 @@ const BlockSelectMenu = ({
       thumbnail: window.numberedList,
       tooltip: window.numberedListTooltip,
     },
-    {
-      name: 'Toggle list',
-      description: 'Toggles can hide and show content inside.',
-      blockType: 'toggle',
-      thumbnail: window.toggle,
-      tooltip: window.toggleTooltip,
-    },
+    // {
+    //   name: 'Toggle list',
+    //   description: 'Toggles can hide and show content inside.',
+    //   blockType: 'toggle',
+    //   thumbnail: window.toggle,
+    //   tooltip: window.toggleTooltip,
+    // },
     {
       name: 'Code',
       description: 'Capture a code snippet.',

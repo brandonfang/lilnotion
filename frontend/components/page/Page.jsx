@@ -143,7 +143,7 @@ class Page extends React.Component {
       userId: this.props.currentUser.id,
       pageId: this.props.location.pathname.slice(3),
       blockType: 'paragraph',
-      text: 'b',
+      text: '',
     };
     this.props.createBlock(block).then((res) => {
       const newBlockIds = [...this.state.page.blockIds, res.block.id];

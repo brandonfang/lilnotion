@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable';
 import sanitizeHtml from 'sanitize-html';
-import { debounce } from '../../util/utils';
+import { debounce, pasteAsPlainText } from '../../util/utils';
 
 class Paragraph extends React.Component {
   constructor(props) {
@@ -29,6 +29,7 @@ class Paragraph extends React.Component {
     if (e.key === '/') {
       e.preventDefault();
       console.log('/ pressed');
+      // open slash command menu
     } else if (e.key === 'Enter') {
       e.preventDefault();
       console.log('break up this block');
@@ -39,8 +40,6 @@ class Paragraph extends React.Component {
   handleFocus(e) {}
 
   handleBlur(e) {}
-
-
 
   render() {
     // sanitizeHtml example: https://codesandbox.io/s/simple-rich-text-editor-in-react-forked-295gc

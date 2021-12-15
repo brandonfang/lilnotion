@@ -40,6 +40,7 @@
   flex-direction: row;
   align-items: center;
   cursor: pointer;
+  box-shadow: 0 1px 0 0 #d4d4d8;
 
   &:hover {
     background: $sidebar-hover;
@@ -230,7 +231,7 @@
   // padding-bottom: 20px;
 }
 
-.outliner-header {
+.sidebar-section-header {
   display: flex;
   align-items: center;
   min-height: 24px;
@@ -253,19 +254,31 @@
   display: block;
   position: relative;
   cursor: pointer;
-  // adjust padding-left for caret
+  // adjust padding-left if displaying caret
   padding: 3px 14px 3px 14px;
   font-size: 14px;
   font-weight: 500;
   color: $sidebar-page-block;
   text-decoration: none;
+  
+  a {
+    text-decoration: none;
+  }
+
+  &.active {
+    background: $sidebar-hover;
+
+    &:hover {
+    background: rgba(55, 53, 47, 0.16);;
+    }
+  }
 
   &:hover {
     background: $sidebar-hover;
   }
 
-  a {
-    text-decoration: none;
+  &:active {
+    background: rgba(55, 53, 47, 0.20);;
   }
 }
 
@@ -331,7 +344,7 @@
 
 .outliner-action-menu {
   z-index: 2;
-  width: 200px;
+  width: 160px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -388,16 +401,14 @@
 .sidebar-bottom {
   flex: 0 0 auto;
   width: 100%;
-  // z-index: 1;
 }
 
 .sidebar-credits {
-  padding: 16px 0;
-  box-shadow: 0 -1px 0 0 #d4d4d8;
+  padding: 14px 0;
 }
 
 .credit {
-  padding: 4px 14px;
+  padding: 3px 14px;
   display: flex;
   align-items: center;
   font-size: 14px;

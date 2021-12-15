@@ -7,7 +7,7 @@ class Divider extends React.Component {
 
   render() {
     return (
-      <div className="block-body">
+      <div className="block-body-divider">
         <div className="divider">
           <div className="divider-line"></div>
         </div>

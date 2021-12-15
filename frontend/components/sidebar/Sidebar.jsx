@@ -152,6 +152,7 @@ class Sidebar extends React.Component {
             </div>
 
             <div className="sidebar-credits">
+              <div className="sidebar-section-header">About</div>
               <div className="credit">
                 <FiGithub className="sidebar-icon" />
                 <a
@@ -209,7 +210,7 @@ class Sidebar extends React.Component {
 
           <div className="sidebar-middle">
             <div className="sidebar-scroller">
-              <div className="outliner-header">Pages</div>
+              <div className="sidebar-section-header">Pages</div>
               <div className="outliner">{pagesList}</div>
             </div>
           </div>

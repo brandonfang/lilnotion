@@ -28,6 +28,7 @@ class Block extends React.Component {
     super(props);
     this.plusHandleClick = this.plusHandleClick.bind(this);
     this.dragHandleClick = this.dragHandleClick.bind(this);
+    this.deleteBlock = this.deleteBlock.bind(this);
     this.calculateDragHandlePosition = this.calculateDragHandlePosition(this);
     this.calculateActionMenuPosition = this.calculateActionMenuPosition.bind(this);
     this.calculateSelectMenuPosition = this.calculateSelectMenuPosition.bind(this);
@@ -110,6 +111,16 @@ class Block extends React.Component {
           }
         }
       });
+  }
+
+  deleteBlock() {
+    // console.log('Block.jsx deleteBlock()');
+    const idToDelete = this.props.block.id;
+    // console.log(idToDelete);
+    this.props.deleteBlock(idToDelete)
+    const newBlockIds = this.props.blockIds.filter((id) => id !== idToDelete);
+    this.props.updatePage({ id: this.props.block.pageId, blockIds: newBlockIds });
+    return;
   }
 
   dragHandleClick(e) {
@@ -270,7 +281,7 @@ class Block extends React.Component {
                 turnInto={() => this.openSelectMenu('ACTION_MENU')}
                 openSelectMenu={() => this.openSelectMenu('ACTION_MENU')}
                 closeSelectMenu={() => this.closeSelectMenu()}
-                deleteBlock={() => this.props.deleteBlock(this.props.block.id)}
+                deleteBlock={this.deleteBlock}
                 // toggleMouseOverTurnInto={this.toggleMouseOverTurnInto}
               />
             ) : null}

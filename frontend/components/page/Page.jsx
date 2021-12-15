@@ -22,15 +22,12 @@ class Page extends React.Component {
     this.getFaviconUrl = this.getFaviconUrl.bind(this);
     this.addRandomCover = this.addRandomCover.bind(this);
     this.addBlock = this.addBlock.bind(this);
-    this.OnDragEnd = this.OnDragEnd.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
     this.selectEmoji = this.selectEmoji.bind(this);
     this.openEmojiPicker = this.openEmojiPicker.bind(this);
     this.closeEmojiPicker = this.closeEmojiPicker.bind(this);
-    this.calculateAddBlockMenuPosition = this.calculateAddBlockMenuPosition.bind(this);
-    this.openAddBlockMenu = this.openAddBlockMenu.bind(this);
-    this.closeAddBlockMenu = this.closeAddBlockMenu.bind(this);
 
     this.state = {
       pageId: props.location.pathname.slice(3),
@@ -46,10 +43,6 @@ class Page extends React.Component {
       sidebarClosed: props.sidebarClosed,
     };
   }
-
-  calculateAddBlockMenuPosition(e) {}
-  openAddBlockMenu(e) {}
-  closeAddBlockMenu(e) {}
 
   componentDidMount() {
     // console.log('page.jsx componentDidMount()');
@@ -150,19 +143,19 @@ class Page extends React.Component {
       userId: this.props.currentUser.id,
       pageId: this.props.location.pathname.slice(3),
       blockType: 'paragraph',
-      text: '',
+      text: 'b',
     };
     this.props.createBlock(block).then((res) => {
       const newBlockIds = [...this.state.page.blockIds, res.block.id];
       const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
       this.props.updatePage(newPage);
-    }).then(() => {
-      document.getElementById('block-input').focus(); 
-    });
+    })
   }
 
-  OnDragEnd(result) {
+  onDragEnd(result) {
     const { source, destination } = result;
+    console.log(result);
+
     // if dropped outside the area or no movement
     if (!destination || source.index === destination.index) return;
     // reorder blocks ids (splice >1 if implementing multi-drag)
@@ -170,9 +163,10 @@ class Page extends React.Component {
     const newBlockIds = [...blockIds];
     const removed = newBlockIds.splice(source.index, 1);
     newBlockIds.splice(destination.index, 0, ...removed);
+    // console.log(newBlockIds);
+
     const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
     this.setState({ page: newPage }, () => this.props.updatePage(newPage));
-    // console.log(newBlockIds);
   }
 
   handlePreview(e) {
@@ -365,7 +359,7 @@ class Page extends React.Component {
               </div>
             </div>
 
-            <DragDropContext onDragEnd={(result) => this.OnDragEnd(result)}>
+            <DragDropContext onDragEnd={(result) => this.onDragEnd(result)}>
               <div className="page-body">
                 <Droppable droppableId={pageId}>
                   {(provided) => (

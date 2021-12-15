@@ -1,7 +1,7 @@
 .page {
   flex-grow: 0;
   flex-shrink: 1;
-  display: inline flex;
+  display: inline-flex;
   flex-direction: column;
   width: 100%;
   height: 100vh;
@@ -24,6 +24,7 @@
   cursor: default;
   background: white;
   color: rgb(55, 53, 47);
+  // box-shadow: 0 1px 0 0 rgba(212, 212, 216, 0.6);
 }
 
 .topbar-menu-wrapper {
@@ -100,6 +101,7 @@
 .page-scroller {
   background: white;
   display: flex;
+  max-width: 100%;
   height: 100vh;
   flex-direction: column;
   // z-index: 1;
@@ -258,7 +260,7 @@ input[type='file'].cover-upload-input {
   cursor: pointer;
 
   &:hover {
-    background: rgba(190, 190, 190, 0.2);
+    background: rgba(190, 190, 190, 0.12);
   }
 }
 

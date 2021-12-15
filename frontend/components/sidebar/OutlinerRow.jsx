@@ -5,15 +5,17 @@ import { FiTrash2 } from 'react-icons/fi';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-const OutlinerRow = ({ page, goToPage, deletePage }) => {
+// const OutlinerRow = ({ page, goToPage, deletePage }) => {
+const OutlinerRow = ({ page, goToPage, deletePage, location }) => {
   const [hover, setHover] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
   const pageId = page.id;
-
+  const isActive = pageId === location.pathname.slice(3);
+  
   return (
     <div
-      className="outliner-row-wrapper"
+      className={isActive ? 'outliner-row-wrapper active' : 'outliner-row-wrapper'}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={() => goToPage(page.id, page.title)}
@@ -23,7 +25,7 @@ const OutlinerRow = ({ page, goToPage, deletePage }) => {
           {/* caret to show nested pages */}
           {/* <div className="outliner-caret-wrapper"></div> */}
           <div className="outliner-icon-wrapper">
-            <Emoji size={18} emoji={page.icon.id} className="outliner-icon" />
+            <Emoji size={18} emoji={page.icon.id} set="apple" className="outliner-icon" />
           </div>
 
           <div className="outliner-page-title">{pageTitle}</div>

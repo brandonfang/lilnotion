@@ -7,7 +7,7 @@
   // padding: 0.1px 0;
   padding: 0;
 
-  // increases the mouseover area of each block
+  // increase the mouseover area of each block
   &::before {
     content: '';
     position: absolute;
@@ -45,8 +45,8 @@
   color: rgb(195, 194, 192);
   transition: all 0.2s ease;
   z-index: 1;
-  display: none;
   cursor: grab;
+  display: none;
 
   &:hover {
     background: rgba(190, 190, 190, 0.3);
@@ -76,6 +76,7 @@
   color: rgb(195, 194, 192);
   transition: all 0.2s ease;
   z-index: 1;
+  cursor: grab;
   display: none;
 
   &:hover {
@@ -186,6 +187,10 @@
   padding-left: 14px;
   padding-right: 14px;
   width: 100%;
+
+  &.block-body {
+    margin-top: 0.5rem;  
+  }
 }
 
 .quote {
@@ -198,12 +203,44 @@
   padding-right: 2px;
 }
 
+.block-body-bulleted-list {
+  width: 100%;
+  display: flex;
+  padding: 3px 2px;
+}
+
+.bulleted-list-pseudo {
+  width: 24px;
+  height: 24px;
+  text-align: center;;
+}
+
+.bulleted-list-pseudo::before {
+  content: '•';
+}
+
 .bulleted-list {
-  list-style-type: circle;
+  min-width: 1px;
+}
+
+.block-body-numbered-list {
+  width: 100%;
+  display: flex;
+  padding: 3px 2px;
+}
+
+.numbered-list-pseudo {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+}
+
+.numbered-list-pseudo::before {
+  content: '1.';
 }
 
 .numbered-list {
-  list-style-type: decimal;
+  min-width: 1px;
 }
 
 .block-body-todo {
@@ -258,14 +295,46 @@
   font-size: 1rem;
 }
 
+.block-body-code {
+  width: 100%;
+  background: rgb(247, 246, 243);
+  margin: 4px 0;
+}
+
 .code {
-  background: rgb(195, 194, 192);
-  font-family: monospace;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+}
+
+.code-inner {
+  text-align: left;
+  font-size: 85%;
+  font-family: "SFMono-Regular", "Menlo", "Consolas", "PT Mono", "Liberation Mono", Courier, monospace;
+  line-height: 1.5;
+  tab-size: 2;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 34px 16px 32px 32px;
+  min-height: 1em;
+  color: rgb(55, 53, 47);
+  // white-space: pre;
+  white-space: pre-wrap;
+}
+
+.block-body-divider {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  padding-top: 3px;
+  margin-bottom: 3px;
 }
 
 .divider {
   width: 100%;
   height: 13px;
+  padding: 3px 0;
   display: flex;
   align-items: center;
 }
@@ -323,3 +392,8 @@ input[type='file'].image-upload-input {
   }
 }
 
+.callout {
+  width: 100%;
+  padding: 24px;
+  background: rgba(190, 190, 190, 0.3);
+}

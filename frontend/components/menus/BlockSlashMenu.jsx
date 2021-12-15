@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SlashMenuRow from './SlashMenuRow';
 
+
 const BlockSlashMenu = ({ position }) => {
   const { x, y } = position;
 
@@ -76,18 +77,25 @@ const BlockSlashMenu = ({ position }) => {
       tooltip: window.quoteTooltip,
     },
     {
-      name: 'Callout',
-      description: 'Make writing stand out.',
-      blockType: 'callout',
-      thumbnail: window.callout,
-      tooltip: window.calloutTooltip,
-    },
-    {
       name: 'Divider',
       description: 'Visually divide blocks.',
       blockType: 'divider',
       thumbnail: window.divider,
       tooltip: window.dividerTooltip,
+    },
+    {
+      name: 'Link',
+      description: 'Link to an existing page.',
+      blockType: 'link',
+      thumbnail: window.link,
+      tooltip: window.linkTooltip,
+    },
+    {
+      name: 'Callout',
+      description: 'Make writing stand out.',
+      blockType: 'callout',
+      thumbnail: window.callout,
+      tooltip: window.calloutTooltip,
     },
     {
       name: 'Image',

@@ -23,8 +23,8 @@ class NumberedList extends React.Component {
 
   render() {
     return (
-      <div className="block-body">
-        {/* add number styling */}
+      <div className="block-body-numbered-list">
+        <div className="numbered-list-pseudo"></div>
         <ContentEditable
           innerRef={this.contentEditable}
           html={this.state.html}

@@ -23,16 +23,18 @@ class Code extends React.Component {
 
   render() {
     return (
-      <div className="block-body">
-        {/* add code block styling */}
-        <ContentEditable
-          innerRef={this.contentEditable}
-          html={this.props.block.text}
-          onChange={debounce(this.handleChange, 500)}
-          tagName="div"
-          className="code"
-          placeholder=""
-        />
+      <div className="block-body-code">
+        <div className="code">
+          <ContentEditable
+            innerRef={this.contentEditable}
+            html={this.props.block.text}
+            onChange={debounce(this.handleChange, 500)}
+            tagName="div"
+            className="code-inner"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
+        </div>
       </div>
     );
   }

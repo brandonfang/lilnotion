@@ -14,6 +14,12 @@ export function debounce(func, wait, immediate) {
   };
 }
 
+export function pasteAsPlainText(e) {
+  e.preventDefault();
+  const text = (e.originalEvent || e).clipboardData.getData('text/plain');
+  document.execCommand('insertHTML', false, text);
+}
+
 export function getCaretPosition() {}
 
 export function setCaretToEnd() {}

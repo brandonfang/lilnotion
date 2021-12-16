@@ -128,10 +128,12 @@ class Page extends React.Component {
 
   addRandomCover(arr) {
     const cover = arr[Math.floor(Math.random() * arr.length)];
-    // console.log(cover)
+    console.log(cover)
     // set cover image src to imageUrl
-    // const imageUrl = cover.imageUrl;
-    return cover;
+    const imageUrl = cover.imageUrl;
+    const newPage = Object.assign(this.state.page, { galleryImageUrl: imageUrl });
+    this.setState({ page: newPage, galleryImageUrl: imageUrl }, () => this.props.updatePage(newPage));
+    // return cover;
   }
 
   addBlock() {
@@ -150,7 +152,7 @@ class Page extends React.Component {
 
   onDragEnd(result) {
     const { source, destination } = result;
-    console.log(result);
+    // console.log(result);
 
     // if dropped outside the area or no movement
     if (!destination || source.index === destination.index) return;
@@ -164,7 +166,7 @@ class Page extends React.Component {
     const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
     // this.setState({ page: newPage }, () => this.props.updatePage(newPage));
     this.setState({ page: newPage }, () => {
-      console.log('about to update page');
+      // console.log('about to update page');
       this.props.updatePage(newPage).then((res) => console.log(res));
     });
   }
@@ -249,9 +251,9 @@ class Page extends React.Component {
     const breadcrumbTitle = page.title.length > 0 ? page.title : 'Untitled';
     const pageHasGalleryCover = page.galleryImageUrl.length > 0;
     const pageHasUploadedCover = page.uploadedImageUrl.length > 0;
-    const preview = photoUrl ? (
-      <img className="page-cover-preview" src={photoUrl} />
-    ) : null;
+    // const preview = photoUrl ? (
+    //   <img className="page-cover-preview" src={photoUrl} />
+    // ) : null;
 
 
     return (
@@ -286,17 +288,18 @@ class Page extends React.Component {
         </div>
 
         <div className="page-scroller">
-          {/* <div className="page-header-wrapper">
-            <div className="page-header">
-              {pageHasGalleryCover ? (
+          {pageHasGalleryCover ? (
+            <div className="page-header-wrapper">
+              <div className="page-header">
+                {/* <img src={this.state.photoUrl} className="page-cover" /> */}
                 <img src={page.galleryImageUrl} className="page-cover" />
-              ) : null}
+              </div>
             </div>
-          </div> */}
+          ) : null}
 
           <div className="page-wrapper">
             <div className="page-controls">
-              <div className="page-icon-wrapper" onClick={this.openEmojiPicker}>
+              <div className="page-icon-wrapper with-cover" onClick={this.openEmojiPicker}>
                 <div className="page-icon">
                   <Emoji set="apple" emoji={page.icon.id} size={64} />
                 </div>
@@ -323,7 +326,7 @@ class Page extends React.Component {
                 />
               )}
 
-              {/* <label 
+              <label 
                 className="cover-upload-label" 
                 onClick={() => this.addRandomCover(coverData)}
               >
@@ -335,15 +338,15 @@ class Page extends React.Component {
                   ></path>
                 </svg>
                 Add cover
-                <input
+                {/* <input
                   type="file"
                   id=""
                   className="cover-upload-input"
                   accept="image/*"
                   onChange={this.handlePreview}
                   hidden
-                />
-              </label> */}
+                /> */}
+              </label>
             </div>
 
             <div className="page-title-wrapper">

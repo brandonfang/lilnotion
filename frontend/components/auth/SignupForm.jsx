@@ -50,7 +50,7 @@ class SignupForm extends React.Component {
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'paragraph', text: ''});
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'divider', text: ''});
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'quote', text: 'The hope is that, in not too many years, human brains and computing machines will be coupled together very tightly, and that the resulting partnership will think as no human brain has ever thought and process data in a way not approached by the information-handling machines we know today. (J. C. R. Licklider)'});
-    
+    // this.props.history.push();
   }
 
   loginDemo(e) {

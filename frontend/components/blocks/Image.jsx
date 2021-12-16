@@ -4,35 +4,15 @@ import { BiImage } from 'react-icons/bi';
 class Image extends React.Component {
   constructor(props) {
     super(props);
-    this.handlePreview = this.handlePreview.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
     this.state = {
-      photoFile: null,
       photoUrl: null,
       // imageCaption
     };
   }
 
-  handlePreview(e) {
-    e.preventDefault();
+  handleUpload(e) { 
     const file = e.target.files[0];
-    const fileReader = new FileReader();
-    if (file) {
-      fileReader.readAsDataURL(file);
-      fileReader.onloadend = () => {
-        this.setState(
-          {
-            photoFile: file,
-            photoUrl: fileReader.result,
-          },
-          () => this.handleUpload()
-        );
-      };
-    }
-  }
-
-  handleUpload() {
-    const file = this.state.photoFile;
     if (file) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
@@ -48,7 +28,10 @@ class Image extends React.Component {
           contentType: false,
           processData: false,
         }).then(
-          (res) => console.log('res: ', res),
+          (res) => {
+            console.log('res: ', res)
+            this.props.updateBlock(res);
+          },
           (err) => console.log('error: ', err)
         );
       };
@@ -57,10 +40,6 @@ class Image extends React.Component {
 
   render() {
     const { block } = this.props;
-
-    const preview = this.state.photoUrl ? (
-      <img className="block-image-preview" src={this.state.photoUrl} alt="" />
-    ) : null;
 
     const imageBody =
       (block.imageUrl && block.imageUrl.length > 0) ? (
@@ -74,11 +53,10 @@ class Image extends React.Component {
               type="file"
               className="image-upload-input"
               accept="image/*"
-              onChange={this.handlePreview}
+              onChange={this.handleUpload}
               hidden
             />
           </label>
-          {preview}
         </>
       );
 

@@ -55,6 +55,6 @@ class Api::BlocksController < ApplicationController
   private
 
   def block_params
-    params.require(:block).permit(:id, :user_id, :page_id, :block_type, :text, :image_url, :image_caption, :checked, :expanded, :toggle_inner_text, :link_page_id, :format, :icon, :order_index, :created_at, :updated_at)
+    params.require(:block).permit(:id, :user_id, :page_id, :block_type, :text, :image_url, :image_caption, :checked, :expanded, :toggle_inner_text, :link_page_id,:order_index, :created_at, :updated_at, :format => [:color, :background_color], :icon => [:id, :name, :colons, :text, :unified, :skin, :native, :custom, :image_url, :short_names => [], :emoticons => [], ])
   end
 end

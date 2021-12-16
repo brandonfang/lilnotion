@@ -46,10 +46,11 @@ class SignupForm extends React.Component {
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'todo', text: 'Drag the ⋮⋮ button on the left of this to-do to reorder'});
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'todo', text: 'Click the ⋮⋮ button and delete something'});
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'todo', text: 'Click the ⋮⋮ button and change this block into a Heading 2'});
-    this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'todo', text: 'Type '/' for slash commands'});
-    this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'paragraph', text: 'The hope is that, in not too many years, human brains and computing machines will be coupled together very tightly, and that the resulting partnership will think as no human brain has ever thought and process data in a way not approached by the information-handling machines we know today. (J. C. R. Licklider)'});
+    this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'todo', text: "Type '/' for slash commands"});
+    this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'paragraph', text: ''});
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'divider', text: ''});
     this.props.createBlock({ userId: currentUser.id, pageId: page.id, blockType: 'quote', text: 'The hope is that, in not too many years, human brains and computing machines will be coupled together very tightly, and that the resulting partnership will think as no human brain has ever thought and process data in a way not approached by the information-handling machines we know today. (J. C. R. Licklider)'});
+    
   }
 
   loginDemo(e) {

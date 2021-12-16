@@ -28,14 +28,16 @@ class Paragraph extends React.Component {
   handleKeyDown(e) {
     if (e.key === '/') {
       e.preventDefault();
-      console.log('/ pressed');
+      // console.log('/ pressed');
       // open slash command menu
+
     } else if (e.key === 'Backspace' && !this.state.html) {
       this.props.deleteBlock(this.props.block.id);
     } else if (e.key === 'Enter') {
       e.preventDefault();
       // console.log('break up this block');
       // this.contentEditable.current.blur();
+      
     }
   }
 

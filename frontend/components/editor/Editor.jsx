@@ -22,7 +22,7 @@ class Editor extends React.Component {
 
   render() {
     const { pages, blocks } = this.props;
-    if (pages && blocks && Object.keys(pages).length > 0 && Object.keys(blocks).length > 0) {
+    if (pages && blocks && Object.keys(pages).length > 0 && Object.keys(blocks).length > 0 && Object.values(blocks)[0].id) {
       return (
         <div id="editor">
           <SidebarContainer

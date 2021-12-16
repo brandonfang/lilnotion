@@ -162,7 +162,11 @@ class Page extends React.Component {
     // console.log(newBlockIds);
 
     const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-    this.setState({ page: newPage }, () => this.props.updatePage(newPage));
+    // this.setState({ page: newPage }, () => this.props.updatePage(newPage));
+    this.setState({ page: newPage }, () => {
+      console.log('about to update page');
+      this.props.updatePage(newPage).then((res) => console.log(res));
+    });
   }
 
   handlePreview(e) {
@@ -205,7 +209,9 @@ class Page extends React.Component {
     }
   }
 
-  getPagePadding(width) {}
+  getPagePadding(width) {
+
+  }
 
   selectEmoji(emoji) {
     this.closeEmojiPicker();

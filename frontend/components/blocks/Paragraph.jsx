@@ -2,6 +2,7 @@ import React from 'react';
 import ContentEditable from 'react-contenteditable';
 import sanitizeHtml from 'sanitize-html';
 import { debounce, pasteAsPlainText } from '../../util/utils';
+import BlockSlashMenu from '../menus/BlockSlashMenu';
 
 class Paragraph extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Paragraph extends React.Component {
       e.preventDefault();
       // console.log('break up this block');
       // this.contentEditable.current.blur();
-      
+
     }
   }
 
@@ -64,7 +65,8 @@ class Paragraph extends React.Component {
           // onBlur={}
           tagName="p"
           className="paragraph"
-          placeholder="Type '/' for commands"
+          // placeholder="Type '/' for commands"
+          placeholder="Click the ⋮⋮ button for commands"
         />
       </div>
     );

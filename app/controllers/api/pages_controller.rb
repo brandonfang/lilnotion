@@ -26,6 +26,7 @@ class Api::PagesController < ApplicationController
   
   def update
     @page = Page.find_by(id: params[:id])
+    debugger
      # Check to see if block_ids are changing
     if @page.block_ids != page_params[:block_ids]
       p "block_ids conditional"
@@ -36,16 +37,21 @@ class Api::PagesController < ApplicationController
       # Pop all previous block_ids from @page
       num_blocks.times { @page.block_ids.pop }
       # Re-add all new block_ids
+      debugger
       page_params[:block_ids].each do |block_id|
         p 'shoveling a block id of ' + block_id
         @page.block_ids << block_id
+        debugger
       end
-      p "a", @page
+      # p "a", @page.block_ids
+      debugger
       if @page.save!
         # p 'controller updated and saved page'
-        p "b", @page
+        # p "b", @page.block_ids
+        debugger
         render :show
-        p "c", @page.block_ids
+        debugger
+        # p "c", @page.block_ids
       else 
         render json: @page.errors.full_messages, status: 422
       end
@@ -56,6 +62,7 @@ class Api::PagesController < ApplicationController
         render json: @page.errors.full_messages, status: 422
       end
     end
+    
     # if @page.update(page_params)
     #   render :show
     # else

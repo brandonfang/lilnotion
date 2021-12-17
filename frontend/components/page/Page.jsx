@@ -21,6 +21,7 @@ class Page extends React.Component {
     this.changeTitle = this.changeTitle.bind(this);
     this.getFaviconUrl = this.getFaviconUrl.bind(this);
     this.addRandomCover = this.addRandomCover.bind(this);
+    this.removeCover = this.removeCover.bind(this);
     this.addBlock = this.addBlock.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
@@ -69,7 +70,7 @@ class Page extends React.Component {
     const locationChanged = !equal(this.props.location, prevProps.location);
     const pageChanged = !equal(newPage, prevState.page);
     const blocksChanged = !equal(this.props.blocks, prevProps.blocks);
-    
+
     if (locationChanged && !isNewPageIdValid) return;
 
     if (!isNewPageIdValid) {
@@ -127,13 +128,25 @@ class Page extends React.Component {
   }
 
   addRandomCover(arr) {
+    document.getElementById('page-icon-wrapper').classList.add('with-cover');
     const cover = arr[Math.floor(Math.random() * arr.length)];
-    console.log(cover)
-    // set cover image src to imageUrl
-    const imageUrl = cover.imageUrl;
-    const newPage = Object.assign(this.state.page, { galleryImageUrl: imageUrl });
-    this.setState({ page: newPage, galleryImageUrl: imageUrl }, () => this.props.updatePage(newPage));
-    // return cover;
+    const coverUrl = cover.imageUrl;
+    const newPage = Object.assign(this.state.page, {
+      galleryImageUrl: coverUrl,
+      uploadedImageUrl: '',
+    });
+    this.setState({ page: newPage, photoUrl: coverUrl }, () => this.props.updatePage(newPage));
+  }
+
+  removeCover() {
+    document.getElementById('page-icon-wrapper').classList.remove('with-cover');
+    const newPage = Object.assign(this.state.page, {
+      galleryImageUrl: '',
+      uploadedImageUrl: '',
+    });
+    this.props.updatePage(newPage).then(() => {
+      this.setState({ page: newPage, photoUrl: null });
+    });
   }
 
   addBlock() {
@@ -147,7 +160,7 @@ class Page extends React.Component {
       const newBlockIds = [...this.state.page.blockIds, res.block.id];
       const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
       this.props.updatePage(newPage);
-    })
+    });
   }
 
   onDragEnd(result) {
@@ -211,9 +224,7 @@ class Page extends React.Component {
     }
   }
 
-  getPagePadding(width) {
-
-  }
+  getPagePadding(width) {}
 
   selectEmoji(emoji) {
     this.closeEmojiPicker();
@@ -225,6 +236,7 @@ class Page extends React.Component {
   openEmojiPicker() {
     this.setState({ emojiPickerOpen: true });
     // add event listener to close emoji picker on click outside
+    // wrap emoji picker inside dropdown.menu component
   }
 
   closeEmojiPicker() {
@@ -242,19 +254,22 @@ class Page extends React.Component {
     if (!page) return null;
     if (!page.blockIds) return null;
 
+    const breadcrumbTitle = page.title.length > 0 ? page.title : 'Untitled';
+
     const orderedBlocks = [];
     const blockIds = page.blockIds;
     for (let i = 0; i < blockIds.length; i++) {
       orderedBlocks.push(blocks[blockIds[i]]);
     }
-    
-    const breadcrumbTitle = page.title.length > 0 ? page.title : 'Untitled';
-    const pageHasGalleryCover = page.galleryImageUrl.length > 0;
-    const pageHasUploadedCover = page.uploadedImageUrl.length > 0;
-    // const preview = photoUrl ? (
-    //   <img className="page-cover-preview" src={photoUrl} />
-    // ) : null;
 
+    let coverPhoto;
+    if (page.uploadedImageUrl) {
+      coverPhoto = page.uploadedImageUrl;
+    } else if (page.galleryImageUrl) {
+      coverPhoto = page.galleryImageUrl;
+    } else if (this.state.photoUrl === null) {
+      coverPhoto = null;
+    }
 
     return (
       <div className="page">
@@ -288,18 +303,25 @@ class Page extends React.Component {
         </div>
 
         <div className="page-scroller">
-          {pageHasGalleryCover ? (
+          {coverPhoto ? (
             <div className="page-header-wrapper">
               <div className="page-header">
-                {/* <img src={this.state.photoUrl} className="page-cover" /> */}
-                <img src={page.galleryImageUrl} className="page-cover" />
+                <img src={coverPhoto} className="page-cover" />
+                <div className="cover-controls">
+                  <div className="change-cover"></div>
+                  <div className="remove-cover"></div>
+                </div>
               </div>
             </div>
           ) : null}
 
           <div className="page-wrapper">
             <div className="page-controls">
-              <div className="page-icon-wrapper with-cover" onClick={this.openEmojiPicker}>
+              <div
+                id="page-icon-wrapper"
+                className={coverPhoto ? 'with-cover' : null}
+                onClick={this.openEmojiPicker}
+              >
                 <div className="page-icon">
                   <Emoji set="apple" emoji={page.icon.id} size={64} />
                 </div>
@@ -326,10 +348,7 @@ class Page extends React.Component {
                 />
               )}
 
-              <label 
-                className="cover-upload-label" 
-                onClick={() => this.addRandomCover(coverData)}
-              >
+              <label className="cover-upload-label" onClick={() => this.addRandomCover(coverData)}>
                 <svg viewBox="0 0 14 14" className="cover-upload-icon">
                   <path
                     fillRule="evenodd"
@@ -346,6 +365,16 @@ class Page extends React.Component {
                   onChange={this.handlePreview}
                   hidden
                 /> */}
+              </label>
+              <label className="cover-upload-label" onClick={() => this.removeCover()}>
+                <svg viewBox="0 0 14 14" className="cover-upload-icon">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M2 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 12h10L8.5 5.5l-2 4-2-1.5L2 12z"
+                  ></path>
+                </svg>
+                Remove cover
               </label>
             </div>
 

@@ -122,7 +122,7 @@ p4 = Page.create!(
     "native": "✏️"
   }
 )
-# p4.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-0.jpeg'), filename: 'blog-post-0.jpeg')
+# p4.cover.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-0.jpg'), filename: 'blog-post-0.jpg')
 
 # ADD P1 BLOCKS
 
@@ -959,7 +959,7 @@ b118 = Block.create!({
   block_type: 'image',
   image_caption: 'In the Getty Center auditorium for the recent “There Will Be Food“ panel.'
 })
-b118.photo.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-1.jpeg'), filename: 'blog-post-1.jpeg')
+b118.photo.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-1.jpg'), filename: 'blog-post-1.jpg')
 
 b119 = Block.create!({
   user_id: u1.id,
@@ -1002,7 +1002,7 @@ b124 = Block.create!({
   block_type: 'image',
   image_caption: 'Tamale with pepitas at Taco María in Costa Mesa'
 })
-b124.photo.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-2.jpeg'), filename: 'blog-post-2.jpeg')
+b124.photo.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-2.jpg'), filename: 'blog-post-2.jpg')
 
 b125 = Block.create!({
   user_id: u1.id,
@@ -1045,7 +1045,7 @@ b130 = Block.create!({
   block_type: 'image',
   image_caption: 'Dishes at Broken Spanish, in Downtown LA.'
 })
-b130.photo.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-3.jpeg'), filename: 'blog-post-3.jpeg')
+b130.photo.attach(io: URI.open('https://lilnotion-prod.s3.us-west-1.amazonaws.com/blog-post-3.jpg'), filename: 'blog-post-3.jpg')
 
 b131 = Block.create!({
   user_id: u1.id,

@@ -57,7 +57,7 @@ const coverData = [
   },
   {
     id: 'a-8',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/a-8.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/a-8.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -65,7 +65,7 @@ const coverData = [
   },
   {
     id: 'a-9',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/a-9.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/a-9.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -90,7 +90,7 @@ const coverData = [
 
   {
     id: '',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -98,7 +98,7 @@ const coverData = [
   },
   {
     id: 'b-1',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-1.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-1.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -106,7 +106,7 @@ const coverData = [
   },
   {
     id: 'b-2',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-2.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-2.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -114,7 +114,7 @@ const coverData = [
   },
   {
     id: 'b-3',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-3.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-3.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -122,7 +122,7 @@ const coverData = [
   },
   {
     id: 'b-4',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-4.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-4.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -130,7 +130,7 @@ const coverData = [
   },
   {
     id: 'b-5',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-5.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-5.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -138,7 +138,7 @@ const coverData = [
   },
   {
     id: 'b-6',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-6.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-6.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -146,7 +146,7 @@ const coverData = [
   },
   {
     id: 'b-7',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-7.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-7.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -154,7 +154,7 @@ const coverData = [
   },
   {
     id: 'b-8',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-8.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-8.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -162,7 +162,7 @@ const coverData = [
   },
   {
     id: 'b-9',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-9.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-9.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -170,7 +170,7 @@ const coverData = [
   },
   {
     id: 'b-10',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-10.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-10.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -178,7 +178,7 @@ const coverData = [
   },
   {
     id: 'b-11',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-11.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-11.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -186,7 +186,7 @@ const coverData = [
   },
   {
     id: 'b-12',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-12.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-12.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -194,7 +194,7 @@ const coverData = [
   },
   {
     id: 'b-13',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-13.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-13.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -202,7 +202,7 @@ const coverData = [
   },
   {
     id: 'b-14',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-14.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-14.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -210,7 +210,7 @@ const coverData = [
   },
   {
     id: 'b-15',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-15.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-15.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -218,7 +218,7 @@ const coverData = [
   },
   {
     id: 'b-16',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-16.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-16.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -226,7 +226,7 @@ const coverData = [
   },
   {
     id: 'b-17',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-17.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-17.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -234,7 +234,7 @@ const coverData = [
   },
   {
     id: 'b-18',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-18.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-18.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -242,7 +242,7 @@ const coverData = [
   },
   {
     id: 'b-19',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-19.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-19.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -250,7 +250,7 @@ const coverData = [
   },
   {
     id: 'b-20',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-20.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-20.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -258,7 +258,7 @@ const coverData = [
   },
   {
     id: 'b-21',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-21.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-21.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -266,7 +266,7 @@ const coverData = [
   },
   {
     id: 'b-22',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-22.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/b-22.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -274,7 +274,7 @@ const coverData = [
   },
   {
     id: 'c-1',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-1.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-1.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -282,7 +282,7 @@ const coverData = [
   },
   {
     id: 'c-2',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-2.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-2.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -290,7 +290,7 @@ const coverData = [
   },
   {
     id: 'c-3',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-3.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-3.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -298,7 +298,7 @@ const coverData = [
   },
   {
     id: 'c-4',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-4.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/c-4.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -306,7 +306,7 @@ const coverData = [
   },
   {
     id: 'd-1',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-1.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-1.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -314,7 +314,7 @@ const coverData = [
   },
   {
     id: 'd-2',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-2.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-2.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -322,7 +322,7 @@ const coverData = [
   },
   {
     id: 'd-3',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-3.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-3.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -330,7 +330,7 @@ const coverData = [
   },
   {
     id: 'd-4',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-4.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-4.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -338,7 +338,7 @@ const coverData = [
   },
   {
     id: 'd-5',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-5.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-5.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -346,7 +346,7 @@ const coverData = [
   },
   {
     id: 'd-6',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-6.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-6.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -354,7 +354,7 @@ const coverData = [
   },
   {
     id: 'd-7',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-7.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-7.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -362,7 +362,7 @@ const coverData = [
   },
   {
     id: 'd-8',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-8.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-8.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -370,7 +370,7 @@ const coverData = [
   },
   {
     id: 'd-9',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-9.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-9.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -378,7 +378,7 @@ const coverData = [
   },
   {
     id: 'd-10',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-10.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-10.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -386,7 +386,7 @@ const coverData = [
   },
   {
     id: 'd-11',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-11.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/d-11.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -394,7 +394,7 @@ const coverData = [
   },
   {
     id: 'e-1',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-1.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-1.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -402,7 +402,7 @@ const coverData = [
   },
   {
     id: 'e-2',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-2.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-2.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -410,7 +410,7 @@ const coverData = [
   },
   {
     id: 'e-3',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-3.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-3.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -418,7 +418,7 @@ const coverData = [
   },
   {
     id: 'e-4',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-4.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-4.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -426,7 +426,7 @@ const coverData = [
   },
   {
     id: 'e-5',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-5.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-5.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -434,7 +434,7 @@ const coverData = [
   },
   {
     id: 'e-6',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-6.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-6.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -442,7 +442,7 @@ const coverData = [
   },
   {
     id: 'e-7',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-7.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-7.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -450,7 +450,7 @@ const coverData = [
   },
   {
     id: 'e-8',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-8.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-8.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -458,7 +458,7 @@ const coverData = [
   },
   {
     id: 'e-9',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-9.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-9.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -466,7 +466,7 @@ const coverData = [
   },
   {
     id: 'e-10',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-10.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-10.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -474,7 +474,7 @@ const coverData = [
   },
   {
     id: 'e-11',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-11.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-11.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -482,7 +482,7 @@ const coverData = [
   },
   {
     id: 'e-12',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-12.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-12.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -490,7 +490,7 @@ const coverData = [
   },
   {
     id: 'e-13',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-13.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-13.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -498,7 +498,7 @@ const coverData = [
   },
   {
     id: 'e-14',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-14.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-14.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -506,7 +506,7 @@ const coverData = [
   },
   {
     id: 'e-15',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-15.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-15.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -514,7 +514,7 @@ const coverData = [
   },
   {
     id: 'e-16',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-16.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-16.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -522,7 +522,7 @@ const coverData = [
   },
   {
     id: 'e-17',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-17.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-17.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -530,7 +530,7 @@ const coverData = [
   },
   {
     id: 'e-18',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-18.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/e-18.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -538,7 +538,7 @@ const coverData = [
   },
   {
     id: 'f-1',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-1.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-1.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -546,7 +546,7 @@ const coverData = [
   },
   {
     id: 'f-2',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-2.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-2.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -554,7 +554,7 @@ const coverData = [
   },
   {
     id: 'f-3',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-3.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-3.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -562,7 +562,7 @@ const coverData = [
   },
   {
     id: 'f-4',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-4.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-4.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -570,7 +570,7 @@ const coverData = [
   },
   {
     id: 'f-5',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-5.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-5.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -578,7 +578,7 @@ const coverData = [
   },
   {
     id: 'f-6',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-6.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-6.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -586,7 +586,7 @@ const coverData = [
   },
   {
     id: 'f-7',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-7.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-7.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -594,7 +594,7 @@ const coverData = [
   },
   {
     id: 'f-8',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-8.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-8.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -602,7 +602,7 @@ const coverData = [
   },
   {
     id: 'f-9',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-9.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-9.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -610,7 +610,7 @@ const coverData = [
   },
   {
     id: 'f-10',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-10.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-10.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -618,7 +618,7 @@ const coverData = [
   },
   {
     id: 'f-11',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-11.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-11.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -626,7 +626,7 @@ const coverData = [
   },
   {
     id: 'f-12',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-12.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-12.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -634,7 +634,7 @@ const coverData = [
   },
   {
     id: 'f-13',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-13.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-13.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -642,7 +642,7 @@ const coverData = [
   },
   {
     id: 'f-14',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-14.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-14.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -650,7 +650,7 @@ const coverData = [
   },
   {
     id: 'f-15',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-15.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-15.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -658,7 +658,7 @@ const coverData = [
   },
   {
     id: 'f-16',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-16.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-16.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -666,7 +666,7 @@ const coverData = [
   },
   {
     id: 'f-17',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-17.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-17.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -674,7 +674,7 @@ const coverData = [
   },
   {
     id: 'f-18',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-18.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-18.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -682,7 +682,7 @@ const coverData = [
   },
   {
     id: 'f-19',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-19.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-19.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -690,7 +690,7 @@ const coverData = [
   },
   {
     id: 'f-20',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-20.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-20.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -698,7 +698,7 @@ const coverData = [
   },
   {
     id: 'f-21',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-21.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-21.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -706,7 +706,7 @@ const coverData = [
   },
   {
     id: 'f-22',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-22.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-22.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -714,7 +714,7 @@ const coverData = [
   },
   {
     id: 'f-23',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-23.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-23.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -722,7 +722,7 @@ const coverData = [
   },
   {
     id: 'f-24',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-24.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-24.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -730,7 +730,7 @@ const coverData = [
   },
   {
     id: 'f-25',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-25.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-25.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -738,7 +738,7 @@ const coverData = [
   },
   {
     id: 'f-26',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-26.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-26.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -746,7 +746,7 @@ const coverData = [
   },
   {
     id: 'f-27',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-27.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-27.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -754,7 +754,7 @@ const coverData = [
   },
   {
     id: 'f-28',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-28.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-28.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -762,7 +762,7 @@ const coverData = [
   },
   {
     id: 'f-29',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-29.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-29.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',
@@ -770,7 +770,7 @@ const coverData = [
   },
   {
     id: 'f-30',
-    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-30.jpeg',
+    imageUrl: 'https://lilnotion-prod.s3.us-west-1.amazonaws.com/f-30.jpg',
     title: '',
     subtitle: '',
     objectPositionX: '50%',

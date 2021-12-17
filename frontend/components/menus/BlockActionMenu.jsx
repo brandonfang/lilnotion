@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FiRepeat, FiTrash2 } from 'react-icons/fi';
-import { AiOutlineCaretRight } from 'react-icons/ai';
+import { FiRepeat, FiTrash2,  } from 'react-icons/fi';
+import { AiOutlineCaretRight, AiOutlineFormatPainter } from 'react-icons/ai';
+import { BiPaintRoll } from 'react-icons/bi';
 
 const BlockActionMenu = ({
   position,
@@ -48,6 +49,20 @@ const BlockActionMenu = ({
           </div>
           <div className="action-name">Delete</div>
           <div className="action-command">Del</div>
+        </div>
+
+        <div className="action-menu-row" 
+          onMouseEnter={openSelectMenu} 
+          role="button" 
+          tabIndex="0"
+        >
+          <div className="action-icon">
+            <BiPaintRoll />
+          </div>
+          <div className="action-name">Color</div>
+          <div className="cascading-menu-indicator">
+            <AiOutlineCaretRight />
+          </div>
         </div>
       </div>
     </div>

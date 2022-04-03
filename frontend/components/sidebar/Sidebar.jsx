@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { withRouter, useParams, useHistory } from 'react-router-dom'
 import {
   FiChevronsRight,
@@ -100,17 +100,26 @@ function Sidebar({
                   <div className="switcher-icon">{currentUser.firstName[0].toUpperCase()}</div>
                 </div>
               </div>
-              <div className="switcher-label-wrapper">
-                <div className="switcher-label">
-                  <div>{currentUser.firstName}'s lilNotion</div>
-                </div>
-                <div className="sidebar-toggle" onClick={toggleSidebar}>
-                  {/* {toggleIcon} */}
-                  {/* <div className={tooltipClassName}>
-                    <div className="toggle-tooltip-text">{tooltipText}</div>
-                  </div> */}
-                </div>
-              </div>
+              {/* <Tooltip.Provider
+                className="switcher-label-wrapper"
+                delayDuration={100}
+                skipDelayDuration={100}
+              > */}
+                <Tooltip.Root>
+                  <div className="switcher-label">
+                    <div>{currentUser.firstName}'s lilNotion</div>
+                  </div>
+
+                  <Tooltip.Trigger className="sidebar-toggle" onClick={toggleSidebar}>
+                    <FiChevronsLeft />
+                  </Tooltip.Trigger>
+                  <Tooltip.Content>
+                    <div className="toggle-tooltip visible right">
+                      <div className="toggle-tooltip-text">Close sidebar</div>
+                    </div>
+                  </Tooltip.Content>
+                </Tooltip.Root>
+              {/* </Tooltip.Provider> */}
             </div>
           </div>
 
@@ -196,12 +205,3 @@ function Sidebar({
 }
 
 export default withRouter(Sidebar)
-
-// const toggleIcon = isSidebarOpen ? <FiChevronsLeft /> : <FiChevronsRight />
-// const tooltipText = isSidebarOpen ? 'Close sidebar' : 'Lock sidebar open'
-// let tooltipClassName
-// if (isSidebarOpen) {
-//   tooltipClassName = toggleHover ? 'toggle-tooltip visible right' : 'toggle-tooltip right'
-// } else {
-//   tooltipClassName = toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip'
-// }

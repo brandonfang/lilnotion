@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Emoji } from 'emoji-mart';
-import { FiTrash2 } from 'react-icons/fi';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import React, { useState } from 'react'
+import { withRouter, useParams } from 'react-router-dom'
+import { Emoji } from 'emoji-mart'
+import { FiTrash2 } from 'react-icons/fi'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as Tooltip from '@radix-ui/react-tooltip'
 
-// const OutlinerRow = ({ page, goToPage, deletePage }) => {
-const OutlinerRow = ({ page, goToPage, handleDeletePage, location }) => {
-  const [hover, setHover] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
-  const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
-  const pageId = page.id;
-  const isActive = pageId === location.pathname.slice(3);
-  
+function OutlinerRow({ page, goToPage, handleDeletePage }) {
+  const [hover, setHover] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
+  const { id } = useParams()
+  const pageId = page.id
+  const isActive = pageId === id
+  const pageTitle = page.title.length > 0 ? page.title : 'Untitled'
+
   return (
     <div
       className={isActive ? 'outliner-row-wrapper active' : 'outliner-row-wrapper'}
@@ -60,7 +60,7 @@ const OutlinerRow = ({ page, goToPage, handleDeletePage, location }) => {
         </div>
       </DropdownMenu.Root>
     </div>
-  );
-};
+  )
+}
 
-export default withRouter(OutlinerRow);
+export default withRouter(OutlinerRow)

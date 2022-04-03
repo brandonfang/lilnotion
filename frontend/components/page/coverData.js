@@ -776,6 +776,6 @@ const coverData = [
     objectPositionX: '50%',
     objectPositionY: '50%',
   },
-];
+]
 
-export default coverData;
+export default coverData

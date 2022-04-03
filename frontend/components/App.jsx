@@ -1,26 +1,26 @@
 import React from 'react'
-import { Switch } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute, HomeRoute } from '../util/route-util';
-import LoginFormContainer from './auth/LoginFormContainer';
-import SignupFormContainer from './auth/SignupFormContainer';
+import { Switch } from 'react-router-dom'
+import { AuthRoute, ProtectedRoute, HomeRoute } from '../util/route-util'
+import LoginFormContainer from './auth/LoginFormContainer'
+import SignupFormContainer from './auth/SignupFormContainer'
 import EditorContainer from './editor/EditorContainer'
-import PageNotFound from './PageNotFound';
+import PageNotFound from './PageNotFound'
 
-const App = () => {
+function App() {
   return (
     <>
       <Switch>
-        <AuthRoute exact path='/login' component={LoginFormContainer} />
-        <AuthRoute exact path='/signup' component={SignupFormContainer} />
-        
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+
         <HomeRoute exact path="/" />
-        <ProtectedRoute path='/p/:id' component={EditorContainer} />
+        <ProtectedRoute path="/p/:id" component={EditorContainer} />
 
         <AuthRoute path="*" component={PageNotFound} />
         <HomeRoute />
       </Switch>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

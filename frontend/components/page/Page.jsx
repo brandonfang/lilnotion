@@ -270,6 +270,7 @@ class Page extends React.Component {
     } else if (this.state.photoUrl === null) {
       coverPhoto = null;
     }
+    coverPhoto = null;
 
     return (
       <div className="page">
@@ -303,17 +304,13 @@ class Page extends React.Component {
         </div>
 
         <div className="page-scroller">
-          {coverPhoto ? (
+          {/* {coverPhoto ? (
             <div className="page-header-wrapper">
               <div className="page-header">
                 <img src={coverPhoto} className="page-cover" />
-                <div className="cover-controls">
-                  <div className="change-cover"></div>
-                  <div className="remove-cover"></div>
-                </div>
               </div>
             </div>
-          ) : null}
+          ) : null} */}
 
           <div className="page-wrapper">
             <div className="page-controls">
@@ -348,34 +345,32 @@ class Page extends React.Component {
                 />
               )}
 
-              <label className="cover-upload-label" onClick={() => this.addRandomCover(coverData)}>
-                <svg viewBox="0 0 14 14" className="cover-upload-icon">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M2 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 12h10L8.5 5.5l-2 4-2-1.5L2 12z"
-                  ></path>
-                </svg>
-                Add cover
-                {/* <input
-                  type="file"
-                  id=""
-                  className="cover-upload-input"
-                  accept="image/*"
-                  onChange={this.handlePreview}
-                  hidden
-                /> */}
-              </label>
-              <label className="cover-upload-label" onClick={() => this.removeCover()}>
-                <svg viewBox="0 0 14 14" className="cover-upload-icon">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M2 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 12h10L8.5 5.5l-2 4-2-1.5L2 12z"
-                  ></path>
-                </svg>
-                Remove cover
-              </label>
+              {coverPhoto ? (
+                <div className="cover-controls">
+                  <div className="cover-control change-cover" onClick={this.addRandomCover}>
+                    Change cover
+                  </div>
+                  <div className="cover-control remove-cover" onClick={this.removeCover}>
+                    Remove cover
+                  </div>
+                </div>
+              ) : (
+                <div className="temp">
+                  <label
+                    className="cover-upload-label"
+                    onClick={() => this.addRandomCover(coverData)}
+                  >
+                    <svg viewBox="0 0 14 14" className="cover-upload-icon">
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M2 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 12h10L8.5 5.5l-2 4-2-1.5L2 12z"
+                      ></path>
+                    </svg>
+                    Add cover
+                  </label>
+                </div>
+              )}
             </div>
 
             <div className="page-title-wrapper">

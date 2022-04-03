@@ -1,48 +1,40 @@
-import React from 'react';
-import SidebarContainer from '../sidebar/SidebarContainer';
-import PageContainer from '../page/PageContainer';
-import Loader from './Loader';
+import React, { useState, useEffect } from 'react'
+import SidebarContainer from '../sidebar/SidebarContainer'
+import PageContainer from '../page/PageContainer'
+import Loader from './Loader'
 
-class Editor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebarClosed: false,
-    };
+function Editor({ currentUser, pages, blocks, fetchPages, fetchBlocks }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+
+  useEffect(() => {
+    fetchPages(currentUser.id)
+    fetchBlocks(currentUser.id)
+  }, [])
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen)
   }
 
-  componentDidMount() {
-    this.props.fetchPages(this.props.currentUser.id);
-    this.props.fetchBlocks(this.props.currentUser.id);
-  }
+  const isDataValid =
+    pages &&
+    blocks &&
+    Object.keys(pages).length > 0 &&
+    Object.keys(blocks).length > 0 &&
+    Object.values(blocks)[0].id
 
-  toggleSidebar() {
-    this.setState({ sidebarClosed: !this.state.sidebarClosed });
-  }
-
-  render() {
-    console.log('editor.jsx render()')
-    const { pages, blocks } = this.props;
-    if (pages && blocks && Object.keys(pages).length > 0 && Object.keys(blocks).length > 0 && Object.values(blocks)[0].id) {
-      return (
-        <div id="editor">
-          <SidebarContainer
-            pages={pages}
-            sidebarClosed={this.state.sidebarClosed}
-            toggleSidebar={this.toggleSidebar}
-          />
-          <PageContainer
-            pages={pages}
-            blocks={blocks}
-            sidebarClosed={this.state.sidebarClosed}
-            toggleSidebar={this.toggleSidebar}
-          />
-        </div>
-      );
-    } else {
-      return <Loader />;
-    }
-  }
+  return isDataValid ? (
+    <div id="editor">
+      <SidebarContainer pages={pages} isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <PageContainer
+        pages={pages}
+        blocks={blocks}
+        isSidebarOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
+    </div>
+  ) : (
+    <Loader />
+  )
 }
 
-export default Editor;
+export default Editor

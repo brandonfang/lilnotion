@@ -1,22 +1,24 @@
 .sidebar {
-  width: 250px;
-  // width: 100%;
+  // overflow: hidden;
+  // resize: horizontal;
+  width: 256px;
   height: 100vh;
   background: $gray-500;
   color: hsla(45, 19%, 8%, 0.6);
   font-weight: 500;
-  top: 0;
-  left: 0;
-  bottom: 0;
   display: block;
-  transition: 0.5s;
-  // overflow: hidden;
-  // resize: horizontal;
-  transform: translateX(0);
-  z-index: 0;
+  position: absolute;
+  transition: 0.5s ease;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: -256px;
+  -webkit-transform: translateX(256px);
+  transform: translateX(256px);
 
-  &.collapsed {
-    // transform: translateX(-200px);
+  &.open {
+    -webkit-transform: translateX(256px);
+    transform: translateX(256px);
   }
 }
 
@@ -260,7 +262,7 @@
   font-weight: 500;
   color: $sidebar-page-block;
   text-decoration: none;
-  
+
   a {
     text-decoration: none;
   }
@@ -269,7 +271,7 @@
     background: $sidebar-hover;
 
     &:hover {
-    background: rgba(55, 53, 47, 0.16);;
+      background: rgba(55, 53, 47, 0.16);
     }
   }
 
@@ -278,7 +280,7 @@
   }
 
   &:active {
-    background: rgba(55, 53, 47, 0.20);;
+    background: rgba(55, 53, 47, 0.2);
   }
 }
 
@@ -354,7 +356,8 @@
   cursor: pointer;
   background: white;
   padding: 6px 0;
-  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px,
+    rgba(15, 15, 15, 0.2) 0px 9px 24px;
 }
 
 .outliner-action-menu-row {

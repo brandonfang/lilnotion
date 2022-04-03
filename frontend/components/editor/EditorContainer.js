@@ -15,7 +15,6 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPages: (userId) => dispatch(fetchPages(userId)),
   fetchBlocks: (userId) => dispatch(fetchBlocks(userId)),
-  logout: () => dispatch(logout()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Editor));

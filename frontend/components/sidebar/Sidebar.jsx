@@ -1,5 +1,5 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react'
+import { withRouter } from 'react-router-dom'
 import {
   FiChevronsRight,
   FiChevronsLeft,
@@ -10,48 +10,23 @@ import {
   FiGlobe,
   FiPlus,
   FiLogOut,
-} from 'react-icons/fi';
-import OutlinerRow from './OutlinerRow';
+} from 'react-icons/fi'
+import OutlinerRow from './OutlinerRow'
 
 class Sidebar extends React.Component {
   constructor(props) {
-    super(props);
-    this.ref = React.createRef();
-    this.goToPage = this.goToPage.bind(this);
-    this.newPage = this.newPage.bind(this);
-    this.deletePage = this.deletePage.bind(this);
+    super(props)
+    this.goToPage = this.goToPage.bind(this)
+    this.newPage = this.newPage.bind(this)
+    this.deletePage = this.deletePage.bind(this)
     this.state = {
-      sidebarClosed: props.sidebarClosed,
       toggleHover: false,
-    };
+    }
   }
-
-  componentDidMount() {
-    // if (!this.state.sidebarClosed) {
-    //   const sidebar = this.ref.current;
-    //   const editor = document.getElementById('editor');
-    //   sidebar.classList.remove('collapsed');
-    //   editor.classList.remove('collapsed');
-    // }
-  }
-
-  // toggleSidebar() {
-  //   const sidebar = this.ref.current;
-  //   const editor = document.getElementById('editor');
-  //   if (this.state.sidebarClosed) {
-  //     sidebar.classList.remove('collapsed');
-  //     editor.classList.remove('collapsed');
-  //     this.setState({ sidebarClosed: false, toggleHover: false });
-  //   } else {
-  //     sidebar.classList.add('collapsed');
-  //     editor.classList.add('collapsed');
-  //     this.setState({ sidebarClosed: true, toggleHover: false });
-  //   }
-  // }
 
   goToPage(pageId, pageTitle) {
-    if (pageTitle === '') pageTitle = 'Untitled';
-    this.props.history.push(`/p/${pageId}`);
+    if (pageTitle === '') pageTitle = 'Untitled'
+    this.props.history.push(`/p/${pageId}`)
   }
 
   async newPage() {
@@ -69,45 +44,44 @@ class Sidebar extends React.Component {
         skin: null,
         native: '📄',
       },
-    });
+    })
 
     const { block } = await this.props.createBlock({
       userId: this.props.currentUser.id,
       pageId: page.id,
       blockType: 'paragraph',
       text: '',
-    });
+    })
 
-    const newPage = Object.assign(page, { blockIds: [block.id] });
+    const newPage = Object.assign(page, { blockIds: [block.id] })
     this.props
       .updatePage(newPage)
       .then(() => this.props.history.push(`/p/${page.id}`))
-      .then(() => document.getElementById('page-title').focus());
+      .then(() => document.getElementById('page-title').focus())
   }
 
   deletePage(pageId) {
     // write deleteCurrentPage() and deleteOtherPage(pageId);
-    this.props.deletePage(pageId);
+    this.props.deletePage(pageId)
   }
 
   render() {
-    // console.log('sidebar.jsx render()');
-    if (!this.props.pages || Object.keys(this.props.pages).length === 0) return null;
+    console.log('sidebar.jsx render()');
+    if (!this.props.pages || Object.keys(this.props.pages).length === 0) return null
 
-    const { currentUser, pages, deletePage, logout } = this.props;
-    const { sidebarClosed, toggleHover } = this.state;
-    const toggleIcon = sidebarClosed ? <FiChevronsRight /> : <FiChevronsLeft />;
-    const tooltipText = sidebarClosed ? 'Lock sidebar open' : 'Close sidebar';
-    let tooltipClassName;
-    if (sidebarClosed) {
-      tooltipClassName = toggleHover ? 'toggle-tooltip visible right' : 'toggle-tooltip right';
+    const { currentUser, pages, deletePage, logout, isSidebarOpen, toggleSidebar } = this.props
+    const { toggleHover } = this.state
+    const toggleIcon = isSidebarOpen ? <FiChevronsLeft /> : <FiChevronsRight />
+    const tooltipText = isSidebarOpen ? 'Close sidebar' : 'Lock sidebar open'
+    let tooltipClassName
+    if (isSidebarOpen) {
+      tooltipClassName = toggleHover ? 'toggle-tooltip visible right' : 'toggle-tooltip right'
     } else {
-      tooltipClassName = toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip';
+      tooltipClassName = toggleHover ? 'toggle-tooltip visible' : 'toggle-tooltip'
     }
 
-    // sort pages by creation timestamp
-    const arrayOfPages = Object.values(pages);
-    arrayOfPages.sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
+    const arrayOfPages = Object.values(pages)
+    arrayOfPages.sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1))
 
     const pagesList = arrayOfPages.map((page, i) => {
       return (
@@ -117,12 +91,11 @@ class Sidebar extends React.Component {
           goToPage={this.goToPage}
           deletePage={this.deletePage}
         />
-      );
-    });
+      )
+    })
 
     return (
-      // wrap sidebar in <DragDropContext> if dnd needed
-      <div ref={this.ref} className="sidebar">
+      <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-inner">
           <div className="sidebar-top">
             <div className="sidebar-switcher-wrapper">
@@ -136,9 +109,9 @@ class Sidebar extends React.Component {
                   <div className="switcher-label">
                     <div>{currentUser.firstName}'s lilNotion</div>
                   </div>
-                  {/* <div
+                  <div
                     className="sidebar-toggle"
-                    onClick={this.toggleSidebar}
+                    onClick={toggleSidebar}
                     onMouseEnter={() => this.setState({ toggleHover: true })}
                     onMouseLeave={() => this.setState({ toggleHover: false })}
                   >
@@ -146,7 +119,7 @@ class Sidebar extends React.Component {
                     <div className={tooltipClassName}>
                       <div className="toggle-tooltip-text">{tooltipText}</div>
                     </div>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -229,8 +202,8 @@ class Sidebar extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(Sidebar);
+export default withRouter(Sidebar)

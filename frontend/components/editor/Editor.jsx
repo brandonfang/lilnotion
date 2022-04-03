@@ -13,6 +13,7 @@ function Editor({ currentUser, pages, blocks, fetchPages, fetchBlocks }) {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
+    console.log('toggleSidebar()')
   }
 
   const isDataValid =

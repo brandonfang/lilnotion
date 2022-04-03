@@ -6,7 +6,7 @@ import * as Tooltip from '@radix-ui/react-tooltip';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 // const OutlinerRow = ({ page, goToPage, deletePage }) => {
-const OutlinerRow = ({ page, goToPage, deletePage, location }) => {
+const OutlinerRow = ({ page, goToPage, handleDeletePage, location }) => {
   const [hover, setHover] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const pageTitle = page.title.length > 0 ? page.title : 'Untitled';
@@ -49,7 +49,7 @@ const OutlinerRow = ({ page, goToPage, deletePage, location }) => {
           <DropdownMenu.Content side="right" className="outliner-action-menu">
             <DropdownMenu.Item
               className="outliner-action-menu-row"
-              onSelect={() => deletePage(pageId)}
+              onSelect={() => handleDeletePage(pageId)}
             >
               <div className="action-icon">
                 <FiTrash2 />

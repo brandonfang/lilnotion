@@ -1,34 +1,34 @@
-import React from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
-import ContentEditable from 'react-contenteditable';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { debounce } from '../../util/utils';
-import equal from 'fast-deep-equal';
-import BlockContainer from '../blocks/BlockContainer';
-import { FiMenu, FiChevronsRight, FiPlus, FiMoreHorizontal } from 'react-icons/fi';
-import { AiOutlineMenu } from 'react-icons/ai';
-import 'emoji-mart/css/emoji-mart.css';
-import { Picker, Emoji } from 'emoji-mart';
-import coverData from './coverData';
-import emoji from 'node-emoji';
+import React from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
+import ContentEditable from 'react-contenteditable'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import { debounce } from '../../util/utils'
+import equal from 'fast-deep-equal'
+import BlockContainer from '../blocks/BlockContainer'
+import { FiMenu, FiChevronsRight, FiPlus, FiMoreHorizontal } from 'react-icons/fi'
+import { AiOutlineMenu } from 'react-icons/ai'
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker, Emoji } from 'emoji-mart'
+import coverData from './coverData'
+import emoji from 'node-emoji'
 
 class Page extends React.Component {
   constructor(props) {
-    super(props);
-    this.contentEditable = React.createRef();
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.changeFavicon = this.changeFavicon.bind(this);
-    this.changeTitle = this.changeTitle.bind(this);
-    this.getFaviconUrl = this.getFaviconUrl.bind(this);
-    this.addRandomCover = this.addRandomCover.bind(this);
-    this.removeCover = this.removeCover.bind(this);
-    this.addBlock = this.addBlock.bind(this);
-    this.onDragEnd = this.onDragEnd.bind(this);
-    this.handlePreview = this.handlePreview.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
-    this.selectEmoji = this.selectEmoji.bind(this);
-    this.openEmojiPicker = this.openEmojiPicker.bind(this);
-    this.closeEmojiPicker = this.closeEmojiPicker.bind(this);
+    super(props)
+    this.contentEditable = React.createRef()
+    this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.changeFavicon = this.changeFavicon.bind(this)
+    this.changeTitle = this.changeTitle.bind(this)
+    this.getFaviconUrl = this.getFaviconUrl.bind(this)
+    this.addRandomCover = this.addRandomCover.bind(this)
+    this.removeCover = this.removeCover.bind(this)
+    this.addBlock = this.addBlock.bind(this)
+    this.onDragEnd = this.onDragEnd.bind(this)
+    this.handlePreview = this.handlePreview.bind(this)
+    this.handleUpload = this.handleUpload.bind(this)
+    this.selectEmoji = this.selectEmoji.bind(this)
+    this.openEmojiPicker = this.openEmojiPicker.bind(this)
+    this.closeEmojiPicker = this.closeEmojiPicker.bind(this)
 
     this.state = {
       pageId: props.location.pathname.slice(3),
@@ -42,19 +42,19 @@ class Page extends React.Component {
         y: null,
       },
       sidebarClosed: props.sidebarClosed,
-    };
+    }
   }
 
   componentDidMount() {
     // console.log('page.jsx componentDidMount()');
     if (this.props.location.pathname.length <= 1) {
-      const firstPage = Object.values(this.props.pages)[0];
-      this.props.history.push(`/p/${firstPage.id}`);
+      const firstPage = Object.values(this.props.pages)[0]
+      this.props.history.push(`/p/${firstPage.id}`)
     }
 
     if (this.state.page && Object.keys(this.state.page).length > 0 && this.state.page.title) {
-      this.changeFavicon(this.state.page.icon);
-      this.changeTitle(this.state.page.title);
+      this.changeFavicon(this.state.page.icon)
+      this.changeTitle(this.state.page.title)
     }
   }
 
@@ -63,20 +63,20 @@ class Page extends React.Component {
     // console.log("prevProps:", prevProps);
     // console.log('new Props:', this.props);
 
-    const newPageId = this.props.location.pathname.slice(3);
-    const newPage = this.props.pages[newPageId];
+    const newPageId = this.props.location.pathname.slice(3)
+    const newPage = this.props.pages[newPageId]
 
-    const isNewPageIdValid = this.props.pages.hasOwnProperty(newPageId);
-    const locationChanged = !equal(this.props.location, prevProps.location);
-    const pageChanged = !equal(newPage, prevState.page);
-    const blocksChanged = !equal(this.props.blocks, prevProps.blocks);
+    const isNewPageIdValid = this.props.pages.hasOwnProperty(newPageId)
+    const locationChanged = !equal(this.props.location, prevProps.location)
+    const pageChanged = !equal(newPage, prevState.page)
+    const blocksChanged = !equal(this.props.blocks, prevProps.blocks)
 
-    if (locationChanged && !isNewPageIdValid) return;
+    if (locationChanged && !isNewPageIdValid) return
 
     if (!isNewPageIdValid) {
-      const firstPage = Object.values(this.props.pages)[0];
-      this.props.history.push(`/p/${firstPage.id}`);
-      return;
+      const firstPage = Object.values(this.props.pages)[0]
+      this.props.history.push(`/p/${firstPage.id}`)
+      return
     }
 
     if (locationChanged || pageChanged || blocksChanged) {
@@ -84,15 +84,15 @@ class Page extends React.Component {
         pageId: newPageId,
         page: newPage,
         blocks: this.props.blocks,
-      });
-      this.changeFavicon(newPage.icon);
-      this.changeTitle(newPage.title);
+      })
+      this.changeFavicon(newPage.icon)
+      this.changeTitle(newPage.title)
     }
   }
 
   changeTitle(title) {
-    if (title === '') title = 'Untitled';
-    document.title = title;
+    if (title === '') title = 'Untitled'
+    document.title = title
   }
 
   getFaviconUrl(emoji) {
@@ -105,48 +105,48 @@ class Page extends React.Component {
 
     // temp solution to get favicon url
     // only works sometimes
-    const id = emoji.id;
-    const unified = emoji.unified;
-    return `https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/${id}_${unified}.png`;
+    const id = emoji.id
+    const unified = emoji.unified
+    return `https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/${id}_${unified}.png`
   }
 
   changeFavicon(emoji) {
-    return;
+    return
     // temp solution to get favicon url
-    const url = this.getFaviconUrl(emoji);
-    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/png';
-    link.rel = 'shortcut icon';
-    link.href = url;
-    document.head.appendChild(link);
+    const url = this.getFaviconUrl(emoji)
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link')
+    link.type = 'image/png'
+    link.rel = 'shortcut icon'
+    link.href = url
+    document.head.appendChild(link)
   }
 
   handleTitleChange(e) {
-    const newPage = Object.assign(this.state.page, { title: e.target.value });
-    this.setState(newPage, () => this.props.updatePage(newPage));
-    this.changeTitle(e.target.value);
+    const newPage = Object.assign(this.state.page, { title: e.target.value })
+    this.setState(newPage, () => this.props.updatePage(newPage))
+    this.changeTitle(e.target.value)
   }
 
   addRandomCover(arr) {
-    document.getElementById('page-icon-wrapper').classList.add('with-cover');
-    const cover = arr[Math.floor(Math.random() * arr.length)];
-    const coverUrl = cover.imageUrl;
+    document.getElementById('page-icon-wrapper').classList.add('with-cover')
+    const cover = arr[Math.floor(Math.random() * arr.length)]
+    const coverUrl = cover.imageUrl
     const newPage = Object.assign(this.state.page, {
       galleryImageUrl: coverUrl,
       uploadedImageUrl: '',
-    });
-    this.setState({ page: newPage, photoUrl: coverUrl }, () => this.props.updatePage(newPage));
+    })
+    this.setState({ page: newPage, photoUrl: coverUrl }, () => this.props.updatePage(newPage))
   }
 
   removeCover() {
-    document.getElementById('page-icon-wrapper').classList.remove('with-cover');
+    document.getElementById('page-icon-wrapper').classList.remove('with-cover')
     const newPage = Object.assign(this.state.page, {
       galleryImageUrl: '',
       uploadedImageUrl: '',
-    });
+    })
     this.props.updatePage(newPage).then(() => {
-      this.setState({ page: newPage, photoUrl: null });
-    });
+      this.setState({ page: newPage, photoUrl: null })
+    })
   }
 
   addBlock() {
@@ -155,41 +155,41 @@ class Page extends React.Component {
       pageId: this.props.location.pathname.slice(3),
       blockType: 'paragraph',
       text: '',
-    };
+    }
     this.props.createBlock(block).then((res) => {
-      const newBlockIds = [...this.state.page.blockIds, res.block.id];
-      const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
-      this.props.updatePage(newPage);
-    });
+      const newBlockIds = [...this.state.page.blockIds, res.block.id]
+      const newPage = Object.assign(this.state.page, { blockIds: newBlockIds })
+      this.props.updatePage(newPage)
+    })
   }
 
   onDragEnd(result) {
-    const { source, destination } = result;
+    const { source, destination } = result
     // console.log(result);
 
     // if dropped outside the area or no movement
-    if (!destination || source.index === destination.index) return;
+    if (!destination || source.index === destination.index) return
     // reorder blocks ids (splice >1 if implementing multi-drag)
-    const blockIds = this.state.page.blockIds;
-    const newBlockIds = [...blockIds];
-    const removed = newBlockIds.splice(source.index, 1);
-    newBlockIds.splice(destination.index, 0, ...removed);
+    const blockIds = this.state.page.blockIds
+    const newBlockIds = [...blockIds]
+    const removed = newBlockIds.splice(source.index, 1)
+    newBlockIds.splice(destination.index, 0, ...removed)
     // console.log(newBlockIds);
 
-    const newPage = Object.assign(this.state.page, { blockIds: newBlockIds });
+    const newPage = Object.assign(this.state.page, { blockIds: newBlockIds })
     // this.setState({ page: newPage }, () => this.props.updatePage(newPage));
     this.setState({ page: newPage }, () => {
       // console.log('about to update page');
-      this.props.updatePage(newPage).then((res) => console.log(res));
-    });
+      this.props.updatePage(newPage).then((res) => console.log(res))
+    })
   }
 
   handlePreview(e) {
-    e.preventDefault();
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
+    e.preventDefault()
+    const file = e.target.files[0]
+    const fileReader = new FileReader()
     if (file) {
-      fileReader.readAsDataURL(file);
+      fileReader.readAsDataURL(file)
       fileReader.onloadend = () => {
         this.setState(
           {
@@ -197,19 +197,19 @@ class Page extends React.Component {
             photoUrl: fileReader.result,
           },
           () => this.handleUpload()
-        );
-      };
+        )
+      }
     }
   }
 
   handleUpload() {
-    const file = this.state.photoFile;
+    const file = this.state.photoFile
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
       fileReader.onloadend = () => {
-        const formData = new FormData();
-        formData.append('page[uploadedImageUrl]', file);
+        const formData = new FormData()
+        formData.append('page[uploadedImageUrl]', file)
         $.ajax({
           url: `/api/pages/${this.state.page.id}`,
           method: 'PATCH',
@@ -219,58 +219,58 @@ class Page extends React.Component {
         }).then(
           (res) => console.log('res:', res),
           (err) => console.log('error:', err)
-        );
-      };
+        )
+      }
     }
   }
 
   getPagePadding(width) {}
 
   selectEmoji(emoji) {
-    this.closeEmojiPicker();
-    this.changeFavicon(emoji);
-    const newPage = Object.assign(this.state.page, { icon: emoji });
-    this.setState(newPage, () => this.props.updatePage(newPage));
+    this.closeEmojiPicker()
+    this.changeFavicon(emoji)
+    const newPage = Object.assign(this.state.page, { icon: emoji })
+    this.setState(newPage, () => this.props.updatePage(newPage))
   }
 
   openEmojiPicker() {
-    this.setState({ emojiPickerOpen: true });
+    this.setState({ emojiPickerOpen: true })
     // add event listener to close emoji picker on click outside
     // wrap emoji picker inside dropdown.menu component
   }
 
   closeEmojiPicker() {
-    this.setState({ emojiPickerOpen: false });
+    this.setState({ emojiPickerOpen: false })
   }
 
   render() {
     // console.log('page.jsx render()');
-    const { pages, blocks, location, toggleSidebar } = this.props;
-    const { emojiPickerOpen, photoUrl, sidebarClosed } = this.state;
-    const pageId = location.pathname.slice(3);
+    const { pages, blocks, location, toggleSidebar } = this.props
+    const { emojiPickerOpen, photoUrl, sidebarClosed } = this.state
+    const pageId = location.pathname.slice(3)
 
-    if (!pages || !blocks) return null;
-    const page = pages[location.pathname.slice(3)];
-    if (!page) return null;
-    if (!page.blockIds) return null;
+    if (!pages || !blocks) return null
+    const page = pages[location.pathname.slice(3)]
+    if (!page) return null
+    if (!page.blockIds) return null
 
-    const breadcrumbTitle = page.title.length > 0 ? page.title : 'Untitled';
+    const breadcrumbTitle = page.title.length > 0 ? page.title : 'Untitled'
 
-    const orderedBlocks = [];
-    const blockIds = page.blockIds;
+    const orderedBlocks = []
+    const blockIds = page.blockIds
     for (let i = 0; i < blockIds.length; i++) {
-      orderedBlocks.push(blocks[blockIds[i]]);
+      orderedBlocks.push(blocks[blockIds[i]])
     }
 
-    let coverPhoto;
+    let coverPhoto
     if (page.uploadedImageUrl) {
-      coverPhoto = page.uploadedImageUrl;
+      coverPhoto = page.uploadedImageUrl
     } else if (page.galleryImageUrl) {
-      coverPhoto = page.galleryImageUrl;
+      coverPhoto = page.galleryImageUrl
     } else if (this.state.photoUrl === null) {
-      coverPhoto = null;
+      coverPhoto = null
     }
-    coverPhoto = null;
+    coverPhoto = null
 
     return (
       <div className="page">
@@ -414,8 +414,8 @@ class Page extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(Page);
+export default withRouter(Page)

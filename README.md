@@ -2,7 +2,7 @@
 
 lilNotion is a fullstack, single-page web app that clones some of [Notion](https://www.notion.so/product)'s features. It's a document editor that allows users to write notes, projects, and wikis in a flexible format.
 
-## **Live Demo: [lilnotion.herokuapp.com](https://lilnotion.herokuapp.com)**
+## 🖥 **Live Demo: [lilnotion.herokuapp.com](https://lilnotion.herokuapp.com)**
 
 ![lilNotion home](https://raw.githubusercontent.com/brandonfang/lilnotion/main/app/assets/images/readme-1.png)
 
@@ -15,21 +15,21 @@ lilNotion is a fullstack, single-page web app that clones some of [Notion](https
 - Drag and Drop: react-beautiful-dnd
 - UI components: radix-ui
 
-## 🧑‍💻 Features
+## 🎨 Features
 
-### User Authentication
+### 🔐 User Authentication
 
 Users can create an account to store their private pages. Visitors who don't want to make an account can log in as a demo user. RESTful authentication is implemented encrypting passwords with BCrypt and generating/caching session tokens with cryptographically strong random numbers.
 
 ![user authentication](https://raw.githubusercontent.com/brandonfang/lilnotion/main/app/assets/images/readme-2.png)
 
-### Pages, Blocks, Drag and Drop
+### 📝 Pages and Blocks
 
-Every page and block has a unique identifier (UUID v4). Users can write seamlessly with different data types and drag-and-drop blocks to rearrange information.
+Every page and block has a unique identifier (UUID v4). Users can write seamlessly with different data types.
 
 ![pages](https://raw.githubusercontent.com/brandonfang/lilnotion/main/app/assets/images/readme-3.png)
 
-### Dynamic Blocks
+### 📚 Dynamic Blocks
 
 A block can be converted into another type of block using the `⋮⋮` icon or the `⌘` + `/` command. Changing the type of a block will affect the underlying content but will created a more stylized appearance.
 
@@ -78,7 +78,9 @@ function Block({ blockType }) {
 }
 ```
 
-### Drag and Drop
+### 🤏 Drag and Drop
+
+Users can drag and drop blocks to rearrange information.
 
 <!-- record gif of drag and drop -->
 <!-- ![drag and drop]() -->
@@ -135,7 +137,7 @@ function Page({ pages, blocks, updatePage }) {
 }
 ```
 
-### Image Support
+### 📸 Image Support
 
 Image support with Amazon S3 storage allows users to attach images to blocks and page covers.
 
@@ -197,7 +199,7 @@ function Image({ block, updateBlock }) {
 }
 ```
 
-## How To Use
+## 👋 How To Use
 
 To clone and run this application, you'll need Git, Node.js, and Ruby on Rails installed on your computer. From your command line:
 
@@ -217,7 +219,7 @@ $ npm start
 $ rails server
 ```
 
-## Future Features
+## 📅 To-do
 
 - Rich text - text formatting, colored text, colored backgrounds
 - Nested pages

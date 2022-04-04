@@ -33,7 +33,7 @@ const SplashHome = ({ login }) => {
                 </Link>
               </div>
               <p className="caption">
-                lilNotion is a clone of <a href="https://www.notion.so/product" target="_blank" rel="noopener noreferrer">Notion</a>.
+                lilNotion is a clone of <a href="https://www.notion.so/product" target="_blank" rel="noopener noreferrer">Notion</a> and not affiliated.
               </p>
             </div>
           </section>

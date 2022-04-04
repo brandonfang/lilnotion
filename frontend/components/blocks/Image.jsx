@@ -1,71 +1,55 @@
-import React from 'react';
-import { BiImage } from 'react-icons/bi';
+import React, { useState } from 'react'
+import { BiImage } from 'react-icons/bi'
 
-class Image extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleUpload = this.handleUpload.bind(this);
-    this.state = {
-      photoUrl: null,
-      // imageCaption
-    };
-  }
+function Image({ block, updateBlock }) {
+  const [photoUrl, setPhotoUrl] = useState(null)
 
-  handleUpload(e) { 
-    const file = e.target.files[0];
+  function handleUpload(e) {
+    const file = e.target.files[0]
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
 
       fileReader.onloadend = () => {
-        const formData = new FormData();
-        formData.append('block[imageUrl]', file);
+        const formData = new FormData()
+        formData.append('block[imageUrl]', file)
 
         $.ajax({
-          url: `/api/blocks/${this.props.block.id}`,
+          url: `/api/blocks/${block.id}`,
           method: 'PATCH',
           data: formData,
           contentType: false,
           processData: false,
         }).then(
-          (res) => {
-            console.log('res: ', res)
-            this.props.updateBlock(res);
-          },
+          (res) => updateBlock(res),
           (err) => console.log('error: ', err)
-        );
-      };
+        )
+      }
     }
   }
 
-  render() {
-    const { block } = this.props;
+  const isImageUploaded = block.imageUrl && block.imageUrl.length > 0
+  const imageBody = isImageUploaded ? (
+    <img className="block-image" src={block.imageUrl} alt="" />
+  ) : (
+    <label className="image-upload-label">
+      <BiImage className="image-upload-icon" />
+      <div className="image-upload-text">Add an image</div>
+      <input
+        type="file"
+        className="image-upload-input"
+        accept="image/*"
+        onChange={handleUpload}
+        hidden
+      />
+    </label>
+  )
 
-    const imageBody =
-      (block.imageUrl && block.imageUrl.length > 0) ? (
-        <img className="block-image" src={block.imageUrl} alt="" />
-      ) : (
-        <>
-          <label className="image-upload-label">
-            <BiImage className="image-upload-icon" />
-            <div className="image-upload-text">Add an image</div>
-            <input
-              type="file"
-              className="image-upload-input"
-              accept="image/*"
-              onChange={this.handleUpload}
-              hidden
-            />
-          </label>
-        </>
-      );
-
-    return (
-      <div className="block-body image"> 
-        <div className="image-block-wrapper">{imageBody}</div>
-      </div>
-    );
-  }
+  return (
+    <div className="block-body image">
+      <div className="image-block-wrapper">{imageBody}</div>
+    </div>
+  )
 }
 
-export default Image;
+export default Image
